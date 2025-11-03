@@ -846,6 +846,9 @@ section[id] { scroll-margin-top: 100px; }
 .hero-stat { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px 20px; text-align: center; }
 .hero-stat .stat-number { display: block; font-size: 2.5rem; font-weight: 800; color: #6353EE; margin-bottom: 8px; }
 .hero-stat .stat-label { display: block; font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+.stat-split { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; }
+.stat-platform { font-size: 1.1rem; font-weight: 600; color: #6353EE; }
+.stat-divider { font-size: 1.3rem; font-weight: 300; color: rgba(255,255,255,0.4); }
 
 /* Section Heading */
 .section-heading { font-size: 2.5rem; font-weight: 700; color: #fff; text-align: center; margin: 0 0 50px 0; display: flex; align-items: center; justify-content: center; gap: 16px; }
@@ -928,6 +931,7 @@ section[id] { scroll-margin-top: 100px; }
   .cta-buttons { flex-direction: column; width: 100%; }
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
   .hero-stats-grid { grid-template-columns: 1fr; gap: 16px; }
+  .stat-platform { font-size: 0.95rem; }
   .section-heading { font-size: 1.8rem; flex-direction: column; gap: 12px; }
   .topic-card { padding: 30px 24px; }
   .topic-title { font-size: 1.6rem; }
