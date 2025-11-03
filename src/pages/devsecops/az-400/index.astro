@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Az400Content from "../../../components/Az400Content.jsx";
+---
+<BaseLayout title="AZ-400 — Teoría">
+  <style>
+    .az-card { background: rgba(24, 24, 27, 0.74); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(122,107,255,0.22); box-shadow: 0 10px 36px rgba(0,0,0,0.35), 0 8px 26px rgba(122,107,255,0.18), inset 0 0 0 1px rgba(255,255,255,0.03); color: #f5f7ff; max-width: 1200px; padding: 42px 36px; }
+    .az-card p { font-size: 1.14rem; line-height: 1.85; color: #f5f7ff; text-align: justify; text-justify: inter-word; hyphens: auto; margin: 0 0 18px 0; }
+    .az-card ul { margin: 0 0 18px 22px; }
+    .az-card li { font-size: 1.12rem; line-height: 1.78; color: #f5f7ff; margin: 6px 0; }
+    .az-card h2 { font-size: 2.15rem; color: #7a6bff; margin: 6px 0 18px 0; }
+    .az-card h3 { font-size: 1.5rem; color: #a5b4fc; margin: 26px 0 12px 0; }
+    .az-card h4 { font-size: 1.18rem; color: #c7d2fe; margin: 18px 0 10px 0; }
+    .az-card a { color: #d6e5ff; text-decoration: none; border-bottom: 1px dashed rgba(214,229,255,0.45); }
+    .az-card a:hover { color: #eaf2ff; border-bottom-color: rgba(234,242,255,0.75); }
+    .az-card pre { background: #0b1022; color: #f5f7ff; padding: 18px; border-radius: 12px; margin: 0 0 20px 0; }
+    .az-card table { width: 100%; border-collapse: collapse; margin: 12px 0 20px 0; border-color: rgba(99,62,238,0.25); }
+    .az-card th, .az-card td { border: 1px solid rgba(99,62,238,0.25); color: #f2f6ff; padding: 8px 10px; text-align: left; }
+    .az-card thead th { background: rgba(83,83,236,0.12); color: #f5f7ff; }
+    .az-card tbody tr:nth-child(odd) { background: rgba(255,255,255,0.02); }
+  </style>
+  <Az400Content client:load />
+</BaseLayout>

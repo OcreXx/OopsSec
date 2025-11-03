@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theory - SQL Injection</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <header>
+    <div id="global-header"></div>
+  </header>
+
+  <main>
+    <div class="layout">
+      <aside class="sidebar">
+        <div id="sql-index"></div>
+      </aside>
+
+      <div class="content-area">
+        <section class="card" id="intro">
+          <h2>1. Introducción y conceptos</h2>
+          <p>
+            SQL Injection (SQLi) es una vulnerabilidad que ocurre cuando una aplicación construye consultas SQL con entrada del usuario sin validarla o parametrizar correctamente. El atacante inyecta fragmentos de SQL para alterar la consulta original y obtener información, modificar datos o ejecutar comandos no previstos.
+          </p>
+          <h3>Tipos comunes</h3>
+          <ul>
+            <li><strong>In-band (clásico):</strong> los datos se obtienen por la misma ví­a (ej. UNION, error-based).</li>
+            <li><strong>Blind (ciegas):</strong> la aplicación no devuelve datos directamente - inferencia mediante respuestas booleanas o tiempos.</li>
+            <li><strong>Out-of-band (OAST):</strong> se usan canales externos (DNS, HTTP callbacks) para extraer datos.</li>
+          </ul>
+          <p>
+            Importante: hay diferencias entre motores (MySQL, PostgreSQL, MSSQL, Oracle) - sintaxis de funciones, comentarios, funciones de retardo y metaâ€‘tablas (p. ej., <code>information_schema</code>, <code>sysobjects</code>).
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../loadHeader.js"></script>
+    <script src="../../sqliIndex.js"></script>
+    <script>
+      (async function(){
+        if(window.loadHeader){ await window.loadHeader('global-header'); }
+        if(window.loadPartial){
+          await window.loadPartial('sql-index','partials/sqlinjection-index.html');
+          if(window.initSqliIndex) window.initSqliIndex();
+        }
+        // static intro; no fetch
+      })();
+    </script>
+  </main>
+</body>
+</html>

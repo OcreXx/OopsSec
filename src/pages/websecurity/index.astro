@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Web Security">
+  <div class="ws-grid">
+    <a class="div2 ws-box" href="#" aria-disabled="true" onclick="return false;">
+      <h2>Web Security</h2>
+      <p>Fundamentos, vulnerabilidades comunes y prácticas para reducir la superficie de ataque.</p>
+    </a>
+
+    <a class="div3 ws-box" href="/WebSecurity/sqlInjection/TheorySqli.html">
+      <h3>SQL Injection</h3>
+      <p>Inyección tradicional, ataques UNION y técnicas Blind. Guías, labs y mitigación.</p>
+    </a>
+
+    <a class="div4 ws-box" href="/WebSecurity/xss/TheoryXSS.html">
+      <h3>XSS</h3>
+      <p>Reflected y Stored XSS, payloads y defensas (encode output, CSP).</p>
+    </a>
+
+    <div class="div5 ws-box"></div>
+    <div class="div6 ws-box"></div>
+  </div>
+</BaseLayout>
+
