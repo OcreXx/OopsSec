@@ -2,26 +2,98 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="DevSecOps">
-  <div class="ds-grid">
-    <a class="d2 ws-box" href="#" aria-disabled="true" onclick="return false;">
-      <h2>DevSecOps</h2>
-      <img class="ws-logo" src="/DevSecOps/DevSecOpslogo.png" alt="DevSecOps" width="560" height="300" loading="lazy" />
-      <p>Integración de seguridad en el ciclo de vida del software: prácticas, automatización y cultura.</p>
-    </a>
+  <div class="devsecops-container">
+    <!-- Hero Card -->
+    <div class="ds-hero-card">
+      <div class="ds-hero-content">
+        <h1 class="ds-hero-title">DevSecOps</h1>
+        <div class="ds-hero-image">
+          <img src="/DevSecOps/DevSecOpslogo.png" alt="DevSecOps" width="560" height="300" loading="lazy" />
+        </div>
+        <p class="ds-hero-description">
+          Integración de seguridad en el ciclo de vida del software: prácticas, automatización y cultura DevOps aplicada a la seguridad.
+        </p>
+      </div>
+    </div>
 
-    <a class="d3 ws-box" href="/devsecops/az-400/">
-      <h3>AZ-400</h3>
-      <img class="ws-logo" src="/DevSecOps/AZ-400/logo400.png" alt="AZ-400" width="240" height="240" loading="lazy" />
-      <p>Diseño e implementación de DevOps en Azure. Recursos y teoría.</p>
-    </a>
+    <!-- Topics Grid -->
+    <div class="ds-topics-grid">
+      <a class="ds-topic-card" href="/devsecops/google-devops-sre/">
+        <div class="ds-card-icon placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+            <path d="M16 16l-4-4-4 4"/>
+          </svg>
+        </div>
+        <div class="ds-card-content">
+          <h3 class="ds-card-title">Google DevOps-SRE</h3>
+          <p class="ds-card-description">Introducción a Google Cloud Platform. Fundamentos de infraestructura, seguridad y costes.</p>
+        </div>
+        <div class="ds-card-footer">
+          <span class="ds-card-status available">Disponible</span>
+        </div>
+      </a>
 
-    <a class="d4 ws-box" href="#" aria-disabled="true" onclick="return false;">
-      <h3>AZ-104</h3>
-      <p>Fundamentos de administración de Azure. Próximamente.</p>
-    </a>
+      <a class="ds-topic-card" href="/devsecops/az-400/">
+        <div class="ds-card-icon">
+          <img src="/DevSecOps/AZ-400/logo400.png" alt="AZ-400" width="240" height="240" loading="lazy" />
+        </div>
+        <div class="ds-card-content">
+          <h3 class="ds-card-title">AZ-400</h3>
+          <p class="ds-card-description">Diseño e implementación de DevOps en Azure. Recursos y teoría sobre certificación Microsoft.</p>
+        </div>
+        <div class="ds-card-footer">
+          <span class="ds-card-status available">Disponible</span>
+        </div>
+      </a>
 
-    <div class="d5 ws-box"></div>
-    <div class="d6 ws-box"></div>
+      <div class="ds-topic-card disabled">
+        <div class="ds-card-icon placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <div class="ds-card-content">
+          <h3 class="ds-card-title">AZ-104</h3>
+          <p class="ds-card-description">Fundamentos de administración de Azure. Gestión de recursos e infraestructura.</p>
+        </div>
+        <div class="ds-card-footer">
+          <span class="ds-card-status coming-soon">Próximamente</span>
+        </div>
+      </div>
+
+      <div class="ds-topic-card disabled">
+        <div class="ds-card-icon placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="ds-card-content">
+          <h3 class="ds-card-title">CI/CD Security</h3>
+          <p class="ds-card-description">Seguridad en pipelines de integración y despliegue continuo. Mejores prácticas.</p>
+        </div>
+        <div class="ds-card-footer">
+          <span class="ds-card-status coming-soon">Próximamente</span>
+        </div>
+      </div>
+
+      <div class="ds-topic-card disabled">
+        <div class="ds-card-icon placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="ds-card-content">
+          <h3 class="ds-card-title">Secrets Management</h3>
+          <p class="ds-card-description">Gestión segura de credenciales, tokens y secretos en entornos DevOps.</p>
+        </div>
+        <div class="ds-card-footer">
+          <span class="ds-card-status coming-soon">Próximamente</span>
+        </div>
+      </div>
+    </div>
   </div>
 </BaseLayout>
 

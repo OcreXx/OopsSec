@@ -1,0 +1,383 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="SQL Injection - Web Security">
+  <div class="websec-container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="/websecurity/">Web Security</a>
+      <span class="separator">→</span>
+      <span class="current">SQL Injection</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="detail-hero">
+      <div class="hero-badge critical">
+        <span class="badge-icon">🔴</span>
+        OWASP Top 3
+      </div>
+      <h1 class="detail-title">
+        <span class="title-icon">💉</span>
+        SQL Injection
+      </h1>
+      <p class="detail-description">
+        Aprende a identificar, explotar y prevenir vulnerabilidades de SQL Injection. 
+        Desde conceptos básicos hasta técnicas avanzadas como UNION-based y Blind SQL Injection.
+      </p>
+    </section>
+
+    <!-- Quick Stats -->
+    <div class="quick-stats">
+      <div class="stat-card">
+        <span class="stat-icon">📊</span>
+        <div>
+          <div class="stat-value">Severity</div>
+          <div class="stat-label">Critical</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">🧪</span>
+        <div>
+          <div class="stat-value">7 Labs</div>
+          <div class="stat-label">PortSwigger</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">⏱️</span>
+        <div>
+          <div class="stat-value">~4 horas</div>
+          <div class="stat-label">Tiempo estimado</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">📈</span>
+        <div>
+          <div class="stat-value">Medio</div>
+          <div class="stat-label">Dificultad</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+      <!-- Introduction -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">📖</span>
+          ¿Qué es SQL Injection?
+        </h2>
+        <p>
+          SQL Injection (SQLi) es una vulnerabilidad crítica que ocurre cuando una aplicación construye 
+          consultas SQL dinámicas con entrada del usuario sin validarla o parametrizarla correctamente. 
+          Esto permite al atacante inyectar código SQL malicioso para:
+        </p>
+        <ul class="feature-list">
+          <li><span class="list-icon">🔓</span> Bypasear autenticación</li>
+          <li><span class="list-icon">📊</span> Extraer datos sensibles de la base de datos</li>
+          <li><span class="list-icon">✏️</span> Modificar o eliminar registros</li>
+          <li><span class="list-icon">⚙️</span> Ejecutar comandos del sistema operativo (en casos avanzados)</li>
+        </ul>
+      </div>
+
+      <!-- Types -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">🎯</span>
+          Tipos de SQL Injection
+        </h2>
+        
+        <div class="type-grid">
+          <div class="type-card">
+            <div class="type-header">
+              <span class="type-icon">📤</span>
+              <h3>In-Band SQLi</h3>
+            </div>
+            <p>Los datos se extraen usando el mismo canal de comunicación. Es el tipo más común y fácil de explotar.</p>
+            <div class="type-subtypes">
+              <span class="subtype-tag">Error-based</span>
+              <span class="subtype-tag">UNION-based</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-header">
+              <span class="type-icon">👁️</span>
+              <h3>Blind SQLi</h3>
+            </div>
+            <p>La aplicación no muestra errores ni datos directamente. Se usa inferencia mediante respuestas booleanas o tiempos.</p>
+            <div class="type-subtypes">
+              <span class="subtype-tag">Boolean-based</span>
+              <span class="subtype-tag">Time-based</span>
+            </div>
+          </div>
+
+          <div class="type-card">
+            <div class="type-header">
+              <span class="type-icon">🌐</span>
+              <h3>Out-of-Band SQLi</h3>
+            </div>
+            <p>Usa canales externos (DNS, HTTP callbacks) para extraer datos cuando otros métodos no funcionan.</p>
+            <div class="type-subtypes">
+              <span class="subtype-tag">DNS exfiltration</span>
+              <span class="subtype-tag">HTTP requests</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">💻</span>
+          Ejemplo Vulnerable
+        </h2>
+        <div class="code-example">
+          <div class="code-header">
+            <span class="code-lang">Python</span>
+            <span class="code-label">❌ Código Vulnerable</span>
+          </div>
+          <pre><code>query = "SELECT * FROM users WHERE username = '" + user_input + "'"
+cursor.execute(query)</code></pre>
+        </div>
+        
+        <div class="attack-example">
+          <h4>Ataque de ejemplo:</h4>
+          <div class="code-example">
+            <div class="code-header">
+              <span class="code-lang">Payload</span>
+            </div>
+            <pre><code>admin' OR '1'='1' --</code></pre>
+          </div>
+          <p class="attack-result">
+            <span class="result-icon">⚠️</span>
+            Resultado: La consulta se convierte en <code>SELECT * FROM users WHERE username = 'admin' OR '1'='1' --'</code>
+            retornando todos los usuarios.
+          </p>
+        </div>
+      </div>
+
+      <!-- Labs Section -->
+      <div class="content-card">
+        <h2>
+          <span class="section-icon">🧪</span>
+          Laboratorios Prácticos
+        </h2>
+
+        <!-- Filters -->
+        <div class="labs-filters">
+          <div class="filter-group">
+            <label class="filter-label">Dificultad:</label>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter-type="difficulty" data-filter-value="all">Todas</button>
+              <button class="filter-btn" data-filter-type="difficulty" data-filter-value="easy">Fácil</button>
+              <button class="filter-btn" data-filter-type="difficulty" data-filter-value="medium">Medio</button>
+              <button class="filter-btn" data-filter-type="difficulty" data-filter-value="hard">Difícil</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Plataforma:</label>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter-type="platform" data-filter-value="all">Todas</button>
+              <button class="filter-btn" data-filter-type="platform" data-filter-value="portswigger">PortSwigger</button>
+              <button class="filter-btn" data-filter-type="platform" data-filter-value="hackthebox">HackTheBox</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="labs-grid" id="labs-grid">
+          <a href="/WebSecurity/sqlInjection/PortSwigger/LAB01/Lab1.html" class="lab-card" data-difficulty="easy" data-platform="portswigger">
+            <div class="lab-number">Lab 01</div>
+            <h3>SQL Injection Básico</h3>
+            <p>Aprende las bases de SQL Injection con un login vulnerable</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty easy">Fácil</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
+              <span class="lab-time">⏱️ 15 min</span>
+            </div>
+          </a>
+
+          <a href="/WebSecurity/sqlInjection/PortSwigger/LAB02/Lab2.html" class="lab-card" data-difficulty="medium" data-platform="portswigger">
+            <div class="lab-number">Lab 02</div>
+            <h3>UNION Attack</h3>
+            <p>Explota SQLi usando UNION para extraer datos</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty medium">Medio</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
+              <span class="lab-time">⏱️ 30 min</span>
+            </div>
+          </a>
+
+          <a href="/WebSecurity/sqlInjection/PortSwigger/LAB03/sqli03.TXT" class="lab-card" data-difficulty="medium" data-platform="portswigger">
+            <div class="lab-number">Lab 03</div>
+            <h3>Blind SQL Injection</h3>
+            <p>Técnicas de inferencia con respuestas booleanas</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty medium">Medio</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
+              <span class="lab-time">⏱️ 45 min</span>
+            </div>
+          </a>
+
+          <a href="/WebSecurity/sqlInjection/PortSwigger/LAB04/SQLI04.txt" class="lab-card" data-difficulty="hard" data-platform="portswigger">
+            <div class="lab-number">Lab 04</div>
+            <h3>Time-based Blind SQLi</h3>
+            <p>Usa retardos para inferir información</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty hard">Difícil</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
+              <span class="lab-time">⏱️ 60 min</span>
+            </div>
+          </a>
+
+          <a href="/WebSecurity/sqlInjection/PortSwigger/LAB05/sqli05.txt" class="lab-card" data-difficulty="hard" data-platform="portswigger">
+            <div class="lab-number">Lab 05</div>
+            <h3>Second-Order SQL Injection</h3>
+            <p>SQLi que se ejecuta en un contexto diferente</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty hard">Difícil</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
+              <span class="lab-time">⏱️ 50 min</span>
+            </div>
+          </a>
+
+          <a href="/WebSecurity/sqlInjection/PortSwigger/LAB06/sqli06.txt" class="lab-card" data-difficulty="hard" data-platform="portswigger">
+            <div class="lab-number">Lab 06</div>
+            <h3>UNION con múltiples columnas</h3>
+            <p>Técnicas avanzadas de UNION para extraer datos complejos</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty hard">Difícil</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
+              <span class="lab-time">⏱️ 55 min</span>
+            </div>
+          </a>
+
+          <a href="/WebSecurity/sqlInjection/PortSwigger/LAB07/SQLI07.TXT" class="lab-card" data-difficulty="hard" data-platform="portswigger">
+            <div class="lab-number">Lab 07</div>
+            <h3>Filter Bypass Avanzado</h3>
+            <p>Evasión de filtros WAF y técnicas de obfuscación</p>
+            <div class="lab-meta">
+              <span class="lab-difficulty hard">Difícil</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
+              <span class="lab-time">⏱️ 70 min</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Prevention -->
+      <div class="content-card prevention-card">
+        <h2>
+          <span class="section-icon">🛡️</span>
+          Prevención y Mitigación
+        </h2>
+        <div class="prevention-grid">
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>Prepared Statements</h4>
+              <p>Usa consultas parametrizadas - la mejor defensa contra SQLi</p>
+            </div>
+          </div>
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>Input Validation</h4>
+              <p>Valida y sanitiza toda entrada del usuario</p>
+            </div>
+          </div>
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>Least Privilege</h4>
+              <p>Limita los permisos de la cuenta de base de datos</p>
+            </div>
+          </div>
+          <div class="prevention-item">
+            <span class="prevention-icon">✅</span>
+            <div>
+              <h4>WAF & Monitoring</h4>
+              <p>Implementa un WAF y monitorea consultas sospechosas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="content-card resources-mini">
+        <h2>
+          <span class="section-icon">📚</span>
+          Recursos Adicionales
+        </h2>
+        <div class="resources-links">
+          <a href="/WebSecurity/sqlInjection/sqlITheory/06-CheatSheet.html" class="resource-link">
+            <span class="resource-emoji">📋</span>
+            <span>CheatSheet SQL Injection</span>
+          </a>
+          <a href="/WebSecurity/sqlInjection/sqlITheory/05-Prevencion.html" class="resource-link">
+            <span class="resource-emoji">🛡️</span>
+            <span>Guía de Prevención</span>
+          </a>
+          <a href="/WebSecurity/sqlInjection/HackTheBox/Machine1.html" class="resource-link">
+            <span class="resource-emoji">🏴</span>
+            <span>HackTheBox Machines</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="navigation-back">
+      <a href="/websecurity/" class="btn-back">
+        <span class="back-arrow">←</span>
+        Volver a Web Security
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Lab filtering system
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = {
+        difficulty: 'all',
+        platform: 'all'
+      };
+
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const labCards = document.querySelectorAll('.lab-card');
+
+      function applyFilters() {
+        labCards.forEach(card => {
+          const cardDifficulty = card.getAttribute('data-difficulty');
+          const cardPlatform = card.getAttribute('data-platform');
+          
+          const matchesDifficulty = filters.difficulty === 'all' || cardDifficulty === filters.difficulty;
+          const matchesPlatform = filters.platform === 'all' || cardPlatform === filters.platform;
+          
+          if (matchesDifficulty && matchesPlatform) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filterType = button.getAttribute('data-filter-type');
+          const filterValue = button.getAttribute('data-filter-value');
+          
+          // Update filter state
+          filters[filterType] = filterValue;
+          
+          // Update active button in this group
+          const groupButtons = document.querySelectorAll(`[data-filter-type="${filterType}"]`);
+          groupButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // Apply filters
+          applyFilters();
+        });
+      });
+    });
+  </script>
+</BaseLayout>

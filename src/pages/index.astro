@@ -1,29 +1,240 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Marcos — AppSec in a Nutshell" description="Seguridad web, DevSecOps y diseño seguro">
-  <section id="index" class="card">
-    <div class="profile-header">
-      <img src="/GeneralImages/profilepic.png" alt="Foto de perfil" class="profile-img" width="140" height="140" loading="eager" />
-      <div>
-        <h1>¡Hola! Soy Marcos <span class="wave">👋</span></h1>
-        <div class="subtitle">Apasionado por la seguridad informática y el desarrollo seguro.</div>
-        <div class="social-media">
-          <a href="https://github.com/tuusuario" target="_blank" rel="noopener" title="GitHub">GH</a>
-          <a href="https://linkedin.com/in/tuusuario" target="_blank" rel="noopener" title="LinkedIn">IN</a>
-          <a href="https://twitter.com/tuusuario" target="_blank" rel="noopener" title="Twitter">TW</a>
+<BaseLayout title="OopsSec - Mientras el BISO duerme" description="Mi espacio personal sobre seguridad de aplicaciones, write-ups de CTFs y apuntes de AppSec">
+  <div class="landing-container">
+    <!-- Hero Section -->
+    <section class="landing-hero">
+      <div class="hero-badge">
+        <span class="badge-pulse">●</span>
+        Application Security
+      </div>
+      
+      <h1 class="landing-title">
+        <span class="emoji-icon">🛡️</span>
+        OopsSec - Tu vulnerabilidad, tu problema
+      </h1>
+      
+      <p class="landing-description">
+        Mi espacio personal donde comparto investigaciones, write-ups de CTFs, labs resueltos 
+        y todo lo relacionado con seguridad de aplicaciones. Documentando mi journey en AppSec.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="/websecurity/" class="btn-primary">
+          <span>Ver Web Security</span>
+          <span class="btn-icon">→</span>
+        </a>
+        <a href="/devsecops/" class="btn-secondary">
+          <span>Ver DevSecOps</span>
+          <span class="btn-icon">⚙️</span>
+        </a>
+      </div>
+
+      <div class="hero-stats-grid">
+        <div class="hero-stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Temas</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number">9</span>
+          <span class="stat-label">Write-ups</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-split">
+            <span class="stat-platform">HackTheBox</span>
+            <span class="stat-divider">/</span>
+            <span class="stat-platform">PortSwigger</span>
+          </div>
+          <span class="stat-label">Plataformas</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number">Activo</span>
+          <span class="stat-label">Estado</span>
         </div>
       </div>
-    </div>
-    <div class="info-box">Bienvenido a mi página personal. Explora los apartados de seguridad web, DevSecOps y diseño seguro.</div>
-  </section>
+    </section>
 
-  <section class="card">
-    <h2>Explora</h2>
-    <ul class="topic-list">
-      <li><a href="/websecurity/">🔒 Web Security</a></li>
-      <li><a href="/devsecops/">⚙️ DevSecOps</a></li>
-    </ul>
-  </section>
+    <!-- Main Topics Section -->
+    <section class="topics-section">
+      <h2 class="section-heading">
+        <span class="heading-icon">📂</span>
+        Contenido Disponible
+      </h2>
+
+      <div class="topics-grid">
+        <!-- Web Security Card -->
+        <a href="/websecurity/" class="topic-card featured">
+          <div class="card-glow"></div>
+          <div class="card-content-wrapper">
+            <div class="topic-header">
+              <span class="topic-icon large">🔒</span>
+              <span class="topic-badge popular">Actualizado</span>
+            </div>
+            
+            <h3 class="topic-title">Web Security</h3>
+            <p class="topic-desc">
+              Write-ups de labs de PortSwigger, máquinas de HackTheBox, 
+              y apuntes sobre vulnerabilidades web comunes.
+            </p>
+
+            <div class="topic-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">💉</span>
+                <span>SQL Injection (7 labs)</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">⚡</span>
+                <span>Cross-Site Scripting (2 labs)</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📝</span>
+                <span>Teoría y CheatSheets</span>
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span class="topic-level">9 write-ups documentados</span>
+              <span class="topic-arrow">→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- DevSecOps Card -->
+        <a href="/devsecops/" class="topic-card">
+          <div class="card-glow"></div>
+          <div class="card-content-wrapper">
+            <div class="topic-header">
+              <span class="topic-icon large">⚙️</span>
+              <span class="topic-badge new">En Progreso</span>
+            </div>
+            
+            <h3 class="topic-title">DevSecOps</h3>
+            <p class="topic-desc">
+              Mis apuntes sobre integración de seguridad en pipelines, 
+              preparación para AZ-400 y mejores prácticas.
+            </p>
+
+            <div class="topic-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🔐</span>
+                <span>Security en CI/CD</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🚀</span>
+                <span>Herramientas SAST/DAST</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📜</span>
+                <span>Preparación AZ-400</span>
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span class="topic-level">Contenido en desarrollo</span>
+              <span class="topic-arrow">→</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <h2 class="section-heading">
+        <span class="heading-icon">💡</span>
+        Qué Encontrarás
+      </h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎓</div>
+          <h3>Write-ups Detallados</h3>
+          <p>Soluciones paso a paso de labs de PortSwigger, HackTheBox y otros CTFs</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Apuntes Personales</h3>
+          <p>Mi recopilación de conceptos, técnicas y herramientas de AppSec</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">�</div>
+          <h3>Investigaciones</h3>
+          <p>Análisis de vulnerabilidades, exploits y casos de estudio interesantes</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Enfoque Práctico</h3>
+          <p>Cada write-up incluye payloads, comandos y código usado en la resolución</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h3>CheatSheets</h3>
+          <p>Referencias rápidas de comandos, payloads y técnicas de explotación</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Documentación</h3>
+          <p>Proceso completo: reconocimiento, explotación y remediación</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quicklinks-section">
+      <div class="quicklinks-card">
+        <h2>
+          <span class="heading-icon">⚡</span>
+          Últimas Adiciones
+        </h2>
+        <p class="quicklinks-desc">
+          Los write-ups y contenido más recientes que he documentado
+        </p>
+        
+        <div class="quicklinks-grid">
+          <a href="/websecurity/sqli/" class="quick-link">
+            <span class="quick-icon">�</span>
+            <div>
+              <strong>SQL Injection Labs</strong>
+              <span class="quick-meta">7 write-ups • PortSwigger</span>
+            </div>
+          </a>
+          
+          <a href="/websecurity/xss/" class="quick-link">
+            <span class="quick-icon">⚡</span>
+            <div>
+              <strong>XSS Labs</strong>
+              <span class="quick-meta">2 write-ups • PortSwigger</span>
+            </div>
+          </a>
+          
+          <a href="/devsecops/az-400/" class="quick-link">
+            <span class="quick-icon">📜</span>
+            <div>
+              <strong>Apuntes AZ-400</strong>
+              <span class="quick-meta">Preparación certificación</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+      <div class="cta-content">
+        <h2 class="cta-title">Explorá el contenido</h2>
+        <p class="cta-text">Descubre write-ups, técnicas y apuntes sobre seguridad de aplicaciones</p>
+        <a href="/websecurity/" class="btn-cta">
+          <span>Ver Web Security</span>
+          <span class="cta-arrow">→</span>
+        </a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 

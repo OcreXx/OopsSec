@@ -1,25 +1,177 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Web Security">
-  <div class="ws-grid">
-    <a class="div2 ws-box" href="#" aria-disabled="true" onclick="return false;">
-      <h2>Web Security</h2>
-      <p>Fundamentos, vulnerabilidades comunes y prácticas para reducir la superficie de ataque.</p>
-    </a>
+<BaseLayout title="Web Security - AppSec in a Nutshell">
+  <div class="websec-container">
+    <!-- Hero Section -->
+    <section class="websec-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="emoji-icon">🛡️</span>
+          Web Security
+        </h1>
+        <p class="hero-description">
+          Explora las vulnerabilidades más comunes en aplicaciones web, aprende técnicas de explotación 
+          y descubre cómo proteger tus aplicaciones. Desde fundamentos hasta técnicas avanzadas.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Vulnerabilidades</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Labs Prácticos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Práctico</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <a class="div3 ws-box" href="/WebSecurity/sqlInjection/TheorySqli.html">
-      <h3>SQL Injection</h3>
-      <p>Inyección tradicional, ataques UNION y técnicas Blind. Guías, labs y mitigación.</p>
-    </a>
+    <!-- Main Vulnerabilities Grid -->
+    <section class="vulnerabilities-section">
+      <h2 class="section-title">
+        <span class="title-icon">🎯</span>
+        Vulnerabilidades Principales
+      </h2>
+      
+      <div class="vuln-grid">
+        <!-- SQL Injection Card -->
+        <a href="/websecurity/sqli/" class="vuln-card sql-injection">
+          <div class="card-header">
+            <span class="card-icon">💉</span>
+            <span class="card-badge critical">OWASP Top 3</span>
+          </div>
+          <h3 class="card-title">SQL Injection</h3>
+          <p class="card-description">
+            Aprende a explotar y prevenir inyecciones SQL. Desde ataques básicos hasta técnicas 
+            avanzadas como UNION-based y Blind SQL Injection.
+          </p>
+          <div class="card-topics">
+            <span class="topic-tag">Traditional SQLi</span>
+            <span class="topic-tag">UNION Attacks</span>
+            <span class="topic-tag">Blind SQLi</span>
+            <span class="topic-tag">Prevention</span>
+          </div>
+          <div class="card-footer">
+            <span class="lab-count">
+              <span class="lab-icon">🧪</span>
+              7 Labs
+            </span>
+            <span class="difficulty medium">Medio</span>
+          </div>
+          <div class="card-arrow">→</div>
+        </a>
 
-    <a class="div4 ws-box" href="/WebSecurity/xss/TheoryXSS.html">
-      <h3>XSS</h3>
-      <p>Reflected y Stored XSS, payloads y defensas (encode output, CSP).</p>
-    </a>
+        <!-- XSS Card -->
+        <a href="/websecurity/xss/" class="vuln-card xss">
+          <div class="card-header">
+            <span class="card-icon">⚡</span>
+            <span class="card-badge critical">OWASP Top 3</span>
+          </div>
+          <h3 class="card-title">Cross-Site Scripting (XSS)</h3>
+          <p class="card-description">
+            Domina los ataques XSS: Reflected, Stored y DOM-based. Aprende a crear payloads 
+            efectivos y a implementar defensas robustas.
+          </p>
+          <div class="card-topics">
+            <span class="topic-tag">Reflected XSS</span>
+            <span class="topic-tag">Stored XSS</span>
+            <span class="topic-tag">DOM XSS</span>
+            <span class="topic-tag">CSP</span>
+          </div>
+          <div class="card-footer">
+            <span class="lab-count">
+              <span class="lab-icon">🧪</span>
+              2 Labs
+            </span>
+            <span class="difficulty easy">Fácil</span>
+          </div>
+          <div class="card-arrow">→</div>
+        </a>
+      </div>
+    </section>
 
-    <div class="div5 ws-box"></div>
-    <div class="div6 ws-box"></div>
+    <!-- Coming Soon Section -->
+    <section class="coming-soon-section">
+      <h2 class="section-title">
+        <span class="title-icon">🚀</span>
+        Próximamente
+      </h2>
+      
+      <div class="coming-soon-grid">
+        <div class="coming-card">
+          <span class="coming-icon">🔐</span>
+          <h3>Authentication Bypass</h3>
+          <p>Técnicas de bypass y ataques a sistemas de autenticación</p>
+          <span class="status-badge">En desarrollo</span>
+        </div>
+        
+        <div class="coming-card">
+          <span class="coming-icon">📁</span>
+          <h3>File Upload Vulnerabilities</h3>
+          <p>Explotación de cargas de archivos inseguras</p>
+          <span class="status-badge">En desarrollo</span>
+        </div>
+        
+        <div class="coming-card">
+          <span class="coming-icon">🔗</span>
+          <h3>CSRF & SSRF</h3>
+          <p>Ataques de falsificación de peticiones</p>
+          <span class="status-badge">Planificado</span>
+        </div>
+        
+        <div class="coming-card">
+          <span class="coming-icon">🌐</span>
+          <h3>API Security</h3>
+          <p>Seguridad en APIs REST y GraphQL</p>
+          <span class="status-badge">Planificado</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+      <div class="resources-card">
+        <h2>
+          <span class="title-icon">📚</span>
+          Recursos Adicionales
+        </h2>
+        <div class="resources-grid">
+          <div class="resource-item">
+            <span class="resource-icon">🎓</span>
+            <div>
+              <h4>PortSwigger Academy</h4>
+              <p>Labs interactivos y guías detalladas</p>
+            </div>
+          </div>
+          <div class="resource-item">
+            <span class="resource-icon">🏴</span>
+            <div>
+              <h4>HackTheBox</h4>
+              <p>Máquinas y retos reales</p>
+            </div>
+          </div>
+          <div class="resource-item">
+            <span class="resource-icon">📖</span>
+            <div>
+              <h4>OWASP Top 10</h4>
+              <p>Vulnerabilidades más críticas</p>
+            </div>
+          </div>
+          <div class="resource-item">
+            <span class="resource-icon">🔍</span>
+            <div>
+              <h4>CheatSheets</h4>
+              <p>Referencias rápidas y payloads</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </BaseLayout>
 

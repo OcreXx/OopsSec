@@ -1,23 +1,2204 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Az400Content from "../../../components/Az400Content.jsx";
 ---
-<BaseLayout title="AZ-400 — Teoría">
+<BaseLayout title="AZ-400 — Azure DevOps Engineer Expert">
+  <div class="az400-container">
+    <!-- Navigation Back -->
+    <div class="navigation-back">
+      <a href="/devsecops/">← Volver a DevSecOps</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="az400-hero">
+      <h1 class="az400-title">AZ-400: Azure DevOps Engineer Expert</h1>
+      <p class="az400-subtitle">Fundamentos de DevOps, Metodologías Ágiles, Azure Pipelines y Prácticas de Integración Continua</p>
+    </div>
+
+    <!-- Main Layout with Sidebar -->
+    <div class="gcp-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="gcp-sidebar">
+        <nav class="sidebar-nav">
+          <h3 class="sidebar-title">Contenido</h3>
+          <ul class="sidebar-menu">
+            <li><a href="#devops-intro" class="sidebar-link">1. Introducción a DevOps</a></li>
+            <li><a href="#metodologias" class="sidebar-link">2. Metodologías Ágiles</a></li>
+            <li><a href="#metricas" class="sidebar-link">3. Métricas Ágiles</a></li>
+            <li><a href="#cmmi" class="sidebar-link">4. CMMI</a></li>
+            <li><a href="#azure-boards" class="sidebar-link">5. Azure Boards</a></li>
+            <li><a href="#autenticacion" class="sidebar-link">6. Autenticación</a></li>
+            <li><a href="#version-control" class="sidebar-link">7. Control de Versiones</a></li>
+            <li><a href="#pipelines" class="sidebar-link">8. Azure Pipelines</a></li>
+            <li><a href="#config-pipelines" class="sidebar-link">9. Configuración de Pipelines</a></li>
+            <li><a href="#permisos-scm" class="sidebar-link">10. Permisos en SCM</a></li>
+            <li><a href="#git-commands" class="sidebar-link">11. Comandos Git</a></li>
+            <li><a href="#limpieza-scm" class="sidebar-link">12. Limpieza y Mantenimiento</a></li>
+            <li><a href="#seguridad-calidad" class="sidebar-link">13. Seguridad y Calidad</a></li>
+            <li><a href="#infraestructura" class="sidebar-link">14. Infraestructura</a></li>
+            <li><a href="#containers" class="sidebar-link">15. Azure Container Instances</a></li>
+            <li><a href="#estrategias-despliegue" class="sidebar-link">16. Estrategias de Despliegue</a></li>
+            <li><a href="#artifacts" class="sidebar-link">17. Azure Artifacts</a></li>
+            <li><a href="#app-services" class="sidebar-link">18. Azure App Services</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Content Section -->
+      <div class="gcp-content">
+      
+      <!-- Section 1: Introducción a DevOps -->
+      <section class="gcp-section" id="devops-intro">
+        <div class="section-header">
+          <h2>1. Introducción a DevOps</h2>
+          <a href="https://learn.microsoft.com/es-es/devops/what-is-devops" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+        
+        <p class="section-intro">
+          <span class="label">DevOps</span> es una metodología que integra el desarrollo de software (Dev) y las operaciones de TI (Ops) con el objetivo de mejorar la colaboración, automatizar procesos y acelerar la entrega de software.
+        </p>
+
+        <div class="concept-card">
+          <h3>Principales retos que resuelve DevOps</h3>
+          <ul>
+            <li><strong>Lentitud en las entregas:</strong> automatiza el ciclo de desarrollo (CI/CD), permitiendo lanzamientos más rápidos y frecuentes.</li>
+            <li><strong>Falta de colaboración:</strong> fomenta el trabajo conjunto entre desarrollo y operaciones.</li>
+            <li><strong>Errores en despliegues:</strong> minimiza fallos mediante pruebas automáticas y despliegues controlados.</li>
+            <li><strong>Dificultad para mantener la calidad:</strong> facilita el monitoreo continuo y la retroalimentación inmediata.</li>
+            <li><strong>Gestión manual de infraestructura:</strong> implementa la "infraestructura como código" para reproducir entornos fácilmente.</li>
+            <li><strong>Falta de visibilidad:</strong> centraliza métricas y monitoreo para detectar incidentes antes de que afecten al usuario final.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Metodologías Ágiles -->
+      <section class="gcp-section" id="metodologias">
+        <div class="section-header">
+          <h2>2. Metodologías Ágiles</h2>
+          <a href="https://learn.microsoft.com/es-es/devops/plan/what-is-agile" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Las metodologías ágiles buscan entregar valor de forma iterativa, fomentar la colaboración y adaptarse al cambio de manera continua.
+        </p>
+
+        <div class="service-card">
+          <h3>Agile</h3>
+          <p>Es una filosofía de trabajo que promueve:</p>
+          <ul>
+            <li>Entregas rápidas y continuas de valor al cliente</li>
+            <li>Colaboración constante entre equipos y clientes</li>
+            <li>Adaptación al cambio en lugar de seguir planes rígidos</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Scrum</h3>
+          <p>Framework ágil que organiza el desarrollo en ciclos cortos denominados <span class="label">sprints</span> (de 1 a 4 semanas). Cada sprint busca entregar un producto funcional.</p>
+          
+          <div class="comparison-item">
+            <h4>Elementos principales:</h4>
+            <ul>
+              <li><strong>Roles:</strong> Product Owner, Scrum Master y Equipo de Desarrollo</li>
+              <li><strong>Eventos:</strong> Sprint Planning, Daily Scrum, Sprint Review y Sprint Retrospective</li>
+              <li><strong>Artefactos:</strong> Product Backlog, Sprint Backlog e Incremento</li>
+            </ul>
+          </div>
+
+          <p>Scrum es ideal para proyectos complejos con requisitos cambiantes y equipos multidisciplinarios.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Kanban</h3>
+          <p>Método visual para gestionar el flujo de trabajo mediante tableros con columnas (por ejemplo: <span class="label">Por hacer → En progreso → Hecho</span>).</p>
+          
+          <div class="comparison-item">
+            <h4>Principios fundamentales:</h4>
+            <ul>
+              <li>Visualizar el trabajo</li>
+              <li>Limitar el trabajo en progreso (WIP)</li>
+              <li>Mejorar continuamente el flujo</li>
+            </ul>
+          </div>
+
+          <p>Es especialmente útil en equipos de soporte, mantenimiento y operaciones continuas.</p>
+        </div>
+      </section>
+
+      <!-- Section 3: Métricas Ágiles -->
+      <section class="gcp-section" id="metricas">
+        <div class="section-header">
+          <h2>3. Métricas Ágiles en Azure DevOps</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/report/dashboards/overview" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Azure DevOps ofrece herramientas para medir el desempeño de los equipos y gestionar proyectos ágiles de forma integral.
+        </p>
+
+        <div class="concept-card">
+          <h3>Velocity (Velocidad)</h3>
+          <p>La <span class="label">velocity</span> mide cuánto trabajo completa un equipo durante un sprint (en puntos de historia, horas o tareas). Solo se contabiliza el trabajo marcado como Done.</p>
+          
+          <div class="highlight-text">
+            <strong>Usos principales:</strong>
+            <ul>
+              <li>Predicción de capacidad futura</li>
+              <li>Planificación realista</li>
+              <li>Medición de progreso</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <h3>Sprint Burndown Chart</h3>
+          <p>Gráfica que representa el trabajo restante durante el sprint.</p>
+          <ul>
+            <li><strong>Eje X:</strong> tiempo (días del sprint)</li>
+            <li><strong>Eje Y:</strong> trabajo pendiente (puntos o tareas)</li>
+            <li><strong>Línea ideal:</strong> ritmo esperado de reducción del trabajo</li>
+            <li><strong>Línea real:</strong> ritmo real del equipo</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <h3>Lead Time y Cycle Time</h3>
+          <ul>
+            <li><span class="label">Lead Time:</span> tiempo total desde la creación de una tarea hasta su finalización</li>
+            <li><span class="label">Cycle Time:</span> tiempo que transcurre desde que se inicia el trabajo hasta que se completa</li>
+          </ul>
+          <p>Ambas métricas son fundamentales para evaluar la eficiencia del flujo de trabajo.</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Sprint Burnup Chart</h3>
+          <p>Muestra la cantidad de trabajo completado frente al total planificado.</p>
+          
+          <div class="example-box">
+            <strong>Interpretación:</strong>
+            <ul>
+              <li>Si las líneas se cruzan, el equipo alcanzó su meta</li>
+              <li>Si el alcance aumenta, se han agregado nuevas historias o tareas</li>
+            </ul>
+          </div>
+          
+          <p>Permite comunicar el progreso y gestionar los cambios de alcance.</p>
+        </div>
+      </section>
+
+      <!-- Section 4: CMMI -->
+      <section class="gcp-section" id="cmmi">
+        <div class="section-header">
+          <h2>4. CMMI (Capability Maturity Model Integration)</h2>
+          <a href="https://cmmiinstitute.com/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          <span class="label">CMMI</span> es un modelo de mejora de procesos desarrollado por el Software Engineering Institute (SEI). Su propósito es evaluar y elevar la madurez de los procesos de una organización.
+        </p>
+
+        <div class="highlight-text">
+          <h3>Objetivos principales:</h3>
+          <ul>
+            <li>Estandarizar y madurar los procesos de desarrollo, mantenimiento y gestión</li>
+            <li>Mejorar la calidad, previsibilidad y eficiencia</li>
+            <li>Reducir riesgos asociados a la falta de procesos estructurados</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: Azure Boards -->
+      <section class="gcp-section" id="azure-boards">
+        <div class="section-header">
+          <h2>5. Azure Boards</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/boards/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Azure Boards es una herramienta dentro de Azure DevOps para planificar, realizar seguimiento y gestionar el trabajo de equipos de desarrollo mediante metodologías ágiles (Scrum, Kanban o híbridas).
+        </p>
+
+        <div class="concept-card">
+          <h3>Componentes principales</h3>
+          <table class="info-table">
+            <thead>
+              <tr>
+                <th>Elemento</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Work Items</td>
+                <td>Unidades de trabajo (historias, bugs, tareas, etc.)</td>
+              </tr>
+              <tr>
+                <td>Boards</td>
+                <td>Tableros visuales tipo Kanban o Scrum</td>
+              </tr>
+              <tr>
+                <td>Backlog</td>
+                <td>Lista priorizada de trabajo pendiente</td>
+              </tr>
+              <tr>
+                <td>Sprints</td>
+                <td>Iteraciones temporales de ejecución</td>
+              </tr>
+              <tr>
+                <td>Dashboards / Reports</td>
+                <td>Visualización de progreso y métricas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="service-card">
+          <h3>Beneficios principales</h3>
+          <ul>
+            <li><strong>Organización del trabajo:</strong> gestión de tareas en un único entorno visual</li>
+            <li><strong>Colaboración en equipo:</strong> integración con Azure Repos, GitHub, Pipelines, Teams y Slack</li>
+            <li><strong>Transparencia y visibilidad:</strong> dashboards y reportes en tiempo real</li>
+            <li><strong>Planificación ágil:</strong> soporte completo para Scrum y Kanban</li>
+            <li><strong>Seguimiento y métricas:</strong> métricas clave como Lead Time, Cycle Time y Velocity</li>
+            <li><strong>Integración con el ciclo DevOps:</strong> conexión con Repos, Pipelines, Test Plans y Artifacts</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 6: Contraseñas y Autenticación -->
+      <section class="gcp-section" id="autenticacion">
+        <div class="section-header">
+          <h2>6. Contraseñas y Autenticación</h2>
+          <a href="https://learn.microsoft.com/es-es/entra/identity/authentication/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="concept-card">
+          <h3>Credenciales vs. Métodos de autenticación</h3>
+          <ul>
+            <li><span class="label">Credenciales:</span> lo que el usuario posee, sabe o es (contraseña, PIN, clave privada/pública, datos biométricos)</li>
+            <li><span class="label">Métodos de autenticación:</span> mecanismos utilizados para validar la identidad del usuario</li>
+          </ul>
+          <p>Microsoft Entra ID administra y cataloga estos métodos.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Autenticación sin contraseña (Passwordless)</h3>
+          <p>Opciones disponibles en Microsoft Entra ID:</p>
+          <ul>
+            <li><strong>Windows Hello for Business:</strong> clave asimétrica protegida por el dispositivo</li>
+            <li><strong>Microsoft Authenticator (passkeys):</strong> inicio de sesión sin contraseña</li>
+            <li><strong>FIDO2 / Passkeys:</strong> estándar universal para autenticación segura</li>
+          </ul>
+          <div class="example-box">
+            <strong>Nota (2025):</strong> Microsoft está retirando el almacenamiento de contraseñas en Authenticator para promover el uso de passkeys.
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Restablecimiento de contraseña (SSPR)</h3>
+          <p>El <span class="label">Self-Service Password Reset</span> permite a los usuarios restablecer contraseñas y desbloquear cuentas sin intervención del soporte técnico, reduciendo costes y tiempos de inactividad.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Métodos MFA (Multifactor Authentication)</h3>
+          <p>Permiten añadir un segundo factor de autenticación (notificación, código TOTP, llamada, FIDO2, etc.). Se gestionan en Microsoft Entra ID dentro de Authentication Methods.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>OAuth y OpenID Connect</h3>
+          <p>La <span class="label">Microsoft Identity Platform</span> implementa OAuth 2.0 y OpenID Connect, fundamentales para el inicio de sesión federado y la integración con aplicaciones externas mediante scopes, tokens y consent.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Personal Access Tokens (PATs)</h3>
+          <p>Son "contraseñas alternativas" utilizadas para autenticación en Azure DevOps (CLI, Git o agentes). Deben tratarse como secretos y pueden limitarse por alcance y duración.</p>
+        </div>
+
+        <div class="security-layer">
+          <h3>Control de acceso basado en roles (RBAC)</h3>
+          <p>El <span class="label">RBAC</span> en Azure y Azure DevOps define quién puede realizar qué acciones sobre qué recursos y en qué nivel de la jerarquía.</p>
+          
+          <div class="highlight-text">
+            <h4>Principios fundamentales:</h4>
+            <ul>
+              <li><strong>Principal de seguridad:</strong> entidad a la que se le asignan permisos</li>
+              <li><strong>Rol:</strong> conjunto de permisos o acciones permitidas</li>
+              <li><strong>Asignación de rol:</strong> vincula un principal con un rol y un ámbito</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <h4>Roles integrados comunes:</h4>
+            <ul>
+              <li><strong>Owner:</strong> control total, incluyendo la delegación de acceso</li>
+              <li><strong>Contributor:</strong> permite administrar recursos, pero no modificar permisos</li>
+              <li><strong>Reader:</strong> solo lectura</li>
+              <li><strong>User Access Administrator:</strong> gestión de permisos RBAC</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Control de Versiones -->
+      <section class="gcp-section" id="version-control">
+        <div class="section-header">
+          <h2>7. Estrategias de Control de Versiones (VCS)</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/repos/git/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="service-card">
+          <h3>Git LFS (Large File Storage)</h3>
+          <p>Reemplaza archivos grandes por punteros de texto, almacenando el contenido real en un servidor remoto compatible.</p>
+          
+          <div class="comparison-item">
+            <h4>Ventajas:</h4>
+            <ul>
+              <li>Reducción del tamaño del repositorio</li>
+              <li>Integración con GitHub, Azure Repos, Bitbucket</li>
+              <li>Soporte en pipelines CI/CD</li>
+            </ul>
+            
+            <h4>Limitaciones:</h4>
+            <ul>
+              <li>Requiere soporte del servidor remoto</li>
+              <li>Sujeto a cuotas de almacenamiento</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Git Scalar (Microsoft)</h3>
+          <p>Herramienta creada por Microsoft para manejar repositorios de gran escala. Basada en GVFS (Git Virtual File System), optimiza Git para proyectos de cientos de GB o millones de archivos.</p>
+          
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Clones parciales y carga diferida</li>
+              <li>Mantenimiento automático (prefetch, garbage collection)</li>
+              <li>Integración nativa con Azure DevOps</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Git Subtree</h3>
+          <p>Permite incluir un subproyecto completo dentro de otro repositorio como subdirectorio, manteniendo su historial completo.</p>
+          
+          <div class="example-box">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Independencia respecto a submódulos</li>
+              <li>Clones completos y autosuficientes</li>
+              <li>Sin dependencias externas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <h3>Comandos Git básicos</h3>
+          <ul>
+            <li><code>git init</code> — inicializa un repositorio</li>
+            <li><code>git add</code> — agrega archivos al área de staging</li>
+            <li><code>git commit</code> — guarda cambios en el historial</li>
+            <li><code>git push</code> — envía commits al repositorio remoto</li>
+            <li><code>git pull</code> — sincroniza cambios desde el remoto</li>
+            <li><code>git merge</code> — combina ramas</li>
+            <li><code>git revert</code> — crea un commit que deshace cambios</li>
+            <li><code>git reflog</code> — muestra todos los movimientos del HEAD</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <h3>Estrategias de fusión</h3>
+          <ul>
+            <li><span class="label">Merge:</span> combina ramas manteniendo todos los commits</li>
+            <li><span class="label">Fast-forward:</span> se realiza cuando no hay divergencia entre ramas</li>
+            <li><span class="label">Rebase:</span> reaplica commits sobre otra rama, generando un historial más lineal</li>
+            <li><span class="label">Squash merge:</span> combina todos los commits de una rama en un único commit</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 8: Azure Pipelines -->
+      <section class="gcp-section" id="pipelines">
+        <div class="section-header">
+          <h2>8. Azure Pipelines - Conceptos Básicos</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/pipelines/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          <span class="label">Azure Pipelines</span> es un servicio de integración continua (CI) y entrega continua (CD) que forma parte de Azure DevOps. Permite compilar, probar y desplegar automáticamente aplicaciones en múltiples entornos y plataformas.
+        </p>
+
+        <div class="concept-card">
+          <h3>¿Para qué se usa Azure Pipelines?</h3>
+          <ul>
+            <li>Automatizar compilaciones y pruebas</li>
+            <li>Realizar despliegues continuos a entornos de desarrollo, staging o producción</li>
+            <li>Integrar con repositorios como GitHub, Azure Repos o Bitbucket</li>
+            <li>Garantizar consistencia y calidad en el ciclo de vida del software</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Conceptos clave</h3>
+          <ul>
+            <li><span class="label">Pipeline:</span> definición completa del flujo de CI/CD</li>
+            <li><span class="label">Stage:</span> agrupación lógica de trabajos (jobs)</li>
+            <li><span class="label">Job:</span> unidad de ejecución dentro de un stage</li>
+            <li><span class="label">Steps:</span> acciones individuales dentro de un job</li>
+            <li><span class="label">Tasks:</span> bloques reutilizables que ejecutan operaciones comunes</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Componentes principales de un DevOps Pipeline</h3>
+          <ul>
+            <li><strong>Source Code Repository:</strong> contiene el código fuente (Azure Repos, GitHub, GitLab)</li>
+            <li><strong>Build Server:</strong> compila el código, ejecuta pruebas y genera artefactos</li>
+            <li><strong>Test Server:</strong> ejecuta pruebas automatizadas de unidad, integración o aceptación</li>
+            <li><strong>Deployment Server:</strong> gestiona los despliegues hacia entornos de destino</li>
+            <li><strong>Feedback y Monitoring:</strong> proporciona retroalimentación continua (Application Insights, Azure Monitor)</li>
+          </ul>
+        </div>
+
+        <div class="highlight-text">
+          <h3>Lenguajes y plataformas compatibles</h3>
+          <p>Azure Pipelines soporta una amplia gama de tecnologías:</p>
+          <ul>
+            <li><strong>Lenguajes:</strong> C#, Java, JavaScript, Python, Go, PHP, Ruby, C++, Node.js</li>
+            <li><strong>Frameworks:</strong> .NET, ASP.NET, Angular, React, Django, Spring Boot, Maven</li>
+            <li><strong>Plataformas:</strong> Windows, Linux, macOS, Docker, Kubernetes</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Automated Tests</h3>
+          <p>Los tests automatizados son esenciales para validar la calidad del software sin intervención manual.</p>
+          
+          <div class="example-box">
+            <h4>Tipos de pruebas comunes:</h4>
+            <ul>
+              <li><strong>Unit tests:</strong> verifican funciones o clases individuales</li>
+              <li><strong>Integration tests:</strong> validan la interacción entre componentes</li>
+              <li><strong>Functional tests:</strong> garantizan que las funcionalidades cumplan los requisitos</li>
+              <li><strong>Performance tests:</strong> miden tiempos de respuesta, carga y estabilidad</li>
+              <li><strong>UI tests:</strong> automatizan la interacción con interfaces gráficas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Planes gratuitos (Free tiers)</h3>
+          <p>Azure Pipelines ofrece planes gratuitos que incluyen:</p>
+          <ul>
+            <li>1,800 minutos (30 horas) de ejecución por mes para proyectos privados</li>
+            <li>Ejecución ilimitada para proyectos públicos de código abierto</li>
+            <li>Soporte para agentes hospedados en Microsoft (Windows, Linux, macOS)</li>
+            <li>Opción de agentes propios (self-hosted) sin límite de tiempo</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Azure Marketplace</h3>
+          <p>El Marketplace de Azure DevOps permite extender las funcionalidades mediante extensiones y tareas personalizadas. Se pueden agregar integraciones con herramientas como SonarCloud, WhiteSource, Slack, Jenkins, Terraform, entre muchas otras.</p>
+          <a href="https://marketplace.visualstudio.com/azuredevops" class="external-link" target="_blank" rel="noopener noreferrer">
+            Explorar Azure Marketplace →
+          </a>
+        </div>
+
+        <div class="security-layer">
+          <h3>Escaneo de dependencias, seguridad y calidad del código</h3>
+          
+          <div class="comparison-item">
+            <h4>Dependency Scanning</h4>
+            <p>Permite identificar librerías o paquetes vulnerables utilizados por la aplicación.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Security Scanning</h4>
+            <p>Analiza el código fuente y artefactos para detectar vulnerabilidades:</p>
+            <ul>
+              <li><span class="label">SAST:</span> análisis estático del código (SonarQube, Checkmarx)</li>
+              <li><span class="label">DAST:</span> análisis dinámico en ejecución (OWASP ZAP)</li>
+              <li><span class="label">Container scanning:</span> análisis de imágenes Docker</li>
+            </ul>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Code Coverage</h4>
+            <p>Mide el porcentaje de código ejecutado durante las pruebas. Se utiliza para evaluar la efectividad de los tests automáticos.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Quality Gates</h4>
+            <p>Definen condiciones mínimas que deben cumplirse para aprobar una compilación o despliegue. Actúan como filtros de calidad.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Agentes hospedados vs agentes autohospedados</h3>
+          
+          <div class="comparison-item">
+            <h4>Microsoft-hosted agents:</h4>
+            <ul>
+              <li>Proporcionados por Microsoft y administrados automáticamente</li>
+              <li>Escalan bajo demanda y se eliminan al finalizar el trabajo</li>
+              <li>Incluyen imágenes preconfiguradas con herramientas comunes</li>
+              <li>Tiempo de ejecución mensual gratuito limitado</li>
+            </ul>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Self-hosted agents:</h4>
+            <ul>
+              <li>Configurados y gestionados por la organización</li>
+              <li>Permiten control total sobre las herramientas y red</li>
+              <li>Sin límite de minutos de ejecución</li>
+              <li>Requieren mantenimiento y actualizaciones</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Estrategias de despliegue básicas</h3>
+          <ul>
+            <li><span class="label">Blue-Green Deployment:</span> mantiene dos entornos idénticos, cambiando el tráfico entre ellos</li>
+            <li><span class="label">Canary Release:</span> despliega a un pequeño porcentaje de usuarios antes de la liberación total</li>
+            <li><span class="label">Ring Deployment:</span> despliegue progresivo por anillos o grupos de usuarios</li>
+            <li><span class="label">Feature Flags:</span> habilita/deshabilita funcionalidades sin necesidad de redeploy</li>
+          </ul>
+          <p><em>Ver sección 16 para estrategias avanzadas de despliegue</em></p>
+        </div>
+      </section>
+
+      <!-- Section 9: Configuración de Pipelines -->
+      <section class="gcp-section" id="config-pipelines">
+        <div class="section-header">
+          <h2>9. Configuración de Pipelines</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/pipelines/yaml-schema" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="service-card">
+          <h3>Build Configuration</h3>
+          <p>La fase de build define cómo se compila y valida el código fuente antes de generar los artefactos de despliegue.</p>
+          
+          <div class="comparison-item">
+            <h4>Elementos típicos de la build configuration:</h4>
+            <ul>
+              <li><strong>Code compilation:</strong> compilar el código fuente (dotnet build, npm run build, mvn package)</li>
+              <li><strong>Code tests:</strong> ejecutar pruebas unitarias y de integración automáticas</li>
+              <li><strong>Packaging:</strong> generar paquetes binarios, contenedores Docker o artefactos</li>
+              <li><strong>Artifact publishing:</strong> almacenar resultados en Azure Artifacts, GitHub Packages</li>
+              <li><strong>Code analysis:</strong> SonarQube, Checkstyle, ESLint, CodeQL</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <h4>Ejemplo YAML de Build:</h4>
+            <pre><code>- stage: Build
+  jobs:
+    - job: BuildApp
+      steps:
+        - task: DotNetCoreCLI@2
+          inputs:
+            command: 'build'
+            projects: '**/*.csproj'
+        - task: DotNetCoreCLI@2
+          inputs:
+            command: 'test'
+            projects: '**/*Tests.csproj'
+        - task: PublishBuildArtifacts@1
+          inputs:
+            pathToPublish: '$(Build.ArtifactStagingDirectory)'
+            artifactName: 'drop'</code></pre>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Release Tasks</h3>
+          <p>Los release tasks representan las acciones post-build, normalmente relacionadas con la entrega o despliegue.</p>
+          
+          <div class="highlight-text">
+            <h4>Tareas comunes:</h4>
+            <ul>
+              <li><strong>Deployment:</strong> publicar en Azure Web Apps, Kubernetes o servidores on-premises</li>
+              <li><strong>Configuration:</strong> ejecutar scripts PowerShell o Bash para preparar el entorno</li>
+              <li><strong>Notifications:</strong> enviar mensajes a Teams, Slack, correo</li>
+              <li><strong>Validation:</strong> ejecutar pruebas de aceptación o smoke tests</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <h4>Ejemplo YAML de Release:</h4>
+            <pre><code>- stage: Deploy
+  dependsOn: Build
+  jobs:
+    - deployment: DeployToProd
+      environment: 'production'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - task: AzureWebApp@1
+                inputs:
+                  appName: 'myapp-prod'
+                  package: '$(Pipeline.Workspace)/drop/*.zip'</code></pre>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Deployment Customization</h3>
+          <p>Azure Pipelines permite personalizar la configuración de despliegue mediante variables, secretos y aprobaciones manuales.</p>
+          
+          <div class="comparison-item">
+            <h4>Configuraciones clave:</h4>
+            <ul>
+              <li><strong>Variables:</strong> definidas a nivel de pipeline, stage o job</li>
+              <li><strong>Secret variables:</strong> almacenadas en Azure DevOps o Azure Key Vault</li>
+              <li><strong>Environment variables:</strong> inyección de valores en scripts</li>
+              <li><strong>Approvals and checks:</strong> controlan la promoción entre entornos</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 10: Permisos en SCM -->
+      <section class="gcp-section" id="permisos-scm">
+        <div class="section-header">
+          <h2>10. Configuración de Permisos en el SCM</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/repos/git/set-git-repository-permissions" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="service-card">
+          <h3>Permisos a nivel de repositorio</h3>
+          <p>Controlan quién puede leer, escribir o administrar el repositorio completo.</p>
+          <ul>
+            <li><span class="label">Read:</span> acceso de solo lectura</li>
+            <li><span class="label">Contribute:</span> permite commits y pushes</li>
+            <li><span class="label">Admin:</span> control total, incluyendo configuración de ramas y políticas</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Permisos a nivel de rama</h3>
+          <p>Definen restricciones sobre commits, merges y aprobaciones en ramas específicas.</p>
+          
+          <div class="comparison-item">
+            <h4>Branch policies:</h4>
+            <ul>
+              <li><strong>Pull request reviews:</strong> exigen revisiones de código antes del merge</li>
+              <li><strong>Status checks:</strong> requieren builds o tests exitosos</li>
+              <li><strong>Force push protection:</strong> impiden sobrescribir el historial</li>
+              <li><strong>Required reviewers:</strong> personas o grupos específicos deben aprobar</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Permisos a nivel de archivo</h3>
+          <p>A través de Git LFS o reglas de acceso en Azure Repos, se puede restringir acceso a ficheros sensibles (claves, configuraciones).</p>
+        </div>
+      </section>
+
+      <!-- Section 11: Comandos Git -->
+      <section class="gcp-section" id="git-commands">
+        <div class="section-header">
+          <h2>11. Comandos Git Avanzados</h2>
+          <a href="https://git-scm.com/docs" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="concept-card">
+          <h3>Comandos principales</h3>
+          <ul>
+            <li><code>git init</code> — inicializa un repositorio</li>
+            <li><code>git add</code> — agrega archivos al área de staging</li>
+            <li><code>git commit</code> — guarda cambios en el historial</li>
+            <li><code>git push</code> — envía commits al repositorio remoto</li>
+            <li><code>git pull</code> — sincroniza cambios desde el remoto</li>
+            <li><code>git merge</code> — combina ramas</li>
+            <li><code>git branch</code> — lista o crea ramas nuevas</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <h3>Recuperación y restauración</h3>
+          <ul>
+            <li><code>git revert &lt;commit_hash&gt;</code> — crea un commit que deshace los cambios</li>
+            <li><code>git restore &lt;file_path&gt;</code> — restaura un archivo a su versión previa</li>
+            <li><code>git checkout &lt;commit_hash&gt; -- &lt;file_path&gt;</code> — recupera un archivo de un commit anterior</li>
+            <li><code>git branch &lt;nombre&gt;</code> — crea una nueva rama</li>
+            <li><code>git checkout &lt;rama&gt;</code> — cambia de rama</li>
+            <li><code>git reset --hard &lt;commit_hash&gt;</code> — mueve el HEAD y borra cambios locales</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <h3>Historial y auditoría</h3>
+          <ul>
+            <li><code>git log</code> — muestra el historial de commits</li>
+            <li><code>git reflog</code> — muestra todos los movimientos del HEAD, incluso los descartados (útil para recuperar commits perdidos)</li>
+            <li><code>git blame &lt;file&gt;</code> — muestra quién modificó cada línea</li>
+            <li><code>git diff</code> — muestra diferencias entre commits, ramas o archivos</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Estrategias de fusión y rebase</h3>
+          
+          <div class="comparison-item">
+            <h4>Merge:</h4>
+            <p>Combina ramas manteniendo todos los commits. Produce un commit de merge explícito.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Fast-forward merge:</h4>
+            <p>Se realiza cuando no hay divergencia entre ramas. No crea un nuevo commit, solo avanza el puntero.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Rebase:</h4>
+            <p>Reaplica commits sobre otra rama, generando un historial más lineal. Se usa para mantener la limpieza del historial sin commits de merge.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Squash merge:</h4>
+            <p>Combina todos los commits de una rama en un único commit al fusionarla. Ideal para mantener un historial compacto y legible.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 12: Limpieza y Mantenimiento del SCM -->
+      <section class="gcp-section" id="limpieza-scm">
+        <div class="section-header">
+          <h2>12. Limpieza y Mantenimiento del Sistema de Control de Código Fuente</h2>
+          <a href="https://learn.microsoft.com/es-es/rest/api/azure/devops/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="highlight-text">
+          <h3>Objetivo</h3>
+          <p>Mejorar el rendimiento del sistema de control de versiones y optimizar el almacenamiento mediante limpieza periódica y automatización.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Prerrequisitos</h3>
+          <ul>
+            <li><strong>Comunicación:</strong> coordinar con los equipos para evitar conflictos durante la limpieza</li>
+            <li><strong>Backups:</strong> crear copias de seguridad antes de realizar operaciones destructivas</li>
+            <li><strong>Replicación:</strong> verificar que las réplicas o mirrors estén sincronizadas</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Limpieza manual</h3>
+          <p>Uso de comandos Git locales para eliminar objetos obsoletos y liberar espacio:</p>
+          
+          <div class="example-box">
+            <pre><code>git gc --prune=now --aggressive
+git repack -a -d -l</code></pre>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Automatización mediante Azure DevOps REST API</h3>
+          <p>Azure DevOps expone una REST API que permite:</p>
+          <ul>
+            <li>Eliminar artefactos antiguos</li>
+            <li>Borrar builds obsoletos</li>
+            <li>Gestionar pipelines y releases automáticamente</li>
+            <li>Auditar repositorios y agentes</li>
+          </ul>
+          <a href="https://learn.microsoft.com/en-us/rest/api/azure/devops/" class="external-link" target="_blank" rel="noopener noreferrer">
+            Documentación de Azure DevOps REST API →
+          </a>
+        </div>
+
+        <div class="highlight-text">
+          <h3>Buenas prácticas</h3>
+          <ul>
+            <li>Programar limpiezas periódicas automáticas</li>
+            <li>Monitorear el tamaño del repositorio y artefactos</li>
+            <li>Usar almacenamiento de artefactos externo para builds pesados</li>
+            <li>Documentar los procesos de limpieza y recuperación</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 13: Seguridad y Calidad del Código -->
+      <section class="gcp-section" id="seguridad-calidad">
+        <div class="section-header">
+          <h2>13. Escaneo de Dependencias, Seguridad y Calidad del Código</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/pipelines/security/overview" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="security-layer">
+          <h3>Dependency Scanning</h3>
+          <p>El escaneo de dependencias permite identificar librerías o paquetes vulnerables utilizados por la aplicación. Su objetivo es detectar vulnerabilidades conocidas en versiones de dependencias externas y sugerir actualizaciones seguras.</p>
+        </div>
+
+        <div class="security-layer">
+          <h3>Security Scanning</h3>
+          <p>El escaneo de seguridad analiza el código fuente y los artefactos compilados para detectar vulnerabilidades, malas configuraciones o secretos expuestos.</p>
+          
+          <div class="comparison-item">
+            <h4>Tipos de análisis:</h4>
+            <ul>
+              <li><span class="label">SAST:</span> Static Application Security Testing - analiza el código fuente (SonarQube, Checkmarx, Fortify)</li>
+              <li><span class="label">DAST:</span> Dynamic Application Security Testing - analiza aplicaciones en ejecución simulando ataques (OWASP ZAP)</li>
+              <li><span class="label">Container scanning:</span> analiza imágenes de Docker buscando vulnerabilidades conocidas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Code Coverage</h3>
+          <p>El code coverage mide el porcentaje de código ejecutado durante las pruebas. Se utiliza para evaluar la efectividad de los tests automáticos y mantener un umbral mínimo de calidad.</p>
+          
+          <div class="highlight-text">
+            <h4>Herramientas y reportes comunes:</h4>
+            <ul>
+              <li><strong>Covertura (.NET y C#)</strong></li>
+              <li><strong>JaCoCo (Java)</strong></li>
+              <li><strong>Istanbul / nyc (JavaScript)</strong></li>
+              <li><strong>Pytest-cov (Python)</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Quality Gates</h3>
+          <p>Los quality gates definen condiciones mínimas que deben cumplirse para aprobar una compilación o despliegue. Actúan como filtros de calidad que bloquean la promoción de código que no cumpla los estándares.</p>
+          
+          <div class="example-box">
+            <h4>Ejemplos de métricas:</h4>
+            <ul>
+              <li>Cobertura mínima del 80%</li>
+              <li>Ausencia de vulnerabilidades críticas o bloqueantes</li>
+              <li>Cumplimiento de convenciones de estilo y documentación</li>
+              <li>Complejidad ciclomática bajo límites definidos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="security-layer">
+          <h3>Security and Governance Gates</h3>
+          <p>Los security gates y governance gates establecen políticas y controles que aseguran que las entregas cumplan los requisitos de seguridad y cumplimiento normativo.</p>
+          
+          <div class="comparison-item">
+            <h4>Componentes clave:</h4>
+            <ul>
+              <li><strong>Azure Policy:</strong> define y aplica reglas de cumplimiento sobre recursos de Azure</li>
+              <li><strong>Azure DevOps Compliance:</strong> auditoría de pipelines y validación de configuraciones</li>
+              <li><strong>Approvals & Checks:</strong> revisiones humanas o automáticas basadas en políticas de seguridad</li>
+              <li><strong>Security Center & Defender for Cloud:</strong> escaneos automatizados y recomendaciones</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 14: Implementar Infraestructura -->
+      <section class="gcp-section" id="infraestructura">
+        <div class="section-header">
+          <h2>14. Implementar Infraestructura</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/pipelines/agents/agents" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          La implementación de la infraestructura para Azure Pipelines es fundamental para garantizar la ejecución eficiente, segura y escalable de los procesos de integración y entrega continua.
+        </p>
+
+        <div class="highlight-text">
+          <h3>Consideraciones generales</h3>
+          <p>Al diseñar la infraestructura de un sistema CI/CD con Azure DevOps es necesario evaluar:</p>
+          <ul>
+            <li>Los tipos de agentes que se utilizarán (Microsoft-hosted o self-hosted)</li>
+            <li>Las herramientas y entornos de ejecución requeridos</li>
+            <li>Las dependencias y la conectividad entre servicios</li>
+            <li>Los costos de operación y mantenimiento a largo plazo</li>
+            <li>Las licencias y los límites de uso disponibles</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Agentes hospedados vs agentes autohospedados (detallado)</h3>
+          
+          <div class="comparison-item">
+            <h4>Microsoft-hosted agents:</h4>
+            <ul>
+              <li>Proporcionados por Microsoft y administrados automáticamente</li>
+              <li>Escalan bajo demanda y se eliminan al finalizar el trabajo</li>
+              <li>Incluyen imágenes preconfiguradas (Windows, Ubuntu, macOS)</li>
+              <li>No requieren mantenimiento manual</li>
+              <li>Adecuados para proyectos pequeños, medianos o públicos</li>
+              <li><strong>Limitación:</strong> tiempo de ejecución mensual gratuito limitado (1,800 minutos)</li>
+            </ul>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Self-hosted agents:</h4>
+            <ul>
+              <li>Configurados y gestionados por la organización</li>
+              <li>Pueden estar en la nube, en local o en entornos híbridos</li>
+              <li>Permiten control total sobre las herramientas, dependencias y red</li>
+              <li>Sin límite de minutos de ejecución</li>
+              <li>Requieren mantenimiento, actualizaciones y supervisión</li>
+              <li>Recomendados para cargas intensivas, entornos aislados o cumplimiento estricto</li>
+            </ul>
+          </div>
+
+          <div class="highlight-text">
+            <h4>Comparativa de costos:</h4>
+            <p>Los agentes hospedados tienen un plan gratuito y opciones de pago por minuto adicional. Los agentes autohospedados no generan costo directo de Azure Pipelines, pero implican costo de infraestructura (VMs, energía, red, licencias).</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Licenciamiento</h3>
+          <ul>
+            <li><strong>Plan gratuito:</strong> 1,800 minutos/mes para proyectos privados, ilimitado para públicos</li>
+            <li><strong>Usuarios con Visual Studio/MSDN:</strong> minutos adicionales incluidos</li>
+            <li><strong>Paralelismo adicional:</strong> posibilidad de adquirir concurrent pipelines mediante pago</li>
+            <li><strong>Agentes self-hosted:</strong> sin costo por agente dentro de Azure Pipelines</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Conectividad y seguridad</h3>
+          <p>Los agentes necesitan conectividad a los servicios de Azure DevOps para recibir y ejecutar trabajos.</p>
+          
+          <div class="highlight-text">
+            <h4>Recomendaciones:</h4>
+            <ul>
+              <li>Permitir comunicación saliente hacia *.dev.azure.com y *.visualstudio.com en puertos 443 y 80</li>
+              <li>Usar certificados SSL válidos y revisar reglas de firewall corporativo</li>
+              <li>Para entornos aislados, configurar agentes dentro de redes privadas con Azure DevOps Server</li>
+              <li>Implementar autenticación segura mediante PAT o Managed Identity</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Deployment Groups</h3>
+          <p>Los <span class="label">Deployment Groups</span> en Azure DevOps permiten organizar y administrar los servidores o máquinas donde se ejecutarán los despliegues automatizados.</p>
+          
+          <div class="concept-card">
+            <h4>Concepto general</h4>
+            <p>Un Deployment Group es un conjunto de agentes self-hosted registrados en Azure DevOps, asignados a un propósito común o entorno determinado (ej: "Staging Servers" o "Production Web Farm").</p>
+            
+            <div class="highlight-text">
+              <strong>Ventajas principales:</strong>
+              <ul>
+                <li>Permiten despliegues directos en servidores físicos o virtuales dentro de redes privadas</li>
+                <li>Soportan entornos Windows y Linux</li>
+                <li>Eliminan la necesidad de exposición pública de los servidores</li>
+                <li>Integran etiquetas (tags) para desplegar solo en subconjuntos específicos</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Casos de uso típicos:</h4>
+            <ul>
+              <li>Despliegues de aplicaciones en servidores IIS o Apache locales</li>
+              <li>Publicación de servicios en entornos on-premises aislados</li>
+              <li>Gestión de despliegues simultáneos en múltiples máquinas (rolling deployment)</li>
+              <li>Control de versiones de infraestructura híbrida</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 15: Azure Container Instances -->
+      <section class="gcp-section" id="containers">
+        <div class="section-header">
+          <h2>15. Azure Container Instances y Agentes Self-Hosted</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/container-instances/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="service-card">
+          <h3>Azure Container Instances (ACI)</h3>
+          <p>Azure Container Instances (ACI) es un servicio que permite ejecutar contenedores en la nube sin necesidad de administrar servidores o clústeres. Es ideal para cargas de trabajo efímeras, pipelines de CI/CD, testing o microservicios ligeros que requieren arranque rápido y facturación por segundo.</p>
+          
+          <div class="highlight-text">
+            <h4>Principales características:</h4>
+            <ul>
+              <li>Despliegue de contenedores en segundos sin infraestructura subyacente</li>
+              <li>Ejecución bajo demanda con pago por uso</li>
+              <li>Compatibilidad con imágenes públicas (Docker Hub) o privadas (Azure Container Registry)</li>
+              <li>Integración con VNETs, volúmenes persistentes y Azure Monitor</li>
+              <li>Ideal para tareas de build temporal, pruebas automáticas o procesamiento por lotes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Políticas de reinicio (Container Restart Policies)</h3>
+          <p>Las políticas de reinicio controlan el comportamiento de los contenedores cuando terminan su ejecución.</p>
+          
+          <div class="comparison-item">
+            <h4>Opciones disponibles:</h4>
+            <ul>
+              <li><span class="label">Always:</span> el contenedor se reinicia automáticamente al finalizar</li>
+              <li><span class="label">OnFailure:</span> se reinicia solo si el contenedor falla (exit code distinto de 0)</li>
+              <li><span class="label">Never:</span> no se reinicia tras la finalización</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <h4>Ejemplo de uso:</h4>
+            <pre><code>az container create \
+  --name taskrunner \
+  --image mcr.microsoft.com/azuredocs/aci-helloworld \
+  --restart-policy OnFailure</code></pre>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Variables de entorno (Container Environment Variables)</h3>
+          <p>Permiten pasar configuraciones o credenciales al contenedor sin modificar la imagen base.</p>
+          
+          <div class="example-box">
+            <h4>Ejemplo:</h4>
+            <pre><code>az container create \
+  --name webapp \
+  --image nginx \
+  --environment-variables ENVIRONMENT=staging API_URL=https://api.contoso.com</code></pre>
+            <p>También se pueden usar secretos almacenados en Azure Key Vault mediante <code>--secure-environment-variables</code>.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Troubleshooting de contenedores</h3>
+          
+          <div class="concept-card">
+            <h4>Obtener estado del contenedor:</h4>
+            <pre><code>az container show \
+  --name mycontainer \
+  --resource-group MyRG \
+  --output table</code></pre>
+          </div>
+
+          <div class="concept-card">
+            <h4>Ver logs del contenedor:</h4>
+            <pre><code>az container logs \
+  --name mycontainer \
+  --resource-group MyRG</code></pre>
+          </div>
+
+          <div class="concept-card">
+            <h4>Ejecutar un comando dentro del contenedor:</h4>
+            <pre><code>az container exec \
+  --name mycontainer \
+  --resource-group MyRG \
+  --exec-command "/bin/bash"</code></pre>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Deep Dive: Agentes Self-Hosted en Azure DevOps</h3>
+          
+          <div class="comparison-item">
+            <h4>Casos de uso típicos:</h4>
+            <ul>
+              <li>Entornos con dependencias específicas no disponibles en agentes Microsoft-hosted</li>
+              <li>Conectividad restringida a redes privadas o sistemas on-premises</li>
+              <li>Requisitos de cumplimiento, auditoría o certificaciones (ISO, HIPAA)</li>
+              <li>Ejecución de tareas intensivas en CPU o GPU (IA o compilación nativa)</li>
+              <li>Optimización de costos mediante reutilización de infraestructura interna</li>
+            </ul>
+          </div>
+
+          <div class="highlight-text">
+            <h4>VM Templates para agentes:</h4>
+            <p>Se pueden crear plantillas de máquinas virtuales preconfiguradas con herramientas, SDKs y dependencias necesarias para ejecutar pipelines. Esto facilita la creación rápida de nuevos agentes idénticos en entornos escalables.</p>
+            <ul>
+              <li>Crear una VM base con Windows o Ubuntu</li>
+              <li>Instalar dependencias (Git, .NET SDK, Node.js, Docker, PowerShell)</li>
+              <li>Instalar el agente de Azure Pipelines</li>
+              <li>Capturar la imagen como plantilla en Azure (Managed Image)</li>
+              <li>Usar Azure Scale Sets para escalar dinámicamente</li>
+            </ul>
+          </div>
+
+          <div class="highlight-text">
+            <h4>Contenerización de agentes self-hosted:</h4>
+            <p>Los agentes también pueden ejecutarse dentro de contenedores Docker, simplificando la gestión, actualización y portabilidad.</p>
+            <ul>
+              <li>Despliegue rápido y reproducible</li>
+              <li>Aislamiento por pipeline o equipo</li>
+              <li>Mantenimiento simplificado mediante imágenes versionadas</li>
+              <li>Integración con Kubernetes o Azure Container Instances para autoescalado</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 16: Estrategias de Despliegue -->
+      <section class="gcp-section" id="estrategias-despliegue">
+        <div class="section-header">
+          <h2>16. Estrategias de Despliegue y Exposición Progresiva</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/pipelines/release/deployment-strategies" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          En DevOps moderno, las estrategias de despliegue buscan minimizar el riesgo y el impacto en el usuario final durante la publicación de nuevas versiones.
+        </p>
+
+        <div class="service-card">
+          <h3>Blue-Green Deployment</h3>
+          <p>La estrategia Blue-Green consiste en mantener dos entornos idénticos — <span class="label">Blue</span> (actual en producción) y <span class="label">Green</span> (nueva versión).</p>
+          
+          <div class="comparison-item">
+            <h4>Flujo típico:</h4>
+            <ol>
+              <li>Se despliega la nueva versión en el entorno Green</li>
+              <li>Se ejecutan pruebas automáticas de validación</li>
+              <li>Se redirige el tráfico al entorno Green mediante un cambio en el balanceador de carga</li>
+              <li>El entorno Blue queda disponible como backup inmediato</li>
+            </ol>
+          </div>
+
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Despliegues sin downtime</li>
+              <li>Rollback instantáneo si ocurre un fallo</li>
+              <li>Validación previa al cambio de tráfico</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Canary Release</h3>
+          <p>El Canary Release permite desplegar una nueva versión solo a una parte del tráfico o grupo de usuarios antes de una liberación total.</p>
+          
+          <div class="comparison-item">
+            <h4>Etapas comunes:</h4>
+            <ol>
+              <li>Se lanza la versión "canary" a un pequeño porcentaje de usuarios</li>
+              <li>Se monitorean métricas de rendimiento, errores y feedback</li>
+              <li>Si el resultado es positivo, se amplía gradualmente el despliegue</li>
+            </ol>
+          </div>
+
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Detección temprana de errores sin afectar a todos los usuarios</li>
+              <li>Reducción de riesgo en despliegues críticos</li>
+              <li>Monitoreo y rollback sencillos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Ring Deployment</h3>
+          <p>El Ring Deployment (también conocido como despliegue por anillos) es una evolución del modelo canario, donde los despliegues se realizan en anillos o grupos definidos de usuarios, entornos o regiones.</p>
+          
+          <div class="example-box">
+            <h4>Ejemplo de anillos:</h4>
+            <ul>
+              <li><span class="label">Ring 0:</span> entorno interno (QA / Dev)</li>
+              <li><span class="label">Ring 1:</span> usuarios piloto o equipo de producto</li>
+              <li><span class="label">Ring 2:</span> una región o grupo controlado de clientes</li>
+              <li><span class="label">Ring 3:</span> despliegue global o total</li>
+            </ul>
+          </div>
+
+          <p>Azure Pipelines permite configurar stages o environments separados representando cada anillo, con gates o aprobaciones antes de avanzar.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Progressive Exposure</h3>
+          <p>El Progressive Exposure combina métricas de observabilidad con automatización de despliegues para liberar versiones gradualmente según resultados en tiempo real. La exposición se ajusta automáticamente con base en telemetría, errores o métricas de negocio.</p>
+          
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Despliegues adaptativos y basados en datos</li>
+              <li>Reducción del impacto de errores en producción</li>
+              <li>Integración nativa con observabilidad en Azure</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Feature Flags</h3>
+          <p>Los <span class="label">Feature Flags</span> permiten habilitar o deshabilitar funcionalidades sin necesidad de hacer un nuevo despliegue. Son una herramienta clave para realizar dark launches, pruebas controladas o despliegues parciales.</p>
+          
+          <div class="comparison-item">
+            <h4>Implementación en Azure:</h4>
+            <ul>
+              <li>Usar Azure App Configuration para gestionar flags centralizados</li>
+              <li>Integrar con SDKs de Azure Feature Management</li>
+              <li>Controlar las flags por usuario, región, versión o entorno</li>
+            </ul>
+          </div>
+
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Control granular sobre nuevas funcionalidades</li>
+              <li>Activación dinámica sin redeploy</li>
+              <li>Facilita pruebas A/B y despliegues progresivos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>A/B Testing</h3>
+          <p>El A/B Testing consiste en presentar dos o más variantes de una funcionalidad o interfaz a diferentes grupos de usuarios para comparar rendimiento, uso o satisfacción.</p>
+          
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Evaluación objetiva de nuevas características</li>
+              <li>Optimización basada en datos reales de uso</li>
+              <li>Reducción de riesgo al introducir cambios en la experiencia de usuario</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Azure Deployment Manager</h3>
+          <p>Azure Deployment Manager (ADM) permite coordinar despliegues complejos y progresivos en entornos distribuidos. Se integra con Azure Resource Manager (ARM) para orquestar pasos, validar dependencias y aplicar políticas antes de cada despliegue.</p>
+          
+          <div class="comparison-item">
+            <h4>Casos de uso:</h4>
+            <ul>
+              <li>Coordinar despliegues de microservicios o componentes distribuidos</li>
+              <li>Controlar secuencias de despliegue en múltiples regiones</li>
+              <li>Aplicar verificaciones o gates entre etapas (health checks, políticas, aprobaciones)</li>
+            </ul>
+          </div>
+
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Despliegues más seguros y predecibles</li>
+              <li>Control centralizado de dependencias y orden de implementación</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 17: Azure Artifacts -->
+      <section class="gcp-section" id="artifacts">
+        <div class="section-header">
+          <h2>17. Azure Artifacts y Gestión de Paquetes</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/artifacts/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Azure Artifacts es el servicio de gestión de paquetes de Azure DevOps que permite almacenar, versionar y compartir dependencias dentro de los equipos de desarrollo.
+        </p>
+
+        <div class="service-card">
+          <h3>Concepto general</h3>
+          <p>Proporciona <span class="label">feeds</span> (repositorios) donde los equipos pueden publicar y consumir paquetes de distintos tipos (.NET, npm, Maven, Python, Universal Packages), garantizando trazabilidad, control y seguridad en el ciclo DevOps.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Feeds y views</h3>
+          <ul>
+            <li><strong>Feeds:</strong> contenedores lógicos para paquetes internos o externos</li>
+            <li><strong>Views:</strong> filtros dentro de un feed que separan versiones por estado</li>
+          </ul>
+          
+          <div class="example-box">
+            <p>Ejemplos de views: <span class="label">local</span>, <span class="label">prerelease</span>, <span class="label">release</span></p>
+            <p>Permiten controlar qué versiones están disponibles para consumo en cada entorno.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Versionado y control</h3>
+          <p>Azure Artifacts utiliza <span class="label">versionado semántico (SemVer)</span> para gestionar versiones de forma coherente:</p>
+          <ul>
+            <li><strong>MAJOR.MINOR.PATCH</strong> (por ejemplo, 1.2.3)</li>
+            <li>Permite identificar cambios mayores, nuevas funciones o parches menores</li>
+            <li>Compatible con pipelines para automatizar incrementos de versión</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Upstream sources y dependencias</h3>
+          <p>Los <span class="label">upstream sources</span> conectan feeds internos con repositorios públicos (como npmjs, nuget.org o Maven Central). Esto permite almacenar en caché dependencias externas y controlar su uso dentro de la organización.</p>
+        </div>
+
+        <div class="security-layer">
+          <h3>Seguridad y permisos</h3>
+          <ul>
+            <li>Control de acceso basado en roles (lectura, publicación, administración)</li>
+            <li>Autenticación integrada con Azure AD y tokens personales (PAT)</li>
+            <li>Políticas de retención para limpiar versiones antiguas y optimizar almacenamiento</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 18: Azure App Services -->
+      <section class="gcp-section" id="app-services">
+        <div class="section-header">
+          <h2>18. Azure App Services</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/app-service/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Azure App Services es una plataforma PaaS (Platform as a Service) completamente administrada para alojar aplicaciones web, API y backend móviles. Proporciona escalabilidad automática, balanceo de carga integrado, integración continua y soporte para múltiples lenguajes y frameworks.
+        </p>
+
+        <div class="service-card">
+          <h3>Runtime Environment</h3>
+          <p>El entorno de ejecución determina el lenguaje y framework que la aplicación utilizará.</p>
+          
+          <div class="highlight-text">
+            <h4>Azure App Services soporta de forma nativa:</h4>
+            <ul>
+              <li>.NET y .NET Core</li>
+              <li>Java</li>
+              <li>Node.js</li>
+              <li>Python</li>
+              <li>PHP</li>
+              <li>Ruby</li>
+            </ul>
+          </div>
+          
+          <p>Cada entorno incluye versiones configurables y soporte para actualizaciones gestionadas por Microsoft.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Custom Containers</h3>
+          <p>Cuando el entorno predefinido no satisface los requisitos, es posible ejecutar la aplicación dentro de un contenedor personalizado.</p>
+          
+          <div class="comparison-item">
+            <h4>Azure App Services permite desplegar imágenes Docker desde:</h4>
+            <ul>
+              <li>Azure Container Registry (ACR)</li>
+              <li>Docker Hub</li>
+              <li>Cualquier registro privado compatible con Docker</li>
+            </ul>
+          </div>
+          
+          <p>Esto proporciona flexibilidad para incluir dependencias, configuraciones y versiones específicas del sistema.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Azure Container Registry</h3>
+          <p>Azure Container Registry es un servicio privado y seguro para almacenar y gestionar imágenes de contenedores Docker. Permite integraciones nativas con App Services, Kubernetes (AKS) y Azure DevOps. Las imágenes se pueden actualizar automáticamente mediante webhooks o pipelines.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Deployment Slots</h3>
+          <p>Los <span class="label">Deployment Slots</span> permiten crear varios entornos dentro del mismo App Service.</p>
+          
+          <div class="example-box">
+            <h4>Ejemplos:</h4>
+            <ul>
+              <li><span class="label">Producción (Production)</span></li>
+              <li><span class="label">Staging</span></li>
+              <li><span class="label">Testing</span></li>
+            </ul>
+          </div>
+
+          <p>Cada slot tiene su propio entorno de configuración, variables y versión del código.</p>
+
+          <div class="highlight-text">
+            <h4>Principales ventajas:</h4>
+            <ul>
+              <li>Realizar despliegues sin tiempo de inactividad</li>
+              <li>Validar nuevas versiones antes del lanzamiento</li>
+              <li>Usar la funcionalidad <strong>Swap</strong> para intercambiar entornos (pasar Staging → Producción de forma instantánea)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>App Service Environments (ASE)</h3>
+          <p>App Service Environments proporcionan aislamiento de red y escalabilidad avanzada para cargas empresariales. Permiten ejecutar aplicaciones dentro de una red virtual (VNet) y con conectividad privada.</p>
+          
+          <div class="comparison-item">
+            <h4>Cuándo usar un ASE:</h4>
+            <ul>
+              <li>Cuando se requieren altos niveles de aislamiento y seguridad</li>
+              <li>Cuando se necesita conectividad directa con recursos internos (bases de datos, APIs privadas)</li>
+              <li>Para escenarios con gran carga de trabajo o requisitos de cumplimiento normativo</li>
+            </ul>
+          </div>
+
+          <div class="concept-card">
+            <h4>External ASE</h4>
+            <p>El tipo External ASE expone las aplicaciones mediante una dirección IP pública. Se utiliza cuando las aplicaciones necesitan ser accesibles desde Internet, pero manteniendo la infraestructura aislada dentro de una VNet.</p>
+          </div>
+
+          <div class="concept-card">
+            <h4>ILB ASE (Internal Load Balancer ASE)</h4>
+            <p>El tipo ILB ASE utiliza un balanceador interno (ILB) para exponer las aplicaciones solo dentro de la red privada. Ideal para aplicaciones internas o APIs que no deben ser accesibles externamente.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Tipos de despliegue</h3>
+          <p>Azure App Services admite múltiples métodos de despliegue:</p>
+          <ul>
+            <li><strong>Paquete o carpeta ZIP:</strong> se sube directamente y se descomprime en el entorno</li>
+            <li><strong>WAR/JAR:</strong> para aplicaciones Java empaquetadas</li>
+            <li><strong>Repositorio Git o GitHub Actions:</strong> integración continua automática</li>
+            <li><strong>Azure DevOps Pipelines:</strong> despliegues controlados con CI/CD</li>
+            <li><strong>Dropbox / OneDrive / FTP:</strong> opciones manuales o de prueba rápida</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>App Service Plan</h3>
+          <p>El App Service Plan define la infraestructura subyacente sobre la que se ejecuta la aplicación, incluyendo la región, la capacidad de cómputo y el nivel de servicio.</p>
+          
+          <div class="comparison-item">
+            <h4>Shared tiers:</h4>
+            <p>Usan recursos compartidos entre múltiples clientes. Adecuados para entornos de desarrollo o pruebas básicas.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Dedicated tiers:</h4>
+            <p>Asignan recursos dedicados (CPU/RAM) para producción o cargas moderadas.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Isolated tiers (ASE):</h4>
+            <p>Ofrecen entornos completamente aislados, ideales para cargas críticas o con requisitos de seguridad estrictos.</p>
+          </div>
+
+          <p>La elección depende del nivel de aislamiento, rendimiento y escalabilidad requerido.</p>
+        </div>
+      </section>
+
+      </div>
+    </div>
+  </div>
+
   <style>
-    .az-card { background: rgba(24, 24, 27, 0.74); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(122,107,255,0.22); box-shadow: 0 10px 36px rgba(0,0,0,0.35), 0 8px 26px rgba(122,107,255,0.18), inset 0 0 0 1px rgba(255,255,255,0.03); color: #f5f7ff; max-width: 1200px; padding: 42px 36px; }
-    .az-card p { font-size: 1.14rem; line-height: 1.85; color: #f5f7ff; text-align: justify; text-justify: inter-word; hyphens: auto; margin: 0 0 18px 0; }
-    .az-card ul { margin: 0 0 18px 22px; }
-    .az-card li { font-size: 1.12rem; line-height: 1.78; color: #f5f7ff; margin: 6px 0; }
-    .az-card h2 { font-size: 2.15rem; color: #7a6bff; margin: 6px 0 18px 0; }
-    .az-card h3 { font-size: 1.5rem; color: #a5b4fc; margin: 26px 0 12px 0; }
-    .az-card h4 { font-size: 1.18rem; color: #c7d2fe; margin: 18px 0 10px 0; }
-    .az-card a { color: #d6e5ff; text-decoration: none; border-bottom: 1px dashed rgba(214,229,255,0.45); }
-    .az-card a:hover { color: #eaf2ff; border-bottom-color: rgba(234,242,255,0.75); }
-    .az-card pre { background: #0b1022; color: #f5f7ff; padding: 18px; border-radius: 12px; margin: 0 0 20px 0; }
-    .az-card table { width: 100%; border-collapse: collapse; margin: 12px 0 20px 0; border-color: rgba(99,62,238,0.25); }
-    .az-card th, .az-card td { border: 1px solid rgba(99,62,238,0.25); color: #f2f6ff; padding: 8px 10px; text-align: left; }
-    .az-card thead th { background: rgba(83,83,236,0.12); color: #f5f7ff; }
-    .az-card tbody tr:nth-child(odd) { background: rgba(255,255,255,0.02); }
+    /* Base Container */
+    .az400-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Navigation Back */
+    .navigation-back {
+      margin-bottom: 30px;
+    }
+
+    .navigation-back a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .navigation-back a:hover {
+      color: #7a6bff;
+    }
+
+    /* Hero Section */
+    .az400-hero {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(122, 107, 255, 0.1), rgba(99, 62, 238, 0.1));
+      border-radius: 20px;
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .az400-title {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #7a6bff, #c7d2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .az400-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+    }
+
+    /* Layout with Sidebar */
+    .gcp-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Sidebar Navigation */
+    .gcp-sidebar {
+      position: sticky;
+      top: 80px;
+      background: rgba(24, 24, 27, 0.8);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 0.9rem;
+      color: #a5b4fc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 16px 0;
+      font-weight: 600;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-section {
+      margin-bottom: 12px;
+    }
+
+    .sidebar-link {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-link:hover {
+      background: rgba(122, 107, 255, 0.1);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .sidebar-link.active {
+      background: rgba(122, 107, 255, 0.2);
+      color: #7a6bff;
+    }
+
+    .sidebar-submenu {
+      list-style: none;
+      padding: 8px 0 0 12px;
+      margin: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .sidebar-section:hover .sidebar-submenu,
+    .sidebar-section .sidebar-link.active ~ .sidebar-submenu {
+      max-height: 500px;
+    }
+
+    .sidebar-sublink {
+      display: block;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-sublink:hover {
+      background: rgba(122, 107, 255, 0.08);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Content Section */
+    .gcp-content {
+      min-width: 0;
+    }
+
+    .gcp-section {
+      margin-bottom: 60px;
+      scroll-margin-top: 100px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .section-header h2 {
+      color: #7a6bff;
+      font-size: 2rem;
+      margin: 0;
+      flex: 1;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      color: #a5b4fc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .doc-link:hover {
+      background: rgba(122, 107, 255, 0.2);
+      border-color: rgba(122, 107, 255, 0.5);
+      color: #7a6bff;
+      transform: translateY(-2px);
+    }
+
+    .doc-link svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .section-intro {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 32px;
+    }
+
+    /* Label for key terms */
+    .label {
+      color: #a5b4fc;
+      font-weight: 600;
+      padding: 2px 8px;
+      background: rgba(122, 107, 255, 0.15);
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+
+    /* Cards */
+    .service-card,
+    .concept-card,
+    .security-layer,
+    .pricing-card {
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .service-card h3,
+    .concept-card h3,
+    .security-layer h3,
+    .pricing-card h3 {
+      color: #a5b4fc;
+      font-size: 1.3rem;
+      margin: 0 0 16px 0;
+    }
+
+    .service-card h4,
+    .concept-card h4 {
+      color: #c7d2fe;
+      font-size: 1.1rem;
+      margin: 16px 0 12px 0;
+    }
+
+    .service-card p,
+    .concept-card p,
+    .security-layer p,
+    .pricing-card p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin: 0 0 16px 0;
+    }
+
+    .service-card ul,
+    .concept-card ul,
+    .security-layer ul,
+    .pricing-card ul {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin: 0 0 16px 0;
+      padding-left: 24px;
+    }
+
+    .service-card li,
+    .concept-card li,
+    .security-layer li,
+    .pricing-card li {
+      margin: 8px 0;
+    }
+
+    /* Comparison Items */
+    .comparison-item {
+      background: rgba(122, 107, 255, 0.08);
+      border-left: 3px solid #7a6bff;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .comparison-item h4 {
+      color: #a5b4fc;
+      font-size: 1.05rem;
+      margin: 0 0 12px 0;
+    }
+
+    .comparison-item ul {
+      margin: 0;
+      padding-left: 24px;
+    }
+
+    .comparison-item li {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin: 6px 0;
+    }
+
+    /* Highlight and Example boxes */
+    .highlight-text,
+    .example-box {
+      background: rgba(122, 107, 255, 0.05);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .highlight-text h4,
+    .example-box h4 {
+      color: #a5b4fc;
+      font-size: 1.05rem;
+      margin: 0 0 12px 0;
+    }
+
+    .highlight-text p,
+    .example-box p {
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.7;
+      margin: 0 0 12px 0;
+    }
+
+    .highlight-text ul,
+    .example-box ul {
+      margin: 0;
+      padding-left: 24px;
+    }
+
+    .highlight-text li,
+    .example-box li {
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.7;
+      margin: 6px 0;
+    }
+
+    /* Table styles */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .info-table th,
+    .info-table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .info-table thead th {
+      background: rgba(122, 107, 255, 0.15);
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .info-table tbody tr {
+      background: rgba(24, 24, 27, 0.4);
+    }
+
+    .info-table tbody tr:hover {
+      background: rgba(122, 107, 255, 0.08);
+    }
+
+    .info-table td {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Code elements */
+    code {
+      background: rgba(122, 107, 255, 0.15);
+      color: #c7d2fe;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+    }
+
+    /* External links */
+    .external-link {
+      display: inline-block;
+      color: #a5b4fc;
+      text-decoration: none;
+      margin-top: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .external-link:hover {
+      color: #7a6bff;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .gcp-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .gcp-sidebar {
+        position: relative;
+        top: 0;
+        max-height: none;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .gcp-content {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .az400-container {
+        padding: 20px 16px;
+        max-width: 100%;
+      }
+
+      .az400-hero {
+        padding: 30px 16px;
+        text-align: center;
+      }
+
+      .az400-title {
+        font-size: 1.75rem;
+        line-height: 1.2;
+      }
+
+      .az400-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .gcp-layout {
+        gap: 20px;
+      }
+
+      .gcp-sidebar {
+        padding: 16px;
+        border-radius: 12px;
+      }
+
+      .sidebar-title {
+        font-size: 0.85rem;
+      }
+
+      .sidebar-link {
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .section-header h2 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+      }
+
+      .doc-link {
+        align-self: flex-end;
+      }
+
+      .section-intro {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .service-card,
+      .concept-card,
+      .comparison-item,
+      .security-layer,
+      .highlight-text {
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .service-card h3,
+      .concept-card h3,
+      .comparison-item h4,
+      .security-layer h3,
+      .highlight-text h3 {
+        font-size: 1.1rem;
+      }
+
+      .service-card ul,
+      .concept-card ul,
+      .comparison-item ul,
+      .security-layer ul,
+      .highlight-text ul {
+        font-size: 0.95rem;
+        padding-left: 20px;
+      }
+
+      .example-box {
+        padding: 12px;
+        margin: 12px 0;
+      }
+
+      .example-box pre {
+        font-size: 0.8rem;
+        overflow-x: auto;
+      }
+
+      .comparison-table {
+        font-size: 0.85rem;
+        overflow-x: auto;
+        display: block;
+      }
+
+      .comparison-table table {
+        min-width: 500px;
+      }
+
+      .label {
+        font-size: 0.85rem;
+        padding: 3px 8px;
+      }
+
+      .navigation-back {
+        margin-bottom: 16px;
+      }
+
+      .navigation-back a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .az400-title {
+        font-size: 1.5rem;
+      }
+
+      .az400-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.2rem;
+      }
+
+      .service-card h3,
+      .concept-card h3 {
+        font-size: 1rem;
+      }
+
+      .gcp-sidebar {
+        padding: 12px;
+      }
+
+      .sidebar-link {
+        padding: 8px;
+        font-size: 0.85rem;
+      }
+    }
   </style>
-  <Az400Content client:load />
+
+  <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Active section tracking with Intersection Observer
+    const sections = document.querySelectorAll('.gcp-section');
+    const navLinks = document.querySelectorAll('.sidebar-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-100px 0px -66%',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 </BaseLayout>
