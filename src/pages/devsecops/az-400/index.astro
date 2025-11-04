@@ -1,23 +1,1091 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Az400Content from "../../../components/Az400Content.jsx";
 ---
-<BaseLayout title="AZ-400 — Teoría">
+<BaseLayout title="AZ-400 — Azure DevOps Engineer Expert">
+  <div class="az400-container">
+    <!-- Navigation Back -->
+    <div class="navigation-back">
+      <a href="/devsecops/">← Volver a DevSecOps</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="az400-hero">
+      <h1 class="az400-title">AZ-400: Azure DevOps Engineer Expert</h1>
+      <p class="az400-subtitle">Fundamentos de DevOps, Metodologías Ágiles, Azure Pipelines y Prácticas de Integración Continua</p>
+    </div>
+
+    <!-- Main Layout with Sidebar -->
+    <div class="gcp-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="gcp-sidebar">
+        <nav class="sidebar-nav">
+          <h3 class="sidebar-title">Navegación</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-section">
+              <a href="#introduccion" class="sidebar-link active" data-section="introduccion">Introducción</a>
+              <ul class="sidebar-submenu">
+                <li><a href="#devops-intro" class="sidebar-sublink">1. Introducción a DevOps</a></li>
+                <li><a href="#metodologias" class="sidebar-sublink">2. Metodologías Ágiles</a></li>
+                <li><a href="#metricas" class="sidebar-sublink">3. Métricas Ágiles</a></li>
+                <li><a href="#cmmi" class="sidebar-sublink">4. CMMI</a></li>
+                <li><a href="#azure-boards" class="sidebar-sublink">5. Azure Boards</a></li>
+                <li><a href="#autenticacion" class="sidebar-sublink">6. Autenticación</a></li>
+                <li><a href="#version-control" class="sidebar-sublink">7. Control de Versiones</a></li>
+                <li><a href="#pipelines" class="sidebar-sublink">8. Azure Pipelines</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Content Section -->
+      <div class="gcp-content" id="introduccion">
+      
+      <!-- Section 1: Introducción a DevOps -->
+      <section class="gcp-section" id="devops-intro">
+        <div class="section-header">
+          <h2>1. Introducción a DevOps</h2>
+          <a href="https://learn.microsoft.com/es-es/devops/what-is-devops" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+        
+        <p class="section-intro">
+          <span class="label">DevOps</span> es una metodología que integra el desarrollo de software (Dev) y las operaciones de TI (Ops) con el objetivo de mejorar la colaboración, automatizar procesos y acelerar la entrega de software.
+        </p>
+
+        <div class="concept-card">
+          <h3>Principales retos que resuelve DevOps</h3>
+          <ul>
+            <li><strong>Lentitud en las entregas:</strong> automatiza el ciclo de desarrollo (CI/CD), permitiendo lanzamientos más rápidos y frecuentes.</li>
+            <li><strong>Falta de colaboración:</strong> fomenta el trabajo conjunto entre desarrollo y operaciones.</li>
+            <li><strong>Errores en despliegues:</strong> minimiza fallos mediante pruebas automáticas y despliegues controlados.</li>
+            <li><strong>Dificultad para mantener la calidad:</strong> facilita el monitoreo continuo y la retroalimentación inmediata.</li>
+            <li><strong>Gestión manual de infraestructura:</strong> implementa la "infraestructura como código" para reproducir entornos fácilmente.</li>
+            <li><strong>Falta de visibilidad:</strong> centraliza métricas y monitoreo para detectar incidentes antes de que afecten al usuario final.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Metodologías Ágiles -->
+      <section class="gcp-section" id="metodologias">
+        <div class="section-header">
+          <h2>2. Metodologías Ágiles</h2>
+          <a href="https://learn.microsoft.com/es-es/devops/plan/what-is-agile" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Las metodologías ágiles buscan entregar valor de forma iterativa, fomentar la colaboración y adaptarse al cambio de manera continua.
+        </p>
+
+        <div class="service-card">
+          <h3>Agile</h3>
+          <p>Es una filosofía de trabajo que promueve:</p>
+          <ul>
+            <li>Entregas rápidas y continuas de valor al cliente</li>
+            <li>Colaboración constante entre equipos y clientes</li>
+            <li>Adaptación al cambio en lugar de seguir planes rígidos</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Scrum</h3>
+          <p>Framework ágil que organiza el desarrollo en ciclos cortos denominados <span class="label">sprints</span> (de 1 a 4 semanas). Cada sprint busca entregar un producto funcional.</p>
+          
+          <div class="comparison-item">
+            <h4>Elementos principales:</h4>
+            <ul>
+              <li><strong>Roles:</strong> Product Owner, Scrum Master y Equipo de Desarrollo</li>
+              <li><strong>Eventos:</strong> Sprint Planning, Daily Scrum, Sprint Review y Sprint Retrospective</li>
+              <li><strong>Artefactos:</strong> Product Backlog, Sprint Backlog e Incremento</li>
+            </ul>
+          </div>
+
+          <p>Scrum es ideal para proyectos complejos con requisitos cambiantes y equipos multidisciplinarios.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Kanban</h3>
+          <p>Método visual para gestionar el flujo de trabajo mediante tableros con columnas (por ejemplo: <span class="label">Por hacer → En progreso → Hecho</span>).</p>
+          
+          <div class="comparison-item">
+            <h4>Principios fundamentales:</h4>
+            <ul>
+              <li>Visualizar el trabajo</li>
+              <li>Limitar el trabajo en progreso (WIP)</li>
+              <li>Mejorar continuamente el flujo</li>
+            </ul>
+          </div>
+
+          <p>Es especialmente útil en equipos de soporte, mantenimiento y operaciones continuas.</p>
+        </div>
+      </section>
+
+      <!-- Section 3: Métricas Ágiles -->
+      <section class="gcp-section" id="metricas">
+        <div class="section-header">
+          <h2>3. Métricas Ágiles en Azure DevOps</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/report/dashboards/overview" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Azure DevOps ofrece herramientas para medir el desempeño de los equipos y gestionar proyectos ágiles de forma integral.
+        </p>
+
+        <div class="concept-card">
+          <h3>Velocity (Velocidad)</h3>
+          <p>La <span class="label">velocity</span> mide cuánto trabajo completa un equipo durante un sprint (en puntos de historia, horas o tareas). Solo se contabiliza el trabajo marcado como Done.</p>
+          
+          <div class="highlight-text">
+            <strong>Usos principales:</strong>
+            <ul>
+              <li>Predicción de capacidad futura</li>
+              <li>Planificación realista</li>
+              <li>Medición de progreso</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <h3>Sprint Burndown Chart</h3>
+          <p>Gráfica que representa el trabajo restante durante el sprint.</p>
+          <ul>
+            <li><strong>Eje X:</strong> tiempo (días del sprint)</li>
+            <li><strong>Eje Y:</strong> trabajo pendiente (puntos o tareas)</li>
+            <li><strong>Línea ideal:</strong> ritmo esperado de reducción del trabajo</li>
+            <li><strong>Línea real:</strong> ritmo real del equipo</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <h3>Lead Time y Cycle Time</h3>
+          <ul>
+            <li><span class="label">Lead Time:</span> tiempo total desde la creación de una tarea hasta su finalización</li>
+            <li><span class="label">Cycle Time:</span> tiempo que transcurre desde que se inicia el trabajo hasta que se completa</li>
+          </ul>
+          <p>Ambas métricas son fundamentales para evaluar la eficiencia del flujo de trabajo.</p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Sprint Burnup Chart</h3>
+          <p>Muestra la cantidad de trabajo completado frente al total planificado.</p>
+          
+          <div class="example-box">
+            <strong>Interpretación:</strong>
+            <ul>
+              <li>Si las líneas se cruzan, el equipo alcanzó su meta</li>
+              <li>Si el alcance aumenta, se han agregado nuevas historias o tareas</li>
+            </ul>
+          </div>
+          
+          <p>Permite comunicar el progreso y gestionar los cambios de alcance.</p>
+        </div>
+      </section>
+
+      <!-- Section 4: CMMI -->
+      <section class="gcp-section" id="cmmi">
+        <div class="section-header">
+          <h2>4. CMMI (Capability Maturity Model Integration)</h2>
+          <a href="https://cmmiinstitute.com/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          <span class="label">CMMI</span> es un modelo de mejora de procesos desarrollado por el Software Engineering Institute (SEI). Su propósito es evaluar y elevar la madurez de los procesos de una organización.
+        </p>
+
+        <div class="highlight-text">
+          <h3>Objetivos principales:</h3>
+          <ul>
+            <li>Estandarizar y madurar los procesos de desarrollo, mantenimiento y gestión</li>
+            <li>Mejorar la calidad, previsibilidad y eficiencia</li>
+            <li>Reducir riesgos asociados a la falta de procesos estructurados</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: Azure Boards -->
+      <section class="gcp-section" id="azure-boards">
+        <div class="section-header">
+          <h2>5. Azure Boards</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/boards/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          Azure Boards es una herramienta dentro de Azure DevOps para planificar, realizar seguimiento y gestionar el trabajo de equipos de desarrollo mediante metodologías ágiles (Scrum, Kanban o híbridas).
+        </p>
+
+        <div class="concept-card">
+          <h3>Componentes principales</h3>
+          <table class="info-table">
+            <thead>
+              <tr>
+                <th>Elemento</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Work Items</td>
+                <td>Unidades de trabajo (historias, bugs, tareas, etc.)</td>
+              </tr>
+              <tr>
+                <td>Boards</td>
+                <td>Tableros visuales tipo Kanban o Scrum</td>
+              </tr>
+              <tr>
+                <td>Backlog</td>
+                <td>Lista priorizada de trabajo pendiente</td>
+              </tr>
+              <tr>
+                <td>Sprints</td>
+                <td>Iteraciones temporales de ejecución</td>
+              </tr>
+              <tr>
+                <td>Dashboards / Reports</td>
+                <td>Visualización de progreso y métricas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="service-card">
+          <h3>Beneficios principales</h3>
+          <ul>
+            <li><strong>Organización del trabajo:</strong> gestión de tareas en un único entorno visual</li>
+            <li><strong>Colaboración en equipo:</strong> integración con Azure Repos, GitHub, Pipelines, Teams y Slack</li>
+            <li><strong>Transparencia y visibilidad:</strong> dashboards y reportes en tiempo real</li>
+            <li><strong>Planificación ágil:</strong> soporte completo para Scrum y Kanban</li>
+            <li><strong>Seguimiento y métricas:</strong> métricas clave como Lead Time, Cycle Time y Velocity</li>
+            <li><strong>Integración con el ciclo DevOps:</strong> conexión con Repos, Pipelines, Test Plans y Artifacts</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 6: Contraseñas y Autenticación -->
+      <section class="gcp-section" id="autenticacion">
+        <div class="section-header">
+          <h2>6. Contraseñas y Autenticación</h2>
+          <a href="https://learn.microsoft.com/es-es/entra/identity/authentication/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="concept-card">
+          <h3>Credenciales vs. Métodos de autenticación</h3>
+          <ul>
+            <li><span class="label">Credenciales:</span> lo que el usuario posee, sabe o es (contraseña, PIN, clave privada/pública, datos biométricos)</li>
+            <li><span class="label">Métodos de autenticación:</span> mecanismos utilizados para validar la identidad del usuario</li>
+          </ul>
+          <p>Microsoft Entra ID administra y cataloga estos métodos.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Autenticación sin contraseña (Passwordless)</h3>
+          <p>Opciones disponibles en Microsoft Entra ID:</p>
+          <ul>
+            <li><strong>Windows Hello for Business:</strong> clave asimétrica protegida por el dispositivo</li>
+            <li><strong>Microsoft Authenticator (passkeys):</strong> inicio de sesión sin contraseña</li>
+            <li><strong>FIDO2 / Passkeys:</strong> estándar universal para autenticación segura</li>
+          </ul>
+          <div class="example-box">
+            <strong>Nota (2025):</strong> Microsoft está retirando el almacenamiento de contraseñas en Authenticator para promover el uso de passkeys.
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Restablecimiento de contraseña (SSPR)</h3>
+          <p>El <span class="label">Self-Service Password Reset</span> permite a los usuarios restablecer contraseñas y desbloquear cuentas sin intervención del soporte técnico, reduciendo costes y tiempos de inactividad.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Métodos MFA (Multifactor Authentication)</h3>
+          <p>Permiten añadir un segundo factor de autenticación (notificación, código TOTP, llamada, FIDO2, etc.). Se gestionan en Microsoft Entra ID dentro de Authentication Methods.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>OAuth y OpenID Connect</h3>
+          <p>La <span class="label">Microsoft Identity Platform</span> implementa OAuth 2.0 y OpenID Connect, fundamentales para el inicio de sesión federado y la integración con aplicaciones externas mediante scopes, tokens y consent.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Personal Access Tokens (PATs)</h3>
+          <p>Son "contraseñas alternativas" utilizadas para autenticación en Azure DevOps (CLI, Git o agentes). Deben tratarse como secretos y pueden limitarse por alcance y duración.</p>
+        </div>
+
+        <div class="security-layer">
+          <h3>Control de acceso basado en roles (RBAC)</h3>
+          <p>El <span class="label">RBAC</span> en Azure y Azure DevOps define quién puede realizar qué acciones sobre qué recursos y en qué nivel de la jerarquía.</p>
+          
+          <div class="highlight-text">
+            <h4>Principios fundamentales:</h4>
+            <ul>
+              <li><strong>Principal de seguridad:</strong> entidad a la que se le asignan permisos</li>
+              <li><strong>Rol:</strong> conjunto de permisos o acciones permitidas</li>
+              <li><strong>Asignación de rol:</strong> vincula un principal con un rol y un ámbito</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <h4>Roles integrados comunes:</h4>
+            <ul>
+              <li><strong>Owner:</strong> control total, incluyendo la delegación de acceso</li>
+              <li><strong>Contributor:</strong> permite administrar recursos, pero no modificar permisos</li>
+              <li><strong>Reader:</strong> solo lectura</li>
+              <li><strong>User Access Administrator:</strong> gestión de permisos RBAC</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Control de Versiones -->
+      <section class="gcp-section" id="version-control">
+        <div class="section-header">
+          <h2>7. Estrategias de Control de Versiones (VCS)</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/repos/git/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="service-card">
+          <h3>Git LFS (Large File Storage)</h3>
+          <p>Reemplaza archivos grandes por punteros de texto, almacenando el contenido real en un servidor remoto compatible.</p>
+          
+          <div class="comparison-item">
+            <h4>Ventajas:</h4>
+            <ul>
+              <li>Reducción del tamaño del repositorio</li>
+              <li>Integración con GitHub, Azure Repos, Bitbucket</li>
+              <li>Soporte en pipelines CI/CD</li>
+            </ul>
+            
+            <h4>Limitaciones:</h4>
+            <ul>
+              <li>Requiere soporte del servidor remoto</li>
+              <li>Sujeto a cuotas de almacenamiento</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Git Scalar (Microsoft)</h3>
+          <p>Herramienta creada por Microsoft para manejar repositorios de gran escala. Basada en GVFS (Git Virtual File System), optimiza Git para proyectos de cientos de GB o millones de archivos.</p>
+          
+          <div class="highlight-text">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Clones parciales y carga diferida</li>
+              <li>Mantenimiento automático (prefetch, garbage collection)</li>
+              <li>Integración nativa con Azure DevOps</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Git Subtree</h3>
+          <p>Permite incluir un subproyecto completo dentro de otro repositorio como subdirectorio, manteniendo su historial completo.</p>
+          
+          <div class="example-box">
+            <strong>Ventajas:</strong>
+            <ul>
+              <li>Independencia respecto a submódulos</li>
+              <li>Clones completos y autosuficientes</li>
+              <li>Sin dependencias externas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <h3>Comandos Git básicos</h3>
+          <ul>
+            <li><code>git init</code> — inicializa un repositorio</li>
+            <li><code>git add</code> — agrega archivos al área de staging</li>
+            <li><code>git commit</code> — guarda cambios en el historial</li>
+            <li><code>git push</code> — envía commits al repositorio remoto</li>
+            <li><code>git pull</code> — sincroniza cambios desde el remoto</li>
+            <li><code>git merge</code> — combina ramas</li>
+            <li><code>git revert</code> — crea un commit que deshace cambios</li>
+            <li><code>git reflog</code> — muestra todos los movimientos del HEAD</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <h3>Estrategias de fusión</h3>
+          <ul>
+            <li><span class="label">Merge:</span> combina ramas manteniendo todos los commits</li>
+            <li><span class="label">Fast-forward:</span> se realiza cuando no hay divergencia entre ramas</li>
+            <li><span class="label">Rebase:</span> reaplica commits sobre otra rama, generando un historial más lineal</li>
+            <li><span class="label">Squash merge:</span> combina todos los commits de una rama en un único commit</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 8: Azure Pipelines -->
+      <section class="gcp-section" id="pipelines">
+        <div class="section-header">
+          <h2>8. Azure Pipelines - Conceptos Básicos</h2>
+          <a href="https://learn.microsoft.com/es-es/azure/devops/pipelines/" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="section-intro">
+          <span class="label">Azure Pipelines</span> es un servicio de integración continua (CI) y entrega continua (CD) que forma parte de Azure DevOps. Permite compilar, probar y desplegar automáticamente aplicaciones en múltiples entornos y plataformas.
+        </p>
+
+        <div class="concept-card">
+          <h3>¿Para qué se usa Azure Pipelines?</h3>
+          <ul>
+            <li>Automatizar compilaciones y pruebas</li>
+            <li>Realizar despliegues continuos a entornos de desarrollo, staging o producción</li>
+            <li>Integrar con repositorios como GitHub, Azure Repos o Bitbucket</li>
+            <li>Garantizar consistencia y calidad en el ciclo de vida del software</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Conceptos clave</h3>
+          <ul>
+            <li><span class="label">Pipeline:</span> definición completa del flujo de CI/CD</li>
+            <li><span class="label">Stage:</span> agrupación lógica de trabajos (jobs)</li>
+            <li><span class="label">Job:</span> unidad de ejecución dentro de un stage</li>
+            <li><span class="label">Steps:</span> acciones individuales dentro de un job</li>
+            <li><span class="label">Tasks:</span> bloques reutilizables que ejecutan operaciones comunes</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Componentes principales de un DevOps Pipeline</h3>
+          <ul>
+            <li><strong>Source Code Repository:</strong> contiene el código fuente (Azure Repos, GitHub, GitLab)</li>
+            <li><strong>Build Server:</strong> compila el código, ejecuta pruebas y genera artefactos</li>
+            <li><strong>Test Server:</strong> ejecuta pruebas automatizadas de unidad, integración o aceptación</li>
+            <li><strong>Deployment Server:</strong> gestiona los despliegues hacia entornos de destino</li>
+            <li><strong>Feedback y Monitoring:</strong> proporciona retroalimentación continua (Application Insights, Azure Monitor)</li>
+          </ul>
+        </div>
+
+        <div class="highlight-text">
+          <h3>Lenguajes y plataformas compatibles</h3>
+          <p>Azure Pipelines soporta una amplia gama de tecnologías:</p>
+          <ul>
+            <li><strong>Lenguajes:</strong> C#, Java, JavaScript, Python, Go, PHP, Ruby, C++, Node.js</li>
+            <li><strong>Frameworks:</strong> .NET, ASP.NET, Angular, React, Django, Spring Boot, Maven</li>
+            <li><strong>Plataformas:</strong> Windows, Linux, macOS, Docker, Kubernetes</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Automated Tests</h3>
+          <p>Los tests automatizados son esenciales para validar la calidad del software sin intervención manual.</p>
+          
+          <div class="example-box">
+            <h4>Tipos de pruebas comunes:</h4>
+            <ul>
+              <li><strong>Unit tests:</strong> verifican funciones o clases individuales</li>
+              <li><strong>Integration tests:</strong> validan la interacción entre componentes</li>
+              <li><strong>Functional tests:</strong> garantizan que las funcionalidades cumplan los requisitos</li>
+              <li><strong>Performance tests:</strong> miden tiempos de respuesta, carga y estabilidad</li>
+              <li><strong>UI tests:</strong> automatizan la interacción con interfaces gráficas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Planes gratuitos (Free tiers)</h3>
+          <p>Azure Pipelines ofrece planes gratuitos que incluyen:</p>
+          <ul>
+            <li>1,800 minutos (30 horas) de ejecución por mes para proyectos privados</li>
+            <li>Ejecución ilimitada para proyectos públicos de código abierto</li>
+            <li>Soporte para agentes hospedados en Microsoft (Windows, Linux, macOS)</li>
+            <li>Opción de agentes propios (self-hosted) sin límite de tiempo</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Azure Marketplace</h3>
+          <p>El Marketplace de Azure DevOps permite extender las funcionalidades mediante extensiones y tareas personalizadas. Se pueden agregar integraciones con herramientas como SonarCloud, WhiteSource, Slack, Jenkins, Terraform, entre muchas otras.</p>
+          <a href="https://marketplace.visualstudio.com/azuredevops" class="external-link" target="_blank" rel="noopener noreferrer">
+            Explorar Azure Marketplace →
+          </a>
+        </div>
+
+        <div class="security-layer">
+          <h3>Escaneo de dependencias, seguridad y calidad del código</h3>
+          
+          <div class="comparison-item">
+            <h4>Dependency Scanning</h4>
+            <p>Permite identificar librerías o paquetes vulnerables utilizados por la aplicación.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Security Scanning</h4>
+            <p>Analiza el código fuente y artefactos para detectar vulnerabilidades:</p>
+            <ul>
+              <li><span class="label">SAST:</span> análisis estático del código (SonarQube, Checkmarx)</li>
+              <li><span class="label">DAST:</span> análisis dinámico en ejecución (OWASP ZAP)</li>
+              <li><span class="label">Container scanning:</span> análisis de imágenes Docker</li>
+            </ul>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Code Coverage</h4>
+            <p>Mide el porcentaje de código ejecutado durante las pruebas. Se utiliza para evaluar la efectividad de los tests automáticos.</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Quality Gates</h4>
+            <p>Definen condiciones mínimas que deben cumplirse para aprobar una compilación o despliegue. Actúan como filtros de calidad.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Agentes hospedados vs agentes autohospedados</h3>
+          
+          <div class="comparison-item">
+            <h4>Microsoft-hosted agents:</h4>
+            <ul>
+              <li>Proporcionados por Microsoft y administrados automáticamente</li>
+              <li>Escalan bajo demanda y se eliminan al finalizar el trabajo</li>
+              <li>Incluyen imágenes preconfiguradas con herramientas comunes</li>
+              <li>Tiempo de ejecución mensual gratuito limitado</li>
+            </ul>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Self-hosted agents:</h4>
+            <ul>
+              <li>Configurados y gestionados por la organización</li>
+              <li>Permiten control total sobre las herramientas y red</li>
+              <li>Sin límite de minutos de ejecución</li>
+              <li>Requieren mantenimiento y actualizaciones</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>Estrategias de despliegue</h3>
+          <ul>
+            <li><span class="label">Blue-Green Deployment:</span> mantiene dos entornos idénticos, cambiando el tráfico entre ellos</li>
+            <li><span class="label">Canary Release:</span> despliega a un pequeño porcentaje de usuarios antes de la liberación total</li>
+            <li><span class="label">Ring Deployment:</span> despliegue progresivo por anillos o grupos de usuarios</li>
+            <li><span class="label">Feature Flags:</span> habilita/deshabilita funcionalidades sin necesidad de redeploy</li>
+          </ul>
+        </div>
+      </section>
+
+      </div>
+    </div>
+  </div>
+
   <style>
-    .az-card { background: rgba(24, 24, 27, 0.74); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(122,107,255,0.22); box-shadow: 0 10px 36px rgba(0,0,0,0.35), 0 8px 26px rgba(122,107,255,0.18), inset 0 0 0 1px rgba(255,255,255,0.03); color: #f5f7ff; max-width: 1200px; padding: 42px 36px; }
-    .az-card p { font-size: 1.14rem; line-height: 1.85; color: #f5f7ff; text-align: justify; text-justify: inter-word; hyphens: auto; margin: 0 0 18px 0; }
-    .az-card ul { margin: 0 0 18px 22px; }
-    .az-card li { font-size: 1.12rem; line-height: 1.78; color: #f5f7ff; margin: 6px 0; }
-    .az-card h2 { font-size: 2.15rem; color: #7a6bff; margin: 6px 0 18px 0; }
-    .az-card h3 { font-size: 1.5rem; color: #a5b4fc; margin: 26px 0 12px 0; }
-    .az-card h4 { font-size: 1.18rem; color: #c7d2fe; margin: 18px 0 10px 0; }
-    .az-card a { color: #d6e5ff; text-decoration: none; border-bottom: 1px dashed rgba(214,229,255,0.45); }
-    .az-card a:hover { color: #eaf2ff; border-bottom-color: rgba(234,242,255,0.75); }
-    .az-card pre { background: #0b1022; color: #f5f7ff; padding: 18px; border-radius: 12px; margin: 0 0 20px 0; }
-    .az-card table { width: 100%; border-collapse: collapse; margin: 12px 0 20px 0; border-color: rgba(99,62,238,0.25); }
-    .az-card th, .az-card td { border: 1px solid rgba(99,62,238,0.25); color: #f2f6ff; padding: 8px 10px; text-align: left; }
-    .az-card thead th { background: rgba(83,83,236,0.12); color: #f5f7ff; }
-    .az-card tbody tr:nth-child(odd) { background: rgba(255,255,255,0.02); }
+    /* Base Container */
+    .az400-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Navigation Back */
+    .navigation-back {
+      margin-bottom: 30px;
+    }
+
+    .navigation-back a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .navigation-back a:hover {
+      color: #7a6bff;
+    }
+
+    /* Hero Section */
+    .az400-hero {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(122, 107, 255, 0.1), rgba(99, 62, 238, 0.1));
+      border-radius: 20px;
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .az400-title {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #7a6bff, #c7d2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .az400-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+    }
+
+    /* Layout with Sidebar */
+    .gcp-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Sidebar Navigation */
+    .gcp-sidebar {
+      position: sticky;
+      top: 80px;
+      background: rgba(24, 24, 27, 0.8);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 0.9rem;
+      color: #a5b4fc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 16px 0;
+      font-weight: 600;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-section {
+      margin-bottom: 12px;
+    }
+
+    .sidebar-link {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-link:hover {
+      background: rgba(122, 107, 255, 0.1);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .sidebar-link.active {
+      background: rgba(122, 107, 255, 0.2);
+      color: #7a6bff;
+    }
+
+    .sidebar-submenu {
+      list-style: none;
+      padding: 8px 0 0 12px;
+      margin: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .sidebar-section:hover .sidebar-submenu,
+    .sidebar-section .sidebar-link.active ~ .sidebar-submenu {
+      max-height: 500px;
+    }
+
+    .sidebar-sublink {
+      display: block;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-sublink:hover {
+      background: rgba(122, 107, 255, 0.08);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Content Section */
+    .gcp-content {
+      min-width: 0;
+    }
+
+    .gcp-section {
+      margin-bottom: 60px;
+      scroll-margin-top: 100px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .section-header h2 {
+      color: #7a6bff;
+      font-size: 2rem;
+      margin: 0;
+      flex: 1;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      color: #a5b4fc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .doc-link:hover {
+      background: rgba(122, 107, 255, 0.2);
+      border-color: rgba(122, 107, 255, 0.5);
+      color: #7a6bff;
+      transform: translateY(-2px);
+    }
+
+    .doc-link svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .section-intro {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 32px;
+    }
+
+    /* Label for key terms */
+    .label {
+      color: #a5b4fc;
+      font-weight: 600;
+      padding: 2px 8px;
+      background: rgba(122, 107, 255, 0.15);
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+
+    /* Cards */
+    .service-card,
+    .concept-card,
+    .security-layer,
+    .pricing-card {
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .service-card h3,
+    .concept-card h3,
+    .security-layer h3,
+    .pricing-card h3 {
+      color: #a5b4fc;
+      font-size: 1.3rem;
+      margin: 0 0 16px 0;
+    }
+
+    .service-card h4,
+    .concept-card h4 {
+      color: #c7d2fe;
+      font-size: 1.1rem;
+      margin: 16px 0 12px 0;
+    }
+
+    .service-card p,
+    .concept-card p,
+    .security-layer p,
+    .pricing-card p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin: 0 0 16px 0;
+    }
+
+    .service-card ul,
+    .concept-card ul,
+    .security-layer ul,
+    .pricing-card ul {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin: 0 0 16px 0;
+      padding-left: 24px;
+    }
+
+    .service-card li,
+    .concept-card li,
+    .security-layer li,
+    .pricing-card li {
+      margin: 8px 0;
+    }
+
+    /* Comparison Items */
+    .comparison-item {
+      background: rgba(122, 107, 255, 0.08);
+      border-left: 3px solid #7a6bff;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .comparison-item h4 {
+      color: #a5b4fc;
+      font-size: 1.05rem;
+      margin: 0 0 12px 0;
+    }
+
+    .comparison-item ul {
+      margin: 0;
+      padding-left: 24px;
+    }
+
+    .comparison-item li {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin: 6px 0;
+    }
+
+    /* Highlight and Example boxes */
+    .highlight-text,
+    .example-box {
+      background: rgba(122, 107, 255, 0.05);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .highlight-text h4,
+    .example-box h4 {
+      color: #a5b4fc;
+      font-size: 1.05rem;
+      margin: 0 0 12px 0;
+    }
+
+    .highlight-text p,
+    .example-box p {
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.7;
+      margin: 0 0 12px 0;
+    }
+
+    .highlight-text ul,
+    .example-box ul {
+      margin: 0;
+      padding-left: 24px;
+    }
+
+    .highlight-text li,
+    .example-box li {
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.7;
+      margin: 6px 0;
+    }
+
+    /* Table styles */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .info-table th,
+    .info-table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .info-table thead th {
+      background: rgba(122, 107, 255, 0.15);
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .info-table tbody tr {
+      background: rgba(24, 24, 27, 0.4);
+    }
+
+    .info-table tbody tr:hover {
+      background: rgba(122, 107, 255, 0.08);
+    }
+
+    .info-table td {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Code elements */
+    code {
+      background: rgba(122, 107, 255, 0.15);
+      color: #c7d2fe;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+    }
+
+    /* External links */
+    .external-link {
+      display: inline-block;
+      color: #a5b4fc;
+      text-decoration: none;
+      margin-top: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .external-link:hover {
+      color: #7a6bff;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .gcp-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .gcp-sidebar {
+        position: relative;
+        top: 0;
+        max-height: none;
+      }
+
+      .sidebar-submenu {
+        max-height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .az400-title {
+        font-size: 2rem;
+      }
+
+      .az400-subtitle {
+        font-size: 1rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .az400-container {
+        padding: 20px 16px;
+      }
+    }
   </style>
-  <Az400Content client:load />
+
+  <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.sidebar-link, .sidebar-sublink').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Active section tracking with Intersection Observer
+    const sections = document.querySelectorAll('.gcp-section');
+    const navLinks = document.querySelectorAll('.sidebar-link[data-section]');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-100px 0px -66%',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-section') === sectionId || 
+                link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 </BaseLayout>
