@@ -516,91 +516,289 @@ section[id] { scroll-margin-top: 100px; }
   .ws-grid .div2, .ws-grid .div3, .ws-grid .div4, .ws-grid .div5, .ws-grid .div6 { grid-column: auto; grid-row: auto; }
 }
 
-/* DevSecOps grid page (3 cols x 8 rows) */
-.ds-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(8, minmax(180px, auto));
-    gap: 16px;
-    max-width: var(--layout-max);
-    margin: 8px auto;
-    padding: 0 var(--layout-pad);
+/* ===== DEVSECOPS PAGE STYLES ===== */
+.devsecops-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
 }
-.ds-grid .d2 { grid-column: 1 / span 3; grid-row: 1 / span 2; }
-.ds-grid .d3 { grid-column: 1 / span 1; grid-row: 3 / span 2; }
-.ds-grid .d4 { grid-column: 2 / span 1; grid-row: 3 / span 2; }
-.ds-grid .d5 { grid-column: 3 / span 1; grid-row: 3 / span 2; }
-.ds-grid .d6 { grid-column: 2 / span 1; grid-row: 5 / span 2; }
+
+/* Hero Card */
+.ds-hero-card {
+  background: linear-gradient(135deg, rgba(99, 62, 238, 0.08) 0%, rgba(122, 107, 255, 0.05) 100%);
+  border: 1px solid rgba(122, 107, 255, 0.2);
+  border-radius: 24px;
+  padding: 48px 40px;
+  margin-bottom: 48px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 
+              0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ds-hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.ds-hero-title {
+  grid-column: 1 / -1;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #7a6bff;
+  margin: 0 0 24px 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.ds-hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-hero-image img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px;
+  padding: 20px;
+  background: rgba(100, 60, 243, 0.15);
+  box-shadow: 0 8px 32px rgba(99, 62, 238, 0.2);
+}
+
+.ds-hero-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Topics Grid */
+.ds-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Topic Card */
+.ds-topic-card {
+  background: rgba(24, 24, 27, 0.8);
+  border: 1px solid rgba(122, 107, 255, 0.18);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-topic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #7a6bff, #a5b4fc);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ds-topic-card:hover::before {
+  opacity: 1;
+}
+
+.ds-topic-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(122, 107, 255, 0.35);
+  box-shadow: 0 12px 32px rgba(122, 107, 255, 0.2),
+              0 0 0 1px rgba(122, 107, 255, 0.1) inset;
+}
+
+.ds-topic-card.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ds-topic-card.disabled:hover {
+  transform: none;
+  border-color: rgba(122, 107, 255, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Icon */
+.ds-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+}
+
+.ds-card-icon img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.ds-topic-card:hover .ds-card-icon img {
+  transform: scale(1.05);
+}
+
+.ds-card-icon.placeholder {
+  color: rgba(122, 107, 255, 0.3);
+}
+
+.ds-card-icon.placeholder svg {
+  width: 80px;
+  height: 80px;
+}
+
+/* Card Content */
+.ds-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ds-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a5b4fc;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ds-card-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* Card Footer */
+.ds-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid rgba(122, 107, 255, 0.15);
+}
+
+.ds-card-status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ds-card-status.available {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.ds-card-status.coming-soon {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ds-topics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
 
 @media (max-width: 900px) {
-  .ds-grid { grid-template-columns: 1fr; grid-template-rows: none; }
-  .ds-grid .d2, .ds-grid .d3, .ds-grid .d4, .ds-grid .d5, .ds-grid .d6 { grid-column: auto; grid-row: auto; }
+  .devsecops-container {
+    padding: 24px 16px;
+  }
+
+  .ds-hero-card {
+    padding: 32px 24px;
+    margin-bottom: 32px;
+  }
+
+  .ds-hero-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .ds-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .ds-hero-image img {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .ds-hero-description {
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  .ds-topics-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
+@media (max-width: 500px) {
+  .ds-hero-card {
+    padding: 24px 20px;
+  }
 
+  .ds-hero-title {
+    font-size: 1.8rem;
+  }
 
+  .ds-hero-description {
+    font-size: 1rem;
+  }
 
-/* Logo in grid cards: bigger, centered, invisible container (no extra box) */
-.ws-box .ws-logo {
-    width: 140px;
-    height: 140px;
-    object-fit: contain; /* avoid distortion */
-    display: block;
-    margin: 0 auto 12px; /* center within card */
-    border-radius: 16px; /* rounded corners on the image */
-    padding: 0;
-    box-shadow: none;
-}
+  .ds-topic-card {
+    padding: 24px 20px;
+  }
 
-/* AZ-400 card specific tuning: larger logo and spacing */
-.ds-grid .d3.ws-box .ws-logo { width: 240px; height: 240px; margin: 2px auto 20px; border-radius: 20px; }
-.ds-grid .d3.ws-box h3 { margin: 0 0 10px 0; }
-.ds-grid .d3.ws-box p { margin-top: 6px; }
+  .ds-card-title {
+    font-size: 1.3rem;
+  }
 
+  .ds-card-icon {
+    height: 120px;
+  }
 
-/* DevSecOps main card: larger logo */
-.ds-grid .d2.ws-box .ws-logo {
-    /* Purple-filled card around the image, no border */
-    width: 560px;               /* slightly reduced to account for padding */
-    height: 300px;              /* rectangular aspect */
-    padding: 12px;              /* visible purple surround */
-    object-fit: contain;        /* keep logo intact inside rectangle */
-    display: block;
-    margin: 2px 0 2px 0;        /* flush to left padding */
-    border-radius: 36px;        /* rounded corners */
-    background: rgba(100, 60, 243, 0.274);
-    background-clip: padding-box;
-    border: none;
-    box-shadow: 0 8px 22px rgba(99,62,238,0.18), 0 10px 30px rgba(0,0,0,0.28);
-}
-/* Slight spacing tweaks for header card */
-.ds-grid .d2.ws-box h2 { margin: 0 0 0px 0; }
-.ds-grid .d2.ws-box p  { margin-top: 0px; }
+  .ds-card-icon img {
+    width: 100px;
+    height: 100px;
+  }
 
-/* Responsive adjustment: soften size on narrow screens */
-@media (max-width: 900px) {
-  .ds-grid .d2.ws-box .ws-logo { width: 92vw; height: 48vw; max-width: 620px; max-height: 340px; padding: 10px; }
-}
-
-/* DevSecOps header card: image left and paragraph right under the title */
-.ds-grid .d2.ws-box {
-    display: grid;
-    grid-template-columns: minmax(300px, 600px) 1fr; /* ensure column fits image width */
-    grid-auto-rows: auto;
-    column-gap: 32px; /* clearer separation between image and text */
-    row-gap: 10px;
-    align-items: start;
-    /* Match AZ-400 padding and add comfort around edges */
-    padding: 24px;
-}
-.ds-grid .d2.ws-box h2 { grid-column: 1 / -1; }
-.ds-grid .d2.ws-box .ws-logo { grid-column: 1; justify-self: start; margin: 0; }
-.ds-grid .d2.ws-box p { grid-column: 2; color: #ffffff; margin: 0; text-align: left; }
-
-@media (max-width: 900px) {
-  .ds-grid .d2.ws-box { grid-template-columns: 1fr; }
-  .ds-grid .d2.ws-box .ws-logo { grid-column: 1; justify-self: center; margin: 6px auto 10px; }
-  .ds-grid .d2.ws-box p { grid-column: 1; }
+  .ds-card-icon.placeholder svg {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 /* ===== WEB SECURITY PAGE STYLES ===== */
