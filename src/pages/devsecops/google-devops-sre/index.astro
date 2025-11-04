@@ -14,28 +14,61 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       <p class="gcp-subtitle">Fundamentos de infraestructura, seguridad y gestión de costes en GCP</p>
     </div>
 
-    <!-- Content Section -->
-    <div class="gcp-content">
+    <!-- Main Layout with Sidebar -->
+    <div class="gcp-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="gcp-sidebar">
+        <nav class="sidebar-nav">
+          <h3 class="sidebar-title">Navegación</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-section">
+              <a href="#introduccion" class="sidebar-link active" data-section="introduccion">Introducción</a>
+              <ul class="sidebar-submenu">
+                <li><a href="#iaas-paas-saas" class="sidebar-sublink">1. IaaS, PaaS y SaaS</a></li>
+                <li><a href="#red-gcp" class="sidebar-sublink">2. Red de Google Cloud</a></li>
+                <li><a href="#impacto" class="sidebar-sublink">3. Impacto Medioambiental</a></li>
+                <li><a href="#seguridad" class="sidebar-sublink">4. Seguridad por Capas</a></li>
+                <li><a href="#opensource" class="sidebar-sublink">5. Ecosistema Open Source</a></li>
+                <li><a href="#precios" class="sidebar-sublink">6. Precios y Facturación</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Content Section -->
+      <div class="gcp-content" id="introduccion">
       
       <!-- Section 1: IaaS, PaaS, SaaS -->
-      <section class="gcp-section">
-        <h2>1. IaaS, PaaS y SaaS</h2>
+      <section class="gcp-section" id="iaas-paas-saas">
+        <div class="section-header">
+          <h2>1. IaaS, PaaS y SaaS</h2>
+          <a href="#" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
         
         <div class="service-card">
           <h3>IaaS (Infraestructura como Servicio)</h3>
           <ul>
-            <li><strong>¿Qué es?</strong> Proporciona acceso a recursos puros de computación, almacenamiento y red.</li>
-            <li><strong>Modelo de pago:</strong> Los clientes pagan por los recursos que <strong>asignan por adelantado</strong>, independientemente de su uso.</li>
-            <li><strong>Ejemplo:</strong> Máquinas virtuales en Compute Engine.</li>
+            <li><span class="label">¿Qué es?</span> Proporciona acceso a recursos puros de computación, almacenamiento y red.</li>
+            <li><span class="label">Modelo de pago:</span> Los clientes pagan por los recursos que asignan por adelantado, independientemente de su uso.</li>
+            <li><span class="label">Ejemplo:</span> Máquinas virtuales en Compute Engine.</li>
           </ul>
         </div>
 
         <div class="service-card">
           <h3>PaaS (Plataforma como Servicio)</h3>
           <ul>
-            <li><strong>¿Qué es?</strong> Vincula el código a librerías que dan acceso a la infraestructura que la aplicación necesita.</li>
-            <li><strong>Modelo de pago:</strong> Los clientes pagan por los recursos que <strong>realmente utilizan</strong>.</li>
-            <li><strong>Ejemplo:</strong> App Engine.</li>
+            <li><span class="label">¿Qué es?</span> Vincula el código a librerías que dan acceso a la infraestructura que la aplicación necesita.</li>
+            <li><span class="label">Modelo de pago:</span> Los clientes pagan por los recursos que realmente utilizan.</li>
+            <li><span class="label">Ejemplo:</span> App Engine.</li>
           </ul>
         </div>
 
@@ -45,17 +78,17 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             <div class="comparison-item">
               <h4>PaaS</h4>
               <ul>
-                <li><strong>Abstracción:</strong> Te abstrae del SO y hardware, pero gestionas instancias.</li>
-                <li><strong>Escalado:</strong> Necesitas configurar reglas, puede que no escale a cero.</li>
-                <li><strong>Control:</strong> Más control sobre el entorno de ejecución.</li>
+                <li><span class="label">Abstracción:</span> Te abstrae del SO y hardware, pero gestionas instancias.</li>
+                <li><span class="label">Escalado:</span> Necesitas configurar reglas, puede que no escale a cero.</li>
+                <li><span class="label">Control:</span> Más control sobre el entorno de ejecución.</li>
               </ul>
             </div>
             <div class="comparison-item">
               <h4>Serverless</h4>
               <ul>
-                <li><strong>Abstracción:</strong> Completamente sin servidores, solo código o contenedor.</li>
-                <li><strong>Escalado:</strong> Automático desde cero hasta miles de peticiones.</li>
-                <li><strong>Pago:</strong> Solo pagas por ejecución. Sin ejecución = $0.</li>
+                <li><span class="label">Abstracción:</span> Completamente sin servidores, solo código o contenedor.</li>
+                <li><span class="label">Escalado:</span> Automático desde cero hasta miles de peticiones.</li>
+                <li><span class="label">Pago:</span> Solo pagas por ejecución. Sin ejecución = $0.</li>
               </ul>
             </div>
           </div>
@@ -64,28 +97,39 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <div class="service-card">
           <h3>SaaS (Software como Servicio)</h3>
           <ul>
-            <li><strong>¿Qué es?</strong> Aplicación completa en la nube para usuarios finales.</li>
-            <li><strong>Ejemplo:</strong> Gmail, Google Docs, Google Drive.</li>
+            <li><span class="label">¿Qué es?</span> Aplicación completa en la nube para usuarios finales.</li>
+            <li><span class="label">Ejemplo:</span> Gmail, Google Docs, Google Drive.</li>
           </ul>
         </div>
       </section>
 
       <!-- Section 2: Red de Google Cloud -->
-      <section class="gcp-section">
-        <h2>2. Red de Google Cloud</h2>
+      <section class="gcp-section" id="red-gcp">
+        <div class="section-header">
+          <h2>2. Red de Google Cloud</h2>
+          <a href="#" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
         <p class="section-intro">
-          La red global de Google está diseñada para ofrecer el <strong>máximo rendimiento y menor latencia</strong> 
+          La red global de Google está diseñada para ofrecer el máximo rendimiento y menor latencia 
           utilizando más de 100 nodos de caché de contenido en todo el mundo.
         </p>
 
         <div class="concept-card">
           <h3>Regiones y Zonas</h3>
           <ul>
-            <li><strong>Región:</strong> Un área geográfica independiente.</li>
-            <li><strong>Zona:</strong> Un área de despliegue de recursos <strong>dentro de una región</strong>. Las zonas están aisladas entre sí para proteger contra fallos.</li>
+            <li><span class="label">Región:</span> Un área geográfica independiente.</li>
+            <li><span class="label">Zona:</span> Un área de despliegue de recursos dentro de una región. Las zonas están aisladas entre sí para proteger contra fallos.</li>
           </ul>
           <div class="example-box">
-            <strong>Ejemplo:</strong> La región de Londres (<code>europe-west2</code>) se compone de tres zonas: 
+            <span class="label">Ejemplo:</span> La región de Londres (<code>europe-west2</code>) se compone de tres zonas: 
             <code>europe-west2-a</code>, <code>europe-west2-b</code> y <code>europe-west2-c</code>.
           </div>
           <p class="highlight-text">
@@ -96,26 +140,52 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <div class="concept-card">
           <h3>Recursos Multi-región</h3>
           <p>
-            Algunos servicios, como <strong>Spanner</strong>, permiten replicar datos en múltiples regiones, 
+            Algunos servicios, como <span class="label">Spanner</span>, permiten replicar datos en múltiples regiones, 
             ofreciendo resiliencia y disponibilidad globales.
           </p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/Spanner.png" alt="Google Cloud Spanner - Replicación Multi-región" loading="lazy">
+            <p class="image-caption">Arquitectura de replicación de Spanner en múltiples regiones</p>
+          </div>
         </div>
       </section>
 
       <!-- Section 3: Impacto Medioambiental -->
-      <section class="gcp-section">
-        <h2>3. Impacto Medioambiental</h2>
+      <section class="gcp-section" id="impacto">
+        <div class="section-header">
+          <h2>3. Impacto Medioambiental</h2>
+          <a href="#" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
         <div class="info-card">
           <p>
-            Los centros de datos consumen aproximadamente el <strong>2% de la electricidad mundial</strong>. 
+            Los centros de datos consumen aproximadamente el <span class="label">2% de la electricidad mundial</span>. 
             Google se enfoca en la eficiencia energética y la sostenibilidad para minimizar este impacto.
           </p>
         </div>
       </section>
 
       <!-- Section 4: Seguridad por Capas -->
-      <section class="gcp-section">
-        <h2>4. Seguridad por Capas</h2>
+      <section class="gcp-section" id="seguridad">
+        <div class="section-header">
+          <h2>4. Seguridad por Capas</h2>
+          <a href="#" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
         <p class="section-intro">
           La infraestructura de seguridad de Google se organiza en capas progresivas:
         </p>
@@ -123,38 +193,42 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <div class="security-layer">
           <h3>1. Capa de Infraestructura de Hardware</h3>
           <ul>
-            <li><strong>Diseño personalizado:</strong> Google diseña su propio hardware (chip Titan).</li>
-            <li><strong>Secure Boot Stack:</strong> Firmas criptográficas en BIOS, bootloader, kernel.</li>
-            <li><strong>Seguridad física:</strong> Centros de datos con múltiples capas de protección.</li>
+            <li><span class="label">Diseño personalizado:</span> Google diseña su propio hardware (chip Titan).</li>
+            <li><span class="label">Secure Boot Stack:</span> Firmas criptográficas en BIOS, bootloader, kernel.</li>
+            <li><span class="label">Seguridad física:</span> Centros de datos con múltiples capas de protección.</li>
           </ul>
         </div>
 
         <div class="security-layer">
           <h3>2. Capa de Despliegue de Servicios</h3>
           <ul>
-            <li><strong>Cifrado en Tránsito:</strong> Las llamadas RPC se cifran automáticamente.</li>
+            <li><span class="label">Cifrado en Tránsito:</span> Las llamadas RPC se cifran automáticamente.</li>
           </ul>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/RPC.png" alt="RPC Encryption - Cifrado en tránsito" loading="lazy">
+            <p class="image-caption">Comunicación cifrada entre servicios mediante RPC</p>
+          </div>
         </div>
 
         <div class="security-layer">
           <h3>3. Capa de Identidad de Usuario</h3>
           <ul>
-            <li><strong>Servicio Central de Identidad:</strong> Gestiona autenticación con 2FA/U2F.</li>
-            <li><strong>Análisis de contexto:</strong> Dispositivo, ubicación, etc.</li>
+            <li><span class="label">Servicio Central de Identidad:</span> Gestiona autenticación con 2FA/U2F.</li>
+            <li><span class="label">Análisis de contexto:</span> Dispositivo, ubicación, etc.</li>
           </ul>
         </div>
 
         <div class="security-layer">
           <h3>4. Capa de Servicios de Almacenamiento</h3>
           <ul>
-            <li><strong>Cifrado en Reposo:</strong> Todos los datos se cifran por defecto (hardware).</li>
+            <li><span class="label">Cifrado en Reposo:</span> Todos los datos se cifran por defecto (hardware).</li>
           </ul>
         </div>
 
         <div class="security-layer">
           <h3>5. Capa de Comunicación por Internet</h3>
           <ul>
-            <li><strong>Google Front End (GFE):</strong> Gestiona tráfico entrante.</li>
+            <li><span class="label">Google Front End (GFE):</span> Gestiona tráfico entrante.</li>
             <li>Termina conexiones TLS, implementa Perfect Forward Secrecy.</li>
             <li>Protección contra ataques DoS.</li>
           </ul>
@@ -163,56 +237,81 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <div class="security-layer">
           <h3>6. Capa de Seguridad Operacional</h3>
           <ul>
-            <li><strong>Detección de Intrusiones:</strong> Reglas y ML para alertas.</li>
-            <li><strong>Reducción de riesgo interno:</strong> Monitorización de acceso administrativo.</li>
-            <li><strong>U2F para empleados:</strong> Llaves de seguridad contra phishing.</li>
-            <li><strong>Desarrollo seguro:</strong> Revisión de código, bug bounty.</li>
+            <li><span class="label">Detección de Intrusiones:</span> Reglas y ML para alertas.</li>
+            <li><span class="label">Reducción de riesgo interno:</span> Monitorización de acceso administrativo.</li>
+            <li><span class="label">U2F para empleados:</span> Llaves de seguridad contra phishing.</li>
+            <li><span class="label">Desarrollo seguro:</span> Revisión de código, bug bounty.</li>
           </ul>
         </div>
       </section>
 
       <!-- Section 5: Ecosistema Open Source -->
-      <section class="gcp-section">
-        <h2>5. Ecosistema Open Source</h2>
+      <section class="gcp-section" id="opensource">
+        <div class="section-header">
+          <h2>5. Ecosistema Open Source</h2>
+          <a href="#" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
         <p class="section-intro">
           Para evitar el "vendor lock-in", Google Cloud se apoya en código abierto:
         </p>
         <div class="opensource-grid">
-          <div class="opensource-item">
+          <a href="https://www.tensorflow.org/" class="opensource-item clickable" target="_blank" rel="noopener noreferrer">
             <h4>TensorFlow</h4>
             <p>Librería open source para Machine Learning.</p>
-          </div>
-          <div class="opensource-item">
+            <span class="external-icon">↗</span>
+          </a>
+          <a href="https://kubernetes.io/" class="opensource-item clickable" target="_blank" rel="noopener noreferrer">
             <h4>Kubernetes (GKE)</h4>
             <p>Orquestación de microservicios entre nubes.</p>
-          </div>
-          <div class="opensource-item">
+            <span class="external-icon">↗</span>
+          </a>
+          <a href="https://cloud.google.com/products/operations" class="opensource-item clickable" target="_blank" rel="noopener noreferrer">
             <h4>Google Cloud Observability</h4>
             <p>Monitorización multi-cloud.</p>
-          </div>
+            <span class="external-icon">↗</span>
+          </a>
         </div>
       </section>
 
       <!-- Section 6: Precios y Facturación -->
-      <section class="gcp-section">
-        <h2>6. Precios y Facturación</h2>
+      <section class="gcp-section" id="precios">
+        <div class="section-header">
+          <h2>6. Precios y Facturación</h2>
+          <a href="#" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
 
         <div class="pricing-card">
           <h3>Modelos de Precios Clave</h3>
           <ul>
-            <li><strong>Facturación por segundo:</strong> Compute Engine, GKE, Dataproc, App Engine Flexible.</li>
-            <li><strong>Descuentos por uso continuo:</strong> Descuentos automáticos al ejecutar VMs más del 25% del mes.</li>
-            <li><strong>Tipos de máquinas personalizadas:</strong> Ajuste preciso de vCPU y memoria para optimizar costes.</li>
+            <li><span class="label">Facturación por segundo:</span> Compute Engine, GKE, Dataproc, App Engine Flexible.</li>
+            <li><span class="label">Descuentos por uso continuo:</span> Descuentos automáticos al ejecutar VMs más del 25% del mes.</li>
+            <li><span class="label">Tipos de máquinas personalizadas:</span> Ajuste preciso de vCPU y memoria para optimizar costes.</li>
           </ul>
         </div>
 
         <div class="pricing-card">
           <h3>Herramientas de Control de Costes</h3>
           <ul>
-            <li><strong>Presupuestos (Budgets):</strong> Límites fijos o porcentajes del mes anterior.</li>
-            <li><strong>Alertas (Alerts):</strong> Notificaciones en 50%, 90%, 100% del presupuesto.</li>
-            <li><strong>Informes (Reports):</strong> Visualización de gastos por proyecto/servicio.</li>
-            <li><strong>Calculadora online:</strong> Estimación de costes.</li>
+            <li><span class="label">Presupuestos (Budgets):</span> Límites fijos o porcentajes del mes anterior.</li>
+            <li><span class="label">Alertas (Alerts):</span> Notificaciones en 50%, 90%, 100% del presupuesto.</li>
+            <li><span class="label">Informes (Reports):</span> Visualización de gastos por proyecto/servicio.</li>
+            <li><span class="label">Calculadora online:</span> Estimación de costes.</li>
           </ul>
         </div>
 
@@ -220,12 +319,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
           <h3>Cuotas (Quotas)</h3>
           <p>Previenen el consumo excesivo de recursos. Se aplican a nivel de proyecto:</p>
           <ul>
-            <li><strong>Cuotas de Tasa (Rate Quotas):</strong> Limitan acciones por tiempo (ej. 3.000 llamadas API/100s).</li>
-            <li><strong>Cuotas de Asignación (Allocation Quotas):</strong> Limitan recursos totales (ej. 15 VPCs por proyecto).</li>
+            <li><span class="label">Cuotas de Tasa (Rate Quotas):</span> Limitan acciones por tiempo (ej. 3.000 llamadas API/100s).</li>
+            <li><span class="label">Cuotas de Asignación (Allocation Quotas):</span> Limitan recursos totales (ej. 15 VPCs por proyecto).</li>
           </ul>
         </div>
       </section>
 
+      </div>
     </div>
 
     <!-- Quiz Section -->
@@ -486,7 +586,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
   <style>
     .gcp-container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 40px 24px;
     }
@@ -531,6 +631,94 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       margin: 0;
     }
 
+    /* Layout with Sidebar */
+    .gcp-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Sidebar Navigation */
+    .gcp-sidebar {
+      position: sticky;
+      top: 80px;
+      background: rgba(24, 24, 27, 0.8);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 1.2rem;
+      color: #7a6bff;
+      margin: 0 0 16px 0;
+      font-weight: 700;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sidebar-section {
+      margin-bottom: 8px;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 10px 12px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-link:hover {
+      background: rgba(122, 107, 255, 0.1);
+      color: #a5b4fc;
+    }
+
+    .sidebar-link.active {
+      background: rgba(122, 107, 255, 0.2);
+      color: #7a6bff;
+    }
+
+    .sidebar-submenu {
+      list-style: none;
+      margin: 8px 0 0 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .sidebar-section:hover .sidebar-submenu {
+      max-height: 500px;
+    }
+
+    .sidebar-sublink {
+      display: block;
+      padding: 8px 12px 8px 24px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-sublink:hover {
+      background: rgba(122, 107, 255, 0.08);
+      color: #a5b4fc;
+      padding-left: 28px;
+    }
+
     .gcp-content {
       display: flex;
       flex-direction: column;
@@ -543,14 +731,48 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       border-radius: 16px;
       padding: 32px 28px;
       backdrop-filter: blur(6px);
+      scroll-margin-top: 80px;
     }
 
-    .gcp-section h2 {
-      font-size: 1.8rem;
-      color: #7a6bff;
-      margin: 0 0 24px 0;
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
       border-bottom: 2px solid rgba(122, 107, 255, 0.3);
       padding-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: 1.8rem;
+      color: #7a6bff;
+      margin: 0;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      color: #a5b4fc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .doc-link:hover {
+      background: rgba(122, 107, 255, 0.2);
+      border-color: rgba(122, 107, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 107, 255, 0.3);
+    }
+
+    .doc-link svg {
+      width: 20px;
+      height: 20px;
     }
 
     .section-intro {
@@ -558,6 +780,12 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       line-height: 1.7;
       color: rgba(255, 255, 255, 0.85);
       margin-bottom: 24px;
+    }
+
+    /* Better Text Readability */
+    .label {
+      color: #a5b4fc;
+      font-weight: 600;
     }
 
     .service-card, .concept-card, .info-card, .security-layer, .pricing-card {
@@ -581,9 +809,34 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
     .service-card li, .concept-card li, .security-layer li, .pricing-card li {
       font-size: 1.05rem;
-      line-height: 1.7;
+      line-height: 1.8;
       color: rgba(255, 255, 255, 0.85);
-      margin: 8px 0;
+      margin: 10px 0;
+    }
+
+    /* Image Containers */
+    .image-container {
+      margin: 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-caption {
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      text-align: center;
+      background: rgba(122, 107, 255, 0.05);
+      margin: 0;
     }
 
     .comparison-card {
@@ -660,6 +913,21 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       border-radius: 10px;
       padding: 20px;
       text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .opensource-item.clickable {
+      cursor: pointer;
+    }
+
+    .opensource-item.clickable:hover {
+      background: rgba(34, 197, 94, 0.15);
+      border-color: rgba(34, 197, 94, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
     }
 
     .opensource-item h4 {
@@ -672,6 +940,20 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       font-size: 0.95rem;
       color: rgba(255, 255, 255, 0.75);
       margin: 0;
+    }
+
+    .external-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 1.2rem;
+      color: #22c55e;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .opensource-item.clickable:hover .external-icon {
+      opacity: 1;
     }
 
     /* Quiz Styles */
@@ -821,6 +1103,22 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       box-shadow: 0 4px 12px rgba(122, 107, 255, 0.4);
     }
 
+    @media (max-width: 1024px) {
+      .gcp-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .gcp-sidebar {
+        position: relative;
+        top: 0;
+        max-height: none;
+      }
+
+      .sidebar-submenu {
+        max-height: 500px;
+      }
+    }
+
     @media (max-width: 768px) {
       .gcp-container {
         padding: 24px 16px;
@@ -838,6 +1136,16 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         padding: 24px 20px;
       }
 
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+      }
+
       .comparison-grid {
         grid-template-columns: 1fr;
       }
@@ -849,10 +1157,58 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       .quiz-title {
         font-size: 1.6rem;
       }
+
+      .opensource-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 
   <script>
+    // Sidebar navigation - smooth scrolling and active state
+    document.querySelectorAll('.sidebar-link, .sidebar-sublink').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Update active state
+            document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+            if (this.classList.contains('sidebar-link')) {
+              this.classList.add('active');
+            }
+          }
+        }
+      });
+    });
+
+    // Intersection Observer for active section tracking
+    const sections = document.querySelectorAll('.gcp-section');
+    const navLinks = document.querySelectorAll('.sidebar-sublink');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.style.color = '#a5b4fc';
+              link.style.fontWeight = '600';
+            } else {
+              link.style.color = 'rgba(255, 255, 255, 0.6)';
+              link.style.fontWeight = '400';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+
     // Quiz functionality
     const quizQuestions = document.querySelectorAll('.quiz-question');
     const quizResults = document.querySelector('.quiz-results');
