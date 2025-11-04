@@ -180,24 +180,47 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <span class="section-icon">🧪</span>
           Laboratorios Prácticos
         </h2>
+
+        <!-- Filters -->
+        <div class="labs-filters">
+          <div class="filter-group">
+            <label class="filter-label">Dificultad:</label>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter-type="difficulty" data-filter-value="all">Todas</button>
+              <button class="filter-btn" data-filter-type="difficulty" data-filter-value="easy">Fácil</button>
+              <button class="filter-btn" data-filter-type="difficulty" data-filter-value="medium">Medio</button>
+              <button class="filter-btn" data-filter-type="difficulty" data-filter-value="hard">Difícil</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Plataforma:</label>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter-type="platform" data-filter-value="all">Todas</button>
+              <button class="filter-btn" data-filter-type="platform" data-filter-value="portswigger">PortSwigger</button>
+              <button class="filter-btn" data-filter-type="platform" data-filter-value="hackthebox">HackTheBox</button>
+            </div>
+          </div>
+        </div>
         
         <div class="labs-grid">
-          <a href="/WebSecurity/xss/PortSwigger/Lab1.html" class="lab-card">
+          <a href="/WebSecurity/xss/PortSwigger/Lab1.html" class="lab-card" data-difficulty="easy" data-platform="portswigger">
             <div class="lab-number">Lab 01</div>
             <h3>Reflected XSS Básico</h3>
             <p>Aprende a identificar y explotar Reflected XSS</p>
             <div class="lab-meta">
               <span class="lab-difficulty easy">Fácil</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
               <span class="lab-time">⏱️ 20 min</span>
             </div>
           </a>
 
-          <a href="/WebSecurity/xss/PortSwigger/Lab2.html" class="lab-card">
+          <a href="/WebSecurity/xss/PortSwigger/Lab2.html" class="lab-card" data-difficulty="easy" data-platform="portswigger">
             <div class="lab-number">Lab 02</div>
             <h3>Stored XSS</h3>
             <p>Explota XSS persistente en comentarios</p>
             <div class="lab-meta">
               <span class="lab-difficulty easy">Fácil</span>
+              <span class="lab-platform portswigger">PortSwigger</span>
               <span class="lab-time">⏱️ 25 min</span>
             </div>
           </a>
@@ -314,4 +337,51 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       </a>
     </div>
   </div>
+
+  <script>
+    // Lab filtering system
+    document.addEventListener('DOMContentLoaded', () => {
+      const filters = {
+        difficulty: 'all',
+        platform: 'all'
+      };
+
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const labCards = document.querySelectorAll('.lab-card');
+
+      function applyFilters() {
+        labCards.forEach(card => {
+          const cardDifficulty = card.getAttribute('data-difficulty');
+          const cardPlatform = card.getAttribute('data-platform');
+          
+          const matchesDifficulty = filters.difficulty === 'all' || cardDifficulty === filters.difficulty;
+          const matchesPlatform = filters.platform === 'all' || cardPlatform === filters.platform;
+          
+          if (matchesDifficulty && matchesPlatform) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filterType = button.getAttribute('data-filter-type');
+          const filterValue = button.getAttribute('data-filter-value');
+          
+          // Update filter state
+          filters[filterType] = filterValue;
+          
+          // Update active button in this group
+          const groupButtons = document.querySelectorAll(`[data-filter-type="${filterType}"]`);
+          groupButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // Apply filters
+          applyFilters();
+        });
+      });
+    });
+  </script>
 </BaseLayout>
