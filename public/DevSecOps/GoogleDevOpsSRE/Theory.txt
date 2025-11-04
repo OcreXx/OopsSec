@@ -1,0 +1,139 @@
+# Apuntes: DevOps Engineer SRE - Google Cloud
+## Course Introduction
+
+----
+
+## 1. IaaS, PaaS y SaaS
+
+### IaaS (Infraestructura como Servicio)
+- **¿Qué es?**: Proporciona acceso a recursos puros de computación, almacenamiento y red.
+- **Modelo de pago**: Los clientes pagan por los recursos que **asignan por adelantado**, independientemente de su uso.
+- **Ejemplo**: Máquinas virtuales en Compute Engine.
+
+### PaaS (Plataforma como Servicio)
+- **¿Qué es?**: Vincula el código a librerías que dan acceso a la infraestructura que la aplicación necesita. Permite centrarse más en la lógica de la aplicación.
+- **Modelo de pago**: Los clientes pagan por los recursos que **realmente utilizan**.
+- **Ejemplo**: App Engine.
+
+### Diferencia entre PaaS y Serverless
+Aunque relacionados, representan distintos niveles de abstracción:
+
+- **PaaS (Plataforma como Servicio)**:
+    - **Abstracción**: Te abstrae del sistema operativo y el hardware, pero sigues gestionando *instancias* o *aplicaciones* que están corriendo continuamente.
+    - **Escalado**: Escala bien, pero a menudo necesitas configurar reglas de autoescalado y puede que no escale a cero (sigues pagando por una instancia mínima).
+    - **Control**: Tienes más control sobre el entorno de ejecución.
+    - **Ejemplo**: Desplegar una aplicación completa en App Engine.
+
+- **Serverless (Computación sin servidor)**:
+    - **Abstracción**: Es el siguiente nivel. Te abstraes completamente de los servidores. Solo te preocupas por el código (funciones) o el contenedor.
+    - **Escalado**: Escala automáticamente desde cero hasta miles de peticiones, y vuelve a cero. Es ideal para cargas de trabajo impredecibles.
+    - **Control**: Menos control sobre el entorno, ya que es totalmente gestionado.
+    - **Modelo de pago**: **Pago por ejecución**. Si tu código no se ejecuta, no pagas nada.
+    - **Ejemplo**: Cloud Functions (código basado en eventos) o Cloud Run (contenedores).
+
+### SaaS (Software como Servicio)
+- **¿Qué es?**: Proporciona una aplicación completa basada en la nube que los usuarios finales consumen directamente a través de internet.
+- **Ejemplo**: Gmail, Google Docs, Google Drive.
+
+---
+
+## 2. Red de Google Cloud
+
+La red global de Google está diseñada para ofrecer el **máximo rendimiento y la menor latencia posible** utilizando más de 100 nodos de caché de contenido en todo el mundo.
+
+### Regiones y Zonas
+- **Región**: Un área geográfica independiente.
+- **Zona**: Un área de despliegue de recursos **dentro de una región**. Las zonas están aisladas entre sí para proteger contra fallos.
+
+> **Ejemplo**: La región de Londres (`europe-west2`) se compone de tres zonas: `europe-west2-a`, `europe-west2-b` y `europe-west2-c`.
+
+Desplegar recursos en múltiples zonas o regiones aumenta la disponibilidad y protege contra desastres.
+
+### Recursos Multi-región
+Algunos servicios, como **Spanner**, permiten replicar datos no solo en múltiples zonas, sino en múltiples regiones, ofreciendo una resiliencia y disponibilidad globales.
+
+---
+
+## 3. Impacto Medioambiental
+
+Los centros de datos consumen aproximadamente el **2% de la electricidad mundial**. Google se enfoca en la eficiencia energética y la sostenibilidad para minimizar este impacto.
+
+---
+
+## 4. Seguridad por Capas
+
+La infraestructura de seguridad de Google se organiza en capas progresivas:
+
+### 1. Capa de Infraestructura de Hardware
+- **Diseño y Procedencia del Hardware**: Google diseña su propio hardware, incluyendo servidores, equipos de red y chips de seguridad personalizados (como el chip Titan).
+- **Arranque Seguro (Secure Boot Stack)**: Se utilizan firmas criptográficas en BIOS, bootloader, kernel y el sistema operativo base para asegurar que solo se ejecuta software verificado.
+- **Seguridad Física de las Instalaciones**: Google diseña y construye sus propios centros de datos con múltiples capas de protección física.
+
+### 2. Capa de Despliegue de Servicios
+- **Cifrado en Tránsito**: La comunicación entre servicios (llamadas RPC) se cifra automáticamente para garantizar la privacidad e integridad de los datos en la red, especialmente cuando viajan entre centros de datos.
+
+### 3. Capa de Identidad de Usuario
+- **Servicio Central de Identidad**: Gestiona la autenticación de los usuarios y empleados, aplicando medidas como el **segundo factor de autenticación (2FA/U2F)** y analizando el contexto del inicio de sesión (dispositivo, ubicación, etc.).
+
+### 4. Capa de Servicios de Almacenamiento
+- **Cifrado en Reposo (Encryption at Rest)**: Todos los datos almacenados en los servicios de Google se cifran por defecto. Se utiliza cifrado por hardware en los discos duros y SSDs para un rendimiento óptimo.
+
+### 5. Capa de Comunicación por Internet
+- **Google Front End (GFE)**: Es el servicio que gestiona todo el tráfico entrante desde internet.
+    - Termina las conexiones **TLS** de forma segura.
+    - Utiliza certificados de autoridades certificadoras (CA).
+    - Implementa **Perfect Forward Secrecy**.
+    - Aplica protecciones contra ataques de **Denegación de Servicio (DoS)**.
+
+### 6. Capa de Seguridad Operacional
+- **Detección de Intrusiones**: Se utilizan reglas y machine learning para alertar a los equipos de seguridad sobre posibles incidentes.
+- **Reducción del Riesgo Interno (Insider Risk)**: Se limita y monitoriza activamente el acceso administrativo de los empleados a la infraestructura.
+- **Uso de U2F para Empleados**: Para proteger contra ataques de phishing, las cuentas de los empleados requieren el uso de llaves de seguridad compatibles con U2F.
+- **Prácticas de Desarrollo de Software Seguras**:
+    - Revisión de código por dos personas.
+    - Librerías internas para prevenir vulnerabilidades comunes.
+    - Programa de recompensas por bugs (Bug Bounty).
+
+---
+
+## 5. Ecosistema Open Source
+
+Para evitar el "vendor lock-in" (dependencia de un solo proveedor), Google Cloud se apoya fuertemente en el ecosistema de código abierto, permitiendo a los clientes migrar sus aplicaciones si lo necesitan.
+
+- **TensorFlow**: Librería de software open source para Machine Learning desarrollada por Google.
+- **Kubernetes (GKE)**: Permite orquestar microservicios y distribuirlos entre diferentes nubes.
+- **Google Cloud Observability**: Permite monitorizar cargas de trabajo que se ejecutan en múltiples proveedores de nube.
+
+---
+
+## 6. Precios y Facturación (Pricing and Billing)
+
+### Modelos de Precios Clave
+- **Facturación por segundo**: Google fue pionero en este modelo para sus servicios IaaS. Se aplica a:
+    - Compute Engine (IaaS)
+    - Google Kubernetes Engine (GKE)
+    - Dataproc (Big Data)
+    - App Engine Flexible Environment (PaaS)
+- **Descuentos por uso continuo (Sustained-use discounts)**: Descuentos automáticos que se aplican al ejecutar una VM durante más del 25% del mes. A más uso, mayor descuento.
+- **Tipos de máquinas personalizadas (Custom VM types)**: Permite ajustar con precisión la vCPU y la memoria de una VM para optimizar el coste según la necesidad de la aplicación.
+
+### Herramientas de Control de Costes
+- **Presupuestos (Budgets)**:
+    - Se pueden definir a nivel de cuenta de facturación o por proyecto.
+    - Pueden ser un límite fijo o un porcentaje del gasto del mes anterior.
+- **Alertas (Alerts)**:
+    - Notifican cuando el gasto se acerca al límite del presupuesto.
+    - Se pueden configurar en porcentajes (ej. 50%, 90%, 100%) o valores personalizados.
+- **Informes (Reports)**: Herramienta visual en la consola para monitorizar gastos por proyecto o servicio.
+- **Calculadora de precios online**: Para estimar costes.
+
+### Cuotas (Quotas)
+Las cuotas están diseñadas para prevenir el consumo excesivo de recursos (por error o ataque), protegiendo tanto al cliente como a la comunidad de Google Cloud. Se aplican a nivel de proyecto.
+
+- **Cuotas de Tasa (Rate Quotas)**:
+    - Limitan la cantidad de acciones en un período de tiempo.
+    - **Ejemplo**: 3.000 llamadas a la API de GKE cada 100 segundos. Se resetea pasado el tiempo.
+- **Cuotas de Asignación (Allocation Quotas)**:
+    - Limitan el número total de recursos que puedes tener.
+    - **Ejemplo**: Un máximo de 15 redes VPC por proyecto.
+- **Aumento de Cuotas**: Se puede solicitar un aumento a través del soporte de Google Cloud.
