@@ -1,0 +1,1327 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Google DevOps-SRE — Introducción a GCP">
+  <div class="gcp-container">
+    <!-- Navigation Back -->
+    <div class="navigation-back">
+      <a href="/devsecops/">← Volver a DevSecOps</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="gcp-hero">
+      <h1 class="gcp-title">Google Cloud Platform - DevOps/SRE</h1>
+      <p class="gcp-subtitle">Fundamentos de infraestructura, seguridad y gestión de costes en GCP</p>
+    </div>
+
+    <!-- Main Layout with Sidebar -->
+    <div class="gcp-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="gcp-sidebar">
+        <nav class="sidebar-nav">
+          <h3 class="sidebar-title">Navegación</h3>
+          <ul class="sidebar-menu">
+            <li class="sidebar-section">
+              <a href="#introduccion" class="sidebar-link active" data-section="introduccion">Introducción</a>
+              <ul class="sidebar-submenu">
+                <li><a href="#iaas-paas-saas" class="sidebar-sublink">1. IaaS, PaaS y SaaS</a></li>
+                <li><a href="#red-gcp" class="sidebar-sublink">2. Red de Google Cloud</a></li>
+                <li><a href="#impacto" class="sidebar-sublink">3. Impacto Medioambiental</a></li>
+                <li><a href="#seguridad" class="sidebar-sublink">4. Seguridad por Capas</a></li>
+                <li><a href="#opensource" class="sidebar-sublink">5. Ecosistema Open Source</a></li>
+                <li><a href="#precios" class="sidebar-sublink">6. Precios y Facturación</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Content Section -->
+      <div class="gcp-content" id="introduccion">
+      
+      <!-- Section 1: IaaS, PaaS, SaaS -->
+      <section class="gcp-section" id="iaas-paas-saas">
+        <div class="section-header">
+          <h2>1. IaaS, PaaS y SaaS</h2>
+          <a href="https://cloud.google.com/learn/paas-vs-iaas-vs-saas" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="service-card">
+          <h3>IaaS (Infraestructura como Servicio)</h3>
+          <ul>
+            <li><span class="label">¿Qué es?</span> Proporciona acceso a recursos puros de computación, almacenamiento y red.</li>
+            <li><span class="label">Modelo de pago:</span> Los clientes pagan por los recursos que asignan por adelantado, independientemente de su uso.</li>
+            <li><span class="label">Ejemplo:</span> Máquinas virtuales en Compute Engine.</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>PaaS (Plataforma como Servicio)</h3>
+          <ul>
+            <li><span class="label">¿Qué es?</span> Vincula el código a librerías que dan acceso a la infraestructura que la aplicación necesita.</li>
+            <li><span class="label">Modelo de pago:</span> Los clientes pagan por los recursos que realmente utilizan.</li>
+            <li><span class="label">Ejemplo:</span> App Engine.</li>
+          </ul>
+        </div>
+
+        <div class="comparison-card">
+          <h3>Diferencia entre PaaS y Serverless</h3>
+          <div class="comparison-grid">
+            <div class="comparison-item">
+              <h4>PaaS</h4>
+              <ul>
+                <li><span class="label">Abstracción:</span> Te abstrae del SO y hardware, pero gestionas instancias.</li>
+                <li><span class="label">Escalado:</span> Necesitas configurar reglas, puede que no escale a cero.</li>
+                <li><span class="label">Control:</span> Más control sobre el entorno de ejecución.</li>
+              </ul>
+            </div>
+            <div class="comparison-item">
+              <h4>Serverless</h4>
+              <ul>
+                <li><span class="label">Abstracción:</span> Completamente sin servidores, solo código o contenedor.</li>
+                <li><span class="label">Escalado:</span> Automático desde cero hasta miles de peticiones.</li>
+                <li><span class="label">Pago:</span> Solo pagas por ejecución. Sin ejecución = $0.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3>SaaS (Software como Servicio)</h3>
+          <ul>
+            <li><span class="label">¿Qué es?</span> Aplicación completa en la nube para usuarios finales.</li>
+            <li><span class="label">Ejemplo:</span> Gmail, Google Docs, Google Drive.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Red de Google Cloud -->
+      <section class="gcp-section" id="red-gcp">
+        <div class="section-header">
+          <h2>2. Red de Google Cloud</h2>
+          <a href="https://cloud.google.com/about/locations" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
+        <p class="section-intro">
+          La red global de Google está diseñada para ofrecer el máximo rendimiento y menor latencia 
+          utilizando más de 100 nodos de caché de contenido en todo el mundo.
+        </p>
+
+        <div class="concept-card">
+          <h3>Regiones y Zonas</h3>
+          <ul>
+            <li><span class="label">Región:</span> Un área geográfica independiente.</li>
+            <li><span class="label">Zona:</span> Un área de despliegue de recursos dentro de una región. Las zonas están aisladas entre sí para proteger contra fallos.</li>
+          </ul>
+          <div class="example-box">
+            <span class="label">Ejemplo:</span> La región de Londres (<code>europe-west2</code>) se compone de tres zonas: 
+            <code>europe-west2-a</code>, <code>europe-west2-b</code> y <code>europe-west2-c</code>.
+          </div>
+          <p class="highlight-text">
+            ⚠️ Desplegar recursos en múltiples zonas o regiones aumenta la disponibilidad y protege contra desastres.
+          </p>
+        </div>
+
+        <div class="concept-card">
+          <h3>Recursos Multi-región</h3>
+          <p>
+            Algunos servicios, como <span class="label">Spanner</span>, permiten replicar datos en múltiples regiones, 
+            ofreciendo resiliencia y disponibilidad globales.
+          </p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/Spanner.png" alt="Google Cloud Spanner - Replicación Multi-región" loading="lazy">
+            <p class="image-caption">Arquitectura de replicación de Spanner en múltiples regiones</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Impacto Medioambiental -->
+      <section class="gcp-section" id="impacto">
+        <div class="section-header">
+          <h2>3. Impacto Medioambiental</h2>
+          <a href="https://cloud.google.com/sustainability?hl=es" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
+        <div class="info-card">
+          <p>
+            Los centros de datos consumen aproximadamente el <span class="label">2% de la electricidad mundial</span>. 
+            Google se enfoca en la eficiencia energética y la sostenibilidad para minimizar este impacto.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4: Seguridad por Capas -->
+      <section class="gcp-section" id="seguridad">
+        <div class="section-header">
+          <h2>4. Seguridad por Capas</h2>
+          <a href="https://cloud.google.com/docs/security/infrastructure/design" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
+        <p class="section-intro">
+          La infraestructura de seguridad de Google se organiza en capas progresivas:
+        </p>
+
+        <div class="security-layer">
+          <h3>1. Capa de Infraestructura de Hardware</h3>
+          <ul>
+            <li><span class="label">Diseño personalizado:</span> Google diseña su propio hardware (chip Titan).</li>
+            <li><span class="label">Secure Boot Stack:</span> Firmas criptográficas en BIOS, bootloader, kernel.</li>
+            <li><span class="label">Seguridad física:</span> Centros de datos con múltiples capas de protección.</li>
+          </ul>
+        </div>
+
+        <div class="security-layer">
+          <h3>2. Capa de Despliegue de Servicios</h3>
+          <ul>
+            <li><span class="label">Cifrado en Tránsito:</span> Las llamadas RPC se cifran automáticamente.</li>
+          </ul>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/RPC.png" alt="RPC Encryption - Cifrado en tránsito" loading="lazy">
+            <p class="image-caption">Comunicación cifrada entre servicios mediante RPC</p>
+          </div>
+        </div>
+
+        <div class="security-layer">
+          <h3>3. Capa de Identidad de Usuario</h3>
+          <ul>
+            <li><span class="label">Servicio Central de Identidad:</span> Gestiona autenticación con 2FA/U2F.</li>
+            <li><span class="label">Análisis de contexto:</span> Dispositivo, ubicación, etc.</li>
+          </ul>
+        </div>
+
+        <div class="security-layer">
+          <h3>4. Capa de Servicios de Almacenamiento</h3>
+          <ul>
+            <li><span class="label">Cifrado en Reposo:</span> Todos los datos se cifran por defecto (hardware).</li>
+          </ul>
+        </div>
+
+        <div class="security-layer">
+          <h3>5. Capa de Comunicación por Internet</h3>
+          <ul>
+            <li><span class="label">Google Front End (GFE):</span> Gestiona tráfico entrante.</li>
+            <li>Termina conexiones TLS, implementa Perfect Forward Secrecy.</li>
+            <li>Protección contra ataques DoS.</li>
+          </ul>
+        </div>
+
+        <div class="security-layer">
+          <h3>6. Capa de Seguridad Operacional</h3>
+          <ul>
+            <li><span class="label">Detección de Intrusiones:</span> Reglas y ML para alertas.</li>
+            <li><span class="label">Reducción de riesgo interno:</span> Monitorización de acceso administrativo.</li>
+            <li><span class="label">U2F para empleados:</span> Llaves de seguridad contra phishing.</li>
+            <li><span class="label">Desarrollo seguro:</span> Revisión de código, bug bounty.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: Ecosistema Open Source -->
+      <section class="gcp-section" id="opensource">
+        <div class="section-header">
+          <h2>5. Ecosistema Open Source</h2>
+          <a href="https://cloud.google.com/solutions/open-source-databases" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
+        <p class="section-intro">
+          Para evitar el "vendor lock-in", Google Cloud se apoya en código abierto:
+        </p>
+        <div class="opensource-grid">
+          <a href="https://cloud.google.com/tensorflow-enterprise/docs" class="opensource-item clickable" target="_blank" rel="noopener noreferrer">
+            <h4>TensorFlow</h4>
+            <p>Librería open source para Machine Learning.</p>
+            <span class="external-icon">↗</span>
+          </a>
+          <a href="https://cloud.google.com/kubernetes-engine/docs" class="opensource-item clickable" target="_blank" rel="noopener noreferrer">
+            <h4>Kubernetes (GKE)</h4>
+            <p>Orquestación de microservicios entre nubes.</p>
+            <span class="external-icon">↗</span>
+          </a>
+          <a href="https://cloud.google.com/docs/observability" class="opensource-item clickable" target="_blank" rel="noopener noreferrer">
+            <h4>Google Cloud Observability</h4>
+            <p>Monitorización multi-cloud.</p>
+            <span class="external-icon">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 6: Precios y Facturación -->
+      <section class="gcp-section" id="precios">
+        <div class="section-header">
+          <h2>6. Precios y Facturación</h2>
+          <a href="https://cloud.google.com/billing/docs" class="doc-link" title="Ver documentación oficial" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Modelos de Precios Clave</h3>
+          <ul>
+            <li><span class="label">Facturación por segundo:</span> Compute Engine, GKE, Dataproc, App Engine Flexible.</li>
+            <li><span class="label">Descuentos por uso continuo:</span> Descuentos automáticos al ejecutar VMs más del 25% del mes.</li>
+            <li><span class="label">Tipos de máquinas personalizadas:</span> Ajuste preciso de vCPU y memoria para optimizar costes.</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Herramientas de Control de Costes</h3>
+          <ul>
+            <li><span class="label">Presupuestos (Budgets):</span> Límites fijos o porcentajes del mes anterior.</li>
+            <li><span class="label">Alertas (Alerts):</span> Notificaciones en 50%, 90%, 100% del presupuesto.</li>
+            <li><span class="label">Informes (Reports):</span> Visualización de gastos por proyecto/servicio.</li>
+            <li><span class="label">Calculadora online:</span> Estimación de costes.</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Cuotas (Quotas)</h3>
+          <p>Previenen el consumo excesivo de recursos. Se aplican a nivel de proyecto:</p>
+          <ul>
+            <li><span class="label">Cuotas de Tasa (Rate Quotas):</span> Limitan acciones por tiempo (ej. 3.000 llamadas API/100s).</li>
+            <li><span class="label">Cuotas de Asignación (Allocation Quotas):</span> Limitan recursos totales (ej. 15 VPCs por proyecto).</li>
+          </ul>
+        </div>
+      </section>
+
+      </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-container">
+      <h2 class="quiz-title">🧠 Quiz de Repaso</h2>
+      <p class="quiz-intro">Pon a prueba tus conocimientos con estas 10 preguntas sobre los conceptos clave:</p>
+
+      <div class="quiz-questions">
+        <!-- Question 1 -->
+        <div class="quiz-question" data-question="1">
+          <h3>1. ¿Cuál es la principal diferencia en el modelo de pago entre IaaS y PaaS?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="a">
+              <span>a) IaaS es más caro que PaaS</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="b" data-correct>
+              <span>b) IaaS cobra por recursos asignados, PaaS por recursos utilizados</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="c">
+              <span>c) No hay diferencia en el modelo de pago</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q1" value="d">
+              <span>d) PaaS solo cobra por almacenamiento</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-question" data-question="2">
+          <h3>2. ¿Cuál es el beneficio principal de desplegar recursos en múltiples zonas dentro de una región?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="a">
+              <span>a) Reduce los costes</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="b" data-correct>
+              <span>b) Aumenta la disponibilidad y protege contra fallos</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="c">
+              <span>c) Mejora el rendimiento de red</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q2" value="d">
+              <span>d) Permite usar más servicios</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-question" data-question="3">
+          <h3>3. ¿Qué característica diferencia a Serverless de PaaS?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="a">
+              <span>a) Serverless es más caro</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="b" data-correct>
+              <span>b) Serverless escala automáticamente a cero y pagas solo por ejecución</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="c">
+              <span>c) Serverless requiere gestionar servidores</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q3" value="d">
+              <span>d) No hay diferencia significativa</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="quiz-question" data-question="4">
+          <h3>4. ¿Qué porcentaje aproximado de electricidad mundial consumen los centros de datos?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="a">
+              <span>a) 10%</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="b" data-correct>
+              <span>b) 2%</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="c">
+              <span>c) 5%</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q4" value="d">
+              <span>d) 0.5%</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="quiz-question" data-question="5">
+          <h3>5. ¿Qué componente de seguridad gestiona todo el tráfico entrante desde internet en GCP?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="a">
+              <span>a) Cloud Router</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="b" data-correct>
+              <span>b) Google Front End (GFE)</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="c">
+              <span>c) Cloud Armor</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q5" value="d">
+              <span>d) VPC Firewall</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="quiz-question" data-question="6">
+          <h3>6. ¿Qué tipo de cuota limita el número total de recursos que puedes tener en un proyecto?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="a">
+              <span>a) Rate Quota</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="b" data-correct>
+              <span>b) Allocation Quota</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="c">
+              <span>c) Budget Quota</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q6" value="d">
+              <span>d) Time Quota</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="quiz-question" data-question="7">
+          <h3>7. ¿A partir de qué porcentaje de uso mensual se aplican descuentos automáticos en VMs?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="a">
+              <span>a) 10%</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="b" data-correct>
+              <span>b) 25%</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="c">
+              <span>c) 50%</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q7" value="d">
+              <span>d) 75%</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="quiz-question" data-question="8">
+          <h3>8. ¿Qué chip de seguridad personalizado diseña Google para sus servidores?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="a" data-correct>
+              <span>a) Chip Titan</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="b">
+              <span>b) Chip Secure</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="c">
+              <span>c) Chip Guardian</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q8" value="d">
+              <span>d) Chip Shield</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="quiz-question" data-question="9">
+          <h3>9. ¿Qué herramienta open source permite orquestar microservicios entre diferentes nubes?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="a">
+              <span>a) TensorFlow</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="b" data-correct>
+              <span>b) Kubernetes (GKE)</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="c">
+              <span>c) Docker</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q9" value="d">
+              <span>d) Ansible</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="quiz-question" data-question="10">
+          <h3>10. ¿Qué servicio permite replicar datos en múltiples regiones para máxima disponibilidad?</h3>
+          <div class="quiz-options">
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="a">
+              <span>a) Cloud Storage</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="b" data-correct>
+              <span>b) Spanner</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="c">
+              <span>c) BigQuery</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="q10" value="d">
+              <span>d) Firestore</span>
+            </label>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+      </div>
+
+      <div class="quiz-results" style="display: none;">
+        <h3>Resultados</h3>
+        <p class="quiz-score"></p>
+        <button class="quiz-reset">Reintentar Quiz</button>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    .gcp-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .navigation-back {
+      margin-bottom: 24px;
+    }
+
+    .navigation-back a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .navigation-back a:hover {
+      color: #7a6bff;
+    }
+
+    .gcp-hero {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 32px 24px;
+      background: linear-gradient(135deg, rgba(99, 62, 238, 0.08) 0%, rgba(122, 107, 255, 0.05) 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .gcp-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #7a6bff;
+      margin: 0 0 12px 0;
+    }
+
+    .gcp-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+    }
+
+    /* Layout with Sidebar */
+    .gcp-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Sidebar Navigation */
+    .gcp-sidebar {
+      position: sticky;
+      top: 80px;
+      background: rgba(24, 24, 27, 0.8);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 1.2rem;
+      color: #7a6bff;
+      margin: 0 0 16px 0;
+      font-weight: 700;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sidebar-section {
+      margin-bottom: 8px;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 10px 12px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-link:hover {
+      background: rgba(122, 107, 255, 0.1);
+      color: #a5b4fc;
+    }
+
+    .sidebar-link.active {
+      background: rgba(122, 107, 255, 0.2);
+      color: #7a6bff;
+    }
+
+    .sidebar-submenu {
+      list-style: none;
+      margin: 8px 0 0 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .sidebar-section:hover .sidebar-submenu {
+      max-height: 500px;
+    }
+
+    .sidebar-sublink {
+      display: block;
+      padding: 8px 12px 8px 24px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-sublink:hover {
+      background: rgba(122, 107, 255, 0.08);
+      color: #a5b4fc;
+      padding-left: 28px;
+    }
+
+    .gcp-content {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .gcp-section {
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.18);
+      border-radius: 16px;
+      padding: 32px 28px;
+      backdrop-filter: blur(6px);
+      scroll-margin-top: 80px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+      padding-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: 1.8rem;
+      color: #7a6bff;
+      margin: 0;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      color: #a5b4fc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .doc-link:hover {
+      background: rgba(122, 107, 255, 0.2);
+      border-color: rgba(122, 107, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 107, 255, 0.3);
+    }
+
+    .doc-link svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .section-intro {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 24px;
+    }
+
+    /* Better Text Readability */
+    .label {
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .service-card, .concept-card, .info-card, .security-layer, .pricing-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(122, 107, 255, 0.15);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3, .concept-card h3, .security-layer h3, .pricing-card h3 {
+      font-size: 1.3rem;
+      color: #a5b4fc;
+      margin: 0 0 16px 0;
+    }
+
+    .service-card ul, .concept-card ul, .security-layer ul, .pricing-card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .service-card li, .concept-card li, .security-layer li, .pricing-card li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 10px 0;
+    }
+
+    .service-card p, .concept-card p, .info-card p, .security-layer p, .pricing-card p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Image Containers */
+    .image-container {
+      margin: 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-caption {
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      text-align: center;
+      background: rgba(122, 107, 255, 0.05);
+      margin: 0;
+    }
+
+    .comparison-card {
+      background: rgba(99, 62, 238, 0.05);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .comparison-card h3 {
+      font-size: 1.3rem;
+      color: #a5b4fc;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .comparison-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .comparison-item h4 {
+      font-size: 1.15rem;
+      color: #7a6bff;
+      margin: 0 0 12px 0;
+    }
+
+    .comparison-item ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .comparison-item li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 8px 0;
+    }
+
+    .example-box {
+      background: rgba(122, 107, 255, 0.1);
+      border-left: 3px solid #7a6bff;
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.7;
+    }
+
+    .example-box code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #a5b4fc;
+    }
+
+    .highlight-text {
+      background: rgba(251, 146, 60, 0.1);
+      border-left: 3px solid #fb923c;
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.7;
+    }
+
+    .opensource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .opensource-item {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .opensource-item.clickable {
+      cursor: pointer;
+    }
+
+    .opensource-item.clickable:hover {
+      background: rgba(34, 197, 94, 0.15);
+      border-color: rgba(34, 197, 94, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
+    }
+
+    .opensource-item h4 {
+      font-size: 1.2rem;
+      color: #22c55e;
+      margin: 0 0 8px 0;
+    }
+
+    .opensource-item p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.88);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .external-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 1.2rem;
+      color: #22c55e;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .opensource-item.clickable:hover .external-icon {
+      opacity: 1;
+    }
+
+    /* Quiz Styles */
+    .quiz-container {
+      background: linear-gradient(135deg, rgba(99, 62, 238, 0.12) 0%, rgba(122, 107, 255, 0.08) 100%);
+      border: 2px solid rgba(122, 107, 255, 0.3);
+      border-radius: 20px;
+      padding: 40px 32px;
+      margin-top: 60px;
+    }
+
+    .quiz-title {
+      font-size: 2rem;
+      color: #7a6bff;
+      text-align: center;
+      margin: 0 0 12px 0;
+    }
+
+    .quiz-intro {
+      text-align: center;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 32px 0;
+    }
+
+    .quiz-questions {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .quiz-question {
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.3s ease;
+    }
+
+    .quiz-question h3 {
+      font-size: 1.15rem;
+      color: #a5b4fc;
+      margin: 0 0 16px 0;
+      line-height: 1.5;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(122, 107, 255, 0.15);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-option:hover {
+      background: rgba(122, 107, 255, 0.1);
+      border-color: rgba(122, 107, 255, 0.3);
+    }
+
+    .quiz-option input[type="radio"] {
+      cursor: pointer;
+    }
+
+    .quiz-option span {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+    }
+
+    .quiz-option.correct {
+      background: rgba(34, 197, 94, 0.15);
+      border-color: rgba(34, 197, 94, 0.4);
+    }
+
+    .quiz-option.incorrect {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .quiz-feedback {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .quiz-feedback.correct {
+      display: block;
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .quiz-feedback.incorrect {
+      display: block;
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .quiz-results {
+      text-align: center;
+      padding: 32px;
+      background: rgba(99, 62, 238, 0.1);
+      border-radius: 12px;
+      margin-top: 32px;
+    }
+
+    .quiz-results h3 {
+      font-size: 1.8rem;
+      color: #7a6bff;
+      margin: 0 0 16px 0;
+    }
+
+    .quiz-score {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 24px 0;
+    }
+
+    .quiz-reset {
+      background: #7a6bff;
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-reset:hover {
+      background: #6353EE;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 107, 255, 0.4);
+    }
+
+    @media (max-width: 1024px) {
+      .gcp-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .gcp-sidebar {
+        position: relative;
+        top: 0;
+        max-height: none;
+      }
+
+      .sidebar-submenu {
+        max-height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gcp-container {
+        padding: 24px 16px;
+      }
+
+      .gcp-title {
+        font-size: 2rem;
+      }
+
+      .gcp-subtitle {
+        font-size: 1rem;
+      }
+
+      .gcp-section {
+        padding: 24px 20px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-container {
+        padding: 24px 20px;
+      }
+
+      .quiz-title {
+        font-size: 1.6rem;
+      }
+
+      .opensource-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script>
+    // Sidebar navigation - smooth scrolling and active state
+    document.querySelectorAll('.sidebar-link, .sidebar-sublink').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Update active state
+            document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+            if (this.classList.contains('sidebar-link')) {
+              this.classList.add('active');
+            }
+          }
+        }
+      });
+    });
+
+    // Intersection Observer for active section tracking
+    const sections = document.querySelectorAll('.gcp-section');
+    const navLinks = document.querySelectorAll('.sidebar-sublink');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.style.color = '#a5b4fc';
+              link.style.fontWeight = '600';
+            } else {
+              link.style.color = 'rgba(255, 255, 255, 0.6)';
+              link.style.fontWeight = '400';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Quiz functionality
+    const quizQuestions = document.querySelectorAll('.quiz-question');
+    const quizResults = document.querySelector('.quiz-results');
+    const quizScore = document.querySelector('.quiz-score');
+    const quizReset = document.querySelector('.quiz-reset');
+    
+    let answeredQuestions = 0;
+    let correctAnswers = 0;
+
+    quizQuestions.forEach(question => {
+      const options = question.querySelectorAll('.quiz-option input[type="radio"]');
+      const feedback = question.querySelector('.quiz-feedback');
+      
+      options.forEach(option => {
+        option.addEventListener('change', function() {
+          if (this.closest('.quiz-question').dataset.answered) return;
+          
+          this.closest('.quiz-question').dataset.answered = 'true';
+          answeredQuestions++;
+          
+          const isCorrect = this.parentElement.querySelector('input').hasAttribute('data-correct');
+          
+          if (isCorrect) {
+            correctAnswers++;
+            this.closest('.quiz-option').classList.add('correct');
+            feedback.textContent = '✓ ¡Correcto!';
+            feedback.classList.add('correct');
+          } else {
+            this.closest('.quiz-option').classList.add('incorrect');
+            const correctOption = question.querySelector('input[data-correct]').closest('.quiz-option');
+            correctOption.classList.add('correct');
+            feedback.textContent = '✗ Incorrecto. La respuesta correcta está marcada en verde.';
+            feedback.classList.add('incorrect');
+          }
+          
+          // Disable all options in this question
+          options.forEach(opt => opt.disabled = true);
+          
+          // Check if all questions answered
+          if (answeredQuestions === quizQuestions.length) {
+            showResults();
+          }
+        });
+      });
+    });
+
+    function showResults() {
+      const percentage = Math.round((correctAnswers / quizQuestions.length) * 100);
+      let message = '';
+      
+      if (percentage >= 90) {
+        message = '🎉 ¡Excelente! Dominas los conceptos.';
+      } else if (percentage >= 70) {
+        message = '👍 ¡Bien hecho! Vas por buen camino.';
+      } else if (percentage >= 50) {
+        message = '📚 No está mal, pero repasa algunos conceptos.';
+      } else {
+        message = '💪 Sigue estudiando, ¡puedes mejorar!';
+      }
+      
+      quizScore.innerHTML = `Has acertado <strong>${correctAnswers}</strong> de <strong>${quizQuestions.length}</strong> preguntas (${percentage}%)<br>${message}`;
+      quizResults.style.display = 'block';
+      
+      // Scroll to results
+      quizResults.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    quizReset.addEventListener('click', function() {
+      answeredQuestions = 0;
+      correctAnswers = 0;
+      
+      quizQuestions.forEach(question => {
+        delete question.dataset.answered;
+        const options = question.querySelectorAll('.quiz-option');
+        const inputs = question.querySelectorAll('input[type="radio"]');
+        const feedback = question.querySelector('.quiz-feedback');
+        
+        options.forEach(opt => {
+          opt.classList.remove('correct', 'incorrect');
+        });
+        
+        inputs.forEach(input => {
+          input.checked = false;
+          input.disabled = false;
+        });
+        
+        feedback.textContent = '';
+        feedback.classList.remove('correct', 'incorrect');
+      });
+      
+      quizResults.style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</BaseLayout>
