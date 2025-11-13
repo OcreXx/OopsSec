@@ -661,13 +661,14 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     /* Sidebar Navigation */
     .sidebar {
       position: fixed;
-      left: 0;
-      top: 0;
+      left: 20px;
+      top: 80px;
       width: 280px;
-      height: 100vh;
+      height: calc(100vh - 100px);
       background: rgba(20, 20, 40, 0.95);
       backdrop-filter: blur(10px);
       border-right: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 12px;
       padding: 24px 0;
       overflow-y: auto;
       z-index: 100;
@@ -823,7 +824,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
     .gcp-container {
       flex: 1;
-      margin-left: 280px;
+      margin-left: 320px;
       max-width: 1200px;
       padding: 32px 48px 80px;
       color: rgba(255, 255, 255, 0.92);
