@@ -12,7 +12,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       <!-- Modules Navigation with Submenu -->
       <nav class="sidebar-nav modules-nav">
         <!-- Introducción Module -->
-        <div class="module-item active-module">
+        <div class="module-item expanded">
           <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link active">
             <span class="module-icon">📚</span>
             <span class="module-text">Introducción a GCP</span>
@@ -664,12 +664,12 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       left: 20px;
       top: 80px;
       width: 280px;
-      height: calc(100vh - 100px);
+      height: calc(100vh - 140px);
       background: rgba(20, 20, 40, 0.95);
       backdrop-filter: blur(10px);
       border-right: 1px solid rgba(122, 107, 255, 0.3);
       border-radius: 12px;
-      padding: 24px 0;
+      padding: 20px 0;
       overflow-y: auto;
       z-index: 100;
       /* Hide scrollbar */
@@ -725,6 +725,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       border-radius: 8px;
       border-left: 3px solid transparent;
       font-size: 0.9rem;
+      cursor: pointer;
     }
 
     .module-link:hover {
@@ -760,8 +761,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       margin: 0;
     }
 
-    .module-item:hover .submenu,
-    .module-item.active-module .submenu {
+    .module-item.expanded .submenu {
       max-height: 500px;
       opacity: 1;
       padding: 8px 0 8px 40px;
@@ -1234,6 +1234,24 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('.topic-section, .quizzes-section');
       const submenuLinks = document.querySelectorAll('.submenu-link');
+      const moduleItems = document.querySelectorAll('.module-item');
+
+      // Toggle submenu on module link click
+      moduleItems.forEach(item => {
+        const moduleLink = item.querySelector('.module-link');
+        if (moduleLink) {
+          moduleLink.addEventListener('click', (e) => {
+            // Only prevent default if clicking on current page module
+            const href = moduleLink.getAttribute('href');
+            const currentPath = window.location.pathname;
+            
+            if (href && currentPath.includes(href.split('/').pop())) {
+              e.preventDefault();
+              item.classList.toggle('expanded');
+            }
+          });
+        }
+      });
 
       // Intersection Observer for active section highlighting in submenu
       const observerOptions = {
