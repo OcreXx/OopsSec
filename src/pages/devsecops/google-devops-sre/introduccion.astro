@@ -2,20 +2,35 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Introducción a GCP - Cloud Fundamentals">
-  <div class="gcp-container">
-    <!-- Navigation Back -->
-    <div class="navigation-back">
-      <a href="/devsecops/google-devops-sre/cloud-fundamentals">← Volver a Cloud Fundamentals</a>
-    </div>
-
-    <!-- Hero Section -->
-    <div class="gcp-hero">
-      <h1 class="gcp-title">Introducción a Google Cloud Platform</h1>
-      <p class="gcp-subtitle">Fundamentos de infraestructura, seguridad y gestión de costes en GCP</p>
-    </div>
+  <div class="page-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>📚 Contenido</h3>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#iaas-paas-saas" class="nav-link active">1. IaaS, PaaS y SaaS</a>
+        <a href="#red-gcp" class="nav-link">2. Red de Google Cloud</a>
+        <a href="#impacto" class="nav-link">3. Impacto Medioambiental</a>
+        <a href="#seguridad" class="nav-link">4. Seguridad por Capas</a>
+        <a href="#opensource" class="nav-link">5. Ecosistema Open Source</a>
+        <a href="#precios" class="nav-link">6. Precios y Facturación</a>
+        <a href="#quizzes" class="nav-link quiz-link">📝 Evaluaciones</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="/devsecops/google-devops-sre/cloud-fundamentals" class="back-link">← Volver</a>
+      </div>
+    </aside>
 
     <!-- Main Content -->
-    <div class="content-section">
+    <div class="gcp-container">
+      <!-- Hero Section -->
+      <div class="gcp-hero">
+        <h1 class="gcp-title">Introducción a Google Cloud Platform</h1>
+        <p class="gcp-subtitle">Fundamentos de infraestructura, seguridad y gestión de costes en GCP</p>
+      </div>
+
+      <div class="content-section">
 
       <!-- Section 1: IaaS, PaaS y SaaS -->
       <section class="topic-section" id="iaas-paas-saas">
@@ -74,59 +89,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             <li><span class="label">Ejemplo:</span> Gmail, Google Docs, Google Drive.</li>
           </ul>
         </div>
-
-        <!-- Quiz 1 -->
-        <div class="quiz-container">
-          <h3 class="quiz-title">Quiz: Modelos de Servicio</h3>
-          <div class="quiz-question">
-            <p class="question-text">1. ¿Cuál es la principal diferencia entre IaaS y PaaS en términos de modelo de pago?</p>
-            <div class="quiz-options">
-              <label class="quiz-option">
-                <input type="radio" name="q1" value="a">
-                <span>IaaS cobra por uso real, PaaS por recursos asignados</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q1" value="b">
-                <span>IaaS cobra por recursos asignados por adelantado, PaaS por recursos realmente utilizados</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q1" value="c">
-                <span>Ambos cobran de la misma manera</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q1" value="d">
-                <span>PaaS siempre es más caro que IaaS</span>
-              </label>
-            </div>
-            <div class="quiz-feedback"></div>
-          </div>
-
-          <div class="quiz-question">
-            <p class="question-text">2. ¿Qué característica define a Serverless frente a PaaS?</p>
-            <div class="quiz-options">
-              <label class="quiz-option">
-                <input type="radio" name="q2" value="a">
-                <span>Serverless requiere más configuración manual</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q2" value="b">
-                <span>Serverless escala automáticamente desde cero y solo pagas por ejecución</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q2" value="c">
-                <span>PaaS es siempre más escalable que Serverless</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q2" value="d">
-                <span>Serverless no puede escalar a cero</span>
-              </label>
-            </div>
-            <div class="quiz-feedback"></div>
-          </div>
-
-          <button class="quiz-submit">Verificar Respuestas</button>
-          <div class="quiz-result"></div>
-        </div>
       </section>
 
       <!-- Section 2: Red de Google Cloud -->
@@ -154,39 +116,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <div class="content-card">
           <h3 class="card-title">Recursos Multi-región</h3>
           <p class="info-text">Algunos servicios, como <strong>Spanner</strong>, permiten replicar datos no solo en múltiples zonas, sino en múltiples regiones, ofreciendo una resiliencia y disponibilidad globales.</p>
-          <div class="image-placeholder">
-            <span>📊 Imagen: Spanner Multi-región</span>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/Spanner.png" alt="Arquitectura multi-región de Google Cloud Spanner" loading="lazy">
+            <p class="image-caption">Distribución multi-región de Cloud Spanner para alta disponibilidad</p>
           </div>
-        </div>
-
-        <!-- Quiz 2 -->
-        <div class="quiz-container">
-          <h3 class="quiz-title">Quiz: Red de Google Cloud</h3>
-          <div class="quiz-question">
-            <p class="question-text">1. ¿Qué es una zona en Google Cloud?</p>
-            <div class="quiz-options">
-              <label class="quiz-option">
-                <input type="radio" name="q3" value="a">
-                <span>Un área geográfica independiente</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q3" value="b">
-                <span>Un área de despliegue de recursos dentro de una región, aislada para proteger contra fallos</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q3" value="c">
-                <span>Un datacenter específico</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q3" value="d">
-                <span>Una red privada virtual</span>
-              </label>
-            </div>
-            <div class="quiz-feedback"></div>
-          </div>
-
-          <button class="quiz-submit">Verificar Respuestas</button>
-          <div class="quiz-result"></div>
         </div>
       </section>
 
@@ -196,36 +129,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         
         <div class="content-card">
           <p class="highlight-text">Los centros de datos consumen aproximadamente el <strong>2% de la electricidad mundial</strong>. Google se enfoca en la eficiencia energética y la sostenibilidad para minimizar este impacto.</p>
-        </div>
-
-        <!-- Quiz 3 -->
-        <div class="quiz-container">
-          <h3 class="quiz-title">Quiz: Sostenibilidad</h3>
-          <div class="quiz-question">
-            <p class="question-text">1. ¿Qué porcentaje de la electricidad mundial consumen los centros de datos?</p>
-            <div class="quiz-options">
-              <label class="quiz-option">
-                <input type="radio" name="q4" value="a">
-                <span>Aproximadamente 2%</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q4" value="b">
-                <span>Aproximadamente 10%</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q4" value="c">
-                <span>Aproximadamente 5%</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q4" value="d">
-                <span>Menos del 1%</span>
-              </label>
-            </div>
-            <div class="quiz-feedback"></div>
-          </div>
-
-          <button class="quiz-submit">Verificar Respuestas</button>
-          <div class="quiz-result"></div>
         </div>
       </section>
 
@@ -251,8 +154,9 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
           <ul class="info-list">
             <li><span class="label">Cifrado en Tránsito:</span> La comunicación entre servicios (llamadas RPC) se cifra automáticamente para garantizar la privacidad e integridad de los datos en la red, especialmente cuando viajan entre centros de datos.</li>
           </ul>
-          <div class="image-placeholder">
-            <span>🔒 Imagen: RPC Cifrado</span>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/RPC.png" alt="Cifrado RPC en Google Cloud" loading="lazy">
+            <p class="image-caption">Comunicación cifrada entre servicios mediante RPC</p>
           </div>
         </div>
 
@@ -299,59 +203,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             </li>
           </ul>
         </div>
-
-        <!-- Quiz 4 -->
-        <div class="quiz-container">
-          <h3 class="quiz-title">Quiz: Seguridad en Google Cloud</h3>
-          <div class="quiz-question">
-            <p class="question-text">1. ¿Qué componente gestiona todo el tráfico entrante desde internet en Google Cloud?</p>
-            <div class="quiz-options">
-              <label class="quiz-option">
-                <input type="radio" name="q5" value="a">
-                <span>Cloud Router</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q5" value="b">
-                <span>Google Front End (GFE)</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q5" value="c">
-                <span>Compute Engine</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q5" value="d">
-                <span>Cloud VPN</span>
-              </label>
-            </div>
-            <div class="quiz-feedback"></div>
-          </div>
-
-          <div class="quiz-question">
-            <p class="question-text">2. ¿Qué tipo de cifrado utiliza Google para proteger los datos almacenados?</p>
-            <div class="quiz-options">
-              <label class="quiz-option">
-                <input type="radio" name="q6" value="a">
-                <span>Solo cifrado en tránsito</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q6" value="b">
-                <span>Cifrado en reposo por defecto con hardware dedicado</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q6" value="c">
-                <span>No utiliza cifrado</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q6" value="d">
-                <span>Solo cifrado opcional</span>
-              </label>
-            </div>
-            <div class="quiz-feedback"></div>
-          </div>
-
-          <button class="quiz-submit">Verificar Respuestas</button>
-          <div class="quiz-result"></div>
-        </div>
       </section>
 
       <!-- Section 5: Ecosistema Open Source -->
@@ -369,36 +220,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             <li><span class="label">Kubernetes (GKE):</span> Permite orquestar microservicios y distribuirlos entre diferentes nubes.</li>
             <li><span class="label">Google Cloud Observability:</span> Permite monitorizar cargas de trabajo que se ejecutan en múltiples proveedores de nube.</li>
           </ul>
-        </div>
-
-        <!-- Quiz 5 -->
-        <div class="quiz-container">
-          <h3 class="quiz-title">Quiz: Open Source</h3>
-          <div class="quiz-question">
-            <p class="question-text">1. ¿Qué ventaja principal ofrece el uso de tecnologías open source en Google Cloud?</p>
-            <div class="quiz-options">
-              <label class="quiz-option">
-                <input type="radio" name="q7" value="a">
-                <span>Evitar el vendor lock-in y permitir portabilidad</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q7" value="b">
-                <span>Reducir costes siempre</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q7" value="c">
-                <span>Mayor velocidad de procesamiento</span>
-              </label>
-              <label class="quiz-option">
-                <input type="radio" name="q7" value="d">
-                <span>Menos seguridad pero más flexibilidad</span>
-              </label>
-            </div>
-            <div class="quiz-feedback"></div>
-          </div>
-
-          <button class="quiz-submit">Verificar Respuestas</button>
-          <div class="quiz-result"></div>
         </div>
       </section>
 
@@ -462,10 +283,212 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             <li><span class="label">Aumento de Cuotas:</span> Se puede solicitar un aumento a través del soporte de Google Cloud.</li>
           </ul>
         </div>
+      </section>
 
-        <!-- Quiz 6 -->
+      <!-- Quizzes Section - All grouped at the end -->
+      <section class="topic-section quizzes-section" id="quizzes">
+        <h2 class="section-title">📝 Evaluación de Conocimientos</h2>
+        <p class="quizzes-intro">Pon a prueba lo que has aprendido con estas evaluaciones. Se requiere un 70% de respuestas correctas para aprobar cada quiz.</p>
+
+        <!-- Quiz 1: IaaS, PaaS y SaaS -->
         <div class="quiz-container">
-          <h3 class="quiz-title">Quiz: Precios y Facturación</h3>
+          <h3 class="quiz-title">Quiz 1: Modelos de Servicio en la Nube</h3>
+          <div class="quiz-question">
+            <p class="question-text">1. ¿Cuál es la principal diferencia entre IaaS y PaaS en términos de modelo de pago?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a">
+                <span>IaaS cobra por uso real, PaaS por recursos asignados</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b">
+                <span>IaaS cobra por recursos asignados por adelantado, PaaS por recursos realmente utilizados</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c">
+                <span>Ambos cobran de la misma manera</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d">
+                <span>PaaS siempre es más caro que IaaS</span>
+              </label>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text">2. ¿Qué característica define a Serverless frente a PaaS?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a">
+                <span>Serverless requiere más configuración manual</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b">
+                <span>Serverless escala automáticamente desde cero y solo pagas por ejecución</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c">
+                <span>PaaS es siempre más escalable que Serverless</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d">
+                <span>Serverless no puede escalar a cero</span>
+              </label>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-submit">Verificar Respuestas</button>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Quiz 2: Red de Google Cloud -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 2: Red de Google Cloud</h3>
+          <div class="quiz-question">
+            <p class="question-text">1. ¿Qué es una zona en Google Cloud?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a">
+                <span>Un área geográfica independiente</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b">
+                <span>Un área de despliegue de recursos dentro de una región, aislada para proteger contra fallos</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c">
+                <span>Un datacenter específico</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d">
+                <span>Una red privada virtual</span>
+              </label>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-submit">Verificar Respuestas</button>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Quiz 3: Impacto Medioambiental -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 3: Sostenibilidad</h3>
+          <div class="quiz-question">
+            <p class="question-text">1. ¿Qué porcentaje de la electricidad mundial consumen los centros de datos?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a">
+                <span>Aproximadamente 2%</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b">
+                <span>Aproximadamente 10%</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c">
+                <span>Aproximadamente 5%</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d">
+                <span>Menos del 1%</span>
+              </label>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-submit">Verificar Respuestas</button>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Quiz 4: Seguridad -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 4: Seguridad en Google Cloud</h3>
+          <div class="quiz-question">
+            <p class="question-text">1. ¿Qué componente gestiona todo el tráfico entrante desde internet en Google Cloud?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a">
+                <span>Cloud Router</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b">
+                <span>Google Front End (GFE)</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c">
+                <span>Compute Engine</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d">
+                <span>Cloud VPN</span>
+              </label>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text">2. ¿Qué tipo de cifrado utiliza Google para proteger los datos almacenados?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a">
+                <span>Solo cifrado en tránsito</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b">
+                <span>Cifrado en reposo por defecto con hardware dedicado</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c">
+                <span>No utiliza cifrado</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d">
+                <span>Solo cifrado opcional</span>
+              </label>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-submit">Verificar Respuestas</button>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Quiz 5: Open Source -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 5: Ecosistema Open Source</h3>
+          <div class="quiz-question">
+            <p class="question-text">1. ¿Qué ventaja principal ofrece el uso de tecnologías open source en Google Cloud?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a">
+                <span>Evitar el vendor lock-in y permitir portabilidad</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b">
+                <span>Reducir costes siempre</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c">
+                <span>Mayor velocidad de procesamiento</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d">
+                <span>Menos seguridad pero más flexibilidad</span>
+              </label>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-submit">Verificar Respuestas</button>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Quiz 6: Precios y Facturación -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 6: Precios y Facturación</h3>
           <div class="quiz-question">
             <p class="question-text">1. ¿A partir de qué porcentaje de uso mensual se aplican los descuentos por uso continuo?</p>
             <div class="quiz-options">
@@ -517,6 +540,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
       </section>
 
+      </div>
     </div>
   </div>
 
@@ -527,33 +551,105 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       box-sizing: border-box;
     }
 
-    .gcp-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 32px 24px 80px;
-      color: rgba(255, 255, 255, 0.92);
+    .page-wrapper {
+      display: flex;
+      min-height: 100vh;
     }
 
-    .navigation-back {
-      margin-bottom: 24px;
+    /* Sidebar Navigation */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: rgba(20, 20, 40, 0.95);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid rgba(122, 107, 255, 0.3);
+      padding: 24px 0;
+      overflow-y: auto;
+      z-index: 100;
     }
 
-    .navigation-back a {
+    .sidebar-header {
+      padding: 0 24px 20px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .sidebar-header h3 {
+      font-size: 1.3rem;
       color: #a5b4fc;
+      font-weight: 700;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 16px;
+    }
+
+    .nav-link {
+      padding: 12px 16px;
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
-      font-size: 0.95rem;
-      padding: 8px 16px;
       border-radius: 8px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .nav-link:hover {
+      background: rgba(122, 107, 255, 0.15);
+      color: #a5b4fc;
+      border-left-color: #7a6bff;
+      transform: translateX(4px);
+    }
+
+    .nav-link.active {
+      background: rgba(122, 107, 255, 0.2);
+      color: #c7d2fe;
+      border-left-color: #7a6bff;
+      font-weight: 600;
+    }
+
+    .nav-link.quiz-link {
+      margin-top: 12px;
       background: rgba(122, 107, 255, 0.1);
       border: 1px solid rgba(122, 107, 255, 0.3);
-      display: inline-block;
+      font-weight: 600;
+    }
+
+    .sidebar-footer {
+      padding: 20px 24px;
+      margin-top: 20px;
+      border-top: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .back-link {
+      display: block;
+      padding: 12px 16px;
+      color: #a5b4fc;
+      text-decoration: none;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      text-align: center;
       transition: all 0.3s ease;
     }
 
-    .navigation-back a:hover {
+    .back-link:hover {
       background: rgba(122, 107, 255, 0.2);
-      border-color: rgba(122, 107, 255, 0.5);
       transform: translateX(-4px);
+    }
+
+    .gcp-container {
+      flex: 1;
+      margin-left: 280px;
+      max-width: 1200px;
+      padding: 32px 48px 80px;
+      color: rgba(255, 255, 255, 0.92);
     }
 
     .gcp-hero {
@@ -718,24 +814,55 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       color: #fbbf24;
     }
 
-    .image-placeholder {
-      background: rgba(122, 107, 255, 0.1);
-      border: 2px dashed rgba(122, 107, 255, 0.3);
-      border-radius: 8px;
-      padding: 32px;
-      text-align: center;
-      margin: 16px 0;
+    .image-container {
+      margin: 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-caption {
+      padding: 12px 16px;
+      font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.6);
-      font-size: 1.1rem;
+      text-align: center;
+      background: rgba(122, 107, 255, 0.05);
+      border-top: 1px solid rgba(122, 107, 255, 0.1);
+    }
+
+    /* Quizzes Section */
+    .quizzes-section {
+      background: linear-gradient(135deg, rgba(122, 107, 255, 0.05) 0%, rgba(165, 180, 252, 0.03) 100%);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .quizzes-intro {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      text-align: center;
+      padding: 16px;
+      background: rgba(122, 107, 255, 0.1);
+      border-radius: 8px;
+      border-left: 4px solid #7a6bff;
     }
 
     /* Quiz Styles */
     .quiz-container {
-      background: rgba(122, 107, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(122, 107, 255, 0.3);
       border-radius: 12px;
       padding: 28px;
-      margin-top: 32px;
+      margin-bottom: 28px;
     }
 
     .quiz-title {
@@ -885,6 +1012,22 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       color: #fca5a5;
     }
 
+    @media (max-width: 1024px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .gcp-container {
+        margin-left: 0;
+        padding: 24px 20px 60px;
+      }
+    }
+
     @media (max-width: 768px) {
       .gcp-title {
         font-size: 1.8rem;
@@ -901,10 +1044,55 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       .content-card {
         padding: 16px;
       }
+
+      .sidebar {
+        width: 100%;
+      }
     }
   </style>
 
   <script>
+    // Sidebar Navigation Active State
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.topic-section, .quizzes-section');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      // Intersection Observer for active section highlighting
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -70% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => observer.observe(section));
+
+      // Smooth scroll for navigation links
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    });
+
     // Quiz answers (correct answers)
     const quizAnswers = {
       q1: 'b', // IaaS cobra por recursos asignados, PaaS por uso real
@@ -957,6 +1145,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       }
     };
 
+    // Quiz functionality
     document.addEventListener('DOMContentLoaded', () => {
       const quizContainers = document.querySelectorAll('.quiz-container');
       
