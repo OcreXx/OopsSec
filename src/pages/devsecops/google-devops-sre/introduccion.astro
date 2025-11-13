@@ -9,53 +9,115 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <h3>☁️ Cloud Fundamentals</h3>
       </div>
       
-      <!-- Modules Navigation -->
+      <!-- Modules Navigation with Submenu -->
       <nav class="sidebar-nav modules-nav">
-        <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link active">
-          <span class="module-icon">📚</span>
-          <span class="module-text">Introducción a GCP</span>
-        </a>
-        <a href="/devsecops/google-devops-sre/recursos" class="nav-link module-link">
-          <span class="module-icon">🔐</span>
-          <span class="module-text">Recursos y Acceso</span>
-        </a>
-        <a href="/devsecops/google-devops-sre/vms-redes" class="nav-link module-link">
-          <span class="module-icon">🌐</span>
-          <span class="module-text">VMs y Redes</span>
-        </a>
-        <a href="/devsecops/google-devops-sre/almacenamiento" class="nav-link module-link">
-          <span class="module-icon">💾</span>
-          <span class="module-text">Almacenamiento</span>
-        </a>
-        <a href="/devsecops/google-devops-sre/contenedores" class="nav-link module-link">
-          <span class="module-icon">📦</span>
-          <span class="module-text">Contenedores</span>
-        </a>
-        <a href="/devsecops/google-devops-sre/aplicaciones" class="nav-link module-link">
-          <span class="module-icon">🚀</span>
-          <span class="module-text">Aplicaciones</span>
-        </a>
-        <a href="/devsecops/google-devops-sre/prompt-engineering" class="nav-link module-link">
-          <span class="module-icon">🤖</span>
-          <span class="module-text">Prompt Engineering</span>
-        </a>
+        <!-- Introducción Module -->
+        <div class="module-item active-module">
+          <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link active">
+            <span class="module-icon">📚</span>
+            <span class="module-text">Introducción a GCP</span>
+          </a>
+          <div class="submenu">
+            <a href="#iaas-paas-saas" class="submenu-link">IaaS, PaaS y SaaS</a>
+            <a href="#red-gcp" class="submenu-link">Red de Google Cloud</a>
+            <a href="#impacto" class="submenu-link">Impacto Medioambiental</a>
+            <a href="#seguridad" class="submenu-link">Seguridad por Capas</a>
+            <a href="#opensource" class="submenu-link">Ecosistema Open Source</a>
+            <a href="#precios" class="submenu-link">Precios y Facturación</a>
+            <a href="#quizzes" class="submenu-link quiz-item">📝 Evaluaciones</a>
+          </div>
+        </div>
+
+        <!-- Recursos Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/recursos" class="nav-link module-link">
+            <span class="module-icon">🔐</span>
+            <span class="module-text">Recursos y Acceso</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/recursos#jerarquia" class="submenu-link">Jerarquía de Recursos</a>
+            <a href="/devsecops/google-devops-sre/recursos#iam" class="submenu-link">IAM</a>
+            <a href="/devsecops/google-devops-sre/recursos#service-accounts" class="submenu-link">Service Accounts</a>
+            <a href="/devsecops/google-devops-sre/recursos#cloud-identity" class="submenu-link">Cloud Identity</a>
+            <a href="/devsecops/google-devops-sre/recursos#interaccion" class="submenu-link">Formas de Interactuar</a>
+          </div>
+        </div>
+
+        <!-- VMs y Redes Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/vms-redes" class="nav-link module-link">
+            <span class="module-icon">🌐</span>
+            <span class="module-text">VMs y Redes</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/vms-redes#vpc" class="submenu-link">Virtual Private Cloud</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#compute-engine" class="submenu-link">Compute Engine</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#escalado" class="submenu-link">Escalado de VMs</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#balanceadores" class="submenu-link">Balanceadores de Carga</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#dns-cdn" class="submenu-link">Cloud DNS y CDN</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#conectividad" class="submenu-link">Conectar Redes a VPC</a>
+          </div>
+        </div>
+
+        <!-- Almacenamiento Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/almacenamiento" class="nav-link module-link">
+            <span class="module-icon">�</span>
+            <span class="module-text">Almacenamiento</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-storage" class="submenu-link">Cloud Storage</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#clases" class="submenu-link">Clases de Almacenamiento</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-sql" class="submenu-link">Cloud SQL</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#spanner" class="submenu-link">Spanner</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#firestore" class="submenu-link">Firestore</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#bigtable" class="submenu-link">BigTable</a>
+          </div>
+        </div>
+
+        <!-- Contenedores Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/contenedores" class="nav-link module-link">
+            <span class="module-icon">📦</span>
+            <span class="module-text">Contenedores</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/contenedores#introduccion" class="submenu-link">Introducción</a>
+            <a href="/devsecops/google-devops-sre/contenedores#kubernetes" class="submenu-link">Kubernetes</a>
+            <a href="/devsecops/google-devops-sre/contenedores#gke" class="submenu-link">GKE</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-run" class="submenu-link">Cloud Run</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-functions" class="submenu-link">Cloud Run Functions</a>
+          </div>
+        </div>
+
+        <!-- Aplicaciones Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/aplicaciones" class="nav-link module-link">
+            <span class="module-icon">🚀</span>
+            <span class="module-text">Aplicaciones</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/aplicaciones#app-engine" class="submenu-link">App Engine</a>
+            <a href="/devsecops/google-devops-sre/aplicaciones#cloud-functions" class="submenu-link">Cloud Functions</a>
+            <a href="/devsecops/google-devops-sre/aplicaciones#desarrollo" class="submenu-link">Desarrollo de Aplicaciones</a>
+          </div>
+        </div>
+
+        <!-- Prompt Engineering Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/prompt-engineering" class="nav-link module-link">
+            <span class="module-icon">🤖</span>
+            <span class="module-text">Prompt Engineering</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/prompt-engineering#gen-ai" class="submenu-link">IA Generativa</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#llm" class="submenu-link">Large Language Models</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#alucinaciones" class="submenu-link">Alucinaciones en LLMs</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#tipos-prompts" class="submenu-link">Tipos de Prompts</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#mejores-practicas" class="submenu-link">Mejores Prácticas</a>
+          </div>
+        </div>
       </nav>
-
-      <div class="sidebar-divider"></div>
-
-      <!-- Internal Sections Navigation (only for current page) -->
-      <div class="sidebar-sections">
-        <p class="sections-title">En esta página:</p>
-        <nav class="sidebar-nav sections-nav">
-          <a href="#iaas-paas-saas" class="nav-link section-link">1. IaaS, PaaS y SaaS</a>
-          <a href="#red-gcp" class="nav-link section-link">2. Red de Google Cloud</a>
-          <a href="#impacto" class="nav-link section-link">3. Impacto Medioambiental</a>
-          <a href="#seguridad" class="nav-link section-link">4. Seguridad por Capas</a>
-          <a href="#opensource" class="nav-link section-link">5. Ecosistema Open Source</a>
-          <a href="#precios" class="nav-link section-link">6. Precios y Facturación</a>
-          <a href="#quizzes" class="nav-link section-link quiz-link">📝 Evaluaciones</a>
-        </nav>
-      </div>
 
       <div class="sidebar-footer">
         <a href="/devsecops/google-devops-sre/cloud-fundamentals" class="back-link">← Volver al Hub</a>
@@ -609,6 +671,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       padding: 24px 0;
       overflow-y: auto;
       z-index: 100;
+      /* Hide scrollbar */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .sidebar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
     }
 
     .sidebar-header {
@@ -634,14 +703,16 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       margin-bottom: 12px;
     }
 
+    /* Module Item Container */
+    .module-item {
+      position: relative;
+      margin-bottom: 4px;
+    }
+
     .nav-link {
-      padding: 10px 14px;
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.9rem;
       transition: all 0.3s ease;
-      border-left: 3px solid transparent;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -650,6 +721,9 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     .module-link {
       font-weight: 500;
       padding: 12px 14px;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      font-size: 0.9rem;
     }
 
     .module-link:hover {
@@ -675,53 +749,53 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       flex: 1;
     }
 
-    .sidebar-divider {
-      height: 1px;
-      background: rgba(122, 107, 255, 0.2);
-      margin: 16px 24px;
+    /* Submenu Styles */
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      padding: 0 0 0 40px;
+      margin: 0;
     }
 
-    .sidebar-sections {
-      margin-top: 12px;
+    .module-item:hover .submenu,
+    .module-item.active-module .submenu {
+      max-height: 500px;
+      opacity: 1;
+      padding: 8px 0 8px 40px;
     }
 
-    .sections-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: rgba(255, 255, 255, 0.5);
-      padding: 0 24px 8px;
-      font-weight: 600;
-    }
-
-    .sections-nav {
-      gap: 4px;
-    }
-
-    .section-link {
-      font-size: 0.85rem;
+    .submenu-link {
+      display: block;
       padding: 8px 14px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
     }
 
-    .section-link:hover {
-      background: rgba(122, 107, 255, 0.1);
+    .submenu-link:hover {
       color: #a5b4fc;
+      background: rgba(122, 107, 255, 0.1);
       border-left-color: rgba(122, 107, 255, 0.5);
-      transform: translateX(2px);
+      transform: translateX(3px);
     }
 
-    .section-link.active {
-      background: rgba(122, 107, 255, 0.15);
+    .submenu-link.active {
       color: #c7d2fe;
-      border-left-color: rgba(122, 107, 255, 0.7);
+      background: rgba(122, 107, 255, 0.15);
+      border-left-color: #7a6bff;
       font-weight: 500;
     }
 
-    .section-link.quiz-link {
-      margin-top: 8px;
-      background: rgba(122, 107, 255, 0.08);
-      border: 1px solid rgba(122, 107, 255, 0.2);
-      font-weight: 600;
+    .submenu-link.quiz-item {
+      margin-top: 6px;
+      background: rgba(122, 107, 255, 0.05);
+      border: 1px solid rgba(122, 107, 255, 0.15);
     }
 
     .sidebar-footer {
@@ -1158,9 +1232,9 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     // Sidebar Navigation Active State
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('.topic-section, .quizzes-section');
-      const sectionLinks = document.querySelectorAll('.section-link');
+      const submenuLinks = document.querySelectorAll('.submenu-link');
 
-      // Intersection Observer for active section highlighting (only for internal sections)
+      // Intersection Observer for active section highlighting in submenu
       const observerOptions = {
         root: null,
         rootMargin: '-100px 0px -70% 0px',
@@ -1171,9 +1245,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
-            sectionLinks.forEach(link => {
+            submenuLinks.forEach(link => {
               link.classList.remove('active');
-              if (link.getAttribute('href') === `#${id}`) {
+              const href = link.getAttribute('href');
+              if (href && href.includes(`#${id}`)) {
                 link.classList.add('active');
               }
             });
@@ -1183,15 +1258,18 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
       sections.forEach(section => observer.observe(section));
 
-      // Smooth scroll for internal section links only
-      sectionLinks.forEach(link => {
+      // Smooth scroll for internal submenu links
+      submenuLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           const href = link.getAttribute('href');
-          if (href.startsWith('#')) {
-            e.preventDefault();
-            const targetId = href.substring(1);
-            const targetSection = document.getElementById(targetId);
+          if (href && href.includes('#')) {
+            const hashIndex = href.indexOf('#');
+            const hash = href.substring(hashIndex + 1);
+            const targetSection = document.getElementById(hash);
+            
+            // Only prevent default and smooth scroll if target is on current page
             if (targetSection) {
+              e.preventDefault();
               targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           }
