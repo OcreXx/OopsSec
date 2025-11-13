@@ -725,7 +725,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       border-radius: 8px;
       border-left: 3px solid transparent;
       font-size: 0.9rem;
-      cursor: pointer;
     }
 
     .module-link:hover {
@@ -761,6 +760,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
       margin: 0;
     }
 
+    .module-item:hover .submenu,
     .module-item.expanded .submenu {
       max-height: 500px;
       opacity: 1;
@@ -825,6 +825,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     .gcp-container {
       flex: 1;
       margin-left: 320px;
+      margin-right: auto;
       max-width: 1200px;
       padding: 32px 48px 80px;
       color: rgba(255, 255, 255, 0.92);
@@ -1234,24 +1235,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('.topic-section, .quizzes-section');
       const submenuLinks = document.querySelectorAll('.submenu-link');
-      const moduleItems = document.querySelectorAll('.module-item');
-
-      // Toggle submenu on module link click
-      moduleItems.forEach(item => {
-        const moduleLink = item.querySelector('.module-link');
-        if (moduleLink) {
-          moduleLink.addEventListener('click', (e) => {
-            // Only prevent default if clicking on current page module
-            const href = moduleLink.getAttribute('href');
-            const currentPath = window.location.pathname;
-            
-            if (href && currentPath.includes(href.split('/').pop())) {
-              e.preventDefault();
-              item.classList.toggle('expanded');
-            }
-          });
-        }
-      });
 
       // Intersection Observer for active section highlighting in submenu
       const observerOptions = {
