@@ -1,0 +1,954 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Aplicaciones - Cloud Fundamentals">
+  <div class="page-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>☁️ Cloud Fundamentals</h3>
+      </div>
+      
+      <!-- Modules Navigation with Submenu -->
+      <nav class="sidebar-nav modules-nav">
+        <!-- Introducción Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link">
+            <span class="module-icon">📚</span>
+            <span class="module-text">Introducción a GCP</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/introduccion#iaas-paas-saas" class="submenu-link">IaaS, PaaS y SaaS</a>
+            <a href="/devsecops/google-devops-sre/introduccion#red-gcp" class="submenu-link">Red de Google Cloud</a>
+            <a href="/devsecops/google-devops-sre/introduccion#impacto" class="submenu-link">Impacto Medioambiental</a>
+            <a href="/devsecops/google-devops-sre/introduccion#seguridad" class="submenu-link">Seguridad por Capas</a>
+            <a href="/devsecops/google-devops-sre/introduccion#opensource" class="submenu-link">Ecosistema Open Source</a>
+            <a href="/devsecops/google-devops-sre/introduccion#precios" class="submenu-link">Precios y Facturación</a>
+          </div>
+        </div>
+
+        <!-- Recursos Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/recursos" class="nav-link module-link">
+            <span class="module-icon">🔐</span>
+            <span class="module-text">Recursos y Acceso</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/recursos#jerarquia" class="submenu-link">Jerarquía de Recursos</a>
+            <a href="/devsecops/google-devops-sre/recursos#iam" class="submenu-link">IAM</a>
+            <a href="/devsecops/google-devops-sre/recursos#service-accounts" class="submenu-link">Service Accounts</a>
+            <a href="/devsecops/google-devops-sre/recursos#cloud-identity" class="submenu-link">Cloud Identity</a>
+            <a href="/devsecops/google-devops-sre/recursos#interaccion" class="submenu-link">Formas de Interactuar</a>
+            <a href="/devsecops/google-devops-sre/recursos#quizzes" class="submenu-link quiz-item">📝 Evaluaciones</a>
+          </div>
+        </div>
+
+        <!-- VMs y Redes Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/vms-redes" class="nav-link module-link">
+            <span class="module-icon">🌐</span>
+            <span class="module-text">VMs y Redes</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/vms-redes#vpc" class="submenu-link">Virtual Private Cloud</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#compute-engine" class="submenu-link">Compute Engine</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#escalado" class="submenu-link">Escalado de VMs</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#balanceadores" class="submenu-link">Balanceadores de Carga</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#dns-cdn" class="submenu-link">Cloud DNS y CDN</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#conectividad" class="submenu-link">Conectar Redes a VPC</a>
+          </div>
+        </div>
+
+        <!-- Almacenamiento Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/almacenamiento" class="nav-link module-link">
+            <span class="module-icon">💾</span>
+            <span class="module-text">Almacenamiento</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-storage" class="submenu-link">Cloud Storage</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#clases" class="submenu-link">Clases de Almacenamiento</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-sql" class="submenu-link">Cloud SQL</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#spanner" class="submenu-link">Spanner</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#firestore" class="submenu-link">Firestore</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#bigtable" class="submenu-link">BigTable</a>
+          </div>
+        </div>
+
+        <!-- Contenedores Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/contenedores" class="nav-link module-link">
+            <span class="module-icon">📦</span>
+            <span class="module-text">Contenedores</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/contenedores#introduccion" class="submenu-link">Introducción</a>
+            <a href="/devsecops/google-devops-sre/contenedores#kubernetes" class="submenu-link">Kubernetes</a>
+            <a href="/devsecops/google-devops-sre/contenedores#gke" class="submenu-link">GKE</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-run" class="submenu-link">Cloud Run</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-functions" class="submenu-link">Cloud Run Functions</a>
+          </div>
+        </div>
+
+        <!-- Aplicaciones Module -->
+        <div class="module-item expanded">
+          <a href="/devsecops/google-devops-sre/aplicaciones" class="nav-link module-link active">
+            <span class="module-icon">🚀</span>
+            <span class="module-text">Aplicaciones</span>
+          </a>
+          <div class="submenu">
+            <a href="#app-engine" class="submenu-link">App Engine</a>
+            <a href="#desarrollo" class="submenu-link">Desarrollo</a>
+            <a href="#quizzes" class="submenu-link quiz-item">📝 Evaluaciones</a>
+          </div>
+        </div>
+
+        <!-- Prompt Engineering Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/prompt-engineering" class="nav-link module-link">
+            <span class="module-icon">🤖</span>
+            <span class="module-text">Prompt Engineering</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/prompt-engineering#gen-ai" class="submenu-link">IA Generativa</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#llm" class="submenu-link">LLM</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#alucinaciones" class="submenu-link">Alucinaciones</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#tipos-prompts" class="submenu-link">Tipos de Prompts</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#mejores-practicas" class="submenu-link">Mejores Prácticas</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Back to Hub -->
+      <div class="sidebar-footer">
+        <a href="/devsecops/google-devops-sre/cloud-fundamentals" class="back-link">← Volver al Hub</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="gcp-container">
+      <!-- Hero Section -->
+      <div class="gcp-hero">
+        <h1 class="gcp-title">� Aplicaciones en la Nube</h1>
+        <p class="gcp-subtitle">App Engine, desarrollo y despliegue de aplicaciones en Google Cloud Platform</p>
+      </div>
+
+      <!-- Content Sections -->
+      <section id="app-engine" class="content-section">
+        <h2 class="section-title">� App Engine</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué es App Engine?</h3>
+          <p><strong>App Engine</strong> es la plataforma PaaS (Platform as a Service) de Google Cloud para desarrollar y alojar aplicaciones web altamente escalables.</p>
+          
+          <p>Con App Engine, puedes enfocarte completamente en tu código mientras Google gestiona toda la infraestructura, incluyendo servidores, escalado, balanceo de carga y monitoreo.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Entornos de App Engine</h3>
+          
+          <div class="highlight-box">
+            <h4>Standard Environment</h4>
+            <ul>
+              <li>Arranque rápido de instancias</li>
+              <li>Escalado automático más rápido</li>
+              <li>Lenguajes soportados: Python, Java, Node.js, PHP, Ruby, Go</li>
+              <li>Ideal para cargas de trabajo con picos de tráfico repentinos</li>
+              <li>Facturación por instancia-hora</li>
+            </ul>
+          </div>
+          
+          <div class="highlight-box">
+            <h4>Flexible Environment</h4>
+            <ul>
+              <li>Ejecuta aplicaciones en contenedores Docker</li>
+              <li>Más opciones de personalización</li>
+              <li>Soporta cualquier lenguaje que se ejecute en un contenedor</li>
+              <li>Acceso SSH a las instancias</li>
+              <li>Ideal para aplicaciones que requieren personalización del entorno</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Características Principales</h3>
+          <ul>
+            <li><strong>Escalado Automático:</strong> Ajusta automáticamente el número de instancias según la demanda</li>
+            <li><strong>Versionado:</strong> Implementa múltiples versiones de tu aplicación</li>
+            <li><strong>División de Tráfico:</strong> Distribuye el tráfico entre versiones para pruebas A/B o despliegues graduales</li>
+            <li><strong>Servicios Integrados:</strong> Acceso directo a Datastore, Memcache, Task Queues, etc.</li>
+            <li><strong>Seguridad:</strong> Certificados SSL/TLS gestionados automáticamente</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Casos de Uso</h3>
+          <div class="highlight-box">
+            <ul>
+              <li>Aplicaciones web y móviles</li>
+              <li>APIs RESTful</li>
+              <li>Backends para aplicaciones móviles</li>
+              <li>Aplicaciones de comercio electrónico</li>
+              <li>Aplicaciones empresariales que requieren alta disponibilidad</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="desarrollo" class="content-section">
+        <h2 class="section-title">💻 Desarrollo en la Nube</h2>
+        
+        <div class="content-card">
+          <h3>Cloud Functions</h3>
+          <p>Como vimos en el módulo de contenedores, <strong>Cloud Run Functions</strong> es ideal para funciones pequeñas basadas en eventos que se ejecutan en respuesta a cambios en Cloud Storage, mensajes de Pub/Sub o solicitudes HTTP.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Flujo de Desarrollo con App Engine</h3>
+          <ol>
+            <li><strong>Desarrollo Local:</strong> Desarrolla y prueba tu aplicación localmente</li>
+            <li><strong>Implementación:</strong> Usa <code>gcloud app deploy</code> para implementar</li>
+            <li><strong>Gestión:</strong> Administra versiones, escalado y tráfico desde la consola</li>
+            <li><strong>Monitoreo:</strong> Usa Cloud Logging y Cloud Monitoring para ver el rendimiento</li>
+          </ol>
+        </div>
+
+        <div class="content-card">
+          <h3>Comparación: App Engine vs Cloud Run vs GKE</h3>
+          
+          <div class="highlight-box">
+            <h4>App Engine</h4>
+            <p><strong>Cuándo usarlo:</strong> Aplicaciones web tradicionales que necesitan escalado automático y gestión mínima de infraestructura.</p>
+          </div>
+          
+          <div class="highlight-box">
+            <h4>Cloud Run</h4>
+            <p><strong>Cuándo usarlo:</strong> Aplicaciones contenerizadas serverless que necesitan escalar desde cero y solo pagar por uso.</p>
+          </div>
+          
+          <div class="highlight-box">
+            <h4>GKE (Kubernetes Engine)</h4>
+            <p><strong>Cuándo usarlo:</strong> Aplicaciones complejas con múltiples microservicios que requieren control completo de la orquestación.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Mejores Prácticas</h3>
+          <ul>
+            <li>Usa versionado para implementaciones sin tiempo de inactividad</li>
+            <li>Implementa división de tráfico para probar cambios gradualmente</li>
+            <li>Configura alertas de monitoreo para detectar problemas temprano</li>
+            <li>Usa variables de entorno para configuración</li>
+            <li>Implementa caching para mejorar el rendimiento</li>
+            <li>Configura límites de recursos para controlar costos</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Herramientas de Desarrollo</h3>
+          <div class="highlight-box">
+            <ul>
+              <li><strong>gcloud CLI:</strong> Herramienta de línea de comandos para gestionar aplicaciones</li>
+              <li><strong>Cloud SDK:</strong> Conjunto completo de herramientas de desarrollo</li>
+              <li><strong>Cloud Console:</strong> Interfaz web para gestión visual</li>
+              <li><strong>Cloud Shell:</strong> Terminal en el navegador con SDK preinstalado</li>
+              <li><strong>Cloud Code:</strong> Extensiones para VS Code e IntelliJ</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quizzes Section -->
+      <section id="quizzes" class="quizzes-section">
+        <h2 class="section-title">📝 Evaluaciones</h2>
+        <p class="quiz-intro">Pon a prueba tus conocimientos sobre Recursos y Acceso a la Nube</p>
+
+        <!-- Quiz 1: Jerarquía de Recursos -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 1: Jerarquía de Recursos</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Cuál es el orden correcto de la jerarquía de recursos en Google Cloud de abajo hacia arriba?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a">
+                <span>Organización → Carpetas → Proyectos → Recursos</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q1" value="b">
+                <span>Recursos → Proyectos → Carpetas → Organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c">
+                <span>Proyectos → Recursos → Carpetas → Organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d">
+                <span>Carpetas → Proyectos → Recursos → Organización</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Recursos → Proyectos → Carpetas → Organización</p>
+              <p>Los recursos están en el nivel más bajo, se organizan en proyectos, los proyectos pueden agruparse en carpetas, y todo está bajo un nodo de organización.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Cuál de los siguientes atributos de un proyecto NO se puede cambiar después de su creación?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a">
+                <span>Nombre de proyecto</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q2" value="b">
+                <span>ID de proyecto</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c">
+                <span>Descripción de proyecto</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d">
+                <span>Etiquetas de proyecto</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> ID de proyecto</p>
+              <p>El ID de proyecto es un identificador único global asignado por Google que no se puede cambiar después de la creación. El nombre y otros atributos sí pueden modificarse.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz 2: IAM -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 2: IAM y Roles</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Qué tipo de rol IAM proporciona el control más granular y específico por servicio?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a">
+                <span>Roles Básicos</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q3" value="b">
+                <span>Roles Predefinidos</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c">
+                <span>Roles de Organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d">
+                <span>Roles de Proyecto</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Roles Predefinidos</p>
+              <p>Los roles predefinidos son específicos de servicios y proporcionan un control más granular que los roles básicos. Son diseñados por Google para cada servicio.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿En qué niveles se pueden aplicar los roles personalizados (custom)?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a">
+                <span>Solo a nivel de recurso</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b">
+                <span>En cualquier nivel de la jerarquía</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q4" value="c">
+                <span>Solo a nivel de proyecto u organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d">
+                <span>Solo a nivel de organización</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Solo a nivel de proyecto u organización</p>
+              <p>Los roles personalizados tienen la limitación de que solo se pueden aplicar a nivel de proyecto u organización, no a nivel de carpeta o recurso individual.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz 3: Service Accounts y Cloud Identity -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 3: Service Accounts y Cloud Identity</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Qué método de autenticación utilizan las service accounts?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a">
+                <span>Contraseñas tradicionales</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q5" value="b">
+                <span>Claves criptográficas</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c">
+                <span>Tokens OAuth únicamente</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d">
+                <span>Autenticación biométrica</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Claves criptográficas</p>
+              <p>Las service accounts utilizan claves criptográficas en lugar de contraseñas para autenticarse y acceder a recursos de Google Cloud.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Con qué sistemas de identidad existentes puede integrarse Cloud Identity?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a">
+                <span>Solo con Google Workspace</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q6" value="b">
+                <span>Active Directory y LDAP</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c">
+                <span>Solo con sistemas basados en la nube</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d">
+                <span>No permite integraciones externas</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Active Directory y LDAP</p>
+              <p>Cloud Identity permite a los administradores gestionar recursos de Google Cloud utilizando los mismos nombres de usuario y contraseñas de sistemas Active Directory o LDAP existentes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz 4: Métodos de Interacción -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 4: Métodos de Interacción con Google Cloud</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Qué herramienta de línea de comandos es parte del Google Cloud SDK para trabajar con BigQuery?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a">
+                <span>gcloud</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q7" value="b">
+                <span>bq</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c">
+                <span>gsutil</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d">
+                <span>kubectl</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> bq</p>
+              <p>bq es la herramienta de línea de comandos específica para BigQuery incluida en el Google Cloud SDK. gcloud es la herramienta principal para otros servicios.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Cuál es la principal ventaja de Cloud Shell?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a">
+                <span>Es más rápido que la consola web</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q8" value="b">
+                <span>Tiene herramientas preinstaladas, actualizadas y autenticadas</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c">
+                <span>Solo está disponible en versión premium</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d">
+                <span>Requiere instalación local de software</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Tiene herramientas preinstaladas, actualizadas y autenticadas</p>
+              <p>Cloud Shell proporciona acceso desde el navegador con todas las herramientas necesarias ya instaladas, actualizadas y completamente autenticadas, sin necesidad de configuración.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :global(body) {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+  }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      position: fixed;
+      left: calc(50% - 600px - 300px);
+      top: 80px;
+      width: 280px;
+      height: calc(100vh - 140px);
+      background: rgba(20, 20, 40, 0.95);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 12px;
+      padding: 20px 0;
+      overflow-y: auto;
+      z-index: 100;
+      /* Hide scrollbar */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .sidebar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+    .sidebar-header {
+      padding: 0 24px 20px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+      margin-bottom: 16px;
+    }
+
+    .sidebar-header h3 {
+      font-size: 1.3rem;
+      color: #a5b4fc;
+      font-weight: 700;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 16px;
+    }
+
+    .modules-nav {
+      margin-bottom: 12px;
+    }
+
+    /* Module Item Container */
+    .module-item {
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .module-link {
+      font-weight: 500;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      font-size: 0.9rem;
+    }
+
+    .module-link:hover {
+      background: rgba(122, 107, 255, 0.15);
+      color: #a5b4fc;
+      border-left-color: #7a6bff;
+      transform: translateX(4px);
+    }
+
+    .module-link.active {
+      background: rgba(122, 107, 255, 0.25);
+      color: #c7d2fe;
+      border-left-color: #7a6bff;
+      font-weight: 600;
+    }
+
+    .module-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .module-text {
+      flex: 1;
+    }
+
+    /* Submenu Styles */
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      padding: 0 0 0 40px;
+      margin: 0;
+    }
+
+    .module-item:hover .submenu,
+    .module-item.expanded .submenu {
+      max-height: 500px;
+      opacity: 1;
+      padding: 8px 0 8px 40px;
+    }
+
+    .submenu-link {
+      display: block;
+      padding: 8px 14px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .submenu-link:hover {
+      color: #a5b4fc;
+      background: rgba(122, 107, 255, 0.1);
+      border-left-color: rgba(122, 107, 255, 0.5);
+      transform: translateX(3px);
+    }
+
+    .submenu-link.active {
+      color: #c7d2fe;
+      background: rgba(122, 107, 255, 0.15);
+      border-left-color: #7a6bff;
+      font-weight: 500;
+    }
+
+    .submenu-link.quiz-item {
+      margin-top: 6px;
+      background: rgba(122, 107, 255, 0.05);
+      border: 1px solid rgba(122, 107, 255, 0.15);
+    }
+
+    .sidebar-footer {
+      padding: 20px 24px;
+      margin-top: 20px;
+      border-top: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .back-link {
+      display: block;
+      padding: 12px 16px;
+      color: #a5b4fc;
+      text-decoration: none;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(122, 107, 255, 0.2);
+      transform: translateX(-4px);
+    }
+
+    .gcp-container {
+      flex: 1;
+      margin-left: 0;
+      max-width: 1200px;
+      padding: 32px 48px 80px 48px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .gcp-hero {
+      text-align: center;
+      padding: 48px 24px;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, rgba(122, 107, 255, 0.15) 0%, rgba(165, 180, 252, 0.08) 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .gcp-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #a5b4fc;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(122, 107, 255, 0.3);
+    }
+
+    .gcp-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #c7d2fe;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .content-card {
+      background: rgba(30, 30, 50, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+      border-color: rgba(122, 107, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(122, 107, 255, 0.15);
+    }
+
+    .content-card h3 {
+      color: #a5b4fc;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .content-card h4 {
+      color: #a5b4fc;
+      font-size: 1.2rem;
+      margin: 20px 0 12px 0;
+    }
+
+    .content-card p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .content-card ul, .content-card ol {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    .content-card li {
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+
+    .highlight-box {
+      background: rgba(122, 107, 255, 0.1);
+      border-left: 4px solid #7a6bff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .image-container {
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-caption {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-style: italic;
+    }
+
+    /* Quizzes Section */
+    .quizzes-section {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 3px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .quiz-intro {
+      text-align: center;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 40px;
+    }
+
+    .quiz-container {
+      background: rgba(30, 30, 50, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    .quiz-title {
+      color: #a5b4fc;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .quiz-question {
+      margin-bottom: 32px;
+    }
+
+    .question-text {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: rgba(20, 20, 40, 0.6);
+      border: 2px solid rgba(122, 107, 255, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-option:hover {
+      border-color: rgba(122, 107, 255, 0.5);
+      background: rgba(122, 107, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    .quiz-option input[type="radio"] {
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .quiz-explanation {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(122, 107, 255, 0.1);
+      border-left: 4px solid #7a6bff;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .quiz-question:has(input:checked) .quiz-explanation {
+      display: block;
+    }
+
+    .quiz-explanation strong {
+      color: #a5b4fc;
+    }
+
+    @media (max-width: 1400px) {
+      .sidebar {
+        left: 20px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .page-wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 32px;
+      }
+
+      .gcp-container {
+        margin-left: 0;
+        padding: 24px;
+      }
+    }
+</style>
+
+<script>
+  // Intersection Observer for active section highlighting
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.content-section');
+    const navLinks = document.querySelectorAll('.submenu-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Smooth scroll for anchor links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  });
+</script>

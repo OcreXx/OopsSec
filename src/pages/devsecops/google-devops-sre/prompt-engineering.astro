@@ -1,0 +1,1100 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Prompt Engineering - Cloud Fundamentals">
+  <div class="page-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>☁️ Cloud Fundamentals</h3>
+      </div>
+      
+      <!-- Modules Navigation with Submenu -->
+      <nav class="sidebar-nav modules-nav">
+        <!-- Introducción Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link">
+            <span class="module-icon">📚</span>
+            <span class="module-text">Introducción a GCP</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/introduccion#iaas-paas-saas" class="submenu-link">IaaS, PaaS y SaaS</a>
+            <a href="/devsecops/google-devops-sre/introduccion#red-gcp" class="submenu-link">Red de Google Cloud</a>
+            <a href="/devsecops/google-devops-sre/introduccion#impacto" class="submenu-link">Impacto Medioambiental</a>
+            <a href="/devsecops/google-devops-sre/introduccion#seguridad" class="submenu-link">Seguridad por Capas</a>
+            <a href="/devsecops/google-devops-sre/introduccion#opensource" class="submenu-link">Ecosistema Open Source</a>
+            <a href="/devsecops/google-devops-sre/introduccion#precios" class="submenu-link">Precios y Facturación</a>
+          </div>
+        </div>
+
+        <!-- Recursos Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/recursos" class="nav-link module-link">
+            <span class="module-icon">🔐</span>
+            <span class="module-text">Recursos y Acceso</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/recursos#jerarquia" class="submenu-link">Jerarquía de Recursos</a>
+            <a href="/devsecops/google-devops-sre/recursos#iam" class="submenu-link">IAM</a>
+            <a href="/devsecops/google-devops-sre/recursos#service-accounts" class="submenu-link">Service Accounts</a>
+            <a href="/devsecops/google-devops-sre/recursos#cloud-identity" class="submenu-link">Cloud Identity</a>
+            <a href="/devsecops/google-devops-sre/recursos#interaccion" class="submenu-link">Formas de Interactuar</a>
+            <a href="/devsecops/google-devops-sre/recursos#quizzes" class="submenu-link quiz-item">📝 Evaluaciones</a>
+          </div>
+        </div>
+
+        <!-- VMs y Redes Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/vms-redes" class="nav-link module-link">
+            <span class="module-icon">🌐</span>
+            <span class="module-text">VMs y Redes</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/vms-redes#vpc" class="submenu-link">Virtual Private Cloud</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#compute-engine" class="submenu-link">Compute Engine</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#escalado" class="submenu-link">Escalado de VMs</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#balanceadores" class="submenu-link">Balanceadores de Carga</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#dns-cdn" class="submenu-link">Cloud DNS y CDN</a>
+            <a href="/devsecops/google-devops-sre/vms-redes#conectividad" class="submenu-link">Conectar Redes a VPC</a>
+          </div>
+        </div>
+
+        <!-- Almacenamiento Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/almacenamiento" class="nav-link module-link">
+            <span class="module-icon">💾</span>
+            <span class="module-text">Almacenamiento</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-storage" class="submenu-link">Cloud Storage</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#clases" class="submenu-link">Clases de Almacenamiento</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-sql" class="submenu-link">Cloud SQL</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#spanner" class="submenu-link">Spanner</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#firestore" class="submenu-link">Firestore</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#bigtable" class="submenu-link">BigTable</a>
+          </div>
+        </div>
+
+        <!-- Contenedores Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/contenedores" class="nav-link module-link">
+            <span class="module-icon">📦</span>
+            <span class="module-text">Contenedores</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/contenedores#introduccion" class="submenu-link">Introducción</a>
+            <a href="/devsecops/google-devops-sre/contenedores#kubernetes" class="submenu-link">Kubernetes</a>
+            <a href="/devsecops/google-devops-sre/contenedores#gke" class="submenu-link">GKE</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-run" class="submenu-link">Cloud Run</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-functions" class="submenu-link">Cloud Run Functions</a>
+          </div>
+        </div>
+
+        <!-- Aplicaciones Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/aplicaciones" class="nav-link module-link">
+            <span class="module-icon">🚀</span>
+            <span class="module-text">Aplicaciones</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/aplicaciones#app-engine" class="submenu-link">App Engine</a>
+            <a href="/devsecops/google-devops-sre/aplicaciones#desarrollo" class="submenu-link">Desarrollo</a>
+          </div>
+        </div>
+
+        <!-- Prompt Engineering Module -->
+        <div class="module-item expanded">
+          <a href="/devsecops/google-devops-sre/prompt-engineering" class="nav-link module-link active">
+            <span class="module-icon">🤖</span>
+            <span class="module-text">Prompt Engineering</span>
+          </a>
+          <div class="submenu">
+            <a href="#gen-ai" class="submenu-link">IA Generativa</a>
+            <a href="#llm" class="submenu-link">LLM</a>
+            <a href="#alucinaciones" class="submenu-link">Alucinaciones</a>
+            <a href="#tipos-prompts" class="submenu-link">Tipos de Prompts</a>
+            <a href="#mejores-practicas" class="submenu-link">Mejores Prácticas</a>
+            <a href="#quizzes" class="submenu-link quiz-item">📝 Evaluaciones</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Back to Hub -->
+      <div class="sidebar-footer">
+        <a href="/devsecops/google-devops-sre/cloud-fundamentals" class="back-link">← Volver al Hub</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="gcp-container">
+      <!-- Hero Section -->
+      <div class="gcp-hero">
+        <h1 class="gcp-title">🤖 Prompt Engineering e IA Generativa</h1>
+        <p class="gcp-subtitle">Large Language Models, prompts, alucinaciones y mejores prácticas con Gemini</p>
+      </div>
+
+      <!-- Content Sections -->
+      <section id="gen-ai" class="content-section">
+        <h2 class="section-title">🧠 Inteligencia Artificial Generativa</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué es la IA Generativa (Gen AI)?</h3>
+          <p>La <strong>Inteligencia Artificial Generativa</strong> abarca una gama más amplia de modelos capaces de generar varios tipos de contenido más allá del texto, mientras que <strong>LLM</strong> se refiere específicamente a un subconjunto de modelos de IA generativa que se centran en tareas de lenguaje.</p>
+          
+          <p>La inteligencia artificial generativa, comúnmente referida como <strong>Gen AI</strong>, es un subconjunto de la inteligencia artificial que es capaz de crear texto, imágenes u otros datos usando modelos generativos, a menudo en respuesta a prompts.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Modelos Generativos</h3>
+          <p>Los modelos de Gen AI son como programas conversacionales que pueden generar contenido basándose en las entradas suministradas.</p>
+          
+          <div class="highlight-box">
+            <p>Los modelos de Gen AI <strong>aprenden los patrones y la estructura</strong> de los datos de entrenamiento de entrada y luego crean <strong>nuevos datos con características similares</strong>.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Capacidades de la IA Generativa</h3>
+          <ul>
+            <li>Generación de texto (artículos, código, respuestas)</li>
+            <li>Creación de imágenes</li>
+            <li>Generación de audio y música</li>
+            <li>Síntesis de video</li>
+            <li>Traducción y resumen de contenido</li>
+            <li>Generación de código de programación</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="llm" class="content-section">
+        <h2 class="section-title">🔤 Large Language Models (LLM)</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué son los LLM?</h3>
+          <p>Los <strong>modelos de lenguaje grandes</strong> se refieren a modelos de lenguaje grandes y de propósito general que pueden ser <strong>pre-entrenados</strong> y luego <strong>ajustados</strong> para propósitos específicos.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Parámetros</h3>
+          <p>Los <strong>parámetros</strong> son las memorias y el conocimiento que la máquina ha aprendido durante el entrenamiento del modelo.</p>
+          
+          <div class="highlight-box">
+            <ul>
+              <li>Determinan la capacidad de un modelo para resolver un problema</li>
+              <li>Como predecir texto y generar respuestas</li>
+              <li>Pueden alcanzar <strong>billones o incluso trillones</strong> en tamaño</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Propósito General</h3>
+          <p><strong>Propósito general</strong> significa que los modelos pueden resolver suficientemente problemas comunes.</p>
+          
+          <p>Cuando envías un prompt a un LLM, este calcula la <strong>probabilidad de la respuesta correcta</strong> desde su modelo pre-entrenado.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Pre-entrenamiento</h3>
+          <p>El <strong>pre-entrenamiento</strong> de un LLM implica alimentar un conjunto masivo de datos de texto, imágenes y código al modelo para que pueda aprender la estructura y patrones subyacentes del lenguaje.</p>
+          
+          <div class="highlight-box">
+            <p>Este proceso permite que el modelo comprenda contexto, gramática, hechos del mundo y relaciones entre conceptos antes de ser ajustado para tareas específicas.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Gemini de Google</h3>
+          <p><strong>Gemini</strong> es el LLM de Google Cloud diseñado para aplicaciones multimodales que pueden procesar y generar texto, imágenes y otros formatos de contenido.</p>
+        </div>
+      </section>
+
+      <section id="alucinaciones" class="content-section">
+        <h2 class="section-title">👁️ Alucinaciones en LLMs</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué son las Alucinaciones?</h3>
+          <p>A veces el LLM da una respuesta <strong>completamente incorrecta</strong>. Esto se llama una <strong>alucinación</strong>.</p>
+          
+          <p>Esto sucede porque los LLMs solo pueden entender la información con la que fueron entrenados. Para empeorar las cosas, los LLMs solo entienden la información que se les da <strong>explícitamente en el prompt</strong>. En otras palabras, a menudo <strong>asumen que el prompt es verdadero</strong>.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Causas de las Alucinaciones</h3>
+          <p>Las alucinaciones pueden ser causadas por varios factores:</p>
+          
+          <div class="highlight-box">
+            <ul>
+              <li>El modelo no está entrenado con <strong>suficientes datos</strong></li>
+              <li>El modelo está entrenado con <strong>datos ruidosos o sucios</strong></li>
+              <li>Al modelo no se le da <strong>suficiente contexto</strong></li>
+              <li>Al modelo no se le dan <strong>suficientes restricciones</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Cómo Evitar Alucinaciones</h3>
+          <ul>
+            <li>Proporcionar <strong>contexto claro y específico</strong> en el prompt</li>
+            <li>Establecer <strong>restricciones y límites</strong> explícitos</li>
+            <li>Usar <strong>ejemplos concretos</strong> (few-shot prompting)</li>
+            <li>Pedir al modelo que <strong>cite fuentes</strong> o admita cuando no sabe</li>
+            <li>Validar las respuestas con <strong>fuentes confiables</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="tipos-prompts" class="content-section">
+        <h2 class="section-title">� Tipos de Prompts</h2>
+        
+        <div class="content-card">
+          <h3>Prompt Engineering</h3>
+          <p>Un <strong>prompt</strong> es el texto que alimentas al modelo, y la <strong>ingeniería de prompts</strong> es una forma de articular tus prompts para obtener la mejor respuesta del modelo.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>1. Zero-shot Prompts</h3>
+          <p><strong>Zero-shot prompts</strong> no contienen ningún contexto o ejemplos para ayudar al modelo.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Ejemplo:</strong> "¿Cuál es la capital de Francia?"</p>
+            <p>Para prompts más específicos y técnicos, un ejemplo ayudaría a refinar el alcance de la respuesta de Gemini.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>2. One-shot Prompts</h3>
+          <p><strong>One-shot prompts</strong> proporcionan un ejemplo al modelo para contexto.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Ejemplo:</strong></p>
+            <p>Traduce al español: "Hello" → "Hola"</p>
+            <p>Traduce al español: "Goodbye"</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>3. Few-shot Prompts</h3>
+          <p><strong>Few-shot prompts</strong> proporcionan al menos dos ejemplos al modelo para contexto.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Ejemplo:</strong></p>
+            <p>Clasifica el sentimiento:</p>
+            <ul>
+              <li>"Me encanta este producto" → Positivo</li>
+              <li>"Es terrible" → Negativo</li>
+              <li>"No está mal" → ?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>4. Role Prompts</h3>
+          <p><strong>Role prompts</strong> requieren un marco de referencia para que el modelo trabaje mientras responde las preguntas.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Ejemplo:</strong> "Actúa como un experto en seguridad de la información y explica qué es un ataque de phishing."</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="mejores-practicas" class="content-section">
+        <h2 class="section-title">⭐ Mejores Prácticas para Prompt Engineering</h2>
+        
+        <div class="content-card">
+          <h3>Anatomía de un Prompt</h3>
+          
+          <div class="highlight-box">
+            <h4>Preámbulo (Preamble)</h4>
+            <p>El <strong>preámbulo</strong> se refiere al texto introductorio que proporcionas para dar contexto e instrucciones al modelo antes de tu pregunta o solicitud principal. Piensa en ello como preparar el escenario para que el LLM entienda mejor lo que quieres.</p>
+            
+            <p><strong>Puede incluir:</strong></p>
+            <ul>
+              <li>El contexto para la tarea</li>
+              <li>La tarea en sí</li>
+              <li>Algunos ejemplos para guiar al modelo</li>
+            </ul>
+          </div>
+          
+          <div class="highlight-box">
+            <h4>Input</h4>
+            <p>El <strong>input</strong> es la solicitud central que estás haciendo al LLM. Es sobre lo que la instrucción o tarea actuará.</p>
+            
+            <p><strong>Ejemplo completo:</strong></p>
+            <ul>
+              <li><strong>Preámbulo:</strong> "Analiza el siguiente comentario y determina si es positivo, neutral o negativo"</li>
+              <li><strong>Input:</strong> "Comentario: No sé qué pensar sobre el video. La reseña es:"</li>
+            </ul>
+            
+            <p>Basándose en el preámbulo, Gemini revisa el input y sugiere si la reseña es positiva, neutral o negativa.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>1. Escribe Instrucciones Detalladas y Explícitas</h3>
+          <p>Proporciona contexto claro y específico. Cuanto más detallado seas, mejores resultados obtendrás.</p>
+          
+          <div class="highlight-box">
+            <p><strong>❌ Malo:</strong> "Escribe código"</p>
+            <p><strong>✅ Bueno:</strong> "Escribe una función en Python que ordene una lista de números de menor a mayor usando el algoritmo de ordenamiento rápido (quicksort)"</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>2. Define Límites para el Prompt</h3>
+          <p>Establece <strong>restricciones y parámetros claros</strong> para guiar la respuesta del modelo.</p>
+          
+          <ul>
+            <li>Longitud máxima de la respuesta</li>
+            <li>Formato deseado (lista, párrafo, JSON, etc.)</li>
+            <li>Tono y estilo (formal, casual, técnico)</li>
+            <li>Restricciones de contenido</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>3. Proporciona Salidas de Respaldo</h3>
+          <p>Si el modelo se atasca, dale algunas <strong>salidas 'de respaldo'</strong> que funcionen en varias situaciones.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Ejemplo:</strong> "Si no encuentras la respuesta en el contexto proporcionado, responde 'No tengo suficiente información para responder esta pregunta.'"</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>4. Adopta una Persona para tu Input</h3>
+          <p>Define un <strong>rol o perspectiva</strong> para que el modelo lo adopte. Esto ayuda a orientar el tono y el enfoque de la respuesta.</p>
+          
+          <ul>
+            <li>"Como un ingeniero DevOps experimentado..."</li>
+            <li>"Imagina que eres un profesor explicando a estudiantes de secundaria..."</li>
+            <li>"Actuando como un auditor de seguridad..."</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>5. Mantén Cada Oración Concisa</h3>
+          <div class="highlight-box">
+            <ul>
+              <li>Evita oraciones largas y complejas</li>
+              <li>Usa lenguaje claro y directo</li>
+              <li>Separa instrucciones complejas en pasos</li>
+              <li>Usa viñetas o listas cuando sea apropiado</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Ejemplo de Prompt Bien Estructurado</h3>
+          <div class="highlight-box">
+            <p><strong>Preámbulo:</strong></p>
+            <p>"Actúa como un experto en Cloud DevOps. Explica el concepto a un desarrollador que está aprendiendo sobre infraestructura en la nube."</p>
+            
+            <p><strong>Tarea:</strong></p>
+            <p>"Explica qué es Kubernetes y cuándo debería usarse."</p>
+            
+            <p><strong>Restricciones:</strong></p>
+            <ul>
+              <li>Máximo 3 párrafos</li>
+              <li>Incluye un ejemplo práctico</li>
+              <li>Usa lenguaje técnico pero accesible</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quizzes Section -->
+      <section id="quizzes" class="quizzes-section">
+        <h2 class="section-title">📝 Evaluaciones</h2>
+        <p class="quiz-intro">Pon a prueba tus conocimientos sobre Recursos y Acceso a la Nube</p>
+
+        <!-- Quiz 1: Jerarquía de Recursos -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 1: Jerarquía de Recursos</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Cuál es el orden correcto de la jerarquía de recursos en Google Cloud de abajo hacia arriba?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a">
+                <span>Organización → Carpetas → Proyectos → Recursos</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q1" value="b">
+                <span>Recursos → Proyectos → Carpetas → Organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c">
+                <span>Proyectos → Recursos → Carpetas → Organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d">
+                <span>Carpetas → Proyectos → Recursos → Organización</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Recursos → Proyectos → Carpetas → Organización</p>
+              <p>Los recursos están en el nivel más bajo, se organizan en proyectos, los proyectos pueden agruparse en carpetas, y todo está bajo un nodo de organización.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Cuál de los siguientes atributos de un proyecto NO se puede cambiar después de su creación?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a">
+                <span>Nombre de proyecto</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q2" value="b">
+                <span>ID de proyecto</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c">
+                <span>Descripción de proyecto</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d">
+                <span>Etiquetas de proyecto</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> ID de proyecto</p>
+              <p>El ID de proyecto es un identificador único global asignado por Google que no se puede cambiar después de la creación. El nombre y otros atributos sí pueden modificarse.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz 2: IAM -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 2: IAM y Roles</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Qué tipo de rol IAM proporciona el control más granular y específico por servicio?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a">
+                <span>Roles Básicos</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q3" value="b">
+                <span>Roles Predefinidos</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c">
+                <span>Roles de Organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d">
+                <span>Roles de Proyecto</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Roles Predefinidos</p>
+              <p>Los roles predefinidos son específicos de servicios y proporcionan un control más granular que los roles básicos. Son diseñados por Google para cada servicio.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿En qué niveles se pueden aplicar los roles personalizados (custom)?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a">
+                <span>Solo a nivel de recurso</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b">
+                <span>En cualquier nivel de la jerarquía</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q4" value="c">
+                <span>Solo a nivel de proyecto u organización</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d">
+                <span>Solo a nivel de organización</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Solo a nivel de proyecto u organización</p>
+              <p>Los roles personalizados tienen la limitación de que solo se pueden aplicar a nivel de proyecto u organización, no a nivel de carpeta o recurso individual.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz 3: Service Accounts y Cloud Identity -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 3: Service Accounts y Cloud Identity</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Qué método de autenticación utilizan las service accounts?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a">
+                <span>Contraseñas tradicionales</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q5" value="b">
+                <span>Claves criptográficas</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c">
+                <span>Tokens OAuth únicamente</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d">
+                <span>Autenticación biométrica</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Claves criptográficas</p>
+              <p>Las service accounts utilizan claves criptográficas en lugar de contraseñas para autenticarse y acceder a recursos de Google Cloud.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Con qué sistemas de identidad existentes puede integrarse Cloud Identity?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a">
+                <span>Solo con Google Workspace</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q6" value="b">
+                <span>Active Directory y LDAP</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c">
+                <span>Solo con sistemas basados en la nube</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d">
+                <span>No permite integraciones externas</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Active Directory y LDAP</p>
+              <p>Cloud Identity permite a los administradores gestionar recursos de Google Cloud utilizando los mismos nombres de usuario y contraseñas de sistemas Active Directory o LDAP existentes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz 4: Métodos de Interacción -->
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 4: Métodos de Interacción con Google Cloud</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Qué herramienta de línea de comandos es parte del Google Cloud SDK para trabajar con BigQuery?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a">
+                <span>gcloud</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q7" value="b">
+                <span>bq</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c">
+                <span>gsutil</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d">
+                <span>kubectl</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> bq</p>
+              <p>bq es la herramienta de línea de comandos específica para BigQuery incluida en el Google Cloud SDK. gcloud es la herramienta principal para otros servicios.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Cuál es la principal ventaja de Cloud Shell?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a">
+                <span>Es más rápido que la consola web</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q8" value="b">
+                <span>Tiene herramientas preinstaladas, actualizadas y autenticadas</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c">
+                <span>Solo está disponible en versión premium</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d">
+                <span>Requiere instalación local de software</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Tiene herramientas preinstaladas, actualizadas y autenticadas</p>
+              <p>Cloud Shell proporciona acceso desde el navegador con todas las herramientas necesarias ya instaladas, actualizadas y completamente autenticadas, sin necesidad de configuración.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :global(body) {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+  }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      position: fixed;
+      left: calc(50% - 600px - 300px);
+      top: 80px;
+      width: 280px;
+      height: calc(100vh - 140px);
+      background: rgba(20, 20, 40, 0.95);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 12px;
+      padding: 20px 0;
+      overflow-y: auto;
+      z-index: 100;
+      /* Hide scrollbar */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .sidebar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+    .sidebar-header {
+      padding: 0 24px 20px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+      margin-bottom: 16px;
+    }
+
+    .sidebar-header h3 {
+      font-size: 1.3rem;
+      color: #a5b4fc;
+      font-weight: 700;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 16px;
+    }
+
+    .modules-nav {
+      margin-bottom: 12px;
+    }
+
+    /* Module Item Container */
+    .module-item {
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .module-link {
+      font-weight: 500;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      font-size: 0.9rem;
+    }
+
+    .module-link:hover {
+      background: rgba(122, 107, 255, 0.15);
+      color: #a5b4fc;
+      border-left-color: #7a6bff;
+      transform: translateX(4px);
+    }
+
+    .module-link.active {
+      background: rgba(122, 107, 255, 0.25);
+      color: #c7d2fe;
+      border-left-color: #7a6bff;
+      font-weight: 600;
+    }
+
+    .module-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .module-text {
+      flex: 1;
+    }
+
+    /* Submenu Styles */
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      padding: 0 0 0 40px;
+      margin: 0;
+    }
+
+    .module-item:hover .submenu,
+    .module-item.expanded .submenu {
+      max-height: 500px;
+      opacity: 1;
+      padding: 8px 0 8px 40px;
+    }
+
+    .submenu-link {
+      display: block;
+      padding: 8px 14px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .submenu-link:hover {
+      color: #a5b4fc;
+      background: rgba(122, 107, 255, 0.1);
+      border-left-color: rgba(122, 107, 255, 0.5);
+      transform: translateX(3px);
+    }
+
+    .submenu-link.active {
+      color: #c7d2fe;
+      background: rgba(122, 107, 255, 0.15);
+      border-left-color: #7a6bff;
+      font-weight: 500;
+    }
+
+    .submenu-link.quiz-item {
+      margin-top: 6px;
+      background: rgba(122, 107, 255, 0.05);
+      border: 1px solid rgba(122, 107, 255, 0.15);
+    }
+
+    .sidebar-footer {
+      padding: 20px 24px;
+      margin-top: 20px;
+      border-top: 1px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .back-link {
+      display: block;
+      padding: 12px 16px;
+      color: #a5b4fc;
+      text-decoration: none;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(122, 107, 255, 0.2);
+      transform: translateX(-4px);
+    }
+
+    .gcp-container {
+      flex: 1;
+      margin-left: 0;
+      max-width: 1200px;
+      padding: 32px 48px 80px 48px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .gcp-hero {
+      text-align: center;
+      padding: 48px 24px;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, rgba(122, 107, 255, 0.15) 0%, rgba(165, 180, 252, 0.08) 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .gcp-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #a5b4fc;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(122, 107, 255, 0.3);
+    }
+
+    .gcp-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #c7d2fe;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .content-card {
+      background: rgba(30, 30, 50, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+      border-color: rgba(122, 107, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(122, 107, 255, 0.15);
+    }
+
+    .content-card h3 {
+      color: #a5b4fc;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .content-card h4 {
+      color: #a5b4fc;
+      font-size: 1.2rem;
+      margin: 20px 0 12px 0;
+    }
+
+    .content-card p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .content-card ul, .content-card ol {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    .content-card li {
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+
+    .highlight-box {
+      background: rgba(122, 107, 255, 0.1);
+      border-left: 4px solid #7a6bff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .image-container {
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-caption {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-style: italic;
+    }
+
+    /* Quizzes Section */
+    .quizzes-section {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 3px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .quiz-intro {
+      text-align: center;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 40px;
+    }
+
+    .quiz-container {
+      background: rgba(30, 30, 50, 0.6);
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    .quiz-title {
+      color: #a5b4fc;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.2);
+    }
+
+    .quiz-question {
+      margin-bottom: 32px;
+    }
+
+    .question-text {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: rgba(20, 20, 40, 0.6);
+      border: 2px solid rgba(122, 107, 255, 0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-option:hover {
+      border-color: rgba(122, 107, 255, 0.5);
+      background: rgba(122, 107, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    .quiz-option input[type="radio"] {
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .quiz-explanation {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(122, 107, 255, 0.1);
+      border-left: 4px solid #7a6bff;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .quiz-question:has(input:checked) .quiz-explanation {
+      display: block;
+    }
+
+    .quiz-explanation strong {
+      color: #a5b4fc;
+    }
+
+    @media (max-width: 1400px) {
+      .sidebar {
+        left: 20px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .page-wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        margin-bottom: 32px;
+      }
+
+      .gcp-container {
+        margin-left: 0;
+        padding: 24px;
+      }
+    }
+</style>
+
+<script>
+  // Intersection Observer for active section highlighting
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.content-section');
+    const navLinks = document.querySelectorAll('.submenu-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Smooth scroll for anchor links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  });
+</script>
