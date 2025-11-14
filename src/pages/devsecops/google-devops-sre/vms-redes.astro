@@ -1,0 +1,976 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="VMs y Redes - Cloud Fundamentals">
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>☁️ Cloud Fundamentals</h3>
+      </div>
+      
+      <nav class="sidebar-nav modules-nav">
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link">
+            <span class="module-icon">📚</span>
+            <span class="module-text">Introducción a GCP</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/introduccion#iaas-paas-saas" class="submenu-link">IaaS, PaaS y SaaS</a>
+            <a href="/devsecops/google-devops-sre/introduccion#red-gcp" class="submenu-link">Red de Google Cloud</a>
+            <a href="/devsecops/google-devops-sre/introduccion#impacto" class="submenu-link">Impacto Medioambiental</a>
+            <a href="/devsecops/google-devops-sre/introduccion#seguridad" class="submenu-link">Seguridad por Capas</a>
+            <a href="/devsecops/google-devops-sre/introduccion#opensource" class="submenu-link">Ecosistema Open Source</a>
+            <a href="/devsecops/google-devops-sre/introduccion#precios" class="submenu-link">Precios y Facturación</a>
+          </div>
+        </div>
+
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/recursos" class="nav-link module-link">
+            <span class="module-icon">🔐</span>
+            <span class="module-text">Recursos y Acceso</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/recursos#jerarquia" class="submenu-link">Jerarquía de Recursos</a>
+            <a href="/devsecops/google-devops-sre/recursos#iam" class="submenu-link">IAM</a>
+            <a href="/devsecops/google-devops-sre/recursos#service-accounts" class="submenu-link">Service Accounts</a>
+            <a href="/devsecops/google-devops-sre/recursos#cloud-identity" class="submenu-link">Cloud Identity</a>
+            <a href="/devsecops/google-devops-sre/recursos#interaccion" class="submenu-link">Formas de Interactuar</a>
+          </div>
+        </div>
+
+        <div class="module-item expanded">
+          <a href="/devsecops/google-devops-sre/vms-redes" class="nav-link module-link active">
+            <span class="module-icon">🌐</span>
+            <span class="module-text">VMs y Redes</span>
+          </a>
+          <div class="submenu">
+            <a href="#vpc" class="submenu-link">Virtual Private Cloud</a>
+            <a href="#compute-engine" class="submenu-link">Compute Engine</a>
+            <a href="#escalado" class="submenu-link">Escalado de VMs</a>
+            <a href="#balanceadores" class="submenu-link">Balanceadores de Carga</a>
+            <a href="#dns-cdn" class="submenu-link">Cloud DNS y CDN</a>
+            <a href="#conectividad" class="submenu-link">Conectar Redes a VPC</a>
+            <a href="#quizzes" class="submenu-link quiz-item">📝 Evaluaciones</a>
+          </div>
+        </div>
+
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/almacenamiento" class="nav-link module-link">
+            <span class="module-icon">💾</span>
+            <span class="module-text">Almacenamiento</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-storage" class="submenu-link">Cloud Storage</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#clases" class="submenu-link">Clases de Almacenamiento</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#cloud-sql" class="submenu-link">Cloud SQL</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#spanner" class="submenu-link">Spanner</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#firestore" class="submenu-link">Firestore</a>
+            <a href="/devsecops/google-devops-sre/almacenamiento#bigtable" class="submenu-link">BigTable</a>
+          </div>
+        </div>
+
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/contenedores" class="nav-link module-link">
+            <span class="module-icon">📦</span>
+            <span class="module-text">Contenedores</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/contenedores#introduccion" class="submenu-link">Introducción</a>
+            <a href="/devsecops/google-devops-sre/contenedores#kubernetes" class="submenu-link">Kubernetes</a>
+            <a href="/devsecops/google-devops-sre/contenedores#gke" class="submenu-link">GKE</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-run" class="submenu-link">Cloud Run</a>
+            <a href="/devsecops/google-devops-sre/contenedores#cloud-functions" class="submenu-link">Cloud Run Functions</a>
+          </div>
+        </div>
+
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/aplicaciones" class="nav-link module-link">
+            <span class="module-icon">🚀</span>
+            <span class="module-text">Aplicaciones</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/aplicaciones#app-engine" class="submenu-link">App Engine</a>
+            <a href="/devsecops/google-devops-sre/aplicaciones#desarrollo" class="submenu-link">Desarrollo en la Nube</a>
+          </div>
+        </div>
+
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/prompt-engineering" class="nav-link module-link">
+            <span class="module-icon">🤖</span>
+            <span class="module-text">Prompt Engineering</span>
+          </a>
+          <div class="submenu">
+            <a href="/devsecops/google-devops-sre/prompt-engineering#gen-ai" class="submenu-link">IA Generativa</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#llm" class="submenu-link">LLM</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#alucinaciones" class="submenu-link">Alucinaciones</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#tipos-prompts" class="submenu-link">Tipos de Prompts</a>
+            <a href="/devsecops/google-devops-sre/prompt-engineering#mejores-practicas" class="submenu-link">Mejores Prácticas</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/devsecops/google-devops-sre/cloud-fundamentals" class="back-link">← Volver al Hub</a>
+      </div>
+    </aside>
+
+    <main class="gcp-container">
+      <div class="gcp-hero">
+        <h1 class="gcp-title">🌐 Máquinas Virtuales y Redes en la Nube</h1>
+        <p class="gcp-subtitle">VPC, Compute Engine, escalado, balanceadores de carga y opciones de conectividad</p>
+      </div>
+
+      <section id="vpc" class="content-section">
+        <h2 class="section-title">☁️ Virtual Private Cloud (VPC)</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué es una VPC?</h3>
+          <p><strong>VPC</strong> = Modelo de computación en nube privada individual y segura alojado dentro de una nube pública.</p>
+          
+          <p>Te permiten hacer exactamente las mismas cosas que harías en una nube privada (On-premises), con las ventajas de una nube pública (escalabilidad, aislamiento, etc.).</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Funcionalidades de VPC</h3>
+          <p>Las VPCs conectan recursos de Google Cloud entre sí y con internet:</p>
+          <ul>
+            <li><strong>Segmentación de redes:</strong> Divide tu infraestructura en subredes lógicas</li>
+            <li><strong>Reglas de firewall:</strong> Restringe el tráfico a instancias específicas</li>
+            <li><strong>Enrutamiento de tráfico:</strong> Reenvía tráfico a rutas específicas</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Características Globales</h3>
+          <div class="highlight-box">
+            <p>Las VPCs son <strong>globales</strong> y pueden tener subredes en cualquier región de Google Cloud, lo que facilita definir diseños de red con alcance global.</p>
+            
+            <p>El tamaño de una subred se puede expandir aumentando el rango de direcciones IP asignadas a ella. Dos subredes en la misma VPC se consideran vecinas incluso si están en diferentes zonas o regiones.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Compatibilidades de VPC</h3>
+          
+          <h4>Tablas de Enrutamiento</h4>
+          <p>Estas son <strong>built-in</strong>, así que no hace falta crearlas, mantenerlas ni gestionarlas. Se encargan de hacer el reenvío entre instancias o zonas y no necesitan una IP externa.</p>
+          
+          <h4>Firewall</h4>
+          <p>Tampoco hace falta tener un Firewall porque ya lo tienen built-in sin necesidad de enrutamiento o gestión, permitiendo restringir el acceso a instancias a través de reglas las cuales se pueden definir con <strong>network tags</strong>.</p>
+          <p><em>Ejemplo:</em> Etiquetas los servidores web con "web" y pones una regla para ese tag.</p>
+          
+          <h4>VPC Peering</h4>
+          <p>VPC peering permite establecer relaciones entre VPCs. Recordando que es un servicio global, lo que permite conectar diferentes proyectos.</p>
+          
+          <h4>Shared VPC</h4>
+          <p>Shared VPC se puede usar para establecer políticas y controles IAM para definir qué o quién puede acceder a qué entre la VPC de un proyecto y otro.</p>
+        </div>
+      </section>
+
+      <section id="compute-engine" class="content-section">
+        <h2 class="section-title">🖥️ Compute Engine</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué es Compute Engine?</h3>
+          <p><strong>Compute Engine</strong> es IaaS utilizado para crear y ejecutar máquinas virtuales en la infraestructura de Google, sin pago por adelantado, con capacidades de crecimiento horizontal y vertical.</p>
+          
+          <p>Pueden ejecutar imágenes de <strong>Windows Server</strong>, <strong>Linux</strong> o cualquier imagen personalizada que se le indique.</p>
+          
+          <p>En el marketplace hay paquetes preconfigurados que se pueden utilizar sin coste, pero también existen paquetes que tienen costes mensuales.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Facturación</h3>
+          
+          <div class="highlight-box">
+            <h4>Facturación por Segundo</h4>
+            <p>La facturación por uso es por segundo y cuenta con <strong>descuentos por uso sostenido</strong> que se aplican de manera automática, a partir del 25% de la duración del mes.</p>
+          </div>
+          
+          <h4>Descuentos por Compromiso</h4>
+          <p>También existen descuentos para usos con compromisos, es decir, para cargas predecibles que se mantengan en ciertos rangos de consumo como uso de CPU, memoria, etc.</p>
+          
+          <h4>Máquinas Spot y Preemptible</h4>
+          <p>Finalmente existen máquinas con descuento "spot" y "preemptible" que se usan para cargas puntuales como ejecuciones por lotes. Estas tienen como condición que el job que se ejecute tenga capacidades para ser reiniciado.</p>
+          <ul>
+            <li><strong>Máquinas Spot:</strong> Pueden correr indefinidamente</li>
+            <li><strong>Máquinas Preemptible:</strong> Solo hasta 24 horas</li>
+          </ul>
+          
+          <div class="highlight-box">
+            <p><strong>Almacenamiento:</strong> El throughput es elevado independientemente de la máquina y no incluye costes extra.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="escalado" class="content-section">
+        <h2 class="section-title">📊 Escalado de Máquinas Virtuales</h2>
+        
+        <div class="content-card">
+          <h3>Auto Scaling</h3>
+          <p><strong>Auto scaling</strong> permite añadir o eliminar VMs en tiempo de ejecución.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Tipos de Escalado</h3>
+          
+          <div class="highlight-box">
+            <h4>Escalado Horizontal (Hacia Afuera)</h4>
+            <p>Añade más máquinas para distribuir la carga entre más instancias.</p>
+          </div>
+          
+          <div class="highlight-box">
+            <h4>Escalado Vertical</h4>
+            <p>Aumenta los recursos (CPU, RAM) en las máquinas existentes.</p>
+          </div>
+          
+          <p><strong>Límites:</strong> El máximo número de CPUs por VM (máquinas de familias) se limita por la cuota asignada al usuario, la cual es dependiente de la zona.</p>
+        </div>
+      </section>
+
+      <section id="balanceadores" class="content-section">
+        <h2 class="section-title">⚖️ Balanceadores de Carga</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué son los Balanceadores de Carga?</h3>
+          <p>Permiten distribuir el tráfico de usuarios entre varias instancias de una aplicación, reduciendo adicionalmente riesgos de sobrecarga de instancias.</p>
+          
+          <p>Es un servicio software, <strong>completamente gestionado</strong>, pudiendo ser de una sola región o de varias, incluyendo el multi-region fail over automático.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Tipos de Balanceadores</h3>
+          
+          <h4>Capa 7 - Application Layer (HTTP/S)</h4>
+          <p>Trabaja de forma:</p>
+          <ul>
+            <li><strong>Externa:</strong> Global y regional</li>
+            <li><strong>Interna:</strong> Regional y multi-región</li>
+          </ul>
+          
+          <h4>Capa 4 - TCP/UDP/otros</h4>
+          <p>Estos son los balanceadores de carga de red, pudiendo ser:</p>
+          
+          <div class="highlight-box">
+            <h5>Proxy (y Proxy Inverso)</h5>
+            <p>El cual de nuevo puede ser externo o interno. Termina las conexiones y establece nuevas.</p>
+          </div>
+          
+          <div class="highlight-box">
+            <h5>Pass Through</h5>
+            <p>A diferencia del proxy, este ni termina conexiones ni las modifica. Directamente hace forward al backend manteniendo la IP origen inicial.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="dns-cdn" class="content-section">
+        <h2 class="section-title">🌍 Cloud DNS y CDN</h2>
+        
+        <div class="content-card">
+          <h3>Cloud DNS</h3>
+          <p>DNS se encarga de transformar IPs en host names. <strong>Cloud DNS</strong> es un servicio gestionado de baja latencia y alta disponibilidad que permite a los usuarios acceder a tu servicio.</p>
+          
+          <p>La información DNS que publica un usuario es servida desde ubicaciones redundantes de todo el mundo. Este servicio es <strong>programable</strong>, permitiendo controlar millones de zonas DNS y registros.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Cloud CDN</h3>
+          <p>Cloud CDN se basa en <strong>"edge caches"</strong>, las cuales almacenan información temporal del contenido que consumen los usuarios en los servidores cercanos a ellos.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Objetivo:</strong> Acelerar la entrega de contenido a los usuarios y reducir la carga en los orígenes del contenido, lo que puede traducirse en una disminución de costes.</p>
+          </div>
+          
+          <p>Adicionalmente tiene integraciones con CDN externos a Google.</p>
+        </div>
+      </section>
+
+      <section id="conectividad" class="content-section">
+        <h2 class="section-title">🔗 Conectar Redes a VPC</h2>
+        
+        <div class="content-card">
+          <h3>Preguntas Clave para Evaluar tus Requisitos</h3>
+          <ol>
+            <li>¿Alguno de tus servidores on-premises o computadoras de usuarios con direccionamiento privado necesita conectarse a recursos de Google Cloud con direccionamiento privado?</li>
+            <li>¿El ancho de banda y el rendimiento de tu conexión actual a los servicios de Google cumplen actualmente con tus requisitos empresariales?</li>
+            <li>¿Ya tienes, o estás dispuesto a instalar y gestionar, equipos de acceso y enrutamiento en una de las ubicaciones de puntos de presencia de Google?</li>
+          </ol>
+        </div>
+
+        <div class="content-card">
+          <h3>Opciones de Conectividad</h3>
+          
+          <h4>1. Cloud VPN</h4>
+          <p>Cloud VPN te permite crear una conexión a través de internet estableciendo un túnel. Este servicio utiliza <strong>Cloud Router</strong> para hacer una conexión dinámica.</p>
+          
+          <p>Para intercambiar información se utiliza <strong>Border Gateway Protocol</strong>, lo que permite conectar el túnel VPN a las subredes que hay en la VPC de forma automática.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Cuándo usar Cloud VPN:</strong> Si necesitas conectividad privada a privada y tu conexión a internet cumple con tus requisitos empresariales, entonces construir una Cloud VPN es tu mejor opción.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h4>2. Direct Peering</h4>
+          <p>El proceso consiste en colocar un router en el mismo datacenter público de Google, el cual se encargará del intercambio de información en el punto donde se coloca, llamado <strong>"Google Point of Presence" (POP)</strong>.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Cuándo usar Direct Peering:</strong> Es una buena opción si ya tienes presencia en uno de los puntos de presencia de Google, o estás dispuesto a arrendar espacio de co-ubicación e instalar y mantener equipos de enrutamiento.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h4>3. Carrier Peering</h4>
+          <p>Si no estás en un POP, puedes trabajar con un partner en el <strong>"Carrier Peering program"</strong> para conectarte. Esto permite acceso directo desde un on-prem a través de la red del proveedor del servicio.</p>
+          
+          <p><em>Nota:</em> No está cubierto por ningún acuerdo de nivel de servicio de Google.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Cuándo usar Carrier Peering:</strong> Si instalar equipos no es una opción, o prefieres trabajar con un proveedor de servicios partner como intermediario para hacer peering con Google.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h4>4. Partner Interconnect</h4>
+          <p>Partner Interconnect permite conectar un on-premises a una VPC a través de un proveedor de servicio. Muy útil para datacenters que por su localización no pueden llegar a Dedicated Interconnect.</p>
+          
+          <p>Se puede configurar para servicios críticos en cuanto a disponibilidad. El SLA por parte de Google es del <strong>99,9%</strong>, pero no se hacen responsables de la parte del proveedor de servicios.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Cuándo usar Partner Interconnect:</strong> Si necesitas conectividad privada de alto rendimiento a Google Cloud, pero instalar equipos no es una opción, o prefieres trabajar con un proveedor de servicios partner como intermediario.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h4>5. Dedicated Interconnect</h4>
+          <p>Dedicated Interconnect permite una o más conexiones directas con Google con un SLA del <strong>99,9%</strong> y se puede apoyar con una VPN para una mayor fiabilidad.</p>
+          
+          <div class="highlight-box">
+            <p><strong>Cuándo usar Dedicated Interconnect:</strong> Proporciona un circuito privado directo a Google. Es una buena opción si ya tienes presencia o estás dispuesto a arrendar espacio de co-ubicación e instalar y mantener equipos de enrutamiento en un punto de presencia de Google.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h4>6. Cross-Cloud Interconnect</h4>
+          <p>Cross-Cloud Interconnect permite establecer conexiones con alto ancho de banda entre Google Cloud y otros proveedores de nube a través de una conexión física.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Decisión Simplificada</h3>
+          <div class="highlight-box">
+            <ul>
+              <li>Si <strong>no necesitas acceso privado</strong> y tu conexión a internet cumple con tus requisitos empresariales, simplemente puedes usar <strong>direcciones IP públicas</strong> para conectarte a los servicios de Google.</li>
+              <li>Si no necesitas conectividad de direcciones privadas y tu conexión actual a Google Cloud no está funcionando bien, entonces <strong>peering</strong> puede ser tu mejor opción de conectividad.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="quizzes" class="quizzes-section">
+        <h2 class="section-title">📝 Evaluaciones</h2>
+        <p class="quiz-intro">Pon a prueba tus conocimientos sobre VMs y Redes en la Nube</p>
+
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 1: VPC y Redes</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Cuál es una característica clave de las VPCs en Google Cloud?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a">
+                <span>Solo pueden tener subredes en una región</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q1" value="b">
+                <span>Son globales y pueden tener subredes en cualquier región</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c">
+                <span>Requieren configuración manual de tablas de enrutamiento</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d">
+                <span>No permiten conectar diferentes proyectos</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Son globales y pueden tener subredes en cualquier región</p>
+              <p>Las VPCs son globales y facilitan definir diseños de red con alcance global. Las tablas de enrutamiento son built-in y no requieren configuración manual.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Qué permite VPC Peering?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a">
+                <span>Solo conectar VPCs en la misma región</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q2" value="b">
+                <span>Establecer relaciones entre VPCs y conectar diferentes proyectos</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c">
+                <span>Conectar VPCs solo mediante VPN</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d">
+                <span>Compartir reglas de firewall únicamente</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Establecer relaciones entre VPCs y conectar diferentes proyectos</p>
+              <p>VPC Peering es un servicio global que permite conectar diferentes proyectos estableciendo relaciones entre VPCs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 2: Compute Engine</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Cuál es la diferencia principal entre máquinas Spot y Preemptible?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a">
+                <span>No hay diferencia, son lo mismo</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q3" value="b">
+                <span>Las Spot pueden correr indefinidamente, las Preemptible solo 24 horas</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c">
+                <span>Las Preemptible son más caras que las Spot</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d">
+                <span>Las Spot no se pueden reiniciar</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Las Spot pueden correr indefinidamente, las Preemptible solo 24 horas</p>
+              <p>Ambas son opciones de descuento para cargas puntuales, pero las Spot tienen la ventaja de poder correr sin límite de tiempo, mientras que las Preemptible están limitadas a 24 horas.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿A partir de qué porcentaje del mes se aplican los descuentos por uso sostenido?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a">
+                <span>10%</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q4" value="b">
+                <span>25%</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c">
+                <span>50%</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d">
+                <span>75%</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> 25%</p>
+              <p>Los descuentos por uso sostenido se aplican automáticamente cuando ejecutas una VM durante más del 25% de la duración del mes. A más uso, mayor descuento.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-container">
+          <h3 class="quiz-title">Quiz 3: Balanceadores y Conectividad</h3>
+          
+          <div class="quiz-question">
+            <p class="question-text"><strong>1.</strong> ¿Qué tipo de balanceador NO termina ni modifica las conexiones?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a">
+                <span>Proxy</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b">
+                <span>Proxy Inverso</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q5" value="c">
+                <span>Pass Through</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d">
+                <span>Application Layer</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Pass Through</p>
+              <p>A diferencia del proxy, el balanceador Pass Through ni termina conexiones ni las modifica. Hace forward directamente al backend manteniendo la IP origen inicial.</p>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p class="question-text"><strong>2.</strong> ¿Cuál es la opción más sencilla si necesitas conectividad privada y tu conexión a internet es adecuada?</p>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a">
+                <span>Dedicated Interconnect</span>
+              </label>
+              <label class="quiz-option correct-answer">
+                <input type="radio" name="q6" value="b">
+                <span>Cloud VPN</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c">
+                <span>Direct Peering</span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d">
+                <span>Partner Interconnect</span>
+              </label>
+            </div>
+            <div class="quiz-explanation">
+              <p><strong>Respuesta correcta:</strong> Cloud VPN</p>
+              <p>Si necesitas conectividad privada a privada y tu conexión a internet cumple con tus requisitos empresariales, Cloud VPN es la mejor opción por su simplicidad y efectividad.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :global(body) {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .page-wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: calc(50% - 600px - 300px);
+    top: 80px;
+    width: 280px;
+    height: calc(100vh - 140px);
+    background: rgba(20, 20, 40, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(122, 107, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px 0;
+    overflow-y: auto;
+    z-index: 100;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar-header {
+    padding: 0 24px 20px;
+    border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-header h3 {
+    font-size: 1.3rem;
+    color: #a5b4fc;
+    font-weight: 700;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 16px;
+  }
+
+  .module-item {
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .module-link {
+    font-weight: 500;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+    font-size: 0.9rem;
+  }
+
+  .module-link:hover {
+    background: rgba(122, 107, 255, 0.15);
+    color: #a5b4fc;
+    border-left-color: #7a6bff;
+    transform: translateX(4px);
+  }
+
+  .module-link.active {
+    background: rgba(122, 107, 255, 0.25);
+    color: #c7d2fe;
+    border-left-color: #7a6bff;
+    font-weight: 600;
+  }
+
+  .module-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .module-text {
+    flex: 1;
+  }
+
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    padding: 0 0 0 40px;
+    margin: 0;
+  }
+
+  .module-item:hover .submenu,
+  .module-item.expanded .submenu {
+    max-height: 500px;
+    opacity: 1;
+    padding: 8px 0 8px 40px;
+  }
+
+  .submenu-link {
+    display: block;
+    padding: 8px 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    border-left: 2px solid transparent;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .submenu-link:hover {
+    color: #a5b4fc;
+    background: rgba(122, 107, 255, 0.1);
+    border-left-color: rgba(122, 107, 255, 0.5);
+    transform: translateX(3px);
+  }
+
+  .submenu-link.active {
+    color: #c7d2fe;
+    background: rgba(122, 107, 255, 0.15);
+    border-left-color: #7a6bff;
+    font-weight: 500;
+  }
+
+  .submenu-link.quiz-item {
+    margin-top: 6px;
+    background: rgba(122, 107, 255, 0.05);
+    border: 1px solid rgba(122, 107, 255, 0.15);
+  }
+
+  .sidebar-footer {
+    padding: 20px 24px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(122, 107, 255, 0.2);
+  }
+
+  .back-link {
+    display: block;
+    padding: 12px 16px;
+    color: #a5b4fc;
+    text-decoration: none;
+    background: rgba(122, 107, 255, 0.1);
+    border: 1px solid rgba(122, 107, 255, 0.3);
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .back-link:hover {
+    background: rgba(122, 107, 255, 0.2);
+    transform: translateX(-4px);
+  }
+
+  .gcp-container {
+    flex: 1;
+    margin-left: 0;
+    max-width: 1200px;
+    padding: 32px 48px 80px 48px;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .gcp-hero {
+    text-align: center;
+    padding: 48px 24px;
+    margin-bottom: 48px;
+    background: linear-gradient(135deg, rgba(122, 107, 255, 0.15) 0%, rgba(165, 180, 252, 0.08) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(122, 107, 255, 0.3);
+  }
+
+  .gcp-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #a5b4fc;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 20px rgba(122, 107, 255, 0.3);
+  }
+
+  .gcp-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    margin-bottom: 64px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    color: #c7d2fe;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+  }
+
+  .content-card {
+    background: rgba(30, 30, 50, 0.6);
+    border: 1px solid rgba(122, 107, 255, 0.2);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .content-card:hover {
+    border-color: rgba(122, 107, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(122, 107, 255, 0.15);
+  }
+
+  .content-card h3 {
+    color: #a5b4fc;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .content-card h4 {
+    color: #a5b4fc;
+    font-size: 1.2rem;
+    margin: 20px 0 12px 0;
+  }
+
+  .content-card h5 {
+    color: #a5b4fc;
+    font-size: 1.1rem;
+    margin: 16px 0 10px 0;
+  }
+
+  .content-card p {
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+
+  .content-card ul, .content-card ol {
+    margin: 16px 0;
+    padding-left: 24px;
+  }
+
+  .content-card li {
+    margin-bottom: 8px;
+    line-height: 1.8;
+  }
+
+  .highlight-box {
+    background: rgba(122, 107, 255, 0.1);
+    border-left: 4px solid #7a6bff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  .quizzes-section {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 3px solid rgba(122, 107, 255, 0.3);
+  }
+
+  .quiz-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+  }
+
+  .quiz-container {
+    background: rgba(30, 30, 50, 0.6);
+    border: 1px solid rgba(122, 107, 255, 0.2);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+  }
+
+  .quiz-title {
+    color: #a5b4fc;
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(122, 107, 255, 0.2);
+  }
+
+  .quiz-question {
+    margin-bottom: 32px;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background: rgba(20, 20, 40, 0.6);
+    border: 2px solid rgba(122, 107, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .quiz-option:hover {
+    border-color: rgba(122, 107, 255, 0.5);
+    background: rgba(122, 107, 255, 0.1);
+    transform: translateX(4px);
+  }
+
+  .quiz-option input[type="radio"] {
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  .quiz-explanation {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(122, 107, 255, 0.1);
+    border-left: 4px solid #7a6bff;
+    border-radius: 8px;
+    display: none;
+  }
+
+  .quiz-question:has(input:checked) .quiz-explanation {
+    display: block;
+  }
+
+  .quiz-explanation strong {
+    color: #a5b4fc;
+  }
+
+  @media (max-width: 1400px) {
+    .sidebar {
+      left: 20px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .page-wrapper {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: auto;
+      margin-bottom: 32px;
+    }
+
+    .gcp-container {
+      margin-left: 0;
+      padding: 24px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.content-section');
+    const navLinks = document.querySelectorAll('.submenu-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  });
+</script>
