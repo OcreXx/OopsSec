@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Contenido from "../../../../../components/Contenido.astro";
+import Sidebar from "../../../../../components/Sidebar.astro";
+import { SidebarItem } from "../../../../../components/Sidebar";
+
+const sidebarItems: SidebarItem[] = [
+  {
+    title: "Opciones de Cómputo y Despliegue",
+    children: [
+      { title: "Compute Engine", slug: "#compute-engine" },
+      { title: "App Engine", slug: "#app-engine" },
+      { title: "GKE (Resumen)", slug: "#gke" },
+      { title: "Cloud Run", slug: "#cloud-run" },
+      { title: "Cloud Functions", slug: "#cloud-functions" },
+      { title: "¿Cuál elegir?", slug: "#decision" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Opciones de Cómputo en GCP - GKE Foundations"
+  description="Compara las diferentes opciones de cómputo que ofrece Google Cloud Platform, desde VMs tradicionales hasta plataformas serverless."
+>
+  <div class="page-wrapper">
+    <Sidebar
+      items={sidebarItems}
+      basePath="/devsecops/google-devops-sre/kubernetes-engine-fundamentals"
+      backPath="/devsecops/google-devops-sre/kubernetes-engine-fundamentals"
+      moduleName="GKE Foundations"
+    />
+    <main class="gcp-container">
+      <Contenido
+        title="Opciones de Cómputo y Despliegue en GCP"
+        subtitle="Compara las diferentes opciones de cómputo en GCP."
+      >
+        <div class="image-container">
+          <img
+            src="/DevSecOps/GoogleDevOpsSRE/arch05.png"
+            alt="Opciones de Cómputo en GCP"
+            loading="lazy"
+          />
+        </div>
+        <div id="compute-engine" class="content-card">
+          <h3>Compute Engine</h3>
+          <p>
+            Compute Engine ofrece máquinas virtuales (VMs) altamente
+            configurables, dándote control total sobre la infraestructura.
+          </p>
+          <ul>
+            <li>
+              <strong>Opciones de almacenamiento:</strong>{" "}
+              <em>Persistent disks</em> para almacenamiento en red y{" "}
+              <em>Local SSDs</em> para alto rendimiento.
+            </li>
+            <li>
+              <strong>Infraestructura avanzada:</strong> Balanceadores de carga
+              globales, grupos de instancias gestionados y facturación por
+              segundo.
+            </li>
+            <li>
+              <strong>VMs Preemptibles:</strong> Ideales para cargas de trabajo
+              tolerantes a fallos con costos muy reducidos.
+            </li>
+            <li>
+              <strong>Casos de uso:</strong> Migración de servidores físicos
+              (lift-and-shift), arquitecturas que no encajan en modelos
+              gestionados.
+            </li>
+          </ul>
+        </div>
+
+        <div id="app-engine" class="content-card">
+          <h3>App Engine</h3>
+          <p>
+            App Engine es una plataforma totalmente gestionada (PaaS) ideal si
+            no quieres ocuparte de la infraestructura.
+          </p>
+          <ul>
+            <li>
+              <strong>Sin gestión de servidores:</strong> Solo subes tu código y
+              Google se encarga del resto.
+            </li>
+            <li>Soporte para cargas de trabajo en contenedores.</li>
+            <li>
+              Integración nativa con Monitoring, Logging y control de versiones.
+            </li>
+            <li>
+              <strong>Casos de uso:</strong> Sitios web, backends para móviles,
+              APIs RESTful y aplicaciones con tráfico fluctuante.
+            </li>
+          </ul>
+        </div>
+
+        <div id="gke" class="content-card">
+          <h3>Google Kubernetes Engine (Resumen Operativo)</h3>
+          <p>
+            GKE es la plataforma gestionada de Kubernetes de Google, ideal para
+            orquestar contenedores a gran escala.
+          </p>
+          <ul>
+            <li>
+              Automatiza el despliegue, escalado, logging y monitoreo de
+              aplicaciones en contenedores.
+            </li>
+            <li>
+              Integración profunda con el ecosistema de Google Cloud (Cloud
+              Build, Artifact Registry, etc.).
+            </li>
+            <li>
+              Permite una migración sencilla desde clústeres on-premises.
+            </li>
+            <li>
+              <strong>Casos de uso:</strong> Sistemas distribuidos, arquitecturas
+              de microservicios y aplicaciones cloud-native.
+            </li>
+          </ul>
+        </div>
+
+        <div id="cloud-run" class="content-card">
+          <h3>Cloud Run</h3>
+          <p>
+            Cloud Run permite ejecutar contenedores <em>stateless</em> de forma
+            totalmente serverless, activados por peticiones HTTP o eventos.
+          </p>
+          <ul>
+            <li>
+              <strong>Infraestructura abstracta:</strong> No gestionas
+              servidores ni clústeres.
+            </li>
+            <li>
+              <strong>Escalado automático desde cero:</strong> Escala
+              instantáneamente según el tráfico, incluso a cero si no hay
+              peticiones.
+            </li>
+            <li>
+              <strong>Modelo de facturación:</strong> Pagas solo por el tiempo de
+              ejecución, en intervalos de 100 ms.
+            </li>
+            <li>
+              <strong>Casos de uso:</strong> Aplicaciones web y APIs stateless
+              con tráfico irregular o impredecible.
+            </li>
+          </ul>
+        </div>
+
+        <div id="cloud-functions" class="content-card">
+          <h3>Cloud Functions</h3>
+          <p>
+            Cloud Functions es un servicio serverless basado en eventos para
+            ejecutar funciones simples y de propósito único.
+          </p>
+          <ul>
+            <li>
+              Se activa en respuesta a eventos de la nube (ej. subida de un
+              archivo a Cloud Storage).
+            </li>
+            <li>Escalado automático y alta disponibilidad por defecto.</li>
+            <li>
+              <strong>Casos de uso:</strong> Lógica reactiva, micro-funciones,
+              automatización de tareas y pipelines de datos event-driven.
+            </li>
+          </ul>
+        </div>
+
+        <div id="decision" class="content-card">
+          <h3>¿Qué servicio de cómputo elegir?</h3>
+          <ul>
+            <li>
+              <strong>Migración desde servidores físicos:</strong> Usa{" "}
+              <strong>Compute Engine</strong>.
+            </li>
+            <li>
+              <strong>Aplicaciones en VMs tradicionales:</strong> Usa{" "}
+              <strong>Compute Engine</strong>.
+            </li>
+            <li>
+              <strong>No quieres gestionar operaciones:</strong> Usa{" "}
+              <strong>App Engine</strong> (para aplicaciones completas) o{" "}
+              <strong>Cloud Functions</strong> (para lógica basada en eventos).
+            </li>
+            <li>
+              <strong>Ya trabajas con Kubernetes on-prem:</strong>{" "}
+              <strong>GKE</strong> es la opción natural.
+            </li>
+            <li>
+              <strong>Contenedores stateless con tráfico variable:</strong>{" "}
+              <strong>Cloud Run</strong> es la mejor opción.
+            </li>
+          </ul>
+        </div>
+      </Contenido>
+    </main>
+  </div>
+</BaseLayout>
+<style>
+  @import "../../../../../styles/gcp-content.css";
+</style>

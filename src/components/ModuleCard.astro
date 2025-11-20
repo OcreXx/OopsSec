@@ -1,0 +1,84 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+  title: string;
+  description: string;
+  topics: string[];
+  badge: string;
+}
+
+const { href, icon, title, description, topics, badge } = Astro.props;
+---
+
+<a href={href} class="module-card">
+  <div class="module-icon">{icon}</div>
+  <h3 class="module-title">{title}</h3>
+  <p class="module-description">{description}</p>
+  <ul class="module-topics">
+    {topics.map((topic) => <li>{topic}</li>)}
+  </ul>
+  <div class="module-badge">{badge}</div>
+</a>
+
+<style>
+  .module-card {
+    background: rgba(30, 30, 50, 0.7);
+    border: 1px solid rgba(122, 107, 255, 0.25);
+    border-radius: 16px;
+    padding: 24px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+  }
+
+  .module-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(122, 107, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(122, 107, 255, 0.15);
+  }
+
+  .module-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  .module-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin-bottom: 8px;
+  }
+
+  .module-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+
+  .module-topics {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .module-topics li {
+    margin-bottom: 4px;
+  }
+
+  .module-badge {
+    align-self: flex-end;
+    background: rgba(122, 107, 255, 0.2);
+    color: #c7d2fe;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+</style>

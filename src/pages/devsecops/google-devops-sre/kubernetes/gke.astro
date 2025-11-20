@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Contenido from "../../../../../components/Contenido.astro";
+import Sidebar from "../../../../../components/Sidebar.astro";
+import { SidebarItem } from "../../../../../components/Sidebar";
+
+const sidebarItems: SidebarItem[] = [
+  {
+    title: "Conceptos de GKE",
+    children: [
+      { title: "Modos de Operación", slug: "#modos-operacion" },
+      { title: "Node Pools", slug: "#node-pools" },
+      { title: "Clústeres Regionales", slug: "#clusters-regionales" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Conceptos de GKE - GKE Foundations"
+  description="Profundiza en los modos de operación, la gestión de nodos y la alta disponibilidad en Google Kubernetes Engine (GKE)."
+>
+  <div class="page-wrapper">
+    <Sidebar
+      items={sidebarItems}
+      basePath="/devsecops/google-devops-sre/kubernetes-engine-fundamentals"
+      backPath="/devsecops/google-devops-sre/kubernetes-engine-fundamentals"
+      moduleName="GKE Foundations"
+    />
+    <main class="gcp-container">
+      <Contenido
+        title="Conceptos de Google Kubernetes Engine"
+        subtitle="Profundiza en los modos de operación y características de GKE."
+      >
+        <div id="modos-operacion" class="content-card">
+          <h3>Modos de Operación: Autopilot vs. Standard</h3>
+          <p>
+            GKE está disponible en dos modos de operación:{" "}
+            <strong>Autopilot</strong> y <strong>Standard</strong>.
+          </p>
+          <ul>
+            <li>
+              <strong>Autopilot:</strong> Es un modo de operación que gestiona
+              toda la infraestructura del clúster por ti, incluyendo el plano de
+              control, los grupos de nodos y los nodos. Google se encarga de la
+              monitorización, gestión y escalado, asegurando que tus cargas de
+              trabajo siempre tengan recursos.
+            </li>
+            <li>
+              <strong>Standard:</strong> Ofrece la misma funcionalidad que
+              Autopilot, pero tú eres responsable de la configuración, gestión y
+              optimización del clúster. Te da más control, pero también más
+              responsabilidad.
+            </li>
+          </ul>
+          <p>
+            Google Cloud aconseja que, a menos que necesites un control de
+            configuración muy específico, siempre deberías usar el modo{" "}
+            <strong>Autopilot</strong>.
+          </p>
+        </div>
+
+        <div id="node-pools" class="content-card">
+          <h3>Node Pools</h3>
+          <p>
+            En cualquier entorno de Kubernetes, los nodos son creados
+            externamente. GKE automatiza este proceso lanzando instancias de
+            Compute Engine y registrándolas como nodos.
+          </p>
+          <p>
+            Un <strong>node pool</strong> es un subconjunto de nodos dentro de
+            un clúster que comparten una configuración idéntica, como su
+            cantidad de memoria, tipo de CPU o si usan GPUs.
+          </p>
+          <ul>
+            <li>
+              Permiten asegurar que las cargas de trabajo se ejecuten en el
+              hardware adecuado mediante etiquetas.
+            </li>
+            <li>
+              Puedes habilitar actualizaciones automáticas, reparaciones
+              automáticas y autoescalado a nivel de node pool.
+            </li>
+            <li>
+              Por defecto, un clúster se lanza con un solo node pool de tres
+              nodos idénticos en una única zona.
+            </li>
+          </ul>
+          <div class="image-container">
+            <img
+              src="/DevSecOps/GoogleDevOpsSRE/arch08.png"
+              alt="Node Pools en GKE"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div id="clusters-regionales" class="content-card">
+          <h3>Clústeres Regionales y Alta Disponibilidad</h3>
+          <p>
+            Los <strong>clústeres regionales</strong> tienen un único punto final
+            de API, pero sus planos de control y nodos están distribuidos en
+            múltiples zonas de Compute Engine dentro de una misma región.
+          </p>
+          <ul>
+            <li>
+              Aseguran que la disponibilidad de la aplicación se mantenga incluso
+              si una zona falla.
+            </li>
+            <li>
+              El número de nodos debe ser el mismo en todas las zonas de la
+              región.
+            </li>
+            <li>
+              No se puede convertir un clúster zonal en regional, ni viceversa,
+              una vez creado.
+            </li>
+          </ul>
+          <div class="image-container">
+            <img
+              src="/DevSecOps/GoogleDevOpsSRE/arch09.png"
+              alt="Clústeres Regionales"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </Contenido>
+    </main>
+  </div>
+</BaseLayout>
+<style>
+  @import "../../../../../styles/gcp-content.css";
+</style>

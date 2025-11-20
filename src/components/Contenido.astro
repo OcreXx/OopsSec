@@ -1,0 +1,14 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="gcp-hero">
+  <h1 class="gcp-title">{title}</h1>
+  <p class="gcp-subtitle">{subtitle}</p>
+</div>
+<slot />

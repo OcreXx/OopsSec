@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import ModuleCard from "../../../../components/ModuleCard.astro";
+---
+
+<BaseLayout title="Kubernetes Engine: Foundations">
+  <div class="page-wrapper">
+    <main class="gcp-container">
+      <div class="gcp-hero">
+        <h1 class="gcp-title">Google Kubernetes Engine: Foundations</h1>
+        <p class="gcp-subtitle">
+          Aprende los fundamentos de la orquestación de contenedores con
+          Kubernetes y Google Kubernetes Engine (GKE).
+        </p>
+      </div>
+
+      <div class="modules-grid">
+        <ModuleCard
+          href="/devsecops/google-devops-sre/kubernetes/intro-contenedores"
+          icon="📦"
+          title="Introducción a Contenedores"
+          description="Conceptos básicos de contenedores, imágenes y su evolución."
+          topics={[
+            "Virtualización vs Contenedores",
+            "Imágenes y Capas",
+            "Buenas Prácticas",
+            "Cloud Build",
+          ]}
+          badge="5 temas"
+        />
+        <ModuleCard
+          href="/devsecops/google-devops-sre/kubernetes/intro-kubernetes"
+          icon="☸️"
+          title="Introducción a Kubernetes"
+          description="Descubre qué es Kubernetes y cómo GKE lo potencia."
+          topics={[
+            "Automatización Declarativa",
+            "GKE: Modos y Funciones",
+            "Casos de Uso",
+          ]}
+          badge="2 temas"
+        />
+        <ModuleCard
+          href="/devsecops/google-devops-sre/kubernetes/arquitectura-k8s"
+          icon="🏗️"
+          title="Arquitectura de Kubernetes"
+          description="Componentes del plano de control y de los nodos de trabajo."
+          topics={[
+            "Control Plane: API Server, etcd",
+            "Scheduler, Controller Manager",
+            "Nodos: Kubelet, Kube-proxy",
+          ]}
+          badge="3 temas"
+        />
+        <ModuleCard
+          href="/devsecops/google-devops-sre/kubernetes/gke"
+          icon="🚀"
+          title="Conceptos de GKE"
+          description="Profundiza en los modos de operación y características de GKE."
+          topics={[
+            "Autopilot vs Standard",
+            "Node Pools",
+            "Clústeres Regionales y Zonales",
+          ]}
+          badge="3 temas"
+        />
+        <ModuleCard
+          href="/devsecops/google-devops-sre/kubernetes/gestion-objetos-k8s"
+          icon="🧩"
+          title="Gestión de Objetos en K8s"
+          description="Aprende a definir y gestionar recursos en Kubernetes."
+          topics={[
+            "Manifiestos, Nombres y Etiquetas",
+            "Pods y Controladores",
+            "Namespaces y Servicios",
+          ]}
+          badge="4 temas"
+        />
+        <ModuleCard
+          href="/devsecops/google-devops-sre/kubernetes/despliegue-en-gke"
+          icon="⚙️"
+          title="Opciones de Cómputo y Despliegue"
+          description="Compara las diferentes opciones de cómputo en GCP."
+          topics={[
+            "Compute Engine",
+            "App Engine",
+            "Cloud Run y Cloud Functions",
+          ]}
+          badge="5 temas"
+        />
+        <ModuleCard
+          href="/devsecops/google-devops-sre/kubernetes/migracion-anthos"
+          icon="🔄"
+          title="Migrate for Anthos"
+          description="Automatiza la migración de VMs a contenedores en GKE."
+          topics={[
+            "Flujo de Migración",
+            "Instalación y Uso",
+            "Ejemplo Práctico",
+          ]}
+          badge="2 temas"
+        />
+      </div>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+  :global(body) {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(
+      135deg,
+      #0f0f23 0%,
+      #1a1a2e 50%,
+      #16213e 100%
+    );
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .page-wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .gcp-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 32px 24px;
+  }
+
+  .gcp-hero {
+    text-align: center;
+    padding: 48px 24px;
+    margin-bottom: 48px;
+    background: linear-gradient(
+      135deg,
+      rgba(122, 107, 255, 0.15) 0%,
+      rgba(165, 180, 252, 0.08) 100%
+    );
+    border-radius: 20px;
+    border: 1px solid rgba(122, 107, 255, 0.3);
+  }
+
+  .gcp-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #a5b4fc;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 20px rgba(122, 107, 255, 0.3);
+  }
+
+  .gcp-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+</style>

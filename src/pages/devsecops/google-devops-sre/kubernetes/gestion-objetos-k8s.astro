@@ -1,0 +1,206 @@
+---
+import BaseLayout from "../../../../../layouts/BaseLayout.astro";
+import Contenido from "../../../../../components/Contenido.astro";
+import Sidebar from "../../../../../components/Sidebar.astro";
+import { SidebarItem } from "../../../../../components/Sidebar";
+
+const sidebarItems: SidebarItem[] = [
+  {
+    title: "Gestión de Objetos en K8s",
+    children: [
+      { title: "Modelo de Objetos", slug: "#modelo-objetos" },
+      { title: "Manifiestos y Metadatos", slug: "#manifiestos" },
+      { title: "Pods y Controladores", slug: "#pods-controllers" },
+      { title: "Recursos y Namespaces", slug: "#recursos-namespaces" },
+      { title: "Servicios", slug: "#servicios" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Gestión de Objetos en Kubernetes - GKE Foundations"
+  description="Aprende a definir, gestionar y organizar los recursos en un clúster de Kubernetes usando objetos, manifiestos y controladores."
+>
+  <div class="page-wrapper">
+    <Sidebar
+      items={sidebarItems}
+      basePath="/devsecops/google-devops-sre/kubernetes-engine-fundamentals"
+      backPath="/devsecops/google-devops-sre/kubernetes-engine-fundamentals"
+      moduleName="GKE Foundations"
+    />
+    <main class="gcp-container">
+      <Contenido
+        title="Gestión de Objetos en Kubernetes"
+        subtitle="Aprende a definir y gestionar recursos en Kubernetes."
+      >
+        <div id="modelo-objetos" class="content-card">
+          <h3>Modelo de objetos de Kubernetes</h3>
+          <p>
+            Cada cosa que Kubernetes gestiona está representada por un objeto.
+            Un objeto de Kubernetes es una entidad persistente que representa el
+            estado de algo que se ejecuta en un clúster.
+          </p>
+          <p>Los objetos de Kubernetes tienen dos elementos importantes:</p>
+          <ul>
+            <li>
+              <strong>Object spec:</strong> Define el estado deseado que quieres
+              para el objeto.
+            </li>
+            <li>
+              <strong>Object status:</strong> Es el estado actual del objeto,
+              proporcionado y actualizado por el plano de control de Kubernetes.
+            </li>
+          </ul>
+          <p>
+            El principio de <strong>gestión declarativa</strong> significa que
+            tú le dices a Kubernetes cuál es el estado deseado, y él se encarga
+            de alcanzarlo y mantenerlo.
+          </p>
+        </div>
+
+        <div id="manifiestos" class="content-card">
+          <h3>Manifiestos, Nombres, UIDs y Etiquetas</h3>
+          <p>
+            Los objetos se definen con <strong>manifest files</strong> escritos
+            en YAML o JSON. Cada manifiesto declara el estado deseado del
+            objeto.
+          </p>
+          <ul>
+            <li>
+              Campos obligatorios en un YAML:
+              <ul>
+                <li>
+                  <strong>apiVersion:</strong> Versión de la API usada para crear
+                  el objeto.
+                </li>
+                <li><strong>kind:</strong> Tipo de objeto (Pod, Deployment, etc.).</li>
+                <li>
+                  <strong>metadata:</strong> Incluye nombre, UID y namespace
+                  (opcional).
+                </li>
+              </ul>
+            </li>
+            <li>
+              Es una buena práctica guardar los manifiestos en{" "}
+              <strong>repositorios con control de versiones</strong>.
+            </li>
+          </ul>
+          <p>
+            Cada objeto tiene un <strong>nombre único</strong> dentro de su
+            namespace y un <strong>UID único</strong> en todo el clúster.
+            Además, se pueden usar <strong>labels</strong> (pares clave-valor)
+            para organizar y seleccionar recursos.
+          </p>
+          <div class="image-container">
+            <img
+              src="/DevSecOps/GoogleDevOpsSRE/arch10.png"
+              alt="kubectl get pods con selector"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div id="pods-controllers" class="content-card">
+          <h3>Pods vs. Controladores</h3>
+          <p>
+            Los <strong>Pods</strong> son el bloque de construcción básico y el
+            objeto desplegable más pequeño en Kubernetes. Un Pod puede contener
+            uno o más contenedores que comparten recursos de red y
+            almacenamiento.
+          </p>
+          <div class="image-container">
+            <img
+              src="/DevSecOps/GoogleDevOpsSRE/arch06.png"
+              alt="Conceptos de Pods"
+              loading="lazy"
+            />
+          </div>
+          <p>
+            Sin embargo, los Pods son <strong>efímeros</strong> y no se
+            auto-reparan. Por eso, en lugar de crearlos manualmente, se utilizan{" "}
+            <strong>objetos controladores</strong> para gestionar su estado.
+          </p>
+          <ul>
+            <li>
+              <strong>ReplicaSet:</strong> Asegura que un número específico de
+              réplicas de un Pod estén siempre en ejecución.
+            </li>
+            <li>
+              <strong>Deployment:</strong> Permite actualizaciones declarativas
+              sobre ReplicaSets y Pods. Es el controlador más común para
+              aplicaciones stateless.
+            </li>
+            <li>
+              <strong>StatefulSet:</strong> Para aplicaciones que requieren
+              identidades de red estables y almacenamiento persistente.
+            </li>
+            <li>
+              <strong>DaemonSet:</strong> Asegura que una copia de un Pod se
+              ejecute en todos (o algunos) los nodos del clúster.
+            </li>
+            <li>
+              <strong>Job y CronJob:</strong> Para tareas que se ejecutan una
+              vez hasta completarse o en un horario programado.
+            </li>
+          </ul>
+        </div>
+
+        <div id="recursos-namespaces" class="content-card">
+          <h3>Recursos del Pod y Namespaces</h3>
+          <p>
+            Para garantizar que los contenedores funcionen correctamente, se
+            pueden definir <strong>requests</strong> (recursos mínimos
+            garantizados) y <strong>limits</strong> (máximo consumo permitido)
+            de CPU y memoria para cada contenedor.
+          </p>
+          <p>
+            Los <strong>namespaces</strong> permiten dividir un clúster físico
+            en múltiples entornos lógicos. Esto proporciona un ámbito para los
+            nombres de los recursos y facilita la organización y el control de
+            acceso (RBAC).
+          </p>
+          <div class="image-container">
+            <img
+              src="/DevSecOps/GoogleDevOpsSRE/arch11.png"
+              alt="Namespaces en Kubernetes"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div id="servicios" class="content-card">
+          <h3>Servicios en Kubernetes</h3>
+          <p>
+            Los <strong>Services</strong> proporcionan una abstracción de red
+            para exponer un conjunto de Pods como un servicio de red, con un
+            punto de acceso estable y balanceo de carga.
+          </p>
+          <ul>
+            <li>
+              <strong>ClusterIP:</strong> Expone el servicio en una IP accesible
+              solo dentro del clúster (es el tipo por defecto).
+            </li>
+            <li>
+              <strong>NodePort:</strong> Expone el servicio en un puerto estático
+              en la IP de cada nodo del clúster.
+            </li>
+            <li>
+              <strong>LoadBalancer:</strong> Expone el servicio externamente
+              utilizando el balanceador de carga del proveedor de la nube (por
+              ejemplo, un Network Load Balancer en GCP).
+            </li>
+          </ul>
+          <p>
+            Si necesitas balanceo de carga global o capacidades avanzadas de
+            enrutamiento HTTP(S) (capa 7), se utiliza un objeto{" "}
+            <strong>Ingress</strong>.
+          </p>
+        </div>
+      </Contenido>
+    </main>
+  </div>
+</BaseLayout>
+<style>
+  @import "../../../../../styles/gcp-content.css";
+</style>
