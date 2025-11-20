@@ -1,4 +1,3 @@
----
 export interface SidebarItem {
   title: string;
   children: {
@@ -6,4 +5,3 @@ export interface SidebarItem {
     slug: string;
   }[];
 }
----
