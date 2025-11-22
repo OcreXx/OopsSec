@@ -1,5 +1,908 @@
 ---
-// Redirige a la nueva página de índice del módulo de Kubernetes
-Astro.response.status = 301;
-Astro.response.headers.set('Location', '/devsecops/google-devops-sre/kubernetes/');
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 ---
+<BaseLayout title="Kubernetes Engine: Foundations - Google Cloud Platform">
+  <div class="gcp-container">
+    <!-- Navigation Back -->
+    <div class="navigation-back">
+      <a href="/devsecops/google-devops-sre/">← Volver a Google Cloud</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="gcp-hero">
+      <h1 class="gcp-title">Kubernetes Engine: Foundations</h1>
+      <h2 class="gcp-subtitle-main">Google Kubernetes Engine (GKE)</h2>
+      <p class="gcp-description">Fundamentos de contenedores, Kubernetes y orquestación en Google Cloud</p>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="content-wrapper">
+      
+      <!-- Section 1: Introducción a Contenedores -->
+      <section id="introduccion-contenedores" class="content-section">
+        <h2 class="section-title">📦 Introducción a Contenedores</h2>
+        
+        <div class="content-card">
+          <h3>Evolución hacia la virtualización</h3>
+          <p>
+            Antes, cada aplicación se ejecutaba en su propio servidor físico, lo que hacía el despliegue lento, costoso, 
+            con mucho desperdicio de recursos y poca portabilidad.
+          </p>
+          <p>
+            La virtualización introdujo el <strong>hipervisor</strong>, permitiendo crear varias máquinas virtuales sobre 
+            un mismo hardware. Esto aceleró los despliegues y aprovechó mejor los recursos, pero las VMs seguían siendo 
+            pesadas: cada una incluye su propio sistema operativo, tarda en arrancar y no se mueve fácilmente entre 
+            distintos hipervisores.
+          </p>
+          <p>
+            Ejecutar varias apps dentro de una misma VM tampoco funcionaba bien: no había aislamiento, podían estorbarse 
+            con recursos o dependencias, y actualizar una podía romper otra. La alternativa de usar <strong>una VM por 
+            aplicación</strong> resolvió el aislamiento, pero escalaba muy mal porque cada VM duplicaba un sistema 
+            operativo completo.
+          </p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch01.png" alt="Evolución de la virtualización" loading="lazy">
+          </div>
+          <p>
+            Una forma más eficiente de resolver los problemas de dependencias es abstraer solo el espacio de usuario, 
+            sin virtualizar toda la máquina ni el sistema operativo. Esto permite empaquetar la aplicación junto con 
+            sus dependencias sin incluir un sistema operativo completo. A esta técnica se le conoce como 
+            <strong>contenedores</strong>, y representa un avance clave frente a las VMs al ser más ligeros, rápidos 
+            y portables.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Contenedores e Imágenes</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch02.png" alt="Contenedores e Imágenes" loading="lazy">
+          </div>
+          <p>
+            Los contenedores no son una característica primitiva de Linux; su capacidad para <strong>aislar cargas de 
+            trabajo</strong> proviene de la combinación de varias tecnologías fundamentales:
+          </p>
+          <ul>
+            <li><strong>Procesos de Linux:</strong> cada proceso tiene su propio espacio de memoria virtual, separado de los demás.</li>
+            <li><strong>Namespaces de Linux:</strong> controlan lo que una aplicación puede ver (IDs de proceso, directorios, IPs, etc.).</li>
+            <li><strong>cgroups (control groups):</strong> limitan los recursos que una aplicación puede usar (CPU, memoria, I/O).</li>
+            <li><strong>Sistemas de archivos en capas:</strong> permiten encapsular aplicaciones y dependencias en capas limpias.</li>
+          </ul>
+          
+          <h4>Imágenes de contenedor</h4>
+          <p>
+            Una <strong>imagen de contenedor</strong> está estructurada en capas. Se construye usando instrucciones de 
+            un archivo de manifiesto (por ejemplo, un <strong>Dockerfile</strong>).
+          </p>
+          <ul>
+            <li>Cada instrucción del Dockerfile genera una <strong>capa de solo lectura</strong> dentro de la imagen.</li>
+            <li>Cuando se ejecuta el contenedor, se añade una <strong>capa superior temporal y escribible</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Capas en un Dockerfile</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch03.png" alt="Capas en Dockerfile" loading="lazy">
+          </div>
+          <p>
+            Un <strong>Dockerfile</strong> crea una imagen de contenedor a partir de varias capas:
+          </p>
+          <ul>
+            <li><strong>FROM:</strong> crea la capa base desde una imagen pública (ej: Ubuntu).</li>
+            <li><strong>COPY:</strong> agrega archivos desde el directorio actual.</li>
+            <li><strong>RUN:</strong> construye la aplicación (usando <code>make</code>, <code>npm</code>, etc.).</li>
+            <li><strong>CMD/ENTRYPOINT:</strong> define qué comando se ejecutará al iniciar el contenedor.</li>
+          </ul>
+          
+          <div class="tip-box">
+            <strong>💡 Buena práctica:</strong> Ordena las instrucciones desde las menos propensas a cambiar hasta las 
+            más propensas. Esto optimiza la reutilización de capas en futuras construcciones.
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Buenas prácticas con contenedores</h3>
+          <p>
+            Actualmente, la mejor práctica es <strong>no construir tu aplicación en el mismo contenedor que vas a 
+            desplegar</strong>. Esto evita que herramientas de construcción innecesarias aumenten la complejidad o 
+            se conviertan en un vector de ataque.
+          </p>
+          <ul>
+            <li><strong>Construcción multi-stage:</strong> un contenedor construye, otro ejecuta.</li>
+            <li><strong>Capa escribible:</strong> los cambios en tiempo de ejecución son efímeros.</li>
+            <li><strong>Datos persistentes:</strong> deben almacenarse fuera del contenedor.</li>
+            <li><strong>Compartición de imágenes:</strong> múltiples contenedores pueden usar la misma imagen base.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Uso de imágenes y herramientas de construcción</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch04.png" alt="Cloud Build" loading="lazy">
+          </div>
+          <p>
+            Cuando se construye un contenedor, <strong>no se copia toda la imagen</strong>, sino solo las capas con 
+            diferencias. Esto hace la construcción mucho más rápida que las VMs.
+          </p>
+          <ul>
+            <li><strong>Imágenes base públicas:</strong> Ubuntu, Alpine, Nginx, etc.</li>
+            <li><strong>Artifact Registry:</strong> almacena imágenes con integración a IAM, KMS y Cloud Build.</li>
+            <li><strong>Cloud Build:</strong> servicio gestionado que automatiza la construcción de contenedores.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Introducción a Kubernetes -->
+      <section id="kubernetes" class="content-section">
+        <h2 class="section-title">☸️ Kubernetes</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué es Kubernetes?</h3>
+          <p>
+            Kubernetes automatiza el despliegue, escalado, balanceo de carga, logging, monitoreo y otras tareas de 
+            gestión de aplicaciones en contenedores. Combina capacidades de PaaS con la flexibilidad de IaaS.
+          </p>
+          <ul>
+            <li><strong>Automatización declarativa:</strong> mantiene el estado deseado automáticamente.</li>
+            <li><strong>Soporte para múltiples cargas:</strong> stateless, stateful, batch jobs, daemons.</li>
+            <li><strong>Escalado automático:</strong> basado en utilización de recursos.</li>
+            <li><strong>Recursos configurables:</strong> límites y solicitudes de CPU/memoria.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Google Kubernetes Engine (GKE)</h3>
+          <p>
+            <strong>GKE</strong> es la solución Kubernetes completamente gestionada de Google Cloud, con sistemas 
+            operativos optimizados para contenedores.
+          </p>
+          <ul>
+            <li><strong>Modo Autopilot:</strong> Google gestiona configuración, nodos, seguridad y escalado.</li>
+            <li><strong>Auto-repair:</strong> repara nodos defectuosos automáticamente.</li>
+            <li><strong>Auto-upgrade:</strong> mantiene la versión estable más reciente.</li>
+            <li><strong>Integraciones:</strong> IAM, VPC, Cloud Monitoring, Cloud Build, Artifact Registry.</li>
+          </ul>
+          <div class="tip-box">
+            <strong>✅ Ideal para:</strong> aplicaciones contenerizadas, sistemas distribuidos cloud-native y entornos 
+            híbridos sin vendor lock-in.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Opciones de Cómputo -->
+      <section id="compute-options" class="content-section">
+        <h2 class="section-title">⚙️ Opciones de Cómputo en GCP</h2>
+        
+        <div class="image-container">
+          <img src="/DevSecOps/GoogleDevOpsSRE/arch05.png" alt="Opciones de Cómputo" loading="lazy">
+        </div>
+
+        <div class="content-card">
+          <h3>Compute Engine</h3>
+          <p>Máquinas virtuales altamente configurables con control total.</p>
+          <ul>
+            <li><strong>Persistent disks:</strong> hasta 64 TB con snapshots.</li>
+            <li><strong>Local SSDs:</strong> IOPS extremadamente alto.</li>
+            <li><strong>VMs preemptibles:</strong> costos reducidos para cargas tolerantes a interrupciones.</li>
+            <li><strong>Facturación por segundo</strong> y autoscaling global.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>App Engine</h3>
+          <p>Plataforma totalmente gestionada (PaaS) sin gestión de servidores.</p>
+          <ul>
+            <li>Solo subes tu código, Google gestiona el resto.</li>
+            <li>Control de versiones y división de tráfico integrada.</li>
+            <li>Integración con Monitoring, Logging y Error Reporting.</li>
+            <li><strong>Casos de uso:</strong> sitios web, APIs RESTful, backends móviles.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Google Kubernetes Engine</h3>
+          <p>Orquestación de contenedores con Kubernetes gestionado.</p>
+          <ul>
+            <li>Automatiza despliegue, escalado y monitoreo.</li>
+            <li>Integración con Cloud Build y Artifact Registry.</li>
+            <li>Perfecto para microservicios y aplicaciones cloud-native.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Cloud Run</h3>
+          <p>Ejecución serverless de contenedores stateless.</p>
+          <ul>
+            <li>Escala automáticamente desde cero.</li>
+            <li>Pagas solo por tiempo de ejecución (100ms de granularidad).</li>
+            <li>Activado por peticiones HTTP o eventos.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Cloud Functions</h3>
+          <p>Funciones serverless basadas en eventos.</p>
+          <ul>
+            <li>Código ligero que responde a eventos de la nube.</li>
+            <li>Escalado automático y alta disponibilidad.</li>
+            <li><strong>Casos de uso:</strong> webhooks, pipelines de datos, automatización.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 4: Conceptos de Kubernetes -->
+      <section id="conceptos-kubernetes" class="content-section">
+        <h2 class="section-title">🧩 Conceptos de Kubernetes</h2>
+        
+        <div class="content-card">
+          <h3>Componentes de un Clúster</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch07.png" alt="Componentes de Kubernetes" loading="lazy">
+          </div>
+          <p>
+            Un clúster de Kubernetes tiene dos tipos de nodos: el <strong>plano de control</strong> (control plane) 
+            y los <strong>nodos de trabajo</strong> (worker nodes).
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Plano de Control (Control Plane)</h3>
+          <p>Gestiona el estado del clúster y orquesta todas las operaciones:</p>
+          <ul>
+            <li><strong>kube-apiserver:</strong> punto de entrada único para todas las interacciones (kubectl).</li>
+            <li><strong>etcd:</strong> base de datos distribuida que almacena el estado del clúster.</li>
+            <li><strong>kube-scheduler:</strong> asigna pods a nodos según restricciones y recursos.</li>
+            <li><strong>kube-controller-manager:</strong> ejecuta controladores que mantienen el estado deseado.</li>
+            <li><strong>cloud-controller-manager:</strong> integra con proveedores de nube (balanceadores, volúmenes).</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Componentes de Nodo</h3>
+          <p>Cada nodo ejecuta componentes que gestionan los contenedores:</p>
+          <ul>
+            <li><strong>kubelet:</strong> agente que se comunica con el API server y gestiona pods.</li>
+            <li><strong>container runtime:</strong> ejecuta los contenedores (Containerd en GKE).</li>
+            <li><strong>kube-proxy:</strong> mantiene reglas de red para conectividad entre pods.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: Conceptos de GKE -->
+      <section id="conceptos-gke" class="content-section">
+        <h2 class="section-title">🚀 Conceptos de GKE</h2>
+        
+        <div class="content-card">
+          <h3>Modos de Operación: Autopilot vs Standard</h3>
+          <ul>
+            <li>
+              <strong>Autopilot:</strong> Google gestiona toda la infraestructura (plano de control, nodos, escalado). 
+              <em>Recomendado por Google</em> a menos que necesites control granular.
+            </li>
+            <li>
+              <strong>Standard:</strong> tú eres responsable de configurar y optimizar el clúster. Más control, 
+              más responsabilidad.
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Node Pools</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch08.png" alt="Node Pools" loading="lazy">
+          </div>
+          <p>
+            Un <strong>node pool</strong> es un subconjunto de nodos con configuración idéntica (tipo de CPU, memoria, GPUs).
+          </p>
+          <ul>
+            <li>Permiten ejecutar cargas de trabajo en el hardware adecuado mediante etiquetas.</li>
+            <li>Soportan actualizaciones automáticas, auto-repair y autoescalado.</li>
+            <li>Por defecto, un clúster se crea con un node pool de 3 nodos.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Clústeres Regionales</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch09.png" alt="Clústeres Regionales" loading="lazy">
+          </div>
+          <p>
+            Los <strong>clústeres regionales</strong> distribuyen el plano de control y los nodos en múltiples zonas 
+            de una región, garantizando alta disponibilidad.
+          </p>
+          <ul>
+            <li>Un único punto final de API para todo el clúster.</li>
+            <li>La disponibilidad se mantiene incluso si una zona falla.</li>
+            <li>El número de nodos debe ser igual en todas las zonas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 6: Gestión de Objetos -->
+      <section id="gestion-objetos" class="content-section">
+        <h2 class="section-title">📋 Gestión de Objetos en Kubernetes</h2>
+        
+        <div class="content-card">
+          <h3>Modelo de Objetos</h3>
+          <p>
+            Cada cosa que Kubernetes gestiona está representada por un <strong>objeto</strong>. Un objeto tiene:
+          </p>
+          <ul>
+            <li><strong>Object spec:</strong> el estado deseado que defines.</li>
+            <li><strong>Object status:</strong> el estado actual, gestionado por el plano de control.</li>
+          </ul>
+          <div class="tip-box">
+            <strong>Gestión declarativa:</strong> tú defines el estado deseado, Kubernetes lo alcanza y mantiene.
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Manifiestos y Metadatos</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch10.png" alt="Manifiestos Kubernetes" loading="lazy">
+          </div>
+          <p>Los objetos se definen con <strong>manifiestos YAML</strong> que incluyen:</p>
+          <ul>
+            <li><strong>apiVersion:</strong> versión de la API de Kubernetes.</li>
+            <li><strong>kind:</strong> tipo de objeto (Pod, Deployment, Service).</li>
+            <li><strong>metadata:</strong> nombre, UID, namespace y labels.</li>
+            <li><strong>spec:</strong> configuración deseada del objeto.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Pods y Controladores</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch06.png" alt="Pods en Kubernetes" loading="lazy">
+          </div>
+          <p>
+            Los <strong>Pods</strong> son el bloque de construcción básico del modelo estándar de Kubernetes y el 
+            objeto desplegable más pequeño. Un Pod encarna el entorno donde viven los contenedores y ese entorno 
+            puede acomodar uno o más contenedores.
+          </p>
+          <ul>
+            <li>Cada contenedor dentro de un Pod comparte el <strong>namespace de red</strong>, incluyendo la dirección IP y los puertos de red.</li>
+            <li>Los contenedores dentro del mismo Pod pueden comunicarse a través de <code>localhost 127.0.0.1</code>.</li>
+            <li>Un Pod también puede especificar un conjunto de <strong>volúmenes de almacenamiento</strong> para ser compartidos entre sus contenedores.</li>
+            <li>Los Pods <strong>no se auto-reparan (self-healing)</strong>.</li>
+          </ul>
+          
+          <h4>Pods vs Controllers</h4>
+          <p>
+            Crear manualmente varios Pods (por ejemplo, 3 nginx) funciona para escalas pequeñas, pero no es práctico ni seguro:
+          </p>
+          <ul>
+            <li>Los Pods son <strong>efímeros</strong> y no se auto-reparan.</li>
+            <li>Gestionar decenas o cientos de Pods con YAML individuales es ineficiente.</li>
+          </ul>
+          <p>
+            En lugar de eso, Kubernetes utiliza <strong>objetos controladores</strong>, cuya función es gestionar el estado deseado.
+          </p>
+          
+          <h4>Tipos de Controladores</h4>
+          <ul>
+            <li>
+              <strong>ReplicaSet:</strong> Asegura que una población de Pods, todos idénticos entre sí, estén ejecutándose al mismo tiempo.
+            </li>
+            <li>
+              <strong>Deployment:</strong> Gestiona ReplicaSets y permite actualizaciones <strong>declarativas</strong> sobre Pods. 
+              Los Deployments gestionan sus propios ReplicaSets para lograr el estado deseado, por lo que normalmente trabajarás 
+              directamente con Deployments. Permiten crear Pods, actualizarlos, realizar rollbacks, escalarlos y usar ReplicaSets 
+              automáticamente cuando se necesite.
+              <ul>
+                <li>Durante un <em>rolling update</em>, el Deployment crea un segundo ReplicaSet, aumenta gradualmente los Pods 
+                del nuevo ReplicaSet y disminuye los Pods del ReplicaSet inicial.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Replication Controller:</strong> Versión más antigua que ofrece un rol similar. Su uso <strong>ya no es recomendado</strong>, 
+              ya que los Deployments proporcionan una capa superior más flexible y moderna.
+            </li>
+            <li>
+              <strong>StatefulSet:</strong> Si necesitas ejecutar aplicaciones que <strong>mantienen estado local</strong>. Similar a un Deployment 
+              en que los pods usan el mismo container spec, pero los Pods tienen <strong>identidades persistentes y únicas</strong>, conservan 
+              identidad de red estable y pueden usar almacenamiento persistente asociado a cada Pod.
+            </li>
+            <li>
+              <strong>DaemonSet:</strong> Asegura que ciertos Pods se ejecuten en <strong>todos</strong> los nodos del clúster, o un subconjunto 
+              específico de nodos. Si se agregan nuevos nodos, el DaemonSet crea automáticamente los Pods necesarios allí. Uso común: ejecutar 
+              agentes como <strong>fluentd</strong> o recolectores de logs en todos los nodos.
+            </li>
+            <li>
+              <strong>Job y CronJob:</strong>
+              <ul>
+                <li>Un <strong>Job</strong> crea uno o más Pods para ejecutar una <strong>tarea puntual</strong>. Cuando la tarea termina, 
+                el Job finaliza los Pods.</li>
+                <li>Un <strong>CronJob</strong> ejecuta Jobs siguiendo una <strong>programación basada en tiempo</strong>, como tareas cron tradicionales.</li>
+              </ul>
+            </li>
+          </ul>
+          
+          <h4>¿Cómo trabaja un Deployment?</h4>
+          <ul>
+            <li>El scheduler crea Pods y notifica cambios al API server.</li>
+            <li>El Deployment controller monitoriza continuamente: si un Pod falla, detecta el cambio en el estado actual y crea un nuevo Pod para restaurar el estado deseado.</li>
+            <li>Un Deployment permite especificar: número de réplicas, especificación de los Pods (containers, puertos, volúmenes) y políticas de actualización.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Recursos del Pod y uso eficiente del clúster</h3>
+          <p>
+            Para garantizar que los contenedores funcionen correctamente, se pueden definir <strong>requests</strong> y 
+            <strong>limits</strong> de recursos.
+          </p>
+          <ul>
+            <li>Recursos más comunes: <strong>CPU y memoria (RAM)</strong>.</li>
+            <li><strong>Requests</strong> garantizan que el Pod tenga lo mínimo necesario.</li>
+            <li><strong>Limits</strong> evitan que una aplicación consuma más recursos de los permitidos.</li>
+          </ul>
+          <p>
+            Esto previene situaciones como:
+          </p>
+          <ul>
+            <li>Un nodo quedándose sin memoria o CPU.</li>
+            <li>Equipos subiendo réplicas innecesarias.</li>
+            <li>Aplicaciones mal configuradas consumiendo el 100% del CPU.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Namespaces</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch11.png" alt="Namespaces" loading="lazy">
+          </div>
+          <p>
+            Los <strong>namespaces</strong> permiten dividir un clúster físico en múltiples entornos lógicos.
+          </p>
+          <ul>
+            <li>Proveen un ámbito de nombres para Pods, Deployments y otros recursos.</li>
+            <li>Puedes crear objetos con el mismo nombre siempre que estén en namespaces distintos.</li>
+            <li>Facilitan la organización, control de acceso (RBAC) y pruebas aisladas.</li>
+          </ul>
+          
+          <h4>Usos típicos de namespaces</h4>
+          <ul>
+            <li>Separar entornos: <code>test</code>, <code>stage</code>, <code>prod</code>.</li>
+            <li>Evitar colisiones de nombres.</li>
+            <li>Implementar <strong>resource quotas</strong>, que limitan el consumo de recursos por namespace.</li>
+            <li>Crear despliegues temporales sin interferir con los existentes.</li>
+          </ul>
+          
+          <h4>Namespaces iniciales del clúster</h4>
+          <ul>
+            <li><strong>default:</strong> donde van los recursos que no especifican un namespace.</li>
+            <li><strong>kube-system:</strong> contiene objetos internos de Kubernetes.</li>
+            <li><strong>kube-public:</strong> accesible públicamente y útil para compartir información común en el clúster.</li>
+          </ul>
+          
+          <div class="tip-box">
+            <strong>💡 Buena práctica:</strong> Preferir aplicar el namespace desde la línea de comando 
+            (ej. <code>-n test apply -f mypod.yaml</code>) en lugar de especificarlo en YAML. Esto mantiene los YAML 
+            reutilizables en múltiples entornos. Incrustar el namespace en el YAML dificulta mantener instancias 
+            independientes del mismo despliegue.
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Servicios (Services)</h3>
+          <p>
+            Los <strong>Services</strong> exponen un conjunto de Pods como un servicio de red con balanceo de carga:
+          </p>
+          <ul>
+            <li><strong>ClusterIP:</strong> acceso solo dentro del clúster (por defecto).</li>
+            <li><strong>NodePort:</strong> expone el servicio en un puerto en cada nodo.</li>
+            <li><strong>LoadBalancer:</strong> expone externamente con un balanceador de carga de GCP.</li>
+          </ul>
+          <p>
+            Para balanceo HTTP(S) avanzado (capa 7) se usa un <strong>Ingress</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 7: Migrate for Anthos -->
+      <section id="migrate-anthos" class="content-section">
+        <h2 class="section-title">🔄 Migrate for Anthos</h2>
+        
+        <div class="content-card">
+          <h3>Modernización de Aplicaciones</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch12.png" alt="Migrate for Anthos" loading="lazy">
+          </div>
+          <p>
+            <strong>Migrate for Anthos</strong> automatiza la migración de VMs (on-premise u otras nubes) a 
+            contenedores en GKE.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Flujo de Migración</h3>
+          <ol>
+            <li>Migrar la VM a Compute Engine (si es necesario).</li>
+            <li>Instalar Migrate for Anthos en un clúster de procesamiento.</li>
+            <li>Generar artefactos: Dockerfile y manifiestos de Kubernetes.</li>
+            <li>Almacenar la imagen en Artifact Registry.</li>
+            <li>Desplegar en el clúster de producción.</li>
+          </ol>
+        </div>
+
+        <div class="content-card">
+          <h3>Ejemplo Práctico: Migración Paso a Paso</h3>
+          
+          <h4>Paso 1: Configurar el clúster de procesamiento</h4>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch13.png" alt="Configuración del cluster" loading="lazy">
+          </div>
+          <p>
+            Crea un clúster GKE dedicado para procesar migraciones. Necesitas:
+          </p>
+          <ul>
+            <li>Permisos adecuados para acceder a VMs origen.</li>
+            <li>Reglas de firewall para comunicación con las VMs.</li>
+            <li>Suficiente capacidad de cómputo para procesar la conversión.</li>
+          </ul>
+          
+          <h4>Paso 2: Instalar migctl</h4>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch14.png" alt="Instalación de migctl" loading="lazy">
+          </div>
+          <p>
+            <code>migctl</code> es la CLI de Migrate for Anthos. Instálala con:
+          </p>
+          <pre><code>gcloud components install migctl</code></pre>
+          <p>
+            Luego configúrala para usar tu clúster de procesamiento:
+          </p>
+          <pre><code>migctl setup install --gcp-project=[PROJECT_ID] --gcp-region=[REGION]</code></pre>
+          
+          <h4>Paso 3: Verificar el estado del clúster</h4>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch15.png" alt="Verificación de instalación" loading="lazy">
+          </div>
+          <p>
+            Comprueba que todos los componentes estén desplegados correctamente:
+          </p>
+          <pre><code>migctl doctor</code></pre>
+          <p>
+            Esto verifica conectividad, permisos y estado de los servicios necesarios.
+          </p>
+          
+          <h4>Paso 4: Crear el Migration Plan</h4>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch16.png" alt="Crear plan de migración" loading="lazy">
+          </div>
+          <p>
+            Un <strong>Migration Plan</strong> describe qué VM migrar y cómo:
+          </p>
+          <pre><code>migctl migration create my-migration --source my-vm-ce --type linux-system-container</code></pre>
+          <p>
+            Especifica el tipo de contenedor resultante: System container (contenedor con init) o Data container 
+            (solo datos/aplicación).
+          </p>
+          
+          <h4>Paso 5: Generar artefactos</h4>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch17.png" alt="Generar artefactos" loading="lazy">
+          </div>
+          <p>
+            Migrate for Anthos analiza la VM y genera:
+          </p>
+          <ul>
+            <li><strong>Dockerfile:</strong> contiene las instrucciones para construir la imagen.</li>
+            <li><strong>Manifiestos de Kubernetes:</strong> Deployment, Service, ConfigMap, etc.</li>
+            <li><strong>Imagen de contenedor:</strong> almacenada en Artifact Registry o Container Registry.</li>
+          </ul>
+          <pre><code>migctl migration generate-artifacts my-migration</code></pre>
+          <p>
+            Revisa y ajusta los artefactos generados según necesites (por ejemplo, añadir health checks, ajustar recursos).
+          </p>
+          
+          <h4>Paso 6: Desplegar en producción</h4>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/arch18.png" alt="Obtener artefactos" loading="lazy">
+          </div>
+          <p>
+            Con los artefactos generados, despliega la aplicación en tu clúster de producción:
+          </p>
+          <pre><code>kubectl apply -f deployment.yaml</code></pre>
+          <p>
+            Verifica que el Pod esté corriendo y que la aplicación funcione correctamente:
+          </p>
+          <pre><code>kubectl get pods
+kubectl logs [POD_NAME]</code></pre>
+          
+          <div class="tip-box">
+            <strong>💡 Beneficios:</strong> Al migrar a contenedores, obtienes portabilidad, escalado automático, 
+            integración con CI/CD, y la capacidad de modernizar gradualmente tu aplicación sin reescribirla desde cero.
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Progress Section -->
+    <div class="progress-section">
+      <h3 class="progress-title">Tu Progreso en Kubernetes Engine Foundations</h3>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 0%">
+          <span class="progress-text">0% completado</span>
+        </div>
+      </div>
+      <p class="progress-description">Completa las secciones para avanzar en tu aprendizaje</p>
+    </div>
+
+  </div>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .gcp-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .navigation-back {
+      margin-bottom: 24px;
+    }
+
+    .navigation-back a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(122, 107, 255, 0.1);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .navigation-back a:hover {
+      background: rgba(122, 107, 255, 0.2);
+      border-color: rgba(122, 107, 255, 0.5);
+      transform: translateX(-4px);
+    }
+
+    .gcp-hero {
+      text-align: center;
+      padding: 60px 24px;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, rgba(122, 107, 255, 0.15) 0%, rgba(165, 180, 252, 0.08) 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .gcp-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #a5b4fc;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(122, 107, 255, 0.3);
+    }
+
+    .gcp-subtitle-main {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #7a6bff;
+      margin-bottom: 16px;
+    }
+
+    .gcp-description {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      color: #c7d2fe;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(122, 107, 255, 0.3);
+    }
+
+    .content-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(122, 107, 255, 0.3);
+      box-shadow: 0 4px 20px rgba(122, 107, 255, 0.1);
+    }
+
+    .content-card h3 {
+      color: #a5b4fc;
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .content-card h4 {
+      color: #c7d2fe;
+      font-size: 1.3rem;
+      margin: 24px 0 12px 0;
+    }
+
+    .content-card p {
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .content-card ul, .content-card ol {
+      margin: 16px 0 16px 24px;
+      line-height: 1.8;
+    }
+
+    .content-card li {
+      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .content-card code {
+      background: rgba(122, 107, 255, 0.15);
+      color: #a5b4fc;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+
+    .image-container {
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(122, 107, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .tip-box {
+      background: rgba(122, 107, 255, 0.1);
+      border-left: 4px solid #7a6bff;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .tip-box strong {
+      color: #a5b4fc;
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(122, 107, 255, 0.3);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    pre code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #c7d2fe;
+      line-height: 1.6;
+    }
+
+    code {
+      background: rgba(122, 107, 255, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      color: #a5b4fc;
+    }
+
+    h4 {
+      color: #c7d2fe;
+      font-size: 1.2rem;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .progress-section {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .progress-title {
+      font-size: 1.5rem;
+      color: #c7d2fe;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      height: 40px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #7a6bff, #a5b4fc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.5s ease;
+    }
+
+    .progress-text {
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .progress-description {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .gcp-title {
+        font-size: 2rem;
+      }
+
+      .gcp-subtitle-main {
+        font-size: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .content-card {
+        padding: 20px;
+      }
+    }
+  </style>
+
+  <script>
+    // Track progress in localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const completedSections = JSON.parse(localStorage.getItem('k8s-sections-completed') || '[]');
+      const totalSections = 7;
+      const percentage = Math.round((completedSections.length / totalSections) * 100);
+      
+      const progressBar = document.querySelector('.progress-bar');
+      const progressText = document.querySelector('.progress-text');
+      
+      if (progressBar && progressText) {
+        progressBar.style.width = `${percentage}%`;
+        progressText.textContent = `${percentage}% completado`;
+      }
+    });
+  </script>
+</BaseLayout>
