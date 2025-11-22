@@ -125,6 +125,9 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             aplicación</strong> resolvió el aislamiento, pero escalaba muy mal porque cada VM duplicaba un sistema 
             operativo completo.
           </p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch01.png" alt="Evolución de la virtualización" loading="lazy">
+          </div>
           <p>
             Una forma más eficiente de resolver los problemas de dependencias es abstraer solo el espacio de usuario, 
             sin virtualizar toda la máquina ni el sistema operativo. Esto permite empaquetar la aplicación junto con 
@@ -135,7 +138,11 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
 
         <div class="content-card">
-          <h3>Contenedores e Imágenes</h3><p>
+          <h3>Contenedores e Imágenes</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch02.png" alt="Contenedores e Imágenes" loading="lazy">
+          </div>
+          <p>
             Los contenedores no son una característica primitiva de Linux; su capacidad para <strong>aislar cargas de 
             trabajo</strong> proviene de la combinación de varias tecnologías fundamentales:
           </p>
@@ -158,7 +165,11 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
 
         <div class="content-card">
-          <h3>Capas en un Dockerfile</h3><p>
+          <h3>Capas en un Dockerfile</h3>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch03.png" alt="Capas en Dockerfile" loading="lazy">
+          </div>
+          <p>
             Un <strong>Dockerfile</strong> crea una imagen de contenedor a partir de varias capas:
           </p>
           <ul>
@@ -199,6 +210,9 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             <li><strong>Artifact Registry:</strong> almacena imágenes con integración a IAM, KMS y Cloud Build.</li>
             <li><strong>Cloud Build:</strong> servicio gestionado que automatiza la construcción de contenedores.</li>
           </ul>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch04.png" alt="Cloud Build" loading="lazy">
+          </div>
         </div>
       </section>
 
@@ -241,7 +255,15 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
       <!-- Section 3: Opciones de Cómputo -->
       <section id="compute-options" class="content-section">
-        <h2 class="section-title">⚙️ Opciones de Cómputo en GCP</h2><div class="content-card">
+        <h2 class="section-title">⚙️ Opciones de Cómputo en GCP</h2>
+        
+        <div class="content-card">
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch05.png" alt="Opciones de Cómputo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
           <h3>Compute Engine</h3>
           <p>Máquinas virtuales altamente configurables con control total.</p>
           <ul>
@@ -299,7 +321,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <h2 class="section-title">🧩 Conceptos de Kubernetes</h2>
         
         <div class="content-card">
-          <h3>Componentes de un Clúster</h3><p>
+          <h3>Componentes de un Clúster</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch07.png" alt="Componentes de Kubernetes" loading="lazy">
+          </div>
+
+          <p>
             Un clúster de Kubernetes tiene dos tipos de nodos: el <strong>plano de control</strong> (control plane) 
             y los <strong>nodos de trabajo</strong> (worker nodes).
           </p>
@@ -428,7 +456,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
 
         <div class="content-card">
-          <h3>Node Pools</h3><p>
+          <h3>Node Pools</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch08.png" alt="Node Pools" loading="lazy">
+          </div>
+
+          <p>
             Un <strong>node pool</strong> es un subconjunto de nodos con configuración idéntica (tipo de CPU, memoria, GPUs).
           </p>
           <ul>
@@ -439,7 +473,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
 
         <div class="content-card">
-          <h3>Clústeres Regionales</h3><p>
+          <h3>Clústeres Regionales</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch09.png" alt="Clústeres Regionales" loading="lazy">
+          </div>
+
+          <p>
             Los <strong>clústeres regionales</strong> distribuyen el plano de control y los nodos en múltiples zonas 
             de una región, garantizando alta disponibilidad.
           </p>
@@ -493,6 +533,11 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
         <div class="content-card">
           <h3>Manifiestos YAML</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch10.png" alt="Manifiestos YAML" loading="lazy">
+          </div>
+
           <p>
             Kubernetes gestiona objetos declarativos definidos mediante archivos de manifiesto. Los objetos se definen 
             con <strong>manifest files</strong> escritos en YAML o JSON (YAML suele ser preferido por su legibilidad).
@@ -542,7 +587,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
 
         <div class="content-card">
-          <h3>Pods y Controladores</h3><p>
+          <h3>Pods y Controladores</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch06.png" alt="Arquitectura de Pods" loading="lazy">
+          </div>
+
+          <p>
             Los <strong>Pods</strong> son el bloque de construcción básico del modelo estándar de Kubernetes y el 
             objeto desplegable más pequeño. Un Pod encarna el entorno donde viven los contenedores y ese entorno 
             puede acomodar uno o más contenedores.
@@ -635,7 +686,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
 
         <div class="content-card">
-          <h3>Namespaces</h3><p>
+          <h3>Namespaces</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch11.png" alt="Namespaces en Kubernetes" loading="lazy">
+          </div>
+
+          <p>
             Los <strong>namespaces</strong> permiten dividir un clúster físico en múltiples entornos lógicos.
           </p>
           <ul>
@@ -711,6 +768,11 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         
         <div class="content-card">
           <h3>Modernización de Aplicaciones</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch12.png" alt="Migrate for Anthos Overview" loading="lazy">
+          </div>
+
           <p>
             <strong>Migrate for Anthos</strong> mueve tus aplicaciones existentes hacia un entorno Kubernetes. 
             Lo mejor: <strong>el proceso es completamente automatizado</strong>.
@@ -720,6 +782,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <div class="content-card">
           <h3>Flujo General del Proceso</h3>
           
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch13.png" alt="Pipeline de Migración" loading="lazy">
+          </div>
+
           <h4>1. Crear un pipeline de migración</h4>
           <p>
             El primer paso consiste en permitir que <strong>Migrate for Compute Engine</strong> cree un pipeline 
@@ -759,6 +825,11 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
         <div class="content-card">
           <h3>Flujo de Migración de una Aplicación</h3>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch14.png" alt="Flujo de Migración Detallado" loading="lazy">
+          </div>
+
           <p>Ahora que conoces la arquitectura general necesaria para una migración, veamos qué ocurre paso a paso:</p>
           
           <ol>
@@ -776,6 +847,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <div class="content-card">
           <h3>Ejemplo Práctico: Migración Paso a Paso</h3>
           
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch15.png" alt="Configuración del Clúster de Procesamiento" loading="lazy">
+          </div>
+
           <h4>Paso 1: Configurar el clúster de procesamiento</h4><p>
             Crea un clúster GKE dedicado para procesar migraciones. Necesitas:
           </p>
@@ -802,7 +877,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             Esto verifica conectividad, permisos y estado de los servicios necesarios.
           </p>
           
-          <h4>Paso 4: Crear el Migration Plan</h4><p>
+          <h4>Paso 4: Crear el Migration Plan</h4>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch16.png" alt="Creación del Migration Plan" loading="lazy">
+          </div>
+
+          <p>
             Un <strong>Migration Plan</strong> describe qué VM migrar y cómo:
           </p>
           <pre><code>migctl migration create my-migration --source my-vm-ce --type linux-system-container</code></pre>
@@ -811,7 +892,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             (solo datos/aplicación).
           </p>
           
-          <h4>Paso 5: Generar artefactos</h4><p>
+          <h4>Paso 5: Generar artefactos</h4>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch17.png" alt="Generación de Artefactos" loading="lazy">
+          </div>
+
+          <p>
             Migrate for Anthos analiza la VM y genera:
           </p>
           <ul>
@@ -824,7 +911,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             Revisa y ajusta los artefactos generados según necesites (por ejemplo, añadir health checks, ajustar recursos).
           </p>
           
-          <h4>Paso 6: Desplegar en producción</h4><p>
+          <h4>Paso 6: Desplegar en producción</h4>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/arch18.png" alt="Despliegue en Producción" loading="lazy">
+          </div>
+
+          <p>
             Con los artefactos generados, despliega la aplicación en tu clúster de producción:
           </p>
           <pre><code>kubectl apply -f deployment.yaml</code></pre>
