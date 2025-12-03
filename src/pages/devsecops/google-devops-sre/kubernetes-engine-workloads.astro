@@ -1,0 +1,643 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Kubernetes Engine: Workloads - Google Cloud Platform">
+  <div class="page-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>☁️ Cloud Fundamentals</h3>
+      </div>
+      
+      <!-- Modules Navigation with Submenu -->
+      <nav class="sidebar-nav modules-nav">
+        <!-- Introducción Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link">
+            <span class="module-icon">📚</span>
+            <span class="module-text">Introducción a GCP</span>
+          </a>
+        </div>
+
+        <!-- Recursos Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/recursos" class="nav-link module-link">
+            <span class="module-icon">🔐</span>
+            <span class="module-text">Recursos y Acceso</span>
+          </a>
+        </div>
+
+        <!-- VMs y Redes Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/vms-redes" class="nav-link module-link">
+            <span class="module-icon">🌐</span>
+            <span class="module-text">VMs y Redes</span>
+          </a>
+        </div>
+
+        <!-- Almacenamiento Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/almacenamiento" class="nav-link module-link">
+            <span class="module-icon">💾</span>
+            <span class="module-text">Almacenamiento</span>
+          </a>
+        </div>
+
+        <!-- Contenedores Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/contenedores" class="nav-link module-link">
+            <span class="module-icon">📦</span>
+            <span class="module-text">Contenedores</span>
+          </a>
+        </div>
+
+        <!-- Aplicaciones Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/aplicaciones" class="nav-link module-link">
+            <span class="module-icon">🚀</span>
+            <span class="module-text">Aplicaciones</span>
+          </a>
+        </div>
+
+        <!-- Prompt Engineering Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/prompt-engineering" class="nav-link module-link">
+            <span class="module-icon">🤖</span>
+            <span class="module-text">Prompt Engineering</span>
+          </a>
+        </div>
+
+        <!-- Kubernetes Engine Module -->
+        <div class="module-item">
+          <a href="/devsecops/google-devops-sre/kubernetes-engine-fundamentals" class="nav-link module-link">
+            <span class="module-icon">⚙️</span>
+            <span class="module-text">Kubernetes Engine</span>
+          </a>
+        </div>
+
+        <!-- Kubernetes Workloads Module - ACTIVE -->
+        <div class="module-item expanded">
+          <a href="/devsecops/google-devops-sre/kubernetes-engine-workloads" class="nav-link module-link active">
+            <span class="module-icon">🏗️</span>
+            <span class="module-text">GKE Workloads</span>
+          </a>
+          <div class="submenu">
+            <a href="#deployments" class="submenu-link">Deployments</a>
+            <a href="#jobs-cronjobs" class="submenu-link">Jobs y CronJobs</a>
+            <a href="#escalado" class="submenu-link">Escalado de Clústeres</a>
+            <a href="#pod-placement" class="submenu-link">Pod Placement</a>
+            <a href="#networking" class="submenu-link">Networking</a>
+            <a href="#services" class="submenu-link">Services</a>
+            <a href="#ingress" class="submenu-link">Ingress</a>
+            <a href="#security" class="submenu-link">Seguridad y Políticas</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/devsecops/google-devops-sre/cloud-fundamentals" class="back-link">← Volver al Hub</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="gcp-container">
+      <!-- Hero Section -->
+      <div class="gcp-hero">
+        <h1 class="gcp-title">Kubernetes Engine: Workloads</h1>
+        <p class="gcp-subtitle">Gestión avanzada de cargas de trabajo, redes y seguridad en GKE</p>
+      </div>
+
+      <div class="content-section">
+
+      <!-- Content Sections -->
+      <div class="content-wrapper">
+      
+      <!-- Section 1: Deployments -->
+      <section id="deployments" class="content-section">
+        <h2 class="section-title">🚀 Deployments en GKE</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué es un Deployment?</h3>
+          <p>
+            Los **Deployments** son el método principal para desplegar aplicaciones contenerizadas en GKE.  
+            Un Deployment es un recurso de Kubernetes que describe el **estado deseado** de un conjunto de Pods.
+          </p>
+          <p>
+            Este estado es supervisado por un **built in controller**, un proceso que se ejecuta constantemente para asegurar que el estado actual del clúster coincida con el deseado.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>¿Cómo funciona el proceso de Deployment?</h3>
+          <p>De forma general, el proceso ocurre así:</p>
+          <ul>
+            <li>El estado deseado se define en un archivo YAML del Deployment.</li>
+            <li>Este archivo se envía al plano de control de Kubernetes.</li>
+            <li>Se crea un **Deployment Controller** que convierte el estado deseado en el estado actual y lo mantiene.</li>
+            <li>El Deployment crea y gestiona un **ReplicaSet**.</li>
+            <li>El ReplicaSet se encarga de instanciar y mantener las réplicas de los Pods especificados.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Componentes de un Deployment</h3>
+          <p>Un Deployment suele definirse mediante un archivo en formato YAML que contiene:</p>
+          <ul>
+            <li>Versión de la API.</li>
+            <li>Tipo de recurso (`Deployment`).</li>
+            <li>Nombre del Deployment.</li>
+            <li>Número de réplicas.</li>
+            <li>Plantilla del Pod (metadata y especificaciones).</li>
+            <li>Imagen del contenedor.</li>
+            <li>Puerto expuesto para aceptar tráfico en el contendor.</li>
+          </ul>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image01.png" alt="Componentes de un Deployment" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Estados del ciclo de vida</h3>
+          <ul>
+            <li><strong>Processing:</strong> indica que acción se está realizando (crear, escalar, actualizar).</li>
+            <li><strong>Complete:</strong> indica que todas las réplicas están disponibles y actualizadas.</li>
+            <li><strong>Failed:</strong> indica que ocurre un error en los replicaSets (ej. no se pueden descargar imágenes, permisos insuficientes).</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Usos principales</h3>
+          <p>Los Deployments permiten actualizar aplicaciones, hacer rollback y escalar Pods. Están pensados para aplicaciones <strong>stateless</strong> (sin estado), como servidores API o webs estáticas.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Formas de crear un Deployment</h3>
+          <h4>1. Método declarativo</h4>
+          <p>Se crea un archivo YAML y se aplica con <code>kubectl apply -f deployment.yaml</code>. Defines el estado deseado y Kubernetes hace el resto.</p>
+          
+          <h4>2. Método imperativo</h4>
+          <p>Se crea directamente con comandos como <code>kubectl create deployment ...</code>.</p>
+          
+          <h4>3. Desde Google Cloud Console</h4>
+          <p>Gráficamente desde el menú GKE Workloads.</p>
+        </div>
+
+        <div class="content-card">
+          <h3>Inspección y Actualización</h3>
+          <p>Comandos útiles: <code>kubectl get deployment</code> y <code>kubectl describe deployment</code>.</p>
+          <p>
+            Las actualizaciones de Deployments son muy comunes y **no afectan la disponibilidad**. 
+            Se pueden realizar mediante <code>kubectl apply</code>, <code>kubectl set image</code>, <code>kubectl edit</code> o desde la consola.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Rolling Updates</h3>
+          <p>
+            Estrategia para actualizar sin tiempo de inactividad. Se crea un nuevo ReplicaSet y se reemplazan los Pods gradualmente.
+          </p>
+          <ul>
+            <li><strong>maxSurge:</strong> Máximo de Pods adicionales temporales.</li>
+            <li><strong>maxUnavailable:</strong> Máximo de Pods indisponibles simultáneamente.</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Estrategias de Despliegue</h3>
+          <ul>
+            <li><strong>Recreate:</strong> Elimina todos los antiguos y luego crea los nuevos (con downtime).</li>
+            <li><strong>Blue/Green:</strong> Crea versión nueva completa, luego cambia el tráfico (instantáneo, doble recurso).</li>
+            <li><strong>Canary:</strong> Mueve el tráfico gradualmente a la nueva versión.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Jobs y CronJobs -->
+      <section id="jobs-cronjobs" class="content-section">
+        <h2 class="section-title">⏱️ Jobs y CronJobs</h2>
+        
+        <div class="content-card">
+          <h3>Jobs</h3>
+          <p>
+            Un **Job** crea uno o más Pods para ejecutar una tarea específica y, una vez finalizada, elimina los Pods. 
+            No mantiene un estado deseado continuo, sino que gestiona una tarea hasta completarse.
+          </p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image02.png" alt="Jobs en Kubernetes" loading="lazy">
+          </div>
+          
+          <h4>Tipos de Jobs</h4>
+          <ul>
+            <li><strong>No paralelos:</strong> Una tarea, un Pod.</li>
+            <li><strong>Paralelos:</strong> Múltiples Pods trabajando independientemente.</li>
+          </ul>
+          
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image03.png" alt="Manifiesto de Job" loading="lazy">
+          </div>
+          
+          <h4>Paralelismo y Completions</h4>
+          <p>
+            <code>parallelism</code> define cuántos Pods corren a la vez, y <code>completions</code> cuántas tareas exitosas se requieren en total.
+          </p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image04.png" alt="Paralelismo en Jobs" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>CronJobs</h3>
+          <p>
+            Permiten ejecutar Jobs automáticamente en horarios específicos usando sintaxis **cron**.
+          </p>
+          <p>Sintaxis: Minuto Hora DíaMes Mes DíaSemana</p>
+        </div>
+      </section>
+
+      <!-- Section 3: Escalado -->
+      <section id="escalado" class="content-section">
+        <h2 class="section-title">📈 Escalado de Clústeres</h2>
+        
+        <div class="content-card">
+          <h3>Modos de Operación</h3>
+          <ul>
+            <li><strong>Autopilot Mode:</strong> Escala automáticamente (manos libres).</li>
+            <li><strong>Standard Mode:</strong> Control total (manual o autoscaler configurado).</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Cluster Autoscaler</h3>
+          <p>Ajusta el tamaño del node pool según la demanda.</p>
+          <ul>
+            <li><strong>Scale Up:</strong> Añade nodos si hay Pods "Unschedulable".</li>
+            <li><strong>Scale Down:</strong> Elimina nodos infrautilizados (<50%) tras 10 minutos.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 4: Pod Placement -->
+      <section id="pod-placement" class="content-section">
+        <h2 class="section-title">📍 Pod Placement</h2>
+        
+        <div class="content-card">
+          <h3>nodeSelector</h3>
+          <p>Método básico para forzar un Pod a un nodo con cierta etiqueta.</p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image05.png" alt="nodeSelector" loading="lazy">
+          </div>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image06.png" alt="nodeSelector ejemplo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Node Affinity</h3>
+          <p>Reglas más flexibles con preferencias (Soft) y requisitos (Hard).</p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image07.png" alt="Node Affinity" loading="lazy">
+          </div>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image08.png" alt="Node Affinity ejemplo" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Taints y Tolerations</h3>
+          <p>
+            Mecanismo para **repeler** Pods de ciertos nodos.
+            Un nodo con **Taint** solo acepta Pods con la **Toleration** correspondiente.
+          </p>
+          <ul>
+            <li><strong>NoSchedule:</strong> Bloquea nuevos Pods.</li>
+            <li><strong>PreferNoSchedule:</strong> Intenta evitarlo.</li>
+            <li><strong>NoExecute:</strong> Desaloja Pods existentes sin tolerancia.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: Networking -->
+      <section id="networking" class="content-section">
+        <h2 class="section-title">🌐 Fundamentos de Networking</h2>
+        
+        <div class="content-card">
+          <h3>Modelo IP-per-Pod</h3>
+          <p>Cada Pod tiene su propia IP única. Los contenedores en un Pod comparten IP y localhost.</p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image09.png" alt="IP per Pod" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Integración con VPC</h3>
+          <p>GKE usa VPC-Native con Alias IPs.</p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image10.png" alt="VPC Integration" loading="lazy">
+          </div>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image11.png" alt="IP Allocation" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Services -->
+      <section id="services" class="content-section">
+        <h2 class="section-title">🛡️ Services</h2>
+        
+        <div class="content-card">
+          <h3>¿Qué es un Service?</h3>
+          <p>Abstracción que define un grupo de Pods y una política de acceso (IP estable, DNS).</p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image12.png" alt="Service Abstraction" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>Tipos de Servicios</h3>
+          <ul>
+            <li><strong>ClusterIP:</strong> Solo interno (default).</li>
+            <li><strong>NodePort:</strong> Abre puerto en cada nodo.</li>
+            <li><strong>LoadBalancer:</strong> Expone externamente usando Cloud Load Balancer.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 7: Ingress -->
+      <section id="ingress" class="content-section">
+        <h2 class="section-title">🚦 Ingress</h2>
+        
+        <div class="content-card">
+          <h3>Gestión de Tráfico HTTP/S</h3>
+          <p>
+            Colección de reglas para gestionar acceso externo. En GKE provisiona un Application Load Balancer (L7).
+          </p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image13.png" alt="Ingress GKE" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3>El Dilema del Doble Salto</h3>
+          <p>Tráfico ineficiente que salta entre nodos.</p>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image14.png" alt="Double Hop" loading="lazy">
+          </div>
+          <div class="image-container">
+            <img src="/DevSecOps/GoogleDevOpsSRE/kubernetes/Image15.png" alt="Double Hop Detail" loading="lazy">
+          </div>
+          <p>Soluciones: <code>externalTrafficPolicy: Local</code> o <strong>Container-Native Load Balancing (NEG)</strong>.</p>
+        </div>
+      </section>
+
+      <!-- Section 8: Seguridad -->
+      <section id="security" class="content-section">
+        <h2 class="section-title">🔒 Seguridad y Políticas</h2>
+        
+        <div class="content-card">
+          <h3>Network Policies</h3>
+          <p>Firewall a nivel de Pod. Por defecto todo está permitido. Se recomienda estrategia "Default Deny".</p>
+        </div>
+      </section>
+
+      </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Inherit styles from BaseLayout and add specific overrides if needed */
+  .gcp-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .gcp-hero {
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .gcp-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .gcp-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    color: #202124;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e8eaed;
+    padding-bottom: 0.5rem;
+  }
+
+  .content-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e8eaed;
+  }
+
+  .content-card h3 {
+    color: #1a73e8;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .content-card h4 {
+    color: #202124;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .image-container {
+    margin: 1.5rem 0;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  code {
+    background: #f1f3f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9em;
+    color: #d93025;
+  }
+
+  pre {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    color: #5f6368;
+  }
+
+  /* Sidebar Styles */
+  .page-wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 280px;
+    background: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .sidebar-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #202124;
+  }
+
+  .modules-nav {
+    flex: 1;
+    padding: 1rem 0;
+  }
+
+  .module-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .module-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: #5f6368;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: 4px solid transparent;
+  }
+
+  .module-link:hover {
+    background: #f8f9fa;
+    color: #1a73e8;
+  }
+
+  .module-link.active {
+    background: #e8f0fe;
+    color: #1a73e8;
+    border-left-color: #1a73e8;
+  }
+
+  .module-icon {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .module-text {
+    font-weight: 500;
+  }
+
+  .submenu {
+    background: #f8f9fa;
+    padding: 0.5rem 0;
+    display: none;
+  }
+
+  .module-item.expanded .submenu {
+    display: block;
+  }
+
+  .submenu-link {
+    display: block;
+    padding: 0.5rem 1.5rem 0.5rem 3.5rem;
+    color: #5f6368;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .submenu-link:hover {
+    color: #1a73e8;
+  }
+
+  .sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .back-link {
+    display: block;
+    color: #5f6368;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: #1a73e8;
+  }
+
+  @media (max-width: 768px) {
+    .page-wrapper {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    
+    .gcp-container {
+      padding: 1rem;
+    }
+  }
+</style>
