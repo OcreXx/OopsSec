@@ -203,12 +203,51 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         </div>
 
         <div class="content-card">
+          <h3>Recursos: Requests y Limits</h3>
+          <p>Durante una actualización, los recursos del clúster cambian. Kubernetes usa:</p>
+          <h4>Requests</h4>
+          <p>Cantidad <strong>mínima</strong> de CPU/memoria necesaria. Si no hay suficiente, el Pod no se programa.</p>
+          <h4>Limits</h4>
+          <p>Cantidad <strong>máxima</strong> permitida. Previene que un contenedor acapare recursos.</p>
+          <p>⚠️ Se configuran por contenedor. La CPU se mide en <strong>millicores (m)</strong> (1000m = 1 core).</p>
+        </div>
+
+        <div class="content-card">
           <h3>Estrategias de Despliegue</h3>
           <ul>
             <li><strong>Recreate:</strong> Elimina todos los antiguos y luego crea los nuevos (con downtime).</li>
             <li><strong>Blue/Green:</strong> Crea versión nueva completa, luego cambia el tráfico (instantáneo, doble recurso).</li>
             <li><strong>Canary:</strong> Mueve el tráfico gradualmente a la nueva versión.</li>
           </ul>
+        </div>
+        <div class="content-card">
+          <h3>Rollbacks y Gestión de Versiones</h3>
+          <h4>Revertir (Undo)</h4>
+          <pre><code>kubectl rollout undo deployment &lt;nombre&gt;</code></pre>
+          <h4>Historial</h4>
+          <pre><code>kubectl rollout history deployment &lt;nombre&gt;</code></pre>
+          <p>Kubernetes guarda los últimos 10 ReplicaSets por defecto (configurable con <code>revisionHistoryLimit</code>).</p>
+          
+          <h3>Control del Rollout</h3>
+          <p>Pausar para investigar problemas:</p>
+          <pre><code>kubectl rollout pause deployment &lt;nombre&gt;</code></pre>
+          <p>Reanudar:</p>
+          <pre><code>kubectl rollout resume deployment &lt;nombre&gt;</code></pre>
+          <p>Ver estado:</p>
+          <pre><code>kubectl rollout status deployment &lt;nombre&gt;</code></pre>
+        </div>
+
+        <div class="content-card">
+          <h3>Eliminar un Deployment</h3>
+          <p>Para eliminar un rollout completo (y todos sus recursos):</p>
+          <pre><code>kubectl delete deployment &lt;nombre&gt;</code></pre>
+          <p>Kubernetes eliminará:</p>
+          <ul>
+            <li>El Deployment</li>
+            <li>Todos los Pods asociados</li>
+            <li>Todos los recursos administrados por ese Deployment</li>
+          </ul>
+          <p>También puedes hacerlo desde la <strong>consola de Google Cloud</strong>.</p>
         </div>
       </section>
 
@@ -394,8 +433,70 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         <h2 class="section-title">🔒 Seguridad y Políticas</h2>
         
         <div class="content-card">
-          <h3>Network Policies</h3>
-          <p>Firewall a nivel de Pod. Por defecto todo está permitido. Se recomienda estrategia "Default Deny".</p>
+          <h3>Network Policies (Políticas de Red)</h3>
+          <p>
+            Por defecto, en Kubernetes **todos los Pods pueden hablar con todos**. Es una red plana y abierta.
+            Las Network Policies actúan como un **Firewall a nivel de Pod**, restringiendo quién puede hablar con quién.
+          </p>
+          <h4>GKE Dataplane V2</h4>
+          <p>
+            En GKE, la implementación moderna se basa en **eBPF** (Dataplane V2), lo que proporciona procesamiento eficiente y logs detallados.
+            En <strong>Autopilot</strong> está activado por defecto.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Estrategias y Ejemplos</h3>
+          
+          <h4>A. Estrategia "Default Deny" (Bloquear Todo) ⛔</h4>
+          <p>Mejor práctica: cerrar todo primero y abrir solo lo necesario.</p>
+          <pre><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: denegar-todo-por-defecto
+  namespace: default
+spec:
+  podSelector: {}          # {} Significa "Todos los Pods en este namespace"
+  policyTypes:
+  - Ingress                # Activa control de entrada (y bloquea al no haber reglas)
+  - Egress                 # Activa control de salida (y bloquea al no haber reglas)</code></pre>
+
+          <h4>B. Estrategia "Allow Specific" (Permitir Específico) ✅</h4>
+          <p>Ejemplo: Permitir acceso al Backend solo desde el Frontend en el puerto 5000.</p>
+          <pre><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: permitir-frontend-a-backend
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+    ports:
+    - protocol: TCP
+      port: 5000</code></pre>
+
+          <h4>C. Estrategia "Allow All" (Permitir Todo) ⚠️</h4>
+          <p>Útil para debugging.</p>
+          <pre><code>apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: permitir-todo
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - {}
+  egress:
+  - {}</code></pre>
         </div>
       </section>
 
