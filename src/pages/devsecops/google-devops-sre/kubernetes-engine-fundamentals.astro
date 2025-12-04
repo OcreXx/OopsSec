@@ -6,87 +6,72 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <h3>☁️ Cloud Fundamentals</h3>
+        <h3>☸️ Kubernetes Foundations</h3>
       </div>
       
-      <!-- Modules Navigation with Submenu -->
+      <!-- Kubernetes Navigation -->
       <nav class="sidebar-nav modules-nav">
-        <!-- Introducción Module -->
+        
+        <!-- Introducción a Contenedores -->
         <div class="module-item">
-          <a href="/devsecops/google-devops-sre/introduccion" class="nav-link module-link">
-            <span class="module-icon">📚</span>
-            <span class="module-text">Introducción a GCP</span>
-          </a>
-        </div>
-
-        <!-- Recursos Module -->
-        <div class="module-item">
-          <a href="/devsecops/google-devops-sre/recursos" class="nav-link module-link">
-            <span class="module-icon">🔐</span>
-            <span class="module-text">Recursos y Acceso</span>
-          </a>
-        </div>
-
-        <!-- VMs y Redes Module -->
-        <div class="module-item">
-          <a href="/devsecops/google-devops-sre/vms-redes" class="nav-link module-link">
-            <span class="module-icon">🌐</span>
-            <span class="module-text">VMs y Redes</span>
-          </a>
-        </div>
-
-        <!-- Almacenamiento Module -->
-        <div class="module-item">
-          <a href="/devsecops/google-devops-sre/almacenamiento" class="nav-link module-link">
-            <span class="module-icon">💾</span>
-            <span class="module-text">Almacenamiento</span>
-          </a>
-        </div>
-
-        <!-- Contenedores Module -->
-        <div class="module-item">
-          <a href="/devsecops/google-devops-sre/contenedores" class="nav-link module-link">
+          <a href="#introduccion-contenedores" class="nav-link module-link">
             <span class="module-icon">📦</span>
-            <span class="module-text">Contenedores</span>
+            <span class="module-text">Introducción a Contenedores</span>
           </a>
         </div>
 
-        <!-- Aplicaciones Module -->
+        <!-- Introducción a Kubernetes -->
         <div class="module-item">
-          <a href="/devsecops/google-devops-sre/aplicaciones" class="nav-link module-link">
-            <span class="module-icon">🚀</span>
-            <span class="module-text">Aplicaciones</span>
+          <a href="#kubernetes" class="nav-link module-link">
+            <span class="module-icon">☸️</span>
+            <span class="module-text">Introducción a Kubernetes</span>
           </a>
         </div>
 
-        <!-- Prompt Engineering Module -->
+        <!-- Opciones de Cómputo -->
         <div class="module-item">
-          <a href="/devsecops/google-devops-sre/prompt-engineering" class="nav-link module-link">
-            <span class="module-icon">🤖</span>
-            <span class="module-text">Prompt Engineering</span>
-          </a>
-        </div>
-
-        <!-- Kubernetes Engine Module - ACTIVE -->
-        <div class="module-item expanded">
-          <a href="/devsecops/google-devops-sre/kubernetes-engine-fundamentals" class="nav-link module-link active">
+          <a href="#compute-options" class="nav-link module-link">
             <span class="module-icon">⚙️</span>
-            <span class="module-text">Kubernetes Engine</span>
+            <span class="module-text">Opciones de Cómputo</span>
           </a>
-          <div class="submenu">
-            <a href="#introduccion-contenedores" class="submenu-link">Introducción a Contenedores</a>
-            <a href="#introduccion-kubernetes" class="submenu-link">Introducción a Kubernetes</a>
-            <a href="#opciones-computo" class="submenu-link">Opciones de Cómputo</a>
-            <a href="#conceptos-kubernetes" class="submenu-link">Conceptos de Kubernetes</a>
-            <a href="#conceptos-gke" class="submenu-link">Conceptos de GKE</a>
-            <a href="#gestion-objetos" class="submenu-link">Gestión de Objetos</a>
-            <a href="#migrate-anthos" class="submenu-link">Migrate for Anthos</a>
-          </div>
         </div>
+
+        <!-- Conceptos de Kubernetes -->
+        <div class="module-item">
+          <a href="#conceptos-kubernetes" class="nav-link module-link">
+            <span class="module-icon">🧩</span>
+            <span class="module-text">Conceptos de Kubernetes</span>
+          </a>
+        </div>
+
+        <!-- Conceptos de GKE -->
+        <div class="module-item">
+          <a href="#conceptos-gke" class="nav-link module-link">
+            <span class="module-icon">🚀</span>
+            <span class="module-text">Conceptos de GKE</span>
+          </a>
+        </div>
+
+        <!-- Gestión de Objetos -->
+        <div class="module-item">
+          <a href="#gestion-objetos" class="nav-link module-link">
+            <span class="module-icon">📋</span>
+            <span class="module-text">Gestión de Objetos</span>
+          </a>
+        </div>
+
+        <!-- Migrate for Anthos -->
+        <div class="module-item">
+          <a href="#migrate-anthos" class="nav-link module-link">
+            <span class="module-icon">🔄</span>
+            <span class="module-text">Migrate for Anthos</span>
+          </a>
+        </div>
+
       </nav>
 
       <div class="sidebar-footer">
-        <a href="/devsecops/google-devops-sre/cloud-fundamentals" class="back-link">← Volver al Hub</a>
+        <a href="/devsecops/google-devops-sre/kubernetes-foundations" class="back-link">← Volver al Hub</a>
       </div>
     </aside>
 
