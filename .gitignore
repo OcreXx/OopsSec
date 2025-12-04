@@ -28,5 +28,3 @@ Thumbs.db
 # Vercel
 .vercel
 
-# Copilot Theory - Source files for content generation (not part of web dependencies)
-CopilotTheory/
